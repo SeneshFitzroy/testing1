@@ -85,6 +85,28 @@ npm run build
 npm run preview
 ```
 
+## Deployment (Vercel + Firebase)
+
+### Vercel
+The project includes `vercel.json` for SPA routing. Deploy with:
+
+```bash
+vercel
+```
+
+Or connect your GitHub repo to Vercel for auto-deploys.
+
+### Firebase — Fix 400 on Sign Up/Login
+For auth to work on your Vercel domain (e.g. `lee-roo-wood-designs.vercel.app`):
+
+1. Open [Firebase Console](https://console.firebase.google.com) → your project
+2. Go to **Authentication** → **Settings** (gear) → **Authorized domains**
+3. Click **Add domain**
+4. Add: `lee-roo-wood-designs.vercel.app` (and any other `*.vercel.app` subdomains you use)
+5. Save
+
+Without this, Firebase rejects requests with `400` from unauthorized domains.
+
 ## Project Structure
 
 ```
