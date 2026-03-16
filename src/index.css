@@ -10,8 +10,14 @@
     @apply bg-stone-50 font-sans antialiased;
     color: #1C1C1C;
   }
-  .dark body,
-  body.dark {
+  /* Explicit fallbacks so hosted = local (fonts/Tailwind load late in prod) */
+  body, #root {
+    color: #1C1C1C;
+  }
+  html.dark body, html.dark #root {
+    color: #E8DFD5;
+  }
+  html.dark body {
     @apply bg-dark-bg text-warm-200;
   }
   /* Luxury spacing - increase base padding/margin rhythm */

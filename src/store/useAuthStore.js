@@ -43,8 +43,22 @@ const getAuthErrorMessage = (error) => {
     'auth/timeout': 'The request timed out. Please check your connection and try again.',
     'auth/quota-exceeded': 'Service is temporarily busy. Please try again in a few minutes.',
     'auth/requires-recent-login': 'For security purposes, please sign in again to complete this action.',
+    // API / project config
+    'auth/configuration-not-found': 'Authentication is not configured correctly. Please contact support.',
+    'auth/api-key-not-valid': 'Service configuration error. Please try again later.',
+    'auth/invalid-api-key': 'Service configuration error. Please try again later.',
+    'auth/app-deleted': 'This app has been deleted. Please contact support.',
+    'auth/app-not-authorized': 'This app is not authorized. Please contact support.',
+    'auth/captcha-check-failed': 'Security check failed. Please try again.',
+    'auth/tenant-id-mismatch': 'Authentication error. Please try again.',
+    'auth/invalid-oauth-provider': 'Sign-in provider error. Please try again.',
+    'auth/redirect-uri-mismatch': 'Redirect configuration error. Please try again.',
+    'auth/provider-already-linked': 'This account is already linked. Try signing in with your original method.',
+    'auth/credential-already-in-use': 'This credential is already used by another account.',
+    'auth/user-mismatch': 'Account mismatch. Please sign in with the correct account.',
   }
-  return errorMessages[code] || 'Something unexpected happened. Please try again or contact support if the issue persists.'
+  const msg = errorMessages[code] || error?.message || 'Something unexpected happened. Please try again or contact support if the issue persists.'
+  return msg
 }
 
 const useAuthStore = create((set, get) => ({

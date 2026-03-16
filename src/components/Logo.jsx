@@ -73,10 +73,11 @@ export default function Logo({ size = 40, showText = true, className = '', textC
   )
 }
 
-export function LogoIcon({ size = 32, className = '' }) {
+export function LogoIcon({ size = 32, className = '', light = false }) {
   const { darkMode } = useThemeStore()
-  const ringColor = darkMode ? '#C4A882' : '#A07850'
-  const chairColor = darkMode ? '#B66E41' : '#9A5A33'
+  const useLight = light || darkMode
+  const ringColor = useLight ? '#C4A882' : '#A07850'
+  const chairColor = useLight ? '#B66E41' : '#9A5A33'
 
   return (
     <svg

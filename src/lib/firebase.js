@@ -3,9 +3,10 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
-// Firebase configuration
+// Firebase config — MUST use key from Firebase Console (project 562570699070).
+// Do NOT use a key from another GCP project — Identity Toolkit must be enabled.
 const firebaseConfig = {
-  apiKey: "AIzaSyCVAscjbk9s7dYi4UaTM2Ir2T7hCqMntz4",
+  apiKey: "AIzaSyC5j3JXEmO5kKevTsN9t88NPrNq-S-tqaM",
   authDomain: "pusl3122-group-01.firebaseapp.com",
   projectId: "pusl3122-group-01",
   storageBucket: "pusl3122-group-01.firebasestorage.app",

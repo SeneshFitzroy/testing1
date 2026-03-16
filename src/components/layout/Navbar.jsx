@@ -139,14 +139,14 @@ export default function Navbar() {
 
   const isShopSection = location.pathname === '/shop' || location.pathname.startsWith('/shop/')
   const navBg = isLandingPage && !isScrolled
-    ? 'bg-transparent border-transparent'
+    ? 'bg-black/30 dark:bg-black/40 backdrop-blur-md border-transparent'
     : isShopSection
       ? 'bg-white dark:bg-dark-bg border-b border-neutral-200 dark:border-dark-border'
       : 'bg-stone-50/95 dark:bg-dark-bg/95 backdrop-blur-2xl border-stone-200/60 dark:border-dark-border/40 shadow-sm'
 
   const textColor = isLandingPage && !isScrolled
-    ? 'text-charcoal/80 hover:text-charcoal'
-    : 'text-charcoal/70 dark:text-warm-400 hover:text-charcoal dark:hover:text-warm-100'
+    ? 'text-white hover:text-white'
+    : 'text-charcoal dark:text-warm-400 hover:text-charcoal dark:hover:text-warm-100'
 
   return (
     <nav
@@ -160,18 +160,18 @@ export default function Navbar() {
           {/* Logo */}
           <Link to={user ? (designerOnly ? '/designer-panel' : '/shop') : '/'} className="flex items-center gap-2.5 group shrink-0">
             <div className="group-hover:scale-110 transition-transform duration-200">
-              <LogoIcon size={36} />
+              <LogoIcon size={36} light={isLandingPage && !isScrolled} />
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
               <span className={`text-xl font-bold tracking-tight font-display transition-colors duration-300 ${
                 isLandingPage && !isScrolled
-                  ? 'text-charcoal dark:text-stone-50'
+                  ? 'text-white'
                   : 'bg-gradient-to-r from-darkwood to-clay dark:from-warm-100 dark:to-clay bg-clip-text text-transparent'
               }`}>
                 Lee Roo
               </span>
               <span className={`text-[10px] -mt-0.5 transition-colors duration-300 ${
-                isLandingPage && !isScrolled ? 'text-charcoal/60 dark:text-stone-400' : 'text-darkwood/50 dark:text-warm-400'
+                isLandingPage && !isScrolled ? 'text-white/80' : 'text-darkwood/50 dark:text-warm-400'
               }`}>
                 {String.fromCharCode(0x0DBD, 0x0DD3)} {String.fromCharCode(0x0DBB, 0x0DD6)} &middot; Wood Designs
               </span>
@@ -188,7 +188,7 @@ export default function Navbar() {
                   isActive(to)
                     ? 'bg-gradient-to-r from-clay to-clay-dark text-white shadow-md shadow-clay/25'
                     : isLandingPage && !isScrolled
-                      ? 'text-white/70 hover:text-white hover:bg-white/10'
+                      ? 'text-white/90 hover:text-white hover:bg-white/20'
                       : 'text-darkwood/60 dark:text-warm-400 hover:bg-warm-100/80 dark:hover:bg-dark-surface/80 hover:text-darkwood dark:hover:text-warm-100'
                 }`}
               >
@@ -281,7 +281,7 @@ export default function Navbar() {
               onClick={toggleDarkMode}
               className={`p-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                 isLandingPage && !isScrolled
-                  ? 'text-white/70 hover:text-white hover:bg-white/10'
+                  ? 'text-white/90 hover:text-white hover:bg-white/20'
                   : 'text-darkwood/50 dark:text-warm-400 hover:bg-warm-100 dark:hover:bg-dark-surface'
               }`}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}

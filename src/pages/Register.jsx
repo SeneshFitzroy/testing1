@@ -416,7 +416,7 @@ export default function Register() {
                 </button>
               </div>
 
-              {/* Match Indicator */}
+              {/* Match Indicator — show only one message; validation error only when passwords don't match */}
               {formData.confirmPassword && (
                 <div className="mt-1 flex items-center space-x-1">
                   {formData.password === formData.confirmPassword ? (
@@ -427,16 +427,12 @@ export default function Register() {
                   ) : (
                     <>
                       <AlertCircle className="h-4 w-4 text-red-500" />
-                      <span className="text-xs text-red-600 dark:text-red-400">{t('auth.passwordsDontMatch')}</span>
+                      <span className="text-xs text-red-600 dark:text-red-400">
+                        {validationErrors.confirmPassword || t('auth.passwordsDontMatch')}
+                      </span>
                     </>
                   )}
                 </div>
-              )}
-
-              {validationErrors.confirmPassword && (
-                <motion.p className="mt-1 text-sm text-red-600 dark:text-red-400" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} role="alert">
-                  {validationErrors.confirmPassword}
-                </motion.p>
               )}
             </div>
 

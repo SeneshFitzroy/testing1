@@ -74,10 +74,15 @@ function App() {
     }
   }, [user?.uid])
 
+  // Defer default account provisioning so it doesn't interfere with auth init or splash.
+  // Runs after splash + delay; failures (e.g. 403) won't disrupt UX.
   useEffect(() => {
-    ensureDefaultAccounts()
-      .then(() => initAuth())
-      .catch(() => {})
+    const t = setTimeout(() => {
+      ensureDefaultAccounts()
+        .then(() => initAuth())
+        .catch(() => {})
+    }, 5000)
+    return () => clearTimeout(t)
   }, [])
 
   useEffect(() => {

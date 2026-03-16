@@ -32,17 +32,22 @@ const DEFAULT_ACCOUNTS = [
   },
 ]
 
+const DEMO_EMAILS = ['admin@leeroo.com', 'designer@leeroo.com', 'user@leeroo.com']
+
 /**
  * Ensure both default accounts exist in Firebase Auth + Firestore.
  * - If the account doesn't exist → register it + write user doc.
  * - If the account exists but the Firestore doc is missing / wrong role → fix it.
- * - Always signs back out when done so current session isn't tainted.
+ * - Skips entirely when a real user (non-demo) is logged in to avoid signing them out.
  */
 export async function ensureDefaultAccounts() {
-  // Remember the current user so we can restore context afterwards
-  const previousUser = auth.currentUser
+  const currentUser = auth.currentUser
+  if (currentUser && !DEMO_EMAILS.includes(currentUser.email)) {
+    return // Don't run when a real user is logged in
+  }
 
   for (const acct of DEFAULT_ACCOUNTS) {
+    let signedInAsTemp = false
     try {
       // Try creating the account (will throw if already exists)
       let credential
@@ -50,10 +55,11 @@ export async function ensureDefaultAccounts() {
         credential = await createUserWithEmailAndPassword(auth, acct.email, acct.password)
         await updateProfile(credential.user, { displayName: acct.displayName })
         console.log(`[Setup] Created account: ${acct.email} (${acct.role})`)
+        signedInAsTemp = true
       } catch (e) {
         if (e.code === 'auth/email-already-in-use') {
-          // Account exists — sign in to get uid
           credential = await signInWithEmailAndPassword(auth, acct.email, acct.password)
+          signedInAsTemp = true
         } else {
           throw e
         }
@@ -83,12 +89,13 @@ export async function ensureDefaultAccounts() {
         console.log(`[Setup] Wrote Firestore profile for ${acct.email} → role: ${acct.role}`)
       }
 
-      // Sign out this temporary session
       await signOut(auth)
     } catch (err) {
-      // Non-fatal — just log and continue
       console.warn(`[Setup] Could not provision ${acct.email}:`, err.message || err)
-      try { await signOut(auth) } catch (_) { /* ignore */ }
+      // Only sign out if we signed in as temp account; don't sign out a restored user
+      if (signedInAsTemp) {
+        try { await signOut(auth) } catch (_) { /* ignore */ }
+      }
     }
   }
 }

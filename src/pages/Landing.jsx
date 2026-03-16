@@ -46,14 +46,14 @@ function useInView(ref, threshold = 0.15) {
 
 const HERO_POSTER = 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=80'
 
-/** Video with fallback to poster when video fails (no mp4 in public/) */
+/** Single source: hero-bg.mp4 from public/ — 100% local, no external URLs, no Firestore */
 function LandingHeroMedia() {
   const [videoError, setVideoError] = useState(false)
 
   if (videoError) {
     return (
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${HERO_POSTER})` }}
         aria-hidden="true"
       />
@@ -67,12 +67,12 @@ function LandingHeroMedia() {
       muted
       loop
       playsInline
+      preload="auto"
       poster={HERO_POSTER}
       aria-label="Background video of furniture and living spaces"
       onError={() => setVideoError(true)}
     >
       <source src="/hero-bg.mp4" type="video/mp4" />
-      <source src="/3aebcc982c994cd4a51fa6333936a90e.mp4" type="video/mp4" />
     </video>
   )
 }
