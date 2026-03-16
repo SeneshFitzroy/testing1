@@ -336,9 +336,9 @@ export default function RoomEditor() {
             ${sidebarOpenOnMobile ? 'flex' : 'hidden'} lg:flex`}
           style={sidebarStyle}
         >
-          <div className="p-4 border-b border-warm-200 dark:border-dark-border">
-            <div className="flex items-center justify-between mb-4">
-              <h1 className="text-xl font-bold text-darkwood dark:text-white font-display">
+          <div className="p-3 border-b border-warm-200 dark:border-dark-border shrink-0">
+            <div className="flex items-center justify-between mb-3">
+              <h1 className="text-lg font-bold text-darkwood dark:text-white font-display">
                 {t('editor.title')}
               </h1>
               <div className="flex items-center gap-1">
@@ -355,6 +355,7 @@ export default function RoomEditor() {
                 >
                   <ArrowLeft className="h-5 w-5 text-darkwood dark:text-white" />
                 </button>
+              </div>
             </div>
 
             {/* Tab Navigation */}
@@ -379,7 +380,6 @@ export default function RoomEditor() {
                 </button>
               ))}
             </div>
-          </div>
           </div>
 
           <div className="flex-1 min-h-0 overflow-hidden">
