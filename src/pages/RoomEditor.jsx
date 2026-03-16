@@ -324,17 +324,17 @@ export default function RoomEditor() {
   }
 
   return (
-    <div className="h-full flex flex-col bg-warm-50 dark:bg-dark-bg overflow-hidden" style={{ minHeight: 0 }}>
+    <div className="absolute inset-0 flex flex-col bg-warm-50 dark:bg-dark-bg overflow-hidden">
       {showTemplates && (
         <TemplateSelector onSelect={handleTemplateSelect} onClose={() => setShowTemplates(false)} />
       )}
 
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden" style={{ minHeight: 0 }}>
+      <div className="flex-1 flex flex-col lg:flex-row min-h-0 overflow-hidden">
         {/* ── Left Sidebar (resizable; collapsible on mobile) ── */}
         <div
-          className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30 overflow-hidden
+          className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col shrink-0 z-30 overflow-hidden
             ${sidebarOpenOnMobile ? 'flex' : 'hidden'} lg:flex`}
-          style={{ ...sidebarStyle, minHeight: 0 }}
+          style={sidebarStyle}
         >
           <div className="p-4 border-b border-warm-200 dark:border-dark-border shrink-0">
             <div className="flex items-center justify-between mb-4">
@@ -381,12 +381,10 @@ export default function RoomEditor() {
             </div>
           </div>
 
-          <div className="flex-1 relative" style={{ minHeight: 0 }}>
-            <div className="absolute inset-0 overflow-y-auto overflow-x-hidden furniture-scroll">
-              {activePanel === 'furniture' && <FurniturePanel />}
-              {activePanel === 'properties' && <PropertiesPanel selectedItem={selectedItem} />}
-              {activePanel === 'room' && <RoomSettingsPanel onExport={handleExport} />}
-            </div>
+          <div className="flex-1 min-h-0 overflow-hidden">
+            {activePanel === 'furniture' && <FurniturePanel />}
+            {activePanel === 'properties' && <PropertiesPanel selectedItem={selectedItem} />}
+            {activePanel === 'room' && <RoomSettingsPanel onExport={handleExport} />}
           </div>
 
           {/* Resize handle (desktop only) */}

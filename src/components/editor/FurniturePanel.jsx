@@ -34,7 +34,7 @@ export default function FurniturePanel() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="h-full flex flex-col overflow-hidden">
       {/* Search */}
       <div className="p-4 border-b border-warm-200 dark:border-dark-border">
         <div className="relative mb-4">
@@ -99,7 +99,7 @@ export default function FurniturePanel() {
       </div>
 
       {/* Furniture Items */}
-      <div className="p-4">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 furniture-scroll">
         {filteredFurniture.length > 0 ? (
           viewMode === 'grid' ? (
             <div className="grid grid-cols-2 gap-4">

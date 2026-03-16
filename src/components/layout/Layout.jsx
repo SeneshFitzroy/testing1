@@ -20,7 +20,7 @@ export default function Layout() {
       <Navbar />
       <main
         id="main-content"
-        className={`flex-1 min-w-0 ${isEditor ? 'min-h-0 overflow-hidden' : 'overflow-x-hidden'}`}
+        className={`flex-1 min-w-0 ${isEditor ? 'min-h-0 overflow-hidden relative' : 'overflow-x-hidden'}`}
         role="main"
         aria-label="Main content"
       >
