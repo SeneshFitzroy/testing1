@@ -324,12 +324,12 @@ export default function RoomEditor() {
   }
 
   return (
-    <div className="h-full bg-warm-50 dark:bg-dark-bg">
+    <div className="min-h-screen bg-warm-50 dark:bg-dark-bg">
       {showTemplates && (
         <TemplateSelector onSelect={handleTemplateSelect} onClose={() => setShowTemplates(false)} />
       )}
 
-      <div className="flex flex-col lg:flex-row h-full overflow-hidden">
+      <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
         {/* ── Left Sidebar (resizable; collapsible on mobile) ── */}
         <div
           className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30
@@ -380,8 +380,9 @@ export default function RoomEditor() {
               ))}
             </div>
           </div>
+          </div>
 
-          <div className="flex-1 overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-hidden">
             {activePanel === 'furniture' && <FurniturePanel />}
             {activePanel === 'properties' && <PropertiesPanel selectedItem={selectedItem} />}
             {activePanel === 'room' && <RoomSettingsPanel onExport={handleExport} />}
@@ -754,7 +755,6 @@ export default function RoomEditor() {
         onConfirm={executeReset}
         onCancel={() => setConfirmReset(false)}
       />
-      </div>
     </div>
   )
 }
