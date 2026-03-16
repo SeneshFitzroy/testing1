@@ -328,7 +328,7 @@ export default function DesignerPanel() {
       <div className="min-h-screen flex items-center justify-center bg-warm-50 dark:bg-dark-bg">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-clay" />
-          <p className="text-darkwood dark:text-gray-200">Loading designs...</p>
+          <p className="text-darkwood dark:text-white">Loading designs...</p>
         </div>
       </div>
     )
@@ -395,7 +395,7 @@ export default function DesignerPanel() {
                     className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all inline-flex items-center gap-1.5 ${
                       filterStatus === id
                         ? 'bg-clay text-white shadow-md'
-                        : 'bg-white dark:bg-dark-card text-darkwood/70 dark:text-gray-200 border border-warm-200 dark:border-dark-border hover:border-clay hover:text-clay dark:hover:text-clay'
+                        : 'bg-white dark:bg-dark-card text-darkwood/70 dark:text-white border border-warm-200 dark:border-dark-border hover:border-clay hover:text-clay dark:hover:text-clay'
                     }`}
                   >
                     {Icon && <Icon className="h-3.5 w-3.5" />}
@@ -408,14 +408,14 @@ export default function DesignerPanel() {
             {/* Search, sort, actions row */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <div className="relative flex-1 sm:max-w-xs">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood dark:text-gray-200" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood dark:text-white" />
                 <input
                   type="text"
                   placeholder="Search by design name, client, or email..."
                   aria-label="Search designs"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
+                  className="w-full pl-10 pr-4 py-2.5 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-300 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
                 />
               </div>
               <select
@@ -440,7 +440,7 @@ export default function DesignerPanel() {
                 {filteredDesigns.length > 0 && (
                   <button
                     onClick={handleExportAllPDF}
-                    className="px-4 py-2.5 rounded-xl border border-warm-200 dark:border-dark-border text-darkwood/70 dark:text-gray-200 hover:border-clay hover:text-clay hover:bg-clay/5 dark:hover:bg-clay/10 transition-all inline-flex items-center gap-2"
+                    className="px-4 py-2.5 rounded-xl border border-warm-200 dark:border-dark-border text-darkwood/70 dark:text-white hover:border-clay hover:text-clay hover:bg-clay/5 dark:hover:bg-clay/10 transition-all inline-flex items-center gap-2"
                     title="Export filtered designs as PDF"
                   >
                     <FileText className="h-4 w-4" /> Export PDF
@@ -460,11 +460,11 @@ export default function DesignerPanel() {
             <div className="space-y-3">
               {filteredDesigns.length === 0 ? (
                 <div className="bg-white dark:bg-dark-card rounded-2xl p-10 border border-warm-200 dark:border-dark-border text-center">
-                  <FolderOpen className="h-14 w-14 text-warm-300 dark:text-gray-200 mx-auto mb-4 opacity-60" />
-                  <p className="text-darkwood dark:text-gray-200 mb-1 font-medium">
+                  <FolderOpen className="h-14 w-14 text-warm-300 dark:text-white mx-auto mb-4 opacity-60" />
+                  <p className="text-darkwood dark:text-white mb-1 font-medium">
                     {designs.length === 0 ? 'No designs yet' : 'No designs match filters'}
                   </p>
-                  <p className="text-sm text-darkwood/70 dark:text-gray-200 mb-6">
+                  <p className="text-sm text-darkwood/70 dark:text-white mb-6">
                     {designs.length === 0 ? 'Load demo data to explore features, or start a new design.' : 'Try changing filters or clearing search.'}
                   </p>
                   {designs.length === 0 ? (
@@ -477,7 +477,7 @@ export default function DesignerPanel() {
                   ) : (
                     <button
                       onClick={() => { setFilterStatus('all'); setSearchQuery('') }}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-gray-200 font-medium rounded-xl hover:bg-warm-200 dark:hover:bg-dark-border transition-all"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white font-medium rounded-xl hover:bg-warm-200 dark:hover:bg-dark-border transition-all"
                     >
                       Clear filters
                     </button>
@@ -504,11 +504,11 @@ export default function DesignerPanel() {
                           <StatusIcon className="h-3 w-3" /> {statusCfg.label}
                         </span>
                       </div>
-                      <p className="text-xs text-darkwood/70 dark:text-gray-200 mb-3 flex items-center gap-1.5">
+                      <p className="text-xs text-darkwood/70 dark:text-white mb-3 flex items-center gap-1.5">
                         <Users className="h-3 w-3" />
                         {design.userName || 'Customer'}
                       </p>
-                      <div className="flex items-center gap-4 text-xs text-darkwood/60 dark:text-gray-200">
+                      <div className="flex items-center gap-4 text-xs text-darkwood/60 dark:text-white">
                         <span>{design.rooms?.reduce((acc, r) => acc + (r.furnitureItems?.length || 0), 0) || 0} items</span>
                         <span>{design.rooms?.length || 1} rooms</span>
                         <span>{design.comments?.length || 0} comments</span>
@@ -534,7 +534,7 @@ export default function DesignerPanel() {
                   {/* Client link sharing — primary action */}
                   <div className="mb-4 p-4 bg-clay/10 dark:bg-clay/5 rounded-xl border border-clay/20">
                     <p className="text-sm font-medium text-darkwood dark:text-white mb-2">Share live design with client</p>
-                    <p className="text-xs text-darkwood/60 dark:text-gray-200 mb-3">Send a link instead of exporting PDF. Client opens the design directly in the editor.</p>
+                    <p className="text-xs text-darkwood/60 dark:text-white mb-3">Send a link instead of exporting PDF. Client opens the design directly in the editor.</p>
                     <button
                       onClick={() => handleCopyShareLink(selectedDesign)}
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-clay hover:bg-clay-dark text-white font-semibold rounded-xl text-sm transition-all shadow-md shadow-clay/20"
@@ -555,14 +555,14 @@ export default function DesignerPanel() {
                     {selectedDesign.userEmail && (
                       <a
                         href={`mailto:${selectedDesign.userEmail}`}
-                        className="inline-flex items-center gap-2 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-gray-200 hover:border-clay hover:text-clay rounded-xl text-sm font-medium transition-all"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-white hover:border-clay hover:text-clay rounded-xl text-sm font-medium transition-all"
                       >
                         <Mail className="h-4 w-4" /> Email client
                       </a>
                     )}
                     <button
                       onClick={() => handleExportDesignPDF(selectedDesign)}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-gray-200 hover:border-clay hover:text-clay rounded-xl text-sm font-medium transition-all"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-white hover:border-clay hover:text-clay rounded-xl text-sm font-medium transition-all"
                       title="Export as PDF"
                     >
                       <FileText className="h-4 w-4" /> Export PDF
@@ -600,32 +600,32 @@ export default function DesignerPanel() {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 text-center">
                       <div className="text-xl font-bold text-darkwood dark:text-white">{selectedDesign.rooms?.length || 1}</div>
-                      <div className="text-xs text-darkwood dark:text-gray-200 font-medium mt-0.5">Rooms</div>
+                      <div className="text-xs text-darkwood dark:text-white font-medium mt-0.5">Rooms</div>
                     </div>
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 text-center">
                       <div className="text-xl font-bold text-darkwood dark:text-white">
                         {selectedDesign.rooms?.reduce((acc, r) => acc + (r.furnitureItems?.length || 0), 0) || 0}
                       </div>
-                      <div className="text-xs text-darkwood dark:text-gray-200 font-medium mt-0.5">Items</div>
+                      <div className="text-xs text-darkwood dark:text-white font-medium mt-0.5">Items</div>
                     </div>
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 text-center">
                       <div className="text-xl font-bold text-darkwood dark:text-white">
                         {selectedDesign.roomWidth || 5}m × {selectedDesign.roomDepth || 4}m
                       </div>
-                      <div className="text-xs text-darkwood dark:text-gray-200 font-medium mt-0.5">Dimensions</div>
+                      <div className="text-xs text-darkwood dark:text-white font-medium mt-0.5">Dimensions</div>
                     </div>
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 text-center">
                       <div className="text-xl font-bold text-darkwood dark:text-white">
                         {new Date(selectedDesign.createdAt || Date.now()).toLocaleDateString()}
                       </div>
-                      <div className="text-xs text-darkwood dark:text-gray-200 font-medium mt-0.5">Created</div>
+                      <div className="text-xs text-darkwood dark:text-white font-medium mt-0.5">Created</div>
                     </div>
                   </div>
 
                   {/* Rooms & furniture */}
                   {selectedDesign.rooms?.length > 0 && (
                     <div className="mt-6">
-                      <h4 className="text-sm font-semibold text-darkwood dark:text-gray-200 mb-3 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-darkwood dark:text-white mb-3 flex items-center gap-2">
                         <Palette className="h-4 w-4 text-clay" /> Rooms & furniture
                       </h4>
                       <div className="space-y-3">
@@ -633,11 +633,11 @@ export default function DesignerPanel() {
                           <div key={idx} className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4">
                             <div className="flex items-center gap-2 mb-2">
                               <span className="text-sm font-medium text-darkwood dark:text-white">{room.name}</span>
-                              <span className="text-xs text-darkwood dark:text-gray-200">({room.furnitureItems?.length || 0} items)</span>
+                              <span className="text-xs text-darkwood dark:text-white">({room.furnitureItems?.length || 0} items)</span>
                             </div>
                             <div className="flex flex-wrap gap-2">
                               {room.furnitureItems?.map((item, fi) => (
-                                <span key={fi} className="px-2.5 py-1 bg-white dark:bg-dark-card rounded-lg text-xs text-darkwood/70 dark:text-gray-200 border border-warm-200 dark:border-dark-border">
+                                <span key={fi} className="px-2.5 py-1 bg-white dark:bg-dark-card rounded-lg text-xs text-darkwood/70 dark:text-white border border-warm-200 dark:border-dark-border">
                                   {item.name}
                                 </span>
                               ))}
@@ -651,17 +651,17 @@ export default function DesignerPanel() {
 
                 {/* Private notes */}
                 <div className="p-6 sm:p-8 border-b border-warm-200 dark:border-dark-border bg-amber-50/30 dark:bg-amber-900/5">
-                  <h4 className="text-sm font-semibold text-darkwood dark:text-gray-200 mb-2 flex items-center gap-2">
+                  <h4 className="text-sm font-semibold text-darkwood dark:text-white mb-2 flex items-center gap-2">
                     <StickyNote className="h-4 w-4 text-clay" />
                     Private notes (designer only)
                   </h4>
-                  <p className="text-xs text-darkwood dark:text-gray-200 mb-3">Client preferences, budget notes, follow-up reminders — not visible to clients.</p>
+                  <p className="text-xs text-darkwood dark:text-white mb-3">Client preferences, budget notes, follow-up reminders — not visible to clients.</p>
                   <textarea
                     value={designerNotes}
                     onChange={(e) => setDesignerNotes(e.target.value)}
                     placeholder="e.g. Client prefers natural wood finish. Follow up next week."
                     rows={3}
-                    className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-clay/30 outline-none resize-none"
+                    className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-300 focus:ring-2 focus:ring-clay/30 outline-none resize-none"
                   />
                   <button
                     onClick={handleSaveDesignerNotes}
@@ -682,9 +682,9 @@ export default function DesignerPanel() {
                   <div className="space-y-4 mb-6 max-h-72 overflow-y-auto">
                     {(!selectedDesign.comments || selectedDesign.comments.length === 0) && (
                       <div className="text-center py-10 rounded-xl bg-warm-50 dark:bg-dark-surface/50 border border-dashed border-warm-200 dark:border-dark-border">
-                        <MessageSquare className="h-10 w-10 mx-auto mb-3 text-warm-300 dark:text-gray-200 opacity-60" />
+                        <MessageSquare className="h-10 w-10 mx-auto mb-3 text-warm-300 dark:text-white opacity-60" />
                         <p className="text-sm font-medium text-darkwood dark:text-white mb-1">No comments yet</p>
-                        <p className="text-xs text-darkwood dark:text-gray-200">Add your first review below.</p>
+                        <p className="text-xs text-darkwood dark:text-white">Add your first review below.</p>
                       </div>
                     )}
                     {selectedDesign.comments?.map((c, ci) => (
@@ -696,11 +696,11 @@ export default function DesignerPanel() {
                             </div>
                             <span className="text-sm font-semibold text-darkwood dark:text-white">{c.author}</span>
                           </div>
-                          <span className="text-xs text-darkwood dark:text-gray-200">
+                          <span className="text-xs text-darkwood dark:text-white">
                             {c.date ? new Date(c.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : ''}
                           </span>
                         </div>
-                        <p className="text-sm text-darkwood/70 dark:text-gray-200 leading-relaxed">{c.text}</p>
+                        <p className="text-sm text-darkwood/70 dark:text-white leading-relaxed">{c.text}</p>
                         {c.rating && (
                           <div className="flex items-center gap-0.5 mt-2">
                             {[1,2,3,4,5].map(s => (
@@ -714,13 +714,13 @@ export default function DesignerPanel() {
 
                   {/* Add comment */}
                   <div className="border-t border-warm-200 dark:border-dark-border pt-6">
-                    <label className="text-sm font-semibold text-darkwood dark:text-gray-200 mb-2 block">Add your review</label>
+                    <label className="text-sm font-semibold text-darkwood dark:text-white mb-2 block">Add your review</label>
                     <textarea
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}
                       placeholder="Share your feedback on this design..."
                       rows={3}
-                      className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none resize-none mb-4"
+                      className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-300 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none resize-none mb-4"
                     />
                     <button
                       onClick={() => handleAddComment(selectedDesign.id)}
@@ -735,9 +735,9 @@ export default function DesignerPanel() {
               </div>
             ) : (
               <div className="bg-white dark:bg-dark-card rounded-2xl border border-warm-200 dark:border-dark-border p-16 text-center">
-                <Eye className="h-20 w-20 text-warm-400 dark:text-gray-200 mx-auto mb-5 dark:opacity-90" />
+                <Eye className="h-20 w-20 text-warm-400 dark:text-white mx-auto mb-5 dark:opacity-90" />
                 <h3 className="text-xl font-bold text-darkwood dark:text-white mb-2">Select a design to review</h3>
-                <p className="text-darkwood/70 dark:text-gray-200 max-w-sm mx-auto leading-relaxed">
+                <p className="text-darkwood/70 dark:text-white max-w-sm mx-auto leading-relaxed">
                   Choose a design from the list to view details, add comments, and update its status.
                 </p>
               </div>
