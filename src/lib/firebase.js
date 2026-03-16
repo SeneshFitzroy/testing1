@@ -5,7 +5,7 @@ import { getStorage } from 'firebase/storage'
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC5j3JXEmO5kKevTsN9t88NPrNq-S-tqaM",
+  apiKey: "AIzaSyCVAscjbk9s7dYi4UaTM2Ir2T7hCqMntz4",
   authDomain: "pusl3122-group-01.firebaseapp.com",
   projectId: "pusl3122-group-01",
   storageBucket: "pusl3122-group-01.firebasestorage.app",

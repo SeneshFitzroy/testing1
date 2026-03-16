@@ -5,7 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   updateProfile,
   onAuthStateChanged,
 } from 'firebase/auth'
@@ -30,9 +31,11 @@ const getAuthErrorMessage = (error) => {
     
     // Google sign-in errors
     'auth/popup-closed-by-user': 'The sign-in window was closed before completing. Please try again when you\'re ready.',
-    'auth/popup-blocked': 'Your browser blocked the sign-in popup. Please allow popups for this site and try again.',
+    'auth/popup-blocked': 'Your browser blocked the sign-in popup. Try the "Continue with Google" button again, or use email/password.',
     'auth/cancelled-popup-request': 'A sign-in attempt is already in progress. Please wait for it to complete.',
     'auth/account-exists-with-different-credential': 'An account already exists with this email using a different sign-in method. Try signing in with your original method.',
+    'auth/unauthorized-domain': 'This domain is not authorized. Add it in Firebase Console → Authentication → Settings → Authorized domains (e.g. lee-roo-wood-designs.vercel.app).',
+    'auth/operation-not-allowed': 'Google sign-in is not enabled. Enable it in Firebase Console → Authentication → Sign-in method → Google.',
     
     // Network & general errors
     'auth/network-request-failed': 'We couldn’t reach our servers. Please check your connection and try again.',
@@ -50,7 +53,7 @@ const useAuthStore = create((set, get) => ({
   loading: true,
   error: null,
 
-  // Initialize auth listener
+  // Initialize auth listener + handle Google redirect result (mobile sign-in)
   initAuth: () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -68,6 +71,35 @@ const useAuthStore = create((set, get) => ({
         set({ user: null, userProfile: null, loading: false })
       }
     })
+
+    // Handle Google redirect return (must run on every page load)
+    getRedirectResult(auth)
+      .then(async (result) => {
+        if (!result?.user) return
+        try {
+          const docSnap = await getDoc(doc(db, 'users', result.user.uid))
+          if (!docSnap.exists()) {
+            const userProfile = {
+              uid: result.user.uid,
+              email: result.user.email,
+              displayName: result.user.displayName,
+              role: 'user',
+              createdAt: new Date().toISOString(),
+              designs: [],
+              wishlist: [],
+            }
+            await setDoc(doc(db, 'users', result.user.uid), userProfile)
+          }
+          const updated = await getDoc(doc(db, 'users', result.user.uid))
+          set((s) => ({ ...s, userProfile: updated.exists() ? updated.data() : s.userProfile }))
+        } catch (e) {
+          console.warn('Could not create/update profile after redirect:', e)
+        }
+      })
+      .catch((err) => {
+        const friendlyMessage = getAuthErrorMessage(err)
+        set({ error: friendlyMessage, loading: false })
+      })
   },
 
   // Email & password login
@@ -111,37 +143,15 @@ const useAuthStore = create((set, get) => ({
     }
   },
 
-  // Google sign-in
+  // Google sign-in: always use redirect (avoids COOP popup issues & works on all devices)
   loginWithGoogle: async () => {
     set({ loading: true, error: null })
     try {
       const provider = new GoogleAuthProvider()
-      const result = await signInWithPopup(auth, provider)
-      const docSnap = await getDoc(doc(db, 'users', result.user.uid))
-      let userProfile
-      if (!docSnap.exists()) {
-        userProfile = {
-          uid: result.user.uid,
-          email: result.user.email,
-          displayName: result.user.displayName,
-          role: 'user',
-          createdAt: new Date().toISOString(),
-          designs: [],
-          wishlist: [],
-        }
-        await setDoc(doc(db, 'users', result.user.uid), userProfile)
-      } else {
-        userProfile = docSnap.data()
-      }
-      set({ user: result.user, userProfile, loading: false })
-      return result.user
+      await signInWithRedirect(auth, provider)
+      return null // Page will redirect; getRedirectResult handles return
     } catch (error) {
       const friendlyMessage = getAuthErrorMessage(error)
-      // Don't show error for popup closed by user - not really an error
-      if (error?.code === 'auth/popup-closed-by-user') {
-        set({ error: null, loading: false })
-        return null
-      }
       set({ error: friendlyMessage, loading: false })
       throw { ...error, friendlyMessage }
     }

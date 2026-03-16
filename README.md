@@ -85,6 +85,40 @@ npm run build
 npm run preview
 ```
 
+## Deployment (Vercel + Firebase)
+
+### Vercel
+The project includes `vercel.json` for SPA routing. Deploy with:
+
+```bash
+vercel
+```
+
+Or connect your GitHub repo to Vercel for auto-deploys.
+
+### Firebase — Fix 400 on Sign Up/Login
+For auth to work on your Vercel domain (e.g. `lee-roo-wood-designs.vercel.app`):
+
+1. Open [Firebase Console](https://console.firebase.google.com) → your project
+2. Go to **Authentication** → **Settings** (gear) → **Authorized domains**
+3. Click **Add domain**
+4. Add: `lee-roo-wood-designs.vercel.app` (and any other `*.vercel.app` subdomains you use)
+5. Save
+
+Without this, Firebase rejects requests with `400` from unauthorized domains.
+
+### Cloudflare (optional — CDN/DNS proxy)
+
+To add Cloudflare in front of your deployment:
+
+1. **Sign up** at [Cloudflare](https://dash.cloudflare.com) and add your site.
+2. **Update DNS** so your domain (or subdomain) points to Cloudflare’s nameservers.
+3. **Add a CNAME record** pointing to your Vercel domain (e.g. `lee-roo-wood-designs.vercel.app` or `cname.vercel-dns.com`).
+4. **Enable Proxy** (orange cloud) for DDoS protection, caching, and HTTPS.
+5. **Firebase Authorized domains**: Add your Cloudflare domain (e.g. `yourdomain.com`, `app.yourdomain.com`) in [Firebase Console](https://console.firebase.google.com) → **Authentication** → **Settings** → **Authorized domains**. This is required for Google Sign-In when using a custom domain via Cloudflare.
+
+If you use Cloudflare Pages instead of Vercel, build the project with `npm run build` and deploy the `dist` folder.
+
 ## Project Structure
 
 ```

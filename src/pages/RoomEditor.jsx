@@ -28,6 +28,7 @@ import {
   HelpCircle,
   Share2,
   GripVertical,
+  PanelLeft,
 } from 'lucide-react'
 import { toast } from 'sonner'
 
@@ -97,6 +98,7 @@ export default function RoomEditor() {
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [confirmReset, setConfirmReset] = useState(false)
   const [showTutorial, setShowTutorial] = useState(false)
+  const [sidebarOpenOnMobile, setSidebarOpenOnMobile] = useState(false)
   const [panelWidth, setPanelWidth] = useState(() => {
     const saved = localStorage.getItem('Lee Roo-editorPanelWidth')
     return saved ? Math.min(480, Math.max(240, parseInt(saved, 10))) : 320
@@ -324,10 +326,11 @@ export default function RoomEditor() {
         <TemplateSelector onSelect={handleTemplateSelect} onClose={() => setShowTemplates(false)} />
       )}
 
-      <div className="flex flex-col lg:flex-row h-screen">
-        {/* ── Left Sidebar (resizable) ── */}
+      <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+        {/* ── Left Sidebar (resizable; collapsible on mobile) ── */}
         <div
-          className="w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0"
+          className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30
+            ${sidebarOpenOnMobile ? 'flex' : 'hidden'} lg:flex`}
           style={sidebarStyle}
         >
           <div className="p-4 border-b border-warm-200 dark:border-dark-border">
@@ -335,12 +338,20 @@ export default function RoomEditor() {
               <h1 className="text-xl font-bold text-darkwood dark:text-warm-100 font-display">
                 {t('editor.title')}
               </h1>
-              <button
-                onClick={() => window.history.back()}
-                className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors"
-              >
-                <ArrowLeft className="h-5 w-5 text-darkwood dark:text-warm-200" />
-              </button>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setSidebarOpenOnMobile(false)}
+                  className="lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors"
+                  aria-label="Close panel"
+                >
+                  <X className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                </button>
+                <button
+                  onClick={() => window.history.back()}
+                  className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                </button>
             </div>
 
             {/* Tab Navigation */}
@@ -480,17 +491,6 @@ export default function RoomEditor() {
 
               {/* Right: Tools + Save/Share/Export */}
               <div className="flex items-center gap-2 flex-wrap">
-                <button onClick={undo} disabled={!canUndo()}
-                  className="p-2 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors"
-                  title={t('editor.undo')}>
-                  <Undo2 className="h-5 w-5 text-darkwood dark:text-warm-200" />
-                </button>
-                <button onClick={redo} disabled={!canRedo()}
-                  className="p-2 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors"
-                  title={t('editor.redo')}>
-                  <Redo2 className="h-5 w-5 text-darkwood dark:text-warm-200" />
-                </button>
-
                 <div className="w-px h-6 bg-warm-200 dark:bg-dark-border mx-1 hidden sm:block" />
 
                 <button onClick={() => setShowTemplates(true)}
@@ -575,8 +575,8 @@ export default function RoomEditor() {
             </div>
 
             {/* Status bar */}
-            <div className="flex items-center justify-between mt-2.5 text-xs text-darkwood/50 dark:text-warm-500">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 mt-2.5 text-xs text-darkwood/50 dark:text-warm-500">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                 <span>Room: {roomWidth}m x {roomDepth}m x {roomHeight}m</span>
                 <span>Items: {furnitureItems.length}</span>
                 <span>Rooms: {rooms.length}</span>
@@ -613,6 +613,17 @@ export default function RoomEditor() {
             }}
           >
             {viewMode === '2d' ? <RoomCanvas2D ref={canvas2DRef} /> : <RoomViewer3D />}
+
+            {/* Mobile FAB — open sidebar when closed */}
+            {!sidebarOpenOnMobile && (
+              <button
+                onClick={() => setSidebarOpenOnMobile(true)}
+                className="lg:hidden fixed bottom-6 left-6 z-40 w-14 h-14 rounded-2xl bg-gradient-to-r from-clay to-clay-dark text-white shadow-lg shadow-clay/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform min-h-[44px] min-w-[44px]"
+                aria-label="Open furniture panel"
+              >
+                <PanelLeft className="h-6 w-6" />
+              </button>
+            )}
 
             {/* View Transition Message */}
             <AnimatePresence>
@@ -722,6 +733,7 @@ export default function RoomEditor() {
         onConfirm={executeReset}
         onCancel={() => setConfirmReset(false)}
       />
+      </div>
     </div>
   )
 }

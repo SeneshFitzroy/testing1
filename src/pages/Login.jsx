@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Eye, EyeOff, Mail, Lock, Loader2, AlertCircle, Palette, ArrowRight } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, Loader2, AlertCircle, Palette, ArrowRight, Home } from 'lucide-react'
+import { LogoIcon } from '@/components/Logo'
 import { toast } from 'sonner'
 import { useTranslation } from 'react-i18next'
 import useAuthStore from '@/store/useAuthStore'
@@ -11,7 +12,7 @@ export default function Login() {
   const location = useLocation()
   const { t } = useTranslation()
 
-  const { login, loginWithGoogle, loading, error, clearError } = useAuthStore()
+  const { user, login, loginWithGoogle, loading, error, clearError } = useAuthStore()
 
   const [formData, setFormData] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
@@ -21,6 +22,14 @@ export default function Login() {
     clearError()
     setValidationErrors({})
   }, [formData, clearError])
+
+  // Redirect when user lands after Google sign-in redirect
+  useEffect(() => {
+    if (user) {
+      const from = location.state?.from?.pathname || '/shop'
+      navigate(from, { replace: true })
+    }
+  }, [user, navigate, location.state])
 
   const validateForm = () => {
     const errors = {}
@@ -79,7 +88,16 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex bg-warm-50 dark:bg-dark-bg">
+    <div id="main-content" className="min-h-screen flex bg-warm-50 dark:bg-dark-bg">
+      {/* Back to Home — visible on mobile and desktop */}
+      <Link
+        to="/"
+        className="absolute top-4 left-4 z-20 flex items-center gap-2 text-darkwood/70 dark:text-warm-400 hover:text-clay dark:hover:text-clay transition-colors text-sm font-medium"
+        aria-label="Back to homepage"
+      >
+        <LogoIcon size={24} />
+        <span className="hidden sm:inline">Back to Home</span>
+      </Link>
       {/* Left Panel — Decorative Branding */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-darkwood via-[#2e1c12] to-[#1a120b]" />
@@ -152,7 +170,7 @@ export default function Login() {
       </div>
 
       {/* Right Panel — Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div id="main-content" className="w-full lg:w-1/2 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" role="main">
         <motion.div
           className="max-w-md w-full space-y-8"
           initial={{ opacity: 0, y: 20 }}

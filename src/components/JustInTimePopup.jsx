@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { hasCookieConsentResponse } from './CookieConsent'
 
 const STORAGE_KEY = 'Lee Roo-justInTimeDismissed'
 
@@ -12,7 +13,8 @@ export default function JustInTimePopup() {
 
   useEffect(() => {
     const dismissed = localStorage.getItem(STORAGE_KEY)
-    if (!dismissed) {
+    const hasResponded = hasCookieConsentResponse()
+    if (!dismissed && hasResponded) {
       const t = setTimeout(() => setIsOpen(true), 2500)
       return () => clearTimeout(t)
     }

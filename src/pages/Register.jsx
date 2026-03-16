@@ -113,7 +113,7 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex bg-warm-50 dark:bg-dark-bg">
-      {/* Left Panel — Decorative Branding */}
+      {/* Right Panel — Form (main content for skip link) */}
       <div className="hidden lg:flex lg:w-5/12 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-darkwood via-[#2e1c12] to-[#1a120b]" />
 
@@ -185,8 +185,8 @@ export default function Register() {
         </div>
       </div>
 
-      {/* Right Panel — Registration Form */}
-      <div className="w-full lg:w-7/12 flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
+      {/* Right Panel — Registration Form (main content for skip link) */}
+      <div id="main-content" className="w-full lg:w-7/12 flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8" role="main">
         <motion.div
           className="max-w-lg w-full space-y-6"
           initial={{ opacity: 0, y: 20 }}

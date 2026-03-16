@@ -44,6 +44,39 @@ function useInView(ref, threshold = 0.15) {
   return visible
 }
 
+const HERO_POSTER = 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=80'
+
+/** Video with fallback to poster when video fails (no mp4 in public/) */
+function LandingHeroMedia() {
+  const [videoError, setVideoError] = useState(false)
+
+  if (videoError) {
+    return (
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${HERO_POSTER})` }}
+        aria-hidden="true"
+      />
+    )
+  }
+
+  return (
+    <video
+      className="absolute inset-0 w-full h-full object-cover"
+      autoPlay
+      muted
+      loop
+      playsInline
+      poster={HERO_POSTER}
+      aria-label="Background video of furniture and living spaces"
+      onError={() => setVideoError(true)}
+    >
+      <source src="/hero-bg.mp4" type="video/mp4" />
+      <source src="/3aebcc982c994cd4a51fa6333936a90e.mp4" type="video/mp4" />
+    </video>
+  )
+}
+
 function AnimatedSection({ children, className = '', delay = 0 }) {
   const ref = useRef(null)
   const visible = useInView(ref)
@@ -86,20 +119,9 @@ export default function Landing() {
         className="relative h-[100vh] min-h-[600px] flex items-center justify-center overflow-hidden -mt-16 pt-16"
         aria-label="Hero section"
       >
-        {/* Full-bleed video */}
+        {/* Full-bleed video or static poster fallback (video files optional in public/) */}
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <video
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=80"
-            aria-label="Background video of furniture and living spaces"
-          >
-            <source src="/hero-bg.mp4" type="video/mp4" />
-            <source src="/3aebcc982c994cd4a51fa6333936a90e.mp4" type="video/mp4" />
-          </video>
+          <LandingHeroMedia />
           {/* Stronger gradient overlay (35–55%) for clear text readability over video */}
           <div
             className="absolute inset-0 pointer-events-none"

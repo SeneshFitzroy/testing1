@@ -97,6 +97,8 @@ export default function AdminLogin() {
       </div>
 
       <motion.div
+        id="main-content"
+        role="main"
         className="max-w-md w-full space-y-8 relative z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
