@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ලී රූ (Lee Roo) · Wood Designs | 2D/3D Furniture Visualizer</title>
+    <meta name="description" content="Design your dream space with Lee Roo's 2D/3D room visualizer. Premium handcrafted furniture rooted in Sri Lankan craftsmanship, delivered to your door." />
+    <meta name="keywords" content="furniture, room designer, 3D visualization, interior design, Sri Lanka, Lee Roo, wood designs" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body class="antialiased">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="root"></div>
+    <!-- SVG filters for color blindness accessibility -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+      <defs>
+        <filter id="protanopia-filter">
+          <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/>
+        </filter>
+        <filter id="deuteranopia-filter">
+          <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/>
+        </filter>
+        <filter id="tritanopia-filter">
+          <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/>
+        </filter>
+      </defs>
+    </svg>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
