@@ -146,7 +146,7 @@ export default function Navbar() {
 
   const textColor = isLandingPage && !isScrolled
     ? 'text-white hover:text-white'
-    : 'text-charcoal dark:text-warm-400 hover:text-charcoal dark:hover:text-warm-100'
+    : 'text-charcoal dark:text-gray-200 hover:text-charcoal dark:hover:text-warm-100'
 
   return (
     <nav
@@ -171,7 +171,7 @@ export default function Navbar() {
                 Lee Roo
               </span>
               <span className={`text-[10px] -mt-0.5 transition-colors duration-300 ${
-                isLandingPage && !isScrolled ? 'text-white/80' : 'text-darkwood/50 dark:text-warm-400'
+                isLandingPage && !isScrolled ? 'text-white/80' : 'text-darkwood/50 dark:text-gray-200'
               }`}>
                 {String.fromCharCode(0x0DBD, 0x0DD3)} {String.fromCharCode(0x0DBB, 0x0DD6)} &middot; Wood Designs
               </span>
@@ -189,7 +189,7 @@ export default function Navbar() {
                     ? 'bg-gradient-to-r from-clay to-clay-dark text-white shadow-md shadow-clay/25'
                     : isLandingPage && !isScrolled
                       ? 'text-white/90 hover:text-white hover:bg-white/20'
-                      : 'text-darkwood/60 dark:text-warm-400 hover:bg-warm-100/80 dark:hover:bg-dark-surface/80 hover:text-darkwood dark:hover:text-warm-100'
+                      : 'text-darkwood/60 dark:text-gray-200 hover:bg-warm-100/80 dark:hover:bg-dark-surface/80 hover:text-darkwood dark:hover:text-warm-100'
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -228,7 +228,7 @@ export default function Navbar() {
                           : 'text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface'
                       }`}
                     >
-                      <span className="w-6 h-6 rounded-full bg-warm-100 dark:bg-dark-surface flex items-center justify-center text-[10px] font-bold text-darkwood/70 dark:text-warm-300">{lang.flag}</span>
+                      <span className="w-6 h-6 rounded-full bg-warm-100 dark:bg-dark-surface flex items-center justify-center text-[10px] font-bold text-darkwood/70 dark:text-gray-200">{lang.flag}</span>
                       <span>{lang.name}</span>
                     </button>
                   ))}
@@ -264,7 +264,7 @@ export default function Navbar() {
                       }`}
                     >
                       <span>{cur.symbol} {cur.code}</span>
-                      <span className="text-xs text-darkwood/40 dark:text-warm-500">{cur.name}</span>
+                      <span className="text-xs text-darkwood/40 dark:text-gray-300">{cur.name}</span>
                     </button>
                   ))}
                 </div>
@@ -282,7 +282,7 @@ export default function Navbar() {
               className={`p-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                 isLandingPage && !isScrolled
                   ? 'text-white/90 hover:text-white hover:bg-white/20'
-                  : 'text-darkwood/50 dark:text-warm-400 hover:bg-warm-100 dark:hover:bg-dark-surface'
+                  : 'text-darkwood/50 dark:text-gray-200 hover:bg-warm-100 dark:hover:bg-dark-surface'
               }`}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
@@ -306,7 +306,7 @@ export default function Navbar() {
                 className={`relative p-2 rounded-xl transition-colors ${
                   isLandingPage && !isScrolled
                     ? 'text-white/70 hover:text-white hover:bg-white/10'
-                    : 'text-darkwood/50 dark:text-warm-400 hover:bg-warm-100 dark:hover:bg-dark-surface'
+                    : 'text-darkwood/50 dark:text-gray-200 hover:bg-warm-100 dark:hover:bg-dark-surface'
                 }`}
                 aria-label={`Shopping cart${cartCount > 0 ? `, ${cartCount} items` : ', empty'}`}
               >
@@ -333,7 +333,7 @@ export default function Navbar() {
                     className={`relative p-2 rounded-xl transition-colors ${
                       isLandingPage && !isScrolled
                         ? 'text-white/70 hover:text-white hover:bg-white/10'
-                        : 'text-darkwood/50 dark:text-warm-400 hover:bg-warm-100 dark:hover:bg-dark-surface'
+                        : 'text-darkwood/50 dark:text-gray-200 hover:bg-warm-100 dark:hover:bg-dark-surface'
                     }`}
                     aria-label={`Wishlist${wishlistCount > 0 ? `, ${wishlistCount} items` : ', empty'}`}
                   >
@@ -362,7 +362,7 @@ export default function Navbar() {
                       {(userProfile?.name || 'U').charAt(0).toUpperCase()}
                     </div>
                     <ChevronDown className={`h-3.5 w-3.5 transition-transform ${
-                      isLandingPage && !isScrolled ? 'text-white/50' : 'text-darkwood/40 dark:text-warm-500'
+                      isLandingPage && !isScrolled ? 'text-white/50' : 'text-darkwood/40 dark:text-gray-300'
                     } ${isProfileOpen ? 'rotate-180' : ''}`} />
                   </button>
 
@@ -380,7 +380,7 @@ export default function Navbar() {
                           <p className="text-sm font-semibold text-darkwood dark:text-warm-100 truncate">
                             {userProfile?.name || 'User'}
                           </p>
-                          <p className="text-xs text-darkwood/50 dark:text-warm-400 truncate mt-0.5">
+                          <p className="text-xs text-darkwood/50 dark:text-gray-200 truncate mt-0.5">
                             {userProfile?.email}
                           </p>
                         </div>
@@ -472,7 +472,7 @@ export default function Navbar() {
               className={`lg:hidden p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl transition-colors ml-1 ${
                 isLandingPage && !isScrolled
                   ? 'text-white/70 hover:text-white hover:bg-white/10'
-                  : 'text-darkwood/50 dark:text-warm-400 hover:bg-warm-100 dark:hover:bg-dark-surface'
+                  : 'text-darkwood/50 dark:text-gray-200 hover:bg-warm-100 dark:hover:bg-dark-surface'
               }`}
               aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMenuOpen}

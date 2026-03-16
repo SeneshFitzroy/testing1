@@ -50,7 +50,7 @@ export default function Checkout() {
             <ShoppingBag className="h-12 w-12 text-clay" />
           </div>
           <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">{t('cart.empty')}</h2>
-          <p className="text-darkwood/50 dark:text-warm-400 mb-6">{t('cart.empty.desc')}</p>
+          <p className="text-darkwood/50 dark:text-gray-200 mb-6">{t('cart.empty.desc')}</p>
           <Link to="/shop" className="inline-flex items-center gap-2 bg-clay text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-clay-dark transition-all">
             <ShoppingBag className="h-5 w-5" /> {t('cart.continueShopping')}
           </Link>
@@ -69,9 +69,9 @@ export default function Checkout() {
             <Check className="h-10 w-10 text-white" />
           </motion.div>
           <h2 className="text-2xl sm:text-3xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">{t('checkout.orderPlaced')}</h2>
-          <p className="text-darkwood/60 dark:text-warm-400 mb-2">{t('checkout.thankYou')}</p>
+          <p className="text-darkwood/60 dark:text-gray-200 mb-2">{t('checkout.thankYou')}</p>
           {orderId && <p className="text-sm text-clay font-semibold mb-6">{t('checkout.orderId')}: #{orderId.slice(0, 8).toUpperCase()}</p>}
-          <p className="text-sm text-darkwood/50 dark:text-warm-400 mb-8">{t('checkout.confirmationEmail')}</p>
+          <p className="text-sm text-darkwood/50 dark:text-gray-200 mb-8">{t('checkout.confirmationEmail')}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link to="/shop" className="inline-flex items-center justify-center gap-2 bg-clay text-white font-semibold px-6 py-3 rounded-xl hover:bg-clay-dark transition-all">
               {t('cart.continueShopping')} <ArrowRight className="h-4 w-4" />
@@ -181,7 +181,7 @@ export default function Checkout() {
             </div>
             <div>
               <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">{t('checkout.title')}</h1>
-              <p className="text-darkwood/50 dark:text-warm-400 text-sm">{t('checkout.secureCheckout')}</p>
+              <p className="text-darkwood/50 dark:text-gray-200 text-sm">{t('checkout.secureCheckout')}</p>
             </div>
           </div>
           <div className="flex items-center justify-between max-w-md mx-auto">
@@ -240,7 +240,7 @@ export default function Checkout() {
                       { id: 'cod', label: t('checkout.cod'), icon: Package }
                     ].map(m => (
                       <button key={m.id} onClick={() => setPayment({...payment, method: m.id})}
-                        className={`flex-1 flex items-center justify-center gap-2 p-3 sm:p-4 rounded-xl border-2 text-sm font-semibold transition-all ${payment.method === m.id ? 'border-clay bg-clay/5 text-clay' : 'border-warm-200 dark:border-dark-border text-darkwood/50 dark:text-warm-400 hover:border-warm-300'}`}>
+                        className={`flex-1 flex items-center justify-center gap-2 p-3 sm:p-4 rounded-xl border-2 text-sm font-semibold transition-all ${payment.method === m.id ? 'border-clay bg-clay/5 text-clay' : 'border-warm-200 dark:border-dark-border text-darkwood/50 dark:text-gray-200 hover:border-warm-300'}`}>
                         <m.icon className="h-5 w-5" /> <span className="hidden sm:inline">{m.label}</span>
                       </button>
                     ))}
@@ -264,7 +264,7 @@ export default function Checkout() {
                       {(payment.method === 'paypal' || payment.method === 'applepay') && (
                         <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-6 text-center">
                           <CreditCard className="h-10 w-10 text-clay mx-auto mb-3" />
-                          <p className="text-sm text-darkwood/70 dark:text-warm-300">
+                          <p className="text-sm text-darkwood/70 dark:text-gray-100">
                             {payment.method === 'applepay' ? 'You will be redirected to Apple Pay at checkout.' : 'You will be redirected to PayPal to complete payment.'}
                           </p>
                         </div>
@@ -274,7 +274,7 @@ export default function Checkout() {
                   {payment.method === 'cod' && (
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-6 text-center">
                       <Package className="h-10 w-10 text-clay mx-auto mb-3" />
-                      <p className="text-sm text-darkwood/70 dark:text-warm-300">{t('checkout.codNote')}</p>
+                      <p className="text-sm text-darkwood/70 dark:text-gray-100">{t('checkout.codNote')}</p>
                     </div>
                   )}
                 </motion.div>
@@ -290,14 +290,14 @@ export default function Checkout() {
                       <h3 className="text-sm font-semibold text-darkwood dark:text-warm-100 flex items-center gap-2"><Truck className="h-4 w-4 text-clay" />{t('checkout.shippingTo')}</h3>
                       <button onClick={() => setStep(1)} className="text-xs text-clay hover:text-clay-dark font-medium">{t('checkout.edit')}</button>
                     </div>
-                    <p className="text-sm text-darkwood/70 dark:text-warm-300">{shipping.fullName}<br />{shipping.address}<br />{shipping.city}, {shipping.state} {shipping.zip}<br />{shipping.country}</p>
+                    <p className="text-sm text-darkwood/70 dark:text-gray-100">{shipping.fullName}<br />{shipping.address}<br />{shipping.city}, {shipping.state} {shipping.zip}<br />{shipping.country}</p>
                   </div>
                   <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="text-sm font-semibold text-darkwood dark:text-warm-100 flex items-center gap-2"><CreditCard className="h-4 w-4 text-clay" />{t('checkout.paymentMethod')}</h3>
                       <button onClick={() => setStep(2)} className="text-xs text-clay hover:text-clay-dark font-medium">{t('checkout.edit')}</button>
                     </div>
-                    <p className="text-sm text-darkwood/70 dark:text-warm-300">
+                    <p className="text-sm text-darkwood/70 dark:text-gray-100">
                       {payment.method === 'card' ? `${t('checkout.creditCard')} •••• ${payment.cardNumber.slice(-4)}` : payment.method === 'paypal' ? 'PayPal' : payment.method === 'applepay' ? 'Apple Pay' : t('checkout.cod')}
                     </p>
                   </div>
@@ -311,7 +311,7 @@ export default function Checkout() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-semibold text-darkwood dark:text-warm-100 truncate">{item.name}</p>
-                            <p className="text-xs text-darkwood/50 dark:text-warm-400">{t('checkout.qty')}: {item.quantity || 1}</p>
+                            <p className="text-xs text-darkwood/50 dark:text-gray-200">{t('checkout.qty')}: {item.quantity || 1}</p>
                           </div>
                           <span className="text-sm font-bold text-clay">{formatPrice(item.price * (item.quantity || 1))}</span>
                         </div>
@@ -366,15 +366,15 @@ export default function Checkout() {
               </div>
               <hr className="border-warm-100 dark:border-dark-border" />
               <div className="space-y-2.5 text-sm">
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-400">{t('cart.subtotal')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-400">{t('cart.shipping')}</span><span className={`font-semibold ${shippingCost === 0 ? 'text-forest' : 'text-darkwood dark:text-warm-100'}`}>{shippingCost === 0 ? t('cart.free') : formatPrice(shippingCost)}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-400">{t('checkout.tax')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(tax)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-gray-200">{t('cart.subtotal')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-gray-200">{t('cart.shipping')}</span><span className={`font-semibold ${shippingCost === 0 ? 'text-forest' : 'text-darkwood dark:text-warm-100'}`}>{shippingCost === 0 ? t('cart.free') : formatPrice(shippingCost)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-gray-200">{t('checkout.tax')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(tax)}</span></div>
                 <hr className="border-warm-100 dark:border-dark-border" />
                 <div className="flex justify-between"><span className="text-base font-bold text-darkwood dark:text-warm-100">{t('cart.total')}</span><span className="text-xl font-bold text-clay">{formatPrice(total)}</span></div>
               </div>
               <div className="space-y-2.5 pt-2">
                 {[{ icon: Lock, text: t('checkout.ssl'), color: 'text-forest' }, { icon: Shield, text: t('cart.secureCheckout'), color: 'text-clay' }, { icon: Gift, text: t('cart.giftWrapping'), color: 'text-amber-600 dark:text-amber-400' }].map((b, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs"><b.icon className={`h-3.5 w-3.5 ${b.color} flex-shrink-0`} /><span className="text-darkwood/60 dark:text-warm-400">{b.text}</span></div>
+                  <div key={i} className="flex items-center gap-2.5 text-xs"><b.icon className={`h-3.5 w-3.5 ${b.color} flex-shrink-0`} /><span className="text-darkwood/60 dark:text-gray-200">{b.text}</span></div>
                 ))}
               </div>
             </motion.div>

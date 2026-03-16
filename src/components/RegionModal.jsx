@@ -61,7 +61,7 @@ export default function RegionModal() {
           {/* Close button */}
           <button
             onClick={handleSkip}
-            className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface text-darkwood/40 dark:text-warm-500 transition-colors z-10"
+            className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface text-darkwood/40 dark:text-gray-300 transition-colors z-10"
             aria-label="Close and use default settings"
           >
             <X className="h-5 w-5" />
@@ -77,17 +77,17 @@ export default function RegionModal() {
             <h2 className="text-2xl font-bold text-center text-darkwood dark:text-warm-100 font-display mb-2">
               Welcome to Lee Roo
             </h2>
-            <p className="text-sm text-center text-darkwood/60 dark:text-warm-400 mb-6 max-w-xs mx-auto">
+            <p className="text-sm text-center text-darkwood/60 dark:text-gray-200 mb-6 max-w-xs mx-auto">
               Choose your language, country, and currency for the best experience.
             </p>
 
             {/* Language Dropdown */}
             <div className="mb-4">
-              <label className="block text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-semibold text-darkwood/60 dark:text-gray-200 uppercase tracking-wider mb-2">
                 Language
               </label>
               <div className="relative">
-                <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood/30 dark:text-warm-500" />
+                <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood/30 dark:text-gray-300" />
                 <select
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -99,7 +99,7 @@ export default function RegionModal() {
                   ))}
                 </select>
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-darkwood/30 dark:text-warm-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-4 w-4 text-darkwood/30 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -108,11 +108,11 @@ export default function RegionModal() {
 
             {/* Country Dropdown */}
             <div className="mb-4">
-              <label className="block text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-semibold text-darkwood/60 dark:text-gray-200 uppercase tracking-wider mb-2">
                 Shipping Country
               </label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood/30 dark:text-warm-500" />
+                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood/30 dark:text-gray-300" />
                 <select
                   value={selectedCountry}
                   onChange={(e) => handleCountryChange(e.target.value)}
@@ -124,7 +124,7 @@ export default function RegionModal() {
                   ))}
                 </select>
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-darkwood/30 dark:text-warm-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-4 w-4 text-darkwood/30 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -133,11 +133,11 @@ export default function RegionModal() {
 
             {/* Currency Dropdown */}
             <div className="mb-6">
-              <label className="block text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-semibold text-darkwood/60 dark:text-gray-200 uppercase tracking-wider mb-2">
                 Preferred Currency
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood/30 dark:text-warm-500" />
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-darkwood/30 dark:text-gray-300" />
                 <select
                   value={selectedCurrency}
                   onChange={(e) => setSelectedCurrency(e.target.value)}
@@ -149,7 +149,7 @@ export default function RegionModal() {
                   ))}
                 </select>
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-darkwood/30 dark:text-warm-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-4 w-4 text-darkwood/30 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>

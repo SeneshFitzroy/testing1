@@ -138,7 +138,7 @@ export default function Shop() {
           <h1 className="text-xl font-semibold text-neutral-900 dark:text-warm-50">
             <span className="text-[#5C3A2A] dark:text-clay">{t('shop.title')}</span>
           </h1>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500 dark:text-warm-400">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500 dark:text-gray-200">
             {trustShort.map((txt, i) => (
               <span key={i}>{txt}{i < trustShort.length - 1 ? ' •' : ''}</span>
             ))}
@@ -153,7 +153,7 @@ export default function Shop() {
           transition={{ duration: 0.3 }}
         >
           <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400 dark:text-warm-500 pointer-events-none" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400 dark:text-gray-300 pointer-events-none" />
             <input
               type="search"
               value={searchTerm}
@@ -179,12 +179,12 @@ export default function Shop() {
               className={`relative px-3 py-2 text-sm font-medium transition-colors ${
                 selectedCategory === category.key
                   ? 'text-[#5C3A2A] dark:text-clay'
-                  : 'text-neutral-600 dark:text-warm-400 hover:text-neutral-900 dark:hover:text-warm-100'
+                  : 'text-neutral-600 dark:text-gray-200 hover:text-neutral-900 dark:hover:text-warm-100'
               }`}
             >
               <span>{t(category.labelKey)}</span>
               {category.count > 0 && (
-                <span className="ml-1.5 text-neutral-400 dark:text-warm-500 font-normal">
+                <span className="ml-1.5 text-neutral-400 dark:text-gray-300 font-normal">
                   ({category.count})
                 </span>
               )}
@@ -228,7 +228,7 @@ export default function Shop() {
                         className="w-full h-2 rounded-full"
                       />
                       <div className="flex justify-between">
-                        <span className="text-sm font-medium text-darkwood/50 dark:text-warm-400 bg-warm-100 dark:bg-dark-surface px-2 py-1 rounded">{formatPrice(priceRange[0])}</span>
+                        <span className="text-sm font-medium text-darkwood/50 dark:text-gray-200 bg-warm-100 dark:bg-dark-surface px-2 py-1 rounded">{formatPrice(priceRange[0])}</span>
                         <span className="text-sm font-medium text-clay bg-clay/10 px-2 py-1 rounded">{formatPrice(priceRange[1])}</span>
                       </div>
                     </div>
@@ -241,7 +241,7 @@ export default function Shop() {
                       {[t('shop.featured'), t('shop.onSale'), t('shop.freeShipping'), t('shop.inStock')].map((filter) => (
                         <button
                           key={filter}
-                          className="px-3 py-1.5 text-xs font-medium bg-warm-50 dark:bg-dark-surface text-darkwood/60 dark:text-warm-300 hover:bg-clay/10 hover:text-clay rounded-full transition-all duration-200 border border-warm-200 dark:border-dark-border hover:border-clay/40"
+                          className="px-3 py-1.5 text-xs font-medium bg-warm-50 dark:bg-dark-surface text-darkwood/60 dark:text-gray-200 hover:bg-clay/10 hover:text-clay rounded-full transition-all duration-200 border border-warm-200 dark:border-dark-border hover:border-clay/40"
                         >
                           {filter}
                         </button>
@@ -251,7 +251,7 @@ export default function Shop() {
 
                   <button 
                     onClick={() => { setSearchTerm(''); setSelectedCategory('all'); setPriceRange([0, 2000]); setSearchParams({}); }}
-                    className="w-full py-2.5 text-sm font-medium text-darkwood/50 dark:text-warm-400 hover:text-red-500 border border-warm-200 dark:border-dark-border hover:border-red-300 rounded-xl transition-all"
+                    className="w-full py-2.5 text-sm font-medium text-darkwood/50 dark:text-gray-200 hover:text-red-500 border border-warm-200 dark:border-dark-border hover:border-red-300 rounded-xl transition-all"
                   >
                     {t('shop.clearAllFilters')}
                   </button>
@@ -279,7 +279,7 @@ export default function Shop() {
                     <span>{t('shop.filters')}</span>
                   </button>
                   
-                  <div className="text-sm text-darkwood/50 dark:text-warm-400">
+                  <div className="text-sm text-darkwood/50 dark:text-gray-200">
                     {t('shop.showing')} <span className="font-semibold text-darkwood dark:text-warm-100">{filteredProducts.length}</span> {t('shop.of')} {shopProducts.length} {t('shop.products')}
                   </div>
                 </div>
@@ -382,7 +382,7 @@ export default function Shop() {
                       className={`absolute top-3 right-3 p-2.5 rounded-full transition-all duration-300 shadow-sm ${
                         isInWishlist(product.id)
                           ? 'bg-red-500 text-white scale-110'
-                          : 'bg-white/90 dark:bg-dark-card/90 text-darkwood/50 dark:text-warm-300 hover:bg-red-500 hover:text-white hover:scale-110'
+                          : 'bg-white/90 dark:bg-dark-card/90 text-darkwood/50 dark:text-gray-200 hover:bg-red-500 hover:text-white hover:scale-110'
                       }`}
                     >
                       <Heart className={`h-4 w-4 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
@@ -416,7 +416,7 @@ export default function Shop() {
                       <h3 className="font-bold text-darkwood dark:text-warm-100 mb-1.5 group-hover:text-clay transition-colors line-clamp-1">
                         {product.name}
                       </h3>
-                      <p className="text-sm text-darkwood/50 dark:text-warm-400 mb-3 line-clamp-2">
+                      <p className="text-sm text-darkwood/50 dark:text-gray-200 mb-3 line-clamp-2">
                         {product.description}
                       </p>
                       
@@ -433,7 +433,7 @@ export default function Shop() {
                             />
                           ))}
                         </div>
-                        <span className="text-xs font-medium text-darkwood/40 dark:text-warm-500">
+                        <span className="text-xs font-medium text-darkwood/40 dark:text-gray-300">
                           ({product.rating || 4.5})
                         </span>
                       </div>
@@ -454,7 +454,7 @@ export default function Shop() {
                       {/* Available colors */}
                       {product.colors && product.colors.length > 0 && (
                         <div className="mb-4">
-                          <p className="text-xs font-medium text-neutral-500 dark:text-warm-400 mb-2">{t('shop.availableColors')}</p>
+                          <p className="text-xs font-medium text-neutral-500 dark:text-gray-200 mb-2">{t('shop.availableColors')}</p>
                           <div className="flex flex-wrap gap-1.5">
                             {product.colors.map((c, i) => (
                               <span
@@ -495,7 +495,7 @@ export default function Shop() {
                         </button>
                         <Link
                           to={`/shop/${product.id}`}
-                          className="p-2.5 border border-warm-200 dark:border-dark-border rounded-xl text-darkwood/50 dark:text-warm-400 hover:border-clay hover:text-clay transition-all"
+                          className="p-2.5 border border-warm-200 dark:border-dark-border rounded-xl text-darkwood/50 dark:text-gray-200 hover:border-clay hover:text-clay transition-all"
                         >
                           <Eye className="h-4 w-4" />
                         </Link>
@@ -519,7 +519,7 @@ export default function Shop() {
                 <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2">
                   {t('shop.noProducts')}
                 </h3>
-                <p className="text-darkwood/50 dark:text-warm-400 mb-8 max-w-md mx-auto">
+                <p className="text-darkwood/50 dark:text-gray-200 mb-8 max-w-md mx-auto">
                   {t('shop.noProducts.desc')}
                 </p>
                 <button
