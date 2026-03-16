@@ -203,7 +203,7 @@ export default function Register() {
             >
               <User className="h-7 w-7 text-white" />
             </motion.div>
-            <h2 className="text-3xl font-bold text-darkwood dark:text-warm-100 font-display">
+            <h2 className="text-3xl font-bold text-darkwood dark:text-white font-display">
               {t('auth.createAccount')}
             </h2>
             <p className="mt-2 text-darkwood/50 dark:text-white text-sm">
@@ -516,7 +516,7 @@ export default function Register() {
               type="button"
               onClick={handleGoogleSignUp}
               disabled={loading}
-              className="w-full flex items-center justify-center space-x-2 h-12 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-200 font-medium hover:bg-warm-50 dark:hover:bg-dark-card transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center space-x-2 h-12 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white font-medium hover:bg-warm-50 dark:hover:bg-dark-card transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

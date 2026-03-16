@@ -225,7 +225,7 @@ export default function Navbar() {
                       className={`flex items-center gap-3 w-full px-4 py-2.5 text-sm transition-colors ${
                         language === lang.code
                           ? 'bg-clay/10 dark:bg-clay/20 text-clay font-semibold'
-                          : 'text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface'
+                          : 'text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface'
                       }`}
                     >
                       <span className="w-6 h-6 rounded-full bg-warm-100 dark:bg-dark-surface flex items-center justify-center text-[10px] font-bold text-darkwood/70 dark:text-white">{lang.flag}</span>
@@ -260,7 +260,7 @@ export default function Navbar() {
                       className={`flex items-center justify-between w-full px-4 py-2.5 text-sm transition-colors ${
                         currency === cur.code
                           ? 'bg-clay/10 dark:bg-clay/20 text-clay font-semibold'
-                          : 'text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface'
+                          : 'text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface'
                       }`}
                     >
                       <span>{cur.symbol} {cur.code}</span>
@@ -377,7 +377,7 @@ export default function Navbar() {
                         role="menu"
                       >
                         <div className="px-4 py-3.5 border-b border-warm-100 dark:border-dark-border bg-gradient-to-r from-forest/5 to-transparent dark:from-forest/10">
-                          <p className="text-sm font-semibold text-darkwood dark:text-warm-100 truncate">
+                          <p className="text-sm font-semibold text-darkwood dark:text-white truncate">
                             {userProfile?.name || 'User'}
                           </p>
                           <p className="text-xs text-darkwood/50 dark:text-white truncate mt-0.5">
@@ -388,7 +388,7 @@ export default function Navbar() {
                         <div className="py-1">
                           <Link
                             to="/settings"
-                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
+                            className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
                             role="menuitem"
                           >
                             <Settings className="h-4 w-4" />
@@ -397,7 +397,7 @@ export default function Navbar() {
                           {!isAdmin() && (
                             <Link
                               to="/my-designs"
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
+                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
                               role="menuitem"
                             >
                               <FolderOpen className="h-4 w-4" />
@@ -408,7 +408,7 @@ export default function Navbar() {
                             <>
                               <Link
                                 to="/designer-panel"
-                                className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
+                                className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
                                 role="menuitem"
                               >
                                 <Palette className="h-4 w-4" />
@@ -450,7 +450,7 @@ export default function Navbar() {
                   className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors rounded-xl ${
                     isLandingPage && !isScrolled
                       ? 'text-white/80 hover:text-white hover:bg-white/10'
-                      : 'text-darkwood dark:text-warm-200 hover:text-clay hover:bg-warm-100 dark:hover:bg-dark-surface'
+                      : 'text-darkwood dark:text-white hover:text-clay hover:bg-warm-100 dark:hover:bg-dark-surface'
                   }`}
                 >
                   <User className="h-4 w-4" />
@@ -501,7 +501,7 @@ export default function Navbar() {
                   className={`flex items-center gap-3 px-4 py-3 min-h-[44px] rounded-xl text-sm font-medium transition-colors ${
                     isActive(to)
                       ? 'bg-gradient-to-r from-clay to-clay-dark text-white shadow-sm'
-                      : 'text-darkwood dark:text-warm-200 hover:bg-warm-100 dark:hover:bg-dark-surface'
+                      : 'text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
                   }`}
                 >
                   <Icon className="h-5 w-5" />
@@ -514,7 +514,7 @@ export default function Navbar() {
                 <select
                   value={language}
                   onChange={(e) => handleLang(e.target.value)}
-                  className="flex-1 px-3 py-2 rounded-xl text-sm bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-warm-200 border border-warm-200 dark:border-dark-border"
+                  className="flex-1 px-3 py-2 rounded-xl text-sm bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white border border-warm-200 dark:border-dark-border"
                   aria-label="Select language"
                 >
                   {LANGUAGE_OPTIONS.map((l) => (
@@ -524,7 +524,7 @@ export default function Navbar() {
                 <select
                   value={currency}
                   onChange={(e) => handleCurrency(e.target.value)}
-                  className="flex-1 px-3 py-2 rounded-xl text-sm bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-warm-200 border border-warm-200 dark:border-dark-border"
+                  className="flex-1 px-3 py-2 rounded-xl text-sm bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white border border-warm-200 dark:border-dark-border"
                   aria-label="Select currency"
                 >
                   {currencyList.map((c) => (
@@ -537,13 +537,13 @@ export default function Navbar() {
                 <>
                   <hr className="my-2 border-warm-200 dark:border-dark-border" />
                   {!isAdmin() && (
-                    <Link to="/my-designs" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-darkwood dark:text-warm-200 hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
+                    <Link to="/my-designs" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
                       <FolderOpen className="h-5 w-5" /> {t('nav.myRoomDesigns') || 'Furniture Customization & Designs'}
                     </Link>
                   )}
                   {isAdmin() && (
                     <>
-                      <Link to="/designer-panel" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-darkwood dark:text-warm-200 hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
+                      <Link to="/designer-panel" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
                         <Palette className="h-5 w-5" /> Designer Panel
                       </Link>
                       <Link to="/admin" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-forest dark:text-forest-light hover:bg-forest/5 dark:hover:bg-forest/10 transition-colors">
@@ -553,7 +553,7 @@ export default function Navbar() {
                   )}
                   <Link
                     to="/settings"
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-darkwood dark:text-warm-200 hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
                   >
                     <Settings className="h-5 w-5" />
                     {t('nav.settings')}

@@ -330,18 +330,18 @@ const RoomCanvas2D = forwardRef(function RoomCanvas2D(_, ref) {
       {isDragOver && (
         <div className="absolute inset-0 z-[5] flex items-center justify-center bg-clay/10 dark:bg-clay/20 transition-colors duration-150">
           <div className="rounded-2xl border-2 border-dashed border-clay dark:border-clay/80 bg-white/90 dark:bg-dark-card/90 px-8 py-6 text-center shadow-lg pointer-events-none">
-            <p className="text-darkwood dark:text-warm-100 font-semibold">Drop here to add furniture</p>
-            <p className="text-sm text-darkwood/60 dark:text-warm-400 mt-1">Release to place on floor plan</p>
+            <p className="text-darkwood dark:text-white font-semibold">Drop here to add furniture</p>
+            <p className="text-sm text-darkwood/60 dark:text-white mt-1">Release to place on floor plan</p>
           </div>
         </div>
       )}
       {/* Canvas Info Overlay */}
       <div className="absolute top-4 left-4 z-10 bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm rounded-xl p-3 text-sm border border-warm-200/50 dark:border-dark-border/50 shadow-sm">
-        <div className="text-darkwood dark:text-warm-100 font-semibold">2D Room Editor</div>
-        <div className="text-darkwood/50 dark:text-warm-500 text-xs mt-1">
+        <div className="text-darkwood dark:text-white font-semibold">2D Room Editor</div>
+        <div className="text-darkwood/50 dark:text-white text-xs mt-1">
           Room: {roomSettings.width}m × {roomSettings.height}m
         </div>
-        <div className="text-darkwood/50 dark:text-warm-500 text-xs">
+        <div className="text-darkwood/50 dark:text-white text-xs">
           Scale: {(scale * 100).toFixed(0)}% &middot; Items: {furnitureItems.length}
         </div>
       </div>
@@ -371,7 +371,7 @@ const RoomCanvas2D = forwardRef(function RoomCanvas2D(_, ref) {
       </div>
 
       {/* Instructions */}
-      <div className="absolute bottom-4 left-4 z-10 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm rounded-xl px-3 py-2 text-xs text-darkwood/50 dark:text-warm-500 border border-warm-200/30 dark:border-dark-border/30">
+      <div className="absolute bottom-4 left-4 z-10 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm rounded-xl px-3 py-2 text-xs text-darkwood/50 dark:text-white border border-warm-200/30 dark:border-dark-border/30">
         Drag furniture to move &middot; Click to select &middot; Delete key or trash icon to remove
       </div>
 

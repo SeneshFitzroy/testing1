@@ -74,7 +74,7 @@ export default function RegionModal() {
               <MapPin className="h-7 w-7 text-white" />
             </div>
 
-            <h2 className="text-2xl font-bold text-center text-darkwood dark:text-warm-100 font-display mb-2">
+            <h2 className="text-2xl font-bold text-center text-darkwood dark:text-white font-display mb-2">
               Welcome to Lee Roo
             </h2>
             <p className="text-sm text-center text-darkwood/60 dark:text-white mb-6 max-w-xs mx-auto">
@@ -91,7 +91,7 @@ export default function RegionModal() {
                 <select
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-warm-100 text-sm font-medium appearance-none cursor-pointer focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-colors"
+                  className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-white text-sm font-medium appearance-none cursor-pointer focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-colors"
                   aria-label="Select language"
                 >
                   {LANGUAGE_OPTIONS.map(l => (
@@ -116,7 +116,7 @@ export default function RegionModal() {
                 <select
                   value={selectedCountry}
                   onChange={(e) => handleCountryChange(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-warm-100 text-sm font-medium appearance-none cursor-pointer focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-colors"
+                  className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-white text-sm font-medium appearance-none cursor-pointer focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-colors"
                   aria-label="Select shipping country"
                 >
                   {countries.map(c => (
@@ -141,7 +141,7 @@ export default function RegionModal() {
                 <select
                   value={selectedCurrency}
                   onChange={(e) => setSelectedCurrency(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-warm-100 text-sm font-medium appearance-none cursor-pointer focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-colors"
+                  className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-white text-sm font-medium appearance-none cursor-pointer focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-colors"
                   aria-label="Select preferred currency"
                 >
                   {Object.values(currencies).map(c => (

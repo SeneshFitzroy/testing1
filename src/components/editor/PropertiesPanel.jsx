@@ -39,7 +39,7 @@ export default function PropertiesPanel({ selectedItem }) {
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
             No Item Selected
           </h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
+          <p className="text-gray-500 dark:text-white text-sm">
             Select a furniture item to view and edit its properties
           </p>
         </div>
@@ -114,14 +114,14 @@ export default function PropertiesPanel({ selectedItem }) {
             <h3 className="font-semibold text-gray-900 dark:text-gray-100">
               {selectedItem.name}
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-white">
               {selectedItem.category} • {formatPrice(selectedItem.price)}
             </p>
           </div>
         </div>
         
         {selectedItem.description && (
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-gray-600 dark:text-white">
             {selectedItem.description}
           </p>
         )}
@@ -294,7 +294,7 @@ export default function PropertiesPanel({ selectedItem }) {
               <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
                 Current Color
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+              <div className="text-xs text-gray-500 dark:text-white font-mono">
                 {selectedItem.color}
               </div>
             </div>
@@ -362,25 +362,25 @@ export default function PropertiesPanel({ selectedItem }) {
         </h4>
         <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-3 space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 dark:text-gray-400">Dimensions:</span>
+            <span className="text-gray-500 dark:text-white">Dimensions:</span>
             <span className="font-medium text-gray-900 dark:text-gray-100">
               {selectedItem.width} × {selectedItem.depth} × {selectedItem.height}m
             </span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 dark:text-gray-400">Type:</span>
+            <span className="text-gray-500 dark:text-white">Type:</span>
             <span className="font-medium text-gray-900 dark:text-gray-100 capitalize">
               {selectedItem.category}
             </span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 dark:text-gray-400">Price:</span>
+            <span className="text-gray-500 dark:text-white">Price:</span>
             <span className="font-medium text-blue-600">
               {formatPrice(selectedItem.price)}
             </span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 dark:text-gray-400">Instance ID:</span>
+            <span className="text-gray-500 dark:text-white">Instance ID:</span>
             <span className="font-mono text-xs text-gray-400 dark:text-gray-500">
               {selectedItem.instanceId?.substring(0, 8)}...
             </span>

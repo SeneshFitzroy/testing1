@@ -53,7 +53,7 @@ export default function Cart() {
               <ShoppingCart className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">
+              <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-white font-display">
                 {t('cart.title')}
               </h1>
               <p className="text-darkwood/50 dark:text-white text-sm">
@@ -74,7 +74,7 @@ export default function Cart() {
             <div className="w-28 h-28 bg-clay/10 dark:bg-clay/5 rounded-full flex items-center justify-center mx-auto mb-8">
               <ShoppingBag className="h-14 w-14 text-clay" />
             </div>
-            <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-3">
+            <h2 className="text-2xl font-bold text-darkwood dark:text-white mb-3">
               {t('cart.empty')}
             </h2>
             <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">
@@ -97,7 +97,7 @@ export default function Cart() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <h2 className="text-lg font-bold text-darkwood dark:text-warm-100">{t('cart.cartItems')}</h2>
+                <h2 className="text-lg font-bold text-darkwood dark:text-white">{t('cart.cartItems')}</h2>
                 <button
                   onClick={clearCart}
                   className="text-sm text-warm-400 hover:text-red-500 dark:hover:text-red-400 font-medium flex items-center gap-1.5 transition-colors"
@@ -130,7 +130,7 @@ export default function Cart() {
 
                     <div className="flex-1 min-w-0">
                       <Link to={`/shop/${item.id}`} className="block">
-                        <h3 className="font-bold text-darkwood dark:text-warm-100 truncate group-hover:text-clay transition-colors">
+                        <h3 className="font-bold text-darkwood dark:text-white truncate group-hover:text-clay transition-colors">
                           {item.name}
                         </h3>
                       </Link>
@@ -144,7 +144,7 @@ export default function Cart() {
                           >
                             <Minus className="h-3.5 w-3.5 text-darkwood/60 dark:text-white" />
                           </button>
-                          <span className="px-4 py-1.5 text-sm font-bold text-darkwood dark:text-warm-100 min-w-[40px] text-center">
+                          <span className="px-4 py-1.5 text-sm font-bold text-darkwood dark:text-white min-w-[40px] text-center">
                             {item.quantity || 1}
                           </span>
                           <button
@@ -201,7 +201,7 @@ export default function Cart() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-darkwood dark:text-white flex items-center gap-2">
                   <CreditCard className="h-5 w-5 text-clay" />
                   {t('cart.orderSummary')}
                 </h3>
@@ -212,7 +212,7 @@ export default function Cart() {
                     <input
                       type="text"
                       placeholder={t('cart.promoCode')}
-                      className="w-full pl-10 pr-4 py-2.5 bg-warm-50 dark:bg-dark-bg border border-warm-200 dark:border-dark-border rounded-xl text-sm text-darkwood dark:text-warm-100 placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 bg-warm-50 dark:bg-dark-bg border border-warm-200 dark:border-dark-border rounded-xl text-sm text-darkwood dark:text-white placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all"
                     />
                   </div>
                   <button className="px-4 py-2.5 bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-white rounded-xl text-sm font-semibold hover:bg-warm-200 dark:hover:bg-dark-border transition-colors">
@@ -223,11 +223,11 @@ export default function Cart() {
                 <div className="space-y-3 pt-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-darkwood/50 dark:text-white">{t('cart.subtotal')} ({cart.length} {t('cart.items')})</span>
-                    <span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span>
+                    <span className="font-semibold text-darkwood dark:text-white">{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-darkwood/50 dark:text-white">{t('cart.shipping')}</span>
-                    <span className={`font-semibold ${shipping === 0 ? 'text-forest dark:text-forest-light' : 'text-darkwood dark:text-warm-100'}`}>
+                    <span className={`font-semibold ${shipping === 0 ? 'text-forest dark:text-forest-light' : 'text-darkwood dark:text-white'}`}>
                       {shipping === 0 ? t('cart.free') : formatPrice(shipping)}
                     </span>
                   </div>
@@ -241,7 +241,7 @@ export default function Cart() {
                   )}
                   <div className="border-t border-warm-100 dark:border-dark-border pt-3 mt-3">
                     <div className="flex justify-between">
-                      <span className="text-base font-bold text-darkwood dark:text-warm-100">{t('cart.total')}</span>
+                      <span className="text-base font-bold text-darkwood dark:text-white">{t('cart.total')}</span>
                       <span className="text-xl font-bold text-clay">
                         {formatPrice(total)}
                       </span>

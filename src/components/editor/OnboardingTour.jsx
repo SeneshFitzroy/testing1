@@ -110,20 +110,20 @@ export default function OnboardingTour({ onComplete, triggerShow }) {
             {/* Close (X) only — no Skip All */}
             <div className="absolute top-4 right-4 z-10">
               <button onClick={handleSkip} className="p-1.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors" aria-label="Close">
-                <X className="h-4 w-4 text-darkwood/40 dark:text-warm-500" />
+                <X className="h-4 w-4 text-darkwood/40 dark:text-white" />
               </button>
             </div>
 
             {/* Phase 1: Tell Us About Yourself — FIRST */}
             {phase === 'tellUs' && (
               <div className="px-8 pt-14 pb-8">
-                <h3 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-1 text-center font-display">
+                <h3 className="text-2xl font-bold text-darkwood dark:text-white mb-1 text-center font-display">
                   Tell Us About Yourself
                 </h3>
-                <p className="text-sm text-darkwood/60 dark:text-warm-400 text-center mb-6">
+                <p className="text-sm text-darkwood/60 dark:text-white text-center mb-6">
                   So we can <span className="text-clay font-medium">personalize</span> your experience.
                 </p>
-                <p className="text-sm font-medium text-darkwood dark:text-warm-200 mb-4">I mainly use Lee Roo to:</p>
+                <p className="text-sm font-medium text-darkwood dark:text-white mb-4">I mainly use Lee Roo to:</p>
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {purposeOptions.map((opt, i) => (
                     <button
@@ -132,7 +132,7 @@ export default function OnboardingTour({ onComplete, triggerShow }) {
                       className={`px-4 py-3 text-left text-sm font-medium rounded-xl border-2 transition-all ${
                         purpose === opt
                           ? 'border-clay bg-clay/10 text-clay'
-                          : 'border-warm-200 dark:border-dark-border text-darkwood/70 dark:text-warm-400 hover:border-clay/50'
+                          : 'border-warm-200 dark:border-dark-border text-darkwood/70 dark:text-white hover:border-clay/50'
                       }`}
                     >
                       {opt}
@@ -147,7 +147,7 @@ export default function OnboardingTour({ onComplete, triggerShow }) {
                   >
                     Next <ArrowRight className="h-4 w-4" />
                   </button>
-                  <button onClick={handleSkip} className="text-xs text-darkwood/40 dark:text-warm-500 hover:text-darkwood dark:hover:text-warm-400">
+                  <button onClick={handleSkip} className="text-xs text-darkwood/40 dark:text-white hover:text-darkwood dark:hover:text-warm-400">
                     Skip
                   </button>
                 </div>
@@ -174,7 +174,7 @@ export default function OnboardingTour({ onComplete, triggerShow }) {
                 <div className="px-8 py-4 text-center">
                   <motion.h3
                     key={`title-${step}`}
-                    className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2"
+                    className="text-xl font-bold text-darkwood dark:text-white mb-2"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
@@ -182,7 +182,7 @@ export default function OnboardingTour({ onComplete, triggerShow }) {
                   </motion.h3>
                   <motion.p
                     key={`desc-${step}`}
-                    className="text-sm text-darkwood/60 dark:text-warm-400 leading-relaxed"
+                    className="text-sm text-darkwood/60 dark:text-white leading-relaxed"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
@@ -205,7 +205,7 @@ export default function OnboardingTour({ onComplete, triggerShow }) {
                     >
                       {isLastFeature ? 'Start Designing' : 'Next'} <ArrowRight className="h-3.5 w-3.5" />
                     </button>
-                    <button onClick={handleSkip} className="text-xs text-darkwood/40 dark:text-warm-500 hover:text-darkwood dark:hover:text-warm-400">
+                    <button onClick={handleSkip} className="text-xs text-darkwood/40 dark:text-white hover:text-darkwood dark:hover:text-warm-400">
                       Skip
                     </button>
                   </div>

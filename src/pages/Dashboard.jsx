@@ -187,7 +187,7 @@ export default function Dashboard() {
                 </div>
                 <span className="text-xs font-medium text-darkwood/50 dark:text-white bg-white/50 dark:bg-dark-surface/50 px-2 py-1 rounded-full">{stat.change}</span>
               </div>
-              <div className="text-3xl font-bold text-darkwood dark:text-warm-100 mb-1">
+              <div className="text-3xl font-bold text-darkwood dark:text-white mb-1">
                 {stat.value}
               </div>
               <div className="text-sm text-darkwood/60 dark:text-white font-medium">
@@ -208,7 +208,7 @@ export default function Dashboard() {
             <div className="w-8 h-8 bg-clay rounded-lg flex items-center justify-center">
               <Zap className="h-4 w-4 text-white" />
             </div>
-            <h2 className="text-xl font-bold text-darkwood dark:text-warm-100">
+            <h2 className="text-xl font-bold text-darkwood dark:text-white">
               {t('dashboard.quickActions')}
             </h2>
           </div>
@@ -249,7 +249,7 @@ export default function Dashboard() {
               <div className="w-8 h-8 bg-darkwood rounded-lg flex items-center justify-center">
                 <Palette className="h-4 w-4 text-white" />
               </div>
-              <h2 className="text-xl font-bold text-darkwood dark:text-warm-100">
+              <h2 className="text-xl font-bold text-darkwood dark:text-white">
                 {t('dashboard.recentDesigns')}
               </h2>
             </div>
@@ -296,7 +296,7 @@ export default function Dashboard() {
                   </div>
 
                   <div className="p-5">
-                    <h3 className="font-bold text-darkwood dark:text-warm-100 mb-2 truncate">
+                    <h3 className="font-bold text-darkwood dark:text-white mb-2 truncate">
                       {design.name}
                     </h3>
                     <div className="flex items-center justify-between text-sm text-darkwood/50 dark:text-white mb-4">
@@ -329,7 +329,7 @@ export default function Dashboard() {
               <div className="w-20 h-20 bg-clay/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Palette className="h-10 w-10 text-clay" />
               </div>
-              <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2">
+              <h3 className="text-xl font-bold text-darkwood dark:text-white mb-2">
                 {t('dashboard.noDesigns')}
               </h3>
               <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">
@@ -362,7 +362,7 @@ export default function Dashboard() {
               <div className="w-8 h-8 bg-forest rounded-lg flex items-center justify-center">
                 <Star className="h-4 w-4 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-darkwood dark:text-warm-100">
+              <h3 className="text-lg font-bold text-darkwood dark:text-white">
                 {t('dashboard.designTips')}
               </h3>
             </div>
@@ -375,7 +375,7 @@ export default function Dashboard() {
                 <div key={i} className="flex gap-3 p-3 bg-warm-50 dark:bg-dark-surface rounded-xl hover:bg-warm-100 dark:hover:bg-dark-border/50 transition-colors">
                   <div className={`w-2 h-2 ${tip.color} rounded-full mt-2 flex-shrink-0`} />
                   <div>
-                    <p className="font-semibold text-darkwood dark:text-warm-100 text-sm">{tip.title}</p>
+                    <p className="font-semibold text-darkwood dark:text-white text-sm">{tip.title}</p>
                     <p className="text-sm text-darkwood/50 dark:text-white">{tip.desc}</p>
                   </div>
                 </div>
@@ -392,7 +392,7 @@ export default function Dashboard() {
               <div className="w-8 h-8 bg-clay rounded-lg flex items-center justify-center">
                 <Star className="h-4 w-4 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-darkwood dark:text-warm-100">
+              <h3 className="text-lg font-bold text-darkwood dark:text-white">
                 {t('dashboard.gettingStarted')}
               </h3>
             </div>
@@ -407,7 +407,7 @@ export default function Dashboard() {
                     <span className="text-white text-sm font-bold">{step.num}</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-darkwood dark:text-warm-100 text-sm">{step.title}</p>
+                    <p className="font-semibold text-darkwood dark:text-white text-sm">{step.title}</p>
                     <p className="text-sm text-darkwood/50 dark:text-white">{step.desc}</p>
                   </div>
                   <ArrowRight className="h-4 w-4 text-warm-400 ml-auto" />

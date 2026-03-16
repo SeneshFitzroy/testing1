@@ -159,7 +159,7 @@ export default function Shop() {
               value={searchTerm}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder={t('shop.searchFurniture') || 'Search furniture, sofas, tables, and more...'}
-              className="w-full pl-12 pr-4 py-3.5 rounded-xl text-sm bg-neutral-100 dark:bg-dark-surface border border-neutral-200 dark:border-dark-border text-neutral-900 dark:text-warm-100 placeholder-neutral-500 dark:placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#5C3A2A]/30 dark:focus:ring-clay/30 focus:border-[#5C3A2A] dark:focus:border-clay transition-all"
+              className="w-full pl-12 pr-4 py-3.5 rounded-xl text-sm bg-neutral-100 dark:bg-dark-surface border border-neutral-200 dark:border-dark-border text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#5C3A2A]/30 dark:focus:ring-clay/30 focus:border-[#5C3A2A] dark:focus:border-clay transition-all"
               aria-label="Search products"
             />
           </div>
@@ -208,7 +208,7 @@ export default function Shop() {
               >
                 <div className="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-warm-100 dark:border-dark-border p-6 space-y-6 sticky top-24">
                   <div className="flex items-center justify-between lg:hidden">
-                    <h3 className="font-bold text-neutral-900 dark:text-warm-100">{t('shop.filters')}</h3>
+                    <h3 className="font-bold text-neutral-900 dark:text-white">{t('shop.filters')}</h3>
                     <button onClick={() => setShowFilters(false)} className="p-1.5 hover:bg-neutral-100 dark:hover:bg-dark-surface rounded-lg">
                       <X className="h-5 w-5 text-neutral-500" />
                     </button>
@@ -216,7 +216,7 @@ export default function Shop() {
 
                   {/* Price Range */}
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-3">{t('shop.priceRange')}</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-3">{t('shop.priceRange')}</label>
                     <div className="space-y-3">
                       <input
                         type="range"
@@ -236,7 +236,7 @@ export default function Shop() {
 
                   {/* Quick Filters */}
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-2">{t('shop.quickFilters')}</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-2">{t('shop.quickFilters')}</label>
                     <div className="flex flex-wrap gap-2">
                       {[t('shop.featured'), t('shop.onSale'), t('shop.freeShipping'), t('shop.inStock')].map((filter) => (
                         <button
@@ -280,7 +280,7 @@ export default function Shop() {
                   </button>
                   
                   <div className="text-sm text-darkwood/50 dark:text-white">
-                    {t('shop.showing')} <span className="font-semibold text-darkwood dark:text-warm-100">{filteredProducts.length}</span> {t('shop.of')} {shopProducts.length} {t('shop.products')}
+                    {t('shop.showing')} <span className="font-semibold text-darkwood dark:text-white">{filteredProducts.length}</span> {t('shop.of')} {shopProducts.length} {t('shop.products')}
                   </div>
                 </div>
 
@@ -289,7 +289,7 @@ export default function Shop() {
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="appearance-none bg-warm-50 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-xl px-4 py-2.5 pr-8 text-sm text-darkwood dark:text-warm-200 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay min-w-[160px]"
+                      className="appearance-none bg-warm-50 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-xl px-4 py-2.5 pr-8 text-sm text-darkwood dark:text-white focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay min-w-[160px]"
                     >
                       <option value="featured">{t('shop.featured')}</option>
                       <option value="name">{t('shop.nameAZ')}</option>
@@ -413,7 +413,7 @@ export default function Shop() {
                           {categoryLabel(product.category)}
                         </span>
                       </div>
-                      <h3 className="font-bold text-darkwood dark:text-warm-100 mb-1.5 group-hover:text-clay transition-colors line-clamp-1">
+                      <h3 className="font-bold text-darkwood dark:text-white mb-1.5 group-hover:text-clay transition-colors line-clamp-1">
                         {product.name}
                       </h3>
                       <p className="text-sm text-darkwood/50 dark:text-white mb-3 line-clamp-2">
@@ -440,7 +440,7 @@ export default function Shop() {
 
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
-                          <span className="text-xl font-bold text-neutral-900 dark:text-warm-100">
+                          <span className="text-xl font-bold text-neutral-900 dark:text-white">
                             {formatPrice(product.price)}
                           </span>
                           {product.originalPrice && (
@@ -516,7 +516,7 @@ export default function Shop() {
                 <div className="w-24 h-24 bg-clay/10 dark:bg-clay/5 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Tag className="h-10 w-10 text-clay" />
                 </div>
-                <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2">
+                <h3 className="text-xl font-bold text-darkwood dark:text-white mb-2">
                   {t('shop.noProducts')}
                 </h3>
                 <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">

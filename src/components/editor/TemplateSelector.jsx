@@ -44,7 +44,7 @@ export default function TemplateSelector({ onSelect, onClose }) {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 font-display">
               {t('editor.selectTemplate')}
             </h2>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-gray-500 dark:text-white mt-1">
               Choose a room template to get started quickly
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function TemplateSelector({ onSelect, onClose }) {
               <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Start from Scratch
               </h4>
-              <p className="text-gray-500 dark:text-gray-400 text-sm">
+              <p className="text-gray-500 dark:text-white text-sm">
                 Create a custom room with your own dimensions and preferences
               </p>
             </motion.button>
@@ -117,7 +117,7 @@ export default function TemplateSelector({ onSelect, onClose }) {
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 transition-colors">
                     {template.name}
                   </h4>
-                  <div className="text-sm text-gray-500 dark:text-gray-400 mt-1 space-y-1">
+                  <div className="text-sm text-gray-500 dark:text-white mt-1 space-y-1">
                     <div>Dimensions: {template.width}m × {template.depth}m × {template.height}m</div>
                     <div className="flex items-center space-x-3">
                       <div className="flex items-center space-x-1">

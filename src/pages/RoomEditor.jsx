@@ -305,7 +305,7 @@ export default function RoomEditor() {
       <div className="min-h-screen flex items-center justify-center bg-warm-50 dark:bg-dark-bg">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-clay" />
-          <p className="text-darkwood dark:text-warm-200">{t('common.loading')}</p>
+          <p className="text-darkwood dark:text-white">{t('common.loading')}</p>
         </div>
       </div>
     )
@@ -324,21 +324,21 @@ export default function RoomEditor() {
   }
 
   return (
-    <div className="min-h-screen bg-warm-50 dark:bg-dark-bg">
+    <div className="h-full flex flex-col bg-warm-50 dark:bg-dark-bg overflow-hidden" style={{ minHeight: 0 }}>
       {showTemplates && (
         <TemplateSelector onSelect={handleTemplateSelect} onClose={() => setShowTemplates(false)} />
       )}
 
-      <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden" style={{ minHeight: 0 }}>
         {/* ── Left Sidebar (resizable; collapsible on mobile) ── */}
         <div
-          className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30
+          className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30 overflow-hidden
             ${sidebarOpenOnMobile ? 'flex' : 'hidden'} lg:flex`}
-          style={sidebarStyle}
+          style={{ ...sidebarStyle, minHeight: 0 }}
         >
-          <div className="p-4 border-b border-warm-200 dark:border-dark-border">
+          <div className="p-4 border-b border-warm-200 dark:border-dark-border shrink-0">
             <div className="flex items-center justify-between mb-4">
-              <h1 className="text-xl font-bold text-darkwood dark:text-warm-100 font-display">
+              <h1 className="text-xl font-bold text-darkwood dark:text-white font-display">
                 {t('editor.title')}
               </h1>
               <div className="flex items-center gap-1">
@@ -347,13 +347,13 @@ export default function RoomEditor() {
                   className="lg:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors"
                   aria-label="Close panel"
                 >
-                  <X className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                  <X className="h-5 w-5 text-darkwood dark:text-white" />
                 </button>
                 <button
                   onClick={() => window.history.back()}
                   className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors"
                 >
-                  <ArrowLeft className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                  <ArrowLeft className="h-5 w-5 text-darkwood dark:text-white" />
                 </button>
             </div>
 
@@ -381,10 +381,12 @@ export default function RoomEditor() {
             </div>
           </div>
 
-          <div className="flex-1 overflow-hidden">
-            {activePanel === 'furniture' && <FurniturePanel />}
-            {activePanel === 'properties' && <PropertiesPanel selectedItem={selectedItem} />}
-            {activePanel === 'room' && <RoomSettingsPanel onExport={handleExport} />}
+          <div className="flex-1 relative" style={{ minHeight: 0 }}>
+            <div className="absolute inset-0 overflow-y-auto overflow-x-hidden furniture-scroll">
+              {activePanel === 'furniture' && <FurniturePanel />}
+              {activePanel === 'properties' && <PropertiesPanel selectedItem={selectedItem} />}
+              {activePanel === 'room' && <RoomSettingsPanel onExport={handleExport} />}
+            </div>
           </div>
 
           {/* Resize handle (desktop only) */}
@@ -406,14 +408,14 @@ export default function RoomEditor() {
                 key={room.id}
                 className={`group relative flex items-center gap-1.5 px-3 py-2 rounded-t-lg text-sm font-medium cursor-pointer transition-all shrink-0 ${
                   idx === activeRoomIndex
-                    ? 'bg-warm-50 dark:bg-dark-bg text-darkwood dark:text-warm-100 border border-b-0 border-warm-200 dark:border-dark-border'
+                    ? 'bg-warm-50 dark:bg-dark-bg text-darkwood dark:text-white border border-b-0 border-warm-200 dark:border-dark-border'
                     : 'text-darkwood/50 dark:text-white hover:bg-warm-100/50 dark:hover:bg-dark-surface/50'
                 }`}
                 onClick={() => switchRoom(idx)}
               >
                 {editingRoomIdx === idx ? (
                   <input
-                    className="w-20 bg-transparent border-b border-clay text-sm outline-none text-darkwood dark:text-warm-100"
+                    className="w-20 bg-transparent border-b border-clay text-sm outline-none text-darkwood dark:text-white"
                     value={editingRoomName}
                     onChange={(e) => setEditingRoomName(e.target.value)}
                     onBlur={finishRenaming}
@@ -484,12 +486,12 @@ export default function RoomEditor() {
                   <button onClick={undo} disabled={!canUndo()}
                     className="p-2.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors"
                     title={t('editor.undo')}>
-                    <Undo2 className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                    <Undo2 className="h-5 w-5 text-darkwood dark:text-white" />
                   </button>
                   <button onClick={redo} disabled={!canRedo()}
                     className="p-2.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors"
                     title={t('editor.redo')}>
-                    <Redo2 className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                    <Redo2 className="h-5 w-5 text-darkwood dark:text-white" />
                   </button>
                 </div>
               </div>
@@ -519,19 +521,19 @@ export default function RoomEditor() {
                         onClick={() => setShowMoreMenu(false)}
                       >
                         <button onClick={() => { setShowTemplates(true); setShowMoreMenu(false) }}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <Grid3x3 className="h-4 w-4" /> {t('editor.templates')}
                         </button>
                         <button onClick={() => { handleReset(); setShowMoreMenu(false) }}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <Trash2 className="h-4 w-4" /> Reset
                         </button>
                         <button onClick={() => { setShowShortcuts(true); setShowMoreMenu(false) }}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <Keyboard className="h-4 w-4" /> Shortcuts (?)
                         </button>
                         <button onClick={() => { setShowTutorial(true); setShowMoreMenu(false) }}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <HelpCircle className="h-4 w-4" /> Tutorial
                         </button>
                       </motion.div>
@@ -571,15 +573,15 @@ export default function RoomEditor() {
                         exit={{ opacity: 0, y: -4 }}
                       >
                         <button onClick={() => handleExport('png')}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <FileImage className="h-4 w-4" /> PNG
                         </button>
                         <button onClick={() => handleExport('jpg')}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <FileImage className="h-4 w-4" /> JPG
                         </button>
                         <button onClick={() => handleExport('pdf')}
-                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-warm-200 hover:bg-warm-50 dark:hover:bg-dark-surface">
+                          className="flex items-center gap-2 w-full px-4 py-2 text-sm text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface">
                           <FileText className="h-4 w-4" /> PDF
                         </button>
                       </motion.div>
@@ -695,12 +697,12 @@ export default function RoomEditor() {
                 <button
                   onClick={() => rotateFurniture(selectedItem.instanceId)}
                   className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors" title={t('editor.rotate')}>
-                  <RotateCw className="h-4 w-4 text-darkwood dark:text-warm-200" />
+                  <RotateCw className="h-4 w-4 text-darkwood dark:text-white" />
                 </button>
                 <button
                   onClick={() => duplicateFurniture(selectedItem.instanceId)}
                   className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors" title={t('editor.duplicate')}>
-                  <Copy className="h-4 w-4 text-darkwood dark:text-warm-200" />
+                  <Copy className="h-4 w-4 text-darkwood dark:text-white" />
                 </button>
                 <button
                   onClick={() => {
@@ -721,13 +723,13 @@ export default function RoomEditor() {
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-center max-w-md mx-auto p-8">
                   <Palette className="h-16 w-16 text-warm-300 dark:text-warm-700 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-darkwood dark:text-warm-200 mb-2">
+                  <h3 className="text-lg font-semibold text-darkwood dark:text-white mb-2">
                     Start Designing
                   </h3>
                   <p className="text-darkwood/50 dark:text-white mb-4">
                     {t('editor.dragHint')}
                   </p>
-                  <div className="text-sm text-darkwood/40 dark:text-warm-600">
+                  <div className="text-sm text-darkwood/40 dark:text-white">
                     {roomWidth}m x {roomDepth}m &middot; {rooms[activeRoomIndex]?.name}
                   </div>
                 </div>

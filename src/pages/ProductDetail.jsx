@@ -53,7 +53,7 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-warm-50 dark:bg-dark-bg">
         <div className="text-center">
-          <h2 className="text-2xl font-semibold text-darkwood dark:text-warm-100 mb-4">
+          <h2 className="text-2xl font-semibold text-darkwood dark:text-white mb-4">
             {t('product.notFound')}
           </h2>
           <Link to="/shop" className="btn-primary">
@@ -134,13 +134,13 @@ export default function ProductDetail() {
             {product.category}
           </Link>
           <span>/</span>
-          <span className="text-darkwood dark:text-warm-100">{product.name}</span>
+          <span className="text-darkwood dark:text-white">{product.name}</span>
         </motion.nav>
 
         {/* Back Button */}
         <motion.button
           onClick={() => navigate(-1)}
-          className="flex items-center space-x-2 text-darkwood dark:text-warm-100 hover:text-clay transition-colors mb-6"
+          className="flex items-center space-x-2 text-darkwood dark:text-white hover:text-clay transition-colors mb-6"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           whileHover={{ x: -5 }}
@@ -305,7 +305,7 @@ export default function ProductDetail() {
           >
             {/* Title and Rating */}
             <div>
-              <h1 className="text-3xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">
+              <h1 className="text-3xl font-bold text-darkwood dark:text-white mb-3 font-display">
                 {product.name}
               </h1>
               <div className="flex items-center space-x-4 mb-2">
@@ -321,7 +321,7 @@ export default function ProductDetail() {
                     />
                   ))}
                 </div>
-                <span className="text-darkwood dark:text-warm-100 font-medium">
+                <span className="text-darkwood dark:text-white font-medium">
                   {product.rating || 4.5}
                 </span>
                 <span className="text-darkwood/50 dark:text-white">
@@ -360,8 +360,8 @@ export default function ProductDetail() {
             {product.colors && product.colors.length > 1 && (
               <div>
                 <div className="flex items-center space-x-3 mb-3">
-                  <Palette className="h-5 w-5 text-darkwood dark:text-warm-100" />
-                  <span className="font-medium text-darkwood dark:text-warm-100">
+                  <Palette className="h-5 w-5 text-darkwood dark:text-white" />
+                  <span className="font-medium text-darkwood dark:text-white">
                     {t('product.color')}:{' '}
                     <span className="text-clay">
                       {product.colorNames?.[product.colors.indexOf(selectedColor)] || selectedColor}
@@ -413,7 +413,7 @@ export default function ProductDetail() {
             {/* Quantity and Actions */}
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
-                <span className="font-medium text-darkwood dark:text-warm-100">{t('product.quantity')}:</span>
+                <span className="font-medium text-darkwood dark:text-white">{t('product.quantity')}:</span>
                 <div className="flex items-center border border-warm-200 dark:border-dark-border rounded-lg">
                   <motion.button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -462,7 +462,7 @@ export default function ProductDetail() {
                   className={`p-3 rounded-lg border-2 transition-colors ${
                     isInWishlist
                       ? 'border-red-500 bg-red-500 text-white'
-                      : 'border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-100 hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
+                      : 'border-warm-200 dark:border-dark-border text-darkwood dark:text-white hover:border-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -476,17 +476,17 @@ export default function ProductDetail() {
             <div className="grid grid-cols-3 gap-4 py-6 border-t border-warm-200 dark:border-dark-border">
               <div className="text-center">
                 <Truck className="h-8 w-8 text-clay mx-auto mb-2" />
-                <div className="text-sm font-medium text-darkwood dark:text-warm-100">{t('product.freeShipping')}</div>
+                <div className="text-sm font-medium text-darkwood dark:text-white">{t('product.freeShipping')}</div>
                 <div className="text-xs text-darkwood/50 dark:text-white">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
               </div>
               <div className="text-center">
                 <Shield className="h-8 w-8 text-forest mx-auto mb-2" />
-                <div className="text-sm font-medium text-darkwood dark:text-warm-100">{t('product.warranty')}</div>
+                <div className="text-sm font-medium text-darkwood dark:text-white">{t('product.warranty')}</div>
                 <div className="text-xs text-darkwood/50 dark:text-white">{t('product.fullCoverage')}</div>
               </div>
               <div className="text-center">
                 <RotateCcw className="h-8 w-8 text-darkwood dark:text-white mx-auto mb-2" />
-                <div className="text-sm font-medium text-darkwood dark:text-warm-100">{t('product.easyReturns')}</div>
+                <div className="text-sm font-medium text-darkwood dark:text-white">{t('product.easyReturns')}</div>
                 <div className="text-xs text-darkwood/50 dark:text-white">{t('product.thirtyDays')}</div>
               </div>
             </div>
@@ -529,19 +529,19 @@ export default function ProductDetail() {
                   exit={{ opacity: 0, x: -20 }}
                   className="prose prose-lg max-w-none dark:prose-invert"
                 >
-                  <p className="text-darkwood dark:text-warm-100 leading-relaxed">
+                  <p className="text-darkwood dark:text-white leading-relaxed">
                     {product.description}
                   </p>
                   {product.features && (
                     <div className="mt-6">
-                      <h3 className="text-xl font-semibold text-darkwood dark:text-warm-100 mb-4">
+                      <h3 className="text-xl font-semibold text-darkwood dark:text-white mb-4">
                         {t('product.keyFeatures')}
                       </h3>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {product.features.map((feature, index) => (
                           <motion.li
                             key={index}
-                            className="flex items-start space-x-3 text-darkwood dark:text-warm-100"
+                            className="flex items-start space-x-3 text-darkwood dark:text-white"
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
@@ -565,7 +565,7 @@ export default function ProductDetail() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
                   <div className="bg-white dark:bg-dark-card rounded-xl p-6 border border-warm-100 dark:border-dark-border">
-                    <h3 className="text-lg font-semibold text-darkwood dark:text-warm-100 mb-4">
+                    <h3 className="text-lg font-semibold text-darkwood dark:text-white mb-4">
                       {t('product.productDetails')}
                     </h3>
                     <div className="space-y-3">
@@ -578,7 +578,7 @@ export default function ProductDetail() {
                       ].map(([label, value]) => (
                         <div key={label} className="flex justify-between">
                           <span className="text-darkwood/50 dark:text-white">{label}:</span>
-                          <span className="font-medium text-darkwood dark:text-warm-100">{value}</span>
+                          <span className="font-medium text-darkwood dark:text-white">{value}</span>
                         </div>
                       ))}
                     </div>
@@ -616,14 +616,14 @@ export default function ProductDetail() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-darkwood dark:text-warm-100">{review.text}</p>
+                          <p className="text-darkwood dark:text-white">{review.text}</p>
                         </div>
                       ))}
                     </div>
                   ) : (
                     <div className="text-center py-12">
                       <Star className="h-16 w-16 text-warm-300 dark:text-dark-border mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-darkwood dark:text-warm-100 mb-2">
+                      <h3 className="text-xl font-semibold text-darkwood dark:text-white mb-2">
                         Reviews coming soon
                       </h3>
                     </div>
@@ -640,16 +640,16 @@ export default function ProductDetail() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
                   <div className="bg-white dark:bg-dark-card rounded-xl p-6 border border-warm-100 dark:border-dark-border">
-                    <h3 className="text-lg font-semibold text-darkwood dark:text-warm-100 mb-4">
+                    <h3 className="text-lg font-semibold text-darkwood dark:text-white mb-4">
                       {t('product.deliveryInfo')}
                     </h3>
                     <div className="space-y-4">
                       <div>
-                        <div className="font-medium text-darkwood dark:text-warm-100">{t('product.standardDelivery')}</div>
+                        <div className="font-medium text-darkwood dark:text-white">{t('product.standardDelivery')}</div>
                         <div className="text-sm text-darkwood/50 dark:text-white">{t('product.standardDays')} - {formatPrice(9.99)}</div>
                       </div>
                       <div>
-                        <div className="font-medium text-darkwood dark:text-warm-100">{t('product.expressDelivery')}</div>
+                        <div className="font-medium text-darkwood dark:text-white">{t('product.expressDelivery')}</div>
                         <div className="text-sm text-darkwood/50 dark:text-white">{t('product.expressDays')} - {formatPrice(19.99)}</div>
                       </div>
                       <div>
@@ -672,7 +672,7 @@ export default function ProductDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-8 font-display">
+            <h2 className="text-2xl font-bold text-darkwood dark:text-white mb-8 font-display">
               {t('product.youMightAlsoLike')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -701,7 +701,7 @@ export default function ProductDetail() {
                       )}
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-darkwood dark:text-warm-100 mb-2 hover:text-clay transition-colors">
+                      <h3 className="font-semibold text-darkwood dark:text-white mb-2 hover:text-clay transition-colors">
                         {relatedProduct.name}
                       </h3>
                       <div className="text-lg font-bold text-clay">

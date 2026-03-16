@@ -86,7 +86,7 @@ export default function Wishlist() {
         <motion.div className="mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-darkwood dark:text-warm-100 mb-2 flex items-center gap-3 font-display">
+              <h1 className="text-3xl font-bold text-darkwood dark:text-white mb-2 flex items-center gap-3 font-display">
                 <Heart className="h-8 w-8 text-red-500 fill-current" />
                 {t('wishlist.title')}
               </h1>
@@ -122,7 +122,7 @@ export default function Wishlist() {
             >
               <Heart className="h-16 w-16 text-red-300 dark:text-red-400" />
             </motion.div>
-            <h3 className="text-2xl font-semibold text-darkwood dark:text-warm-100 mb-4">
+            <h3 className="text-2xl font-semibold text-darkwood dark:text-white mb-4">
               {t('wishlist.empty')}
             </h3>
             <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">
@@ -215,7 +215,7 @@ export default function Wishlist() {
                   exit={{ opacity: 0 }}
                 >
                   <Search className="h-16 w-16 text-warm-300 dark:text-dark-border mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-darkwood dark:text-warm-100 mb-2">
+                  <h3 className="text-xl font-semibold text-darkwood dark:text-white mb-2">
                     {t('wishlist.noMatch')}
                   </h3>
                   <p className="text-darkwood/50 dark:text-white">
@@ -264,7 +264,7 @@ export default function Wishlist() {
                             <Heart className="h-4 w-4 fill-current" />
                           </motion.button>
                           <motion.button
-                            className="absolute top-2 left-2 p-2 bg-white/90 dark:bg-dark-card/90 text-darkwood dark:text-warm-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                            className="absolute top-2 left-2 p-2 bg-white/90 dark:bg-dark-card/90 text-darkwood dark:text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                           >
@@ -274,7 +274,7 @@ export default function Wishlist() {
 
                         <div className={`p-4 ${viewMode === 'list' ? 'flex-1' : ''}`}>
                           <Link to={`/shop/${item.id}`} className="block group/link">
-                            <h3 className="font-semibold text-darkwood dark:text-warm-100 mb-1 group-hover/link:text-clay transition-colors">
+                            <h3 className="font-semibold text-darkwood dark:text-white mb-1 group-hover/link:text-clay transition-colors">
                               {item.name}
                             </h3>
                             <p className="text-sm text-darkwood/50 dark:text-white mb-2 line-clamp-2">
@@ -338,7 +338,7 @@ export default function Wishlist() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <h3 className="font-semibold text-darkwood dark:text-warm-100 mb-4">
+                <h3 className="font-semibold text-darkwood dark:text-white mb-4">
                   {t('wishlist.quickActions')}
                 </h3>
                 <div className="flex flex-col sm:flex-row gap-4">

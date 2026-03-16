@@ -153,7 +153,7 @@ export default function RoomSettingsPanel() {
               className={`flex items-center space-x-2 p-3 rounded-lg text-sm transition-colors ${
                 roomSettings?.type === key
                   ? 'bg-[#5C3A2A] text-white shadow-sm'
-                  : 'bg-white dark:bg-dark-surface hover:bg-warm-50 dark:hover:bg-dark-border/30 text-darkwood dark:text-warm-100 border border-[#5C3A2A]/10'
+                  : 'bg-white dark:bg-dark-surface hover:bg-warm-50 dark:hover:bg-dark-border/30 text-darkwood dark:text-white border border-[#5C3A2A]/10'
               }`}
             >
               <Icon className="h-4 w-4 flex-shrink-0" />
@@ -166,7 +166,7 @@ export default function RoomSettingsPanel() {
           className={`w-full mt-2 flex items-center justify-center space-x-2 p-3 rounded-lg text-sm transition-colors ${
             roomSettings?.type === 'custom'
               ? 'bg-[#5C3A2A] text-white shadow-sm'
-              : 'bg-white dark:bg-dark-surface hover:bg-warm-50 dark:hover:bg-dark-border/30 text-darkwood dark:text-warm-100 border border-[#5C3A2A]/10'
+              : 'bg-white dark:bg-dark-surface hover:bg-warm-50 dark:hover:bg-dark-border/30 text-darkwood dark:text-white border border-[#5C3A2A]/10'
           }`}
         >
           <Settings className="h-4 w-4 flex-shrink-0" />
@@ -207,7 +207,7 @@ export default function RoomSettingsPanel() {
               />
             </div>
           </div>
-          <div className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 p-3 rounded">
+          <div className="text-sm text-gray-500 dark:text-white bg-gray-100 dark:bg-gray-800 p-3 rounded">
             Room area: {((roomSettings?.width || 5) * (roomSettings?.height || 4)).toFixed(1)} m²
           </div>
         </div>
@@ -230,7 +230,7 @@ export default function RoomSettingsPanel() {
               <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
                 Wall Color
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+              <div className="text-xs text-gray-500 dark:text-white font-mono">
                 {tempWallColor}
               </div>
             </div>
@@ -302,7 +302,7 @@ export default function RoomSettingsPanel() {
               <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
                 Floor Color
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 font-mono">
+              <div className="text-xs text-gray-500 dark:text-white font-mono">
                 {tempFloorColor}
               </div>
             </div>
@@ -378,7 +378,7 @@ export default function RoomSettingsPanel() {
               })}
               className="w-full accent-[#5C3A2A]"
             />
-            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+            <div className="flex justify-between text-xs text-gray-500 dark:text-white">
               <span>Dim</span>
               <span>{(roomSettings?.ambientLight || 0.6).toFixed(1)}</span>
               <span>Bright</span>
@@ -467,15 +467,15 @@ export default function RoomSettingsPanel() {
           <h5 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{t('editor.currentDesign') || 'Current Design'}</h5>
           <div className="space-y-1 text-sm">
             <div className="flex justify-between">
-              <span className="text-gray-500 dark:text-gray-400">{t('editor.name') || 'Name'}:</span>
+              <span className="text-gray-500 dark:text-white">{t('editor.name') || 'Name'}:</span>
               <span className="text-gray-900 dark:text-gray-100">{currentDesign?.name || 'Untitled'}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500 dark:text-gray-400">{t('editor.items') || 'Items'}:</span>
+              <span className="text-gray-500 dark:text-white">{t('editor.items') || 'Items'}:</span>
               <span className="text-gray-900 dark:text-gray-100">{furnitureItems?.length ?? (currentDesign?.rooms?.reduce((acc, r) => acc + (r.furnitureItems?.length || 0), 0) ?? 0)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500 dark:text-gray-400">{t('editor.lastModified') || 'Last Modified'}:</span>
+              <span className="text-gray-500 dark:text-white">{t('editor.lastModified') || 'Last Modified'}:</span>
               <span className="text-gray-900 dark:text-gray-100">
                 {currentDesign?.updatedAt ? new Date(currentDesign.updatedAt).toLocaleDateString() : 'Never'}
               </span>

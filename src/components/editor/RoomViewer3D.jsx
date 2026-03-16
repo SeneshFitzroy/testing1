@@ -405,10 +405,10 @@ export default function RoomViewer3D() {
         <div className="text-gray-900 dark:text-gray-100 font-medium">
           3D Room View
         </div>
-        <div className="text-gray-500 dark:text-gray-400 text-xs mt-1">
+        <div className="text-gray-500 dark:text-white text-xs mt-1">
           Items: {furnitureItems.length}
         </div>
-        <div className="text-gray-500 dark:text-gray-400 text-xs">
+        <div className="text-gray-500 dark:text-white text-xs">
           Selected: {selectedItemId ? 'Yes' : 'None'}
         </div>
       </div>
@@ -455,7 +455,7 @@ export default function RoomViewer3D() {
       </div>
 
       {/* Instructions */}
-      <div className="absolute bottom-4 left-4 z-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg p-3 text-xs text-gray-500 dark:text-gray-400">
+      <div className="absolute bottom-4 left-4 z-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg p-3 text-xs text-gray-500 dark:text-white">
         <div>Mouse: Orbit • Wheel: Zoom • Click: Select furniture</div>
       </div>
 

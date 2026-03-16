@@ -62,7 +62,7 @@ export default function ForgotPassword() {
       >
         <Link to="/" className="inline-flex items-center gap-2 mb-8 text-darkwood/60 dark:text-white hover:text-clay dark:hover:text-clay transition-colors">
           <LogoIcon size={32} />
-          <span className="font-display font-bold text-darkwood dark:text-warm-100">Lee Roo</span>
+          <span className="font-display font-bold text-darkwood dark:text-white">Lee Roo</span>
         </Link>
 
         <div className="bg-white dark:bg-dark-card rounded-2xl border border-warm-200 dark:border-dark-border shadow-xl p-8">
@@ -71,7 +71,7 @@ export default function ForgotPassword() {
               <div className="w-16 h-16 bg-green-100 dark:bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
-              <h1 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-2 font-display">
+              <h1 className="text-2xl font-bold text-darkwood dark:text-white mb-2 font-display">
                 {t('auth.forgotPasswordCheckInbox')}
               </h1>
               <p className="text-darkwood/60 dark:text-white mb-6">
@@ -90,7 +90,7 @@ export default function ForgotPassword() {
             </div>
           ) : (
             <>
-              <h1 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-2 font-display">
+              <h1 className="text-2xl font-bold text-darkwood dark:text-white mb-2 font-display">
                 {t('auth.forgotPasswordTitle')}
               </h1>
               <p className="text-darkwood/60 dark:text-white mb-8">
@@ -99,7 +99,7 @@ export default function ForgotPassword() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-darkwood dark:text-white mb-2">
                     {t('auth.email')}
                   </label>
                   <div className="relative">
@@ -111,7 +111,7 @@ export default function ForgotPassword() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={t('auth.email.placeholder')}
                       autoComplete="email"
-                      className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all"
+                      className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all"
                       disabled={loading}
                     />
                   </div>

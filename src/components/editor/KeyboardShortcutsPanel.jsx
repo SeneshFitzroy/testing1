@@ -45,7 +45,7 @@ export default function KeyboardShortcutsPanel({ open, onClose }) {
                 <div className="w-8 h-8 bg-forest/10 dark:bg-forest/20 rounded-lg flex items-center justify-center">
                   <Keyboard className="h-4 w-4 text-forest" />
                 </div>
-                <h3 className="text-lg font-semibold text-darkwood dark:text-warm-100">
+                <h3 className="text-lg font-semibold text-darkwood dark:text-white">
                   Keyboard Shortcuts
                 </h3>
               </div>
@@ -54,7 +54,7 @@ export default function KeyboardShortcutsPanel({ open, onClose }) {
                 className="p-1.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
                 aria-label="Close shortcuts panel"
               >
-                <X className="h-4 w-4 text-darkwood/40 dark:text-warm-500" />
+                <X className="h-4 w-4 text-darkwood/40 dark:text-white" />
               </button>
             </div>
 
@@ -62,17 +62,17 @@ export default function KeyboardShortcutsPanel({ open, onClose }) {
             <div className="p-5 space-y-3">
               {shortcuts.map((shortcut, i) => (
                 <div key={i} className="flex items-center justify-between">
-                  <span className="text-sm text-darkwood/70 dark:text-warm-300">
+                  <span className="text-sm text-darkwood/70 dark:text-white">
                     {shortcut.desc}
                   </span>
                   <div className="flex items-center gap-1">
                     {shortcut.keys.map((key, ki) => (
                       <span key={ki}>
-                        <kbd className="inline-flex items-center justify-center min-w-[28px] h-7 px-2 bg-warm-100 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-lg text-xs font-mono font-semibold text-darkwood dark:text-warm-200 shadow-sm">
+                        <kbd className="inline-flex items-center justify-center min-w-[28px] h-7 px-2 bg-warm-100 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-lg text-xs font-mono font-semibold text-darkwood dark:text-white shadow-sm">
                           {key}
                         </kbd>
                         {ki < shortcut.keys.length - 1 && (
-                          <span className="mx-0.5 text-darkwood/30 dark:text-warm-600">+</span>
+                          <span className="mx-0.5 text-darkwood/30 dark:text-white">+</span>
                         )}
                       </span>
                     ))}
@@ -83,7 +83,7 @@ export default function KeyboardShortcutsPanel({ open, onClose }) {
 
             {/* Footer hint */}
             <div className="px-5 py-3 bg-warm-50 dark:bg-dark-surface border-t border-warm-200 dark:border-dark-border">
-              <p className="text-xs text-darkwood/40 dark:text-warm-500 text-center">
+              <p className="text-xs text-darkwood/40 dark:text-white text-center">
                 Press <kbd className="px-1.5 py-0.5 bg-warm-100 dark:bg-dark-border rounded text-[10px] font-mono font-semibold">?</kbd> anytime to toggle this panel
               </p>
             </div>

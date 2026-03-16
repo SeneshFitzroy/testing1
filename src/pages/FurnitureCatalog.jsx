@@ -6,7 +6,7 @@ export default function FurnitureCatalog() {
           Furniture Catalog
         </h1>
         <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 p-6">
-          <p className="text-gray-700 dark:text-gray-300">
+          <p className="text-gray-700 dark:text-white">
             Furniture catalog functionality will be implemented here.
           </p>
         </div>

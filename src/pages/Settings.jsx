@@ -105,11 +105,11 @@ export default function Settings() {
 
   const PwdInput = ({ label, name, value, onChange, show, onToggle }) => (
     <div>
-      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{label}</label>
+      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{label}</label>
       <div className="relative">
         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400" />
         <input type={show ? 'text' : 'password'} name={name} value={value} onChange={onChange}
-          className="w-full pl-10 pr-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
+          className="w-full pl-10 pr-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
         <button type="button" onClick={onToggle} className="absolute right-3 top-1/2 -translate-y-1/2 text-warm-400 hover:text-darkwood dark:hover:text-warm-200">
           {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
         </button>
@@ -126,7 +126,7 @@ export default function Settings() {
               <SettingsIcon className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">{t('settings.title')}</h1>
+              <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-white font-display">{t('settings.title')}</h1>
               <p className="text-darkwood/50 dark:text-white text-sm">{t('settings.subtitle')}</p>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function Settings() {
             <AnimatePresence mode="wait">
               {active === 'profile' && (
                 <Card key="profile">
-                  <h2 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2"><User className="h-5 w-5 text-clay" />{t('settings.profileInfo')}</h2>
+                  <h2 className="text-lg font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2"><User className="h-5 w-5 text-clay" />{t('settings.profileInfo')}</h2>
                   <div className="flex items-center gap-4 mb-6 pb-6 border-b border-warm-100 dark:border-dark-border">
                     <div className="relative">
                       <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-clay to-forest flex items-center justify-center text-white text-2xl font-bold">
@@ -164,43 +164,43 @@ export default function Settings() {
                       </div>
                     </div>
                     <div>
-                      <p className="font-bold text-darkwood dark:text-warm-100">{profile.displayName || t('settings.noName')}</p>
+                      <p className="font-bold text-darkwood dark:text-white">{profile.displayName || t('settings.noName')}</p>
                       <p className="text-sm text-darkwood/50 dark:text-white">{user?.email}</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('checkout.fullName')}</label>
+                      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('checkout.fullName')}</label>
                       <div className="relative"><User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400" />
                         <input value={profile.displayName} onChange={e => setProfile({...profile, displayName: e.target.value})}
-                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
+                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('auth.email')}</label>
+                      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('auth.email')}</label>
                       <div className="relative"><Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400" />
                         <input value={user?.email || ''} disabled
                           className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood/50 dark:text-white text-sm cursor-not-allowed" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('checkout.phone')}</label>
+                      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('checkout.phone')}</label>
                       <div className="relative"><Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400" />
                         <input value={profile.phone} onChange={e => setProfile({...profile, phone: e.target.value})} placeholder="+44 7123 456789"
-                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
+                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('checkout.address')}</label>
+                      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('checkout.address')}</label>
                       <div className="relative"><MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400" />
                         <input value={profile.address} onChange={e => setProfile({...profile, address: e.target.value})} placeholder="123 Baker Street"
-                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
+                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all" />
                       </div>
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('settings.bio')}</label>
+                      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('settings.bio')}</label>
                       <textarea value={profile.bio} onChange={e => setProfile({...profile, bio: e.target.value})} rows={3} placeholder={t('settings.bioPlaceholder')}
-                        className="w-full px-4 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all resize-none" />
+                        className="w-full px-4 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-warm-400 focus:ring-2 focus:ring-clay/40 focus:border-clay text-sm transition-all resize-none" />
                     </div>
                   </div>
                   <div className="flex justify-end mt-6">
@@ -214,10 +214,10 @@ export default function Settings() {
 
               {active === 'appearance' && (
                 <Card key="appearance">
-                  <h2 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2"><Palette className="h-5 w-5 text-clay" />{t('settings.appearance')}</h2>
+                  <h2 className="text-lg font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2"><Palette className="h-5 w-5 text-clay" />{t('settings.appearance')}</h2>
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-semibold text-darkwood dark:text-warm-200 mb-3">{t('settings.theme')}</h3>
+                      <h3 className="text-sm font-semibold text-darkwood dark:text-white mb-3">{t('settings.theme')}</h3>
                       <div className="grid grid-cols-2 gap-3">
                         {[
                           { mode: false, label: t('settings.lightMode'), icon: Sun, desc: t('settings.lightDesc') },
@@ -229,7 +229,7 @@ export default function Settings() {
                               <opt.icon className="h-6 w-6" />
                             </div>
                             <div className="text-center">
-                              <p className={`text-sm font-semibold ${darkMode === opt.mode ? 'text-clay' : 'text-darkwood dark:text-warm-200'}`}>{opt.label}</p>
+                              <p className={`text-sm font-semibold ${darkMode === opt.mode ? 'text-clay' : 'text-darkwood dark:text-white'}`}>{opt.label}</p>
                               <p className="text-[10px] text-darkwood/50 dark:text-white mt-0.5">{opt.desc}</p>
                             </div>
                             {darkMode === opt.mode && <Check className="h-4 w-4 text-clay" />}
@@ -239,7 +239,7 @@ export default function Settings() {
                     </div>
 
                     <div>
-                      <h3 className="text-sm font-semibold text-darkwood dark:text-warm-200 mb-3">{t('settings.currency')}</h3>
+                      <h3 className="text-sm font-semibold text-darkwood dark:text-white mb-3">{t('settings.currency')}</h3>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                         {Object.values(currencies).map(cur => (
                           <button key={cur.code} onClick={() => setCurrency(cur.code)}
@@ -255,7 +255,7 @@ export default function Settings() {
 
               {active === 'language' && (
                 <Card key="language">
-                  <h2 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2"><Languages className="h-5 w-5 text-clay" />{t('settings.language')}</h2>
+                  <h2 className="text-lg font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2"><Languages className="h-5 w-5 text-clay" />{t('settings.language')}</h2>
                   <div className="space-y-2">
                     {LANGUAGES.map(lang => (
                       <button key={lang.code} onClick={() => changeLang(lang.code)}
@@ -263,7 +263,7 @@ export default function Settings() {
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{lang.flag}</span>
                           <div className="text-left">
-                            <p className={`text-sm font-semibold ${language === lang.code ? 'text-clay' : 'text-darkwood dark:text-warm-100'}`}>{lang.name}</p>
+                            <p className={`text-sm font-semibold ${language === lang.code ? 'text-clay' : 'text-darkwood dark:text-white'}`}>{lang.name}</p>
                             <p className="text-[10px] text-darkwood/50 dark:text-white uppercase">{lang.code}</p>
                           </div>
                         </div>
@@ -276,7 +276,7 @@ export default function Settings() {
 
               {active === 'notifications' && (
                 <Card key="notifications">
-                  <h2 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2"><Bell className="h-5 w-5 text-clay" />{t('settings.notifications')}</h2>
+                  <h2 className="text-lg font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2"><Bell className="h-5 w-5 text-clay" />{t('settings.notifications')}</h2>
                   <div className="space-y-1">
                     {[
                       { key: 'orderUpdates', icon: CreditCard, label: t('settings.orderUpdates'), desc: t('settings.orderUpdatesDesc') },
@@ -291,7 +291,7 @@ export default function Settings() {
                             <n.icon className="h-4 w-4 text-clay" />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-sm font-semibold text-darkwood dark:text-warm-100">{n.label}</p>
+                            <p className="text-sm font-semibold text-darkwood dark:text-white">{n.label}</p>
                             <p className="text-[10px] text-darkwood/50 dark:text-white truncate">{n.desc}</p>
                           </div>
                         </div>
@@ -308,7 +308,7 @@ export default function Settings() {
               {active === 'security' && (
                 <div key="security" className="space-y-6">
                   <Card>
-                    <h2 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2"><Lock className="h-5 w-5 text-clay" />{t('settings.changePassword')}</h2>
+                    <h2 className="text-lg font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2"><Lock className="h-5 w-5 text-clay" />{t('settings.changePassword')}</h2>
                     <div className="space-y-4">
                       <PwdInput label={t('settings.currentPassword')} name="current" value={pwd.current} onChange={e => setPwd({...pwd, current: e.target.value})} show={showPwd.current} onToggle={() => setShowPwd({...showPwd, current: !showPwd.current})} />
                       <PwdInput label={t('settings.newPassword')} name="newPwd" value={pwd.newPwd} onChange={e => setPwd({...pwd, newPwd: e.target.value})} show={showPwd.newPwd} onToggle={() => setShowPwd({...showPwd, newPwd: !showPwd.newPwd})} />

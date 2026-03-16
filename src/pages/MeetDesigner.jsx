@@ -166,7 +166,7 @@ export default function MeetDesigner() {
                 <div className="flex items-center gap-3">
                   <img src={selectedDesigner.image} alt="" className="w-10 h-10 rounded-full object-cover" />
                   <div>
-                    <h3 className="font-bold text-darkwood dark:text-warm-100 text-sm">{selectedDesigner.name}</h3>
+                    <h3 className="font-bold text-darkwood dark:text-white text-sm">{selectedDesigner.name}</h3>
                     <p className="text-xs text-darkwood/50 dark:text-white">
                       {bookingStep === 1 && (t('meetDesigner.selectDate') || 'Select a Date')}
                       {bookingStep === 2 && (t('meetDesigner.selectTime') || 'Select a Time')}
@@ -192,19 +192,19 @@ export default function MeetDesigner() {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <button onClick={prevMonth} className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg">
-                        <ChevronLeft className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                        <ChevronLeft className="h-5 w-5 text-darkwood dark:text-white" />
                       </button>
-                      <span className="font-bold text-darkwood dark:text-warm-100">
+                      <span className="font-bold text-darkwood dark:text-white">
                         {MONTH_NAMES[calMonth]} {calYear}
                       </span>
                       <button onClick={nextMonth} className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg">
-                        <ChevronRight className="h-5 w-5 text-darkwood dark:text-warm-200" />
+                        <ChevronRight className="h-5 w-5 text-darkwood dark:text-white" />
                       </button>
                     </div>
 
                     <div className="grid grid-cols-7 gap-1 mb-2 text-center">
                       {['Su','Mo','Tu','We','Th','Fr','Sa'].map(d => (
-                        <div key={d} className="text-xs font-semibold text-darkwood/40 dark:text-warm-600 py-1">{d}</div>
+                        <div key={d} className="text-xs font-semibold text-darkwood/40 dark:text-white py-1">{d}</div>
                       ))}
                     </div>
 
@@ -226,7 +226,7 @@ export default function MeetDesigner() {
                                 : isToday
                                   ? 'bg-forest/10 text-forest dark:text-forest-light font-bold'
                                   : available
-                                    ? 'text-darkwood dark:text-warm-200 hover:bg-warm-100 dark:hover:bg-dark-surface'
+                                    ? 'text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
                                     : 'text-warm-300 dark:text-dark-border cursor-not-allowed'
                             }`}
                           >
@@ -247,7 +247,7 @@ export default function MeetDesigner() {
                       <button onClick={() => setBookingStep(1)} className="text-clay text-xs underline ml-auto">Change</button>
                     </p>
 
-                    <h4 className="text-sm font-semibold text-darkwood dark:text-warm-100 mb-3">Choose a Time</h4>
+                    <h4 className="text-sm font-semibold text-darkwood dark:text-white mb-3">Choose a Time</h4>
                     <div className="grid grid-cols-3 gap-2 mb-6">
                       {TIME_SLOTS.map(slot => (
                         <button
@@ -256,7 +256,7 @@ export default function MeetDesigner() {
                           className={`px-3 py-2 rounded-lg text-xs font-medium transition-all ${
                             selectedTime === slot
                               ? 'bg-clay text-white shadow-sm'
-                              : 'bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-warm-200 hover:bg-warm-200 dark:hover:bg-dark-border'
+                              : 'bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white hover:bg-warm-200 dark:hover:bg-dark-border'
                           }`}
                         >
                           {slot}
@@ -264,7 +264,7 @@ export default function MeetDesigner() {
                       ))}
                     </div>
 
-                    <h4 className="text-sm font-semibold text-darkwood dark:text-warm-100 mb-3">Select Package</h4>
+                    <h4 className="text-sm font-semibold text-darkwood dark:text-white mb-3">Select Package</h4>
                     <div className="space-y-2 mb-4">
                       {consultationTypes.map(pkg => (
                         <button
@@ -277,7 +277,7 @@ export default function MeetDesigner() {
                           }`}
                         >
                           <div>
-                            <span className="text-sm font-semibold text-darkwood dark:text-warm-100">{pkg.title}</span>
+                            <span className="text-sm font-semibold text-darkwood dark:text-white">{pkg.title}</span>
                             <span className="text-xs text-darkwood/50 dark:text-white ml-2">{pkg.duration}</span>
                           </div>
                           <span className="text-sm font-bold text-clay">
@@ -303,17 +303,17 @@ export default function MeetDesigner() {
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 mb-6 space-y-1 text-sm">
                       <div className="flex justify-between">
                         <span className="text-darkwood/60 dark:text-white">Designer</span>
-                        <span className="font-medium text-darkwood dark:text-warm-100">{selectedDesigner.name}</span>
+                        <span className="font-medium text-darkwood dark:text-white">{selectedDesigner.name}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-darkwood/60 dark:text-white">Date</span>
-                        <span className="font-medium text-darkwood dark:text-warm-100">
+                        <span className="font-medium text-darkwood dark:text-white">
                           {selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-darkwood/60 dark:text-white">Time</span>
-                        <span className="font-medium text-darkwood dark:text-warm-100">{selectedTime}</span>
+                        <span className="font-medium text-darkwood dark:text-white">{selectedTime}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-darkwood/60 dark:text-white">Package</span>
@@ -333,28 +333,28 @@ export default function MeetDesigner() {
                         placeholder="Full Name *"
                         value={clientName}
                         onChange={e => setClientName(e.target.value)}
-                        className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
+                        className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
                       />
                       <input
                         type="email"
                         placeholder="Email Address *"
                         value={clientEmail}
                         onChange={e => setClientEmail(e.target.value)}
-                        className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
+                        className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
                       />
                       <textarea
                         placeholder="Notes about your project"
                         value={clientNote}
                         onChange={e => setClientNote(e.target.value)}
                         rows={3}
-                        className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none resize-none"
+                        className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none resize-none"
                       />
                     </div>
 
                     <div className="flex gap-3">
                       <button
                         onClick={() => setBookingStep(2)}
-                        className="flex-1 py-3 border border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-200 font-medium rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
+                        className="flex-1 py-3 border border-warm-200 dark:border-dark-border text-darkwood dark:text-white font-medium rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
                       >
                         Back
                       </button>
@@ -387,20 +387,20 @@ export default function MeetDesigner() {
               <div className="w-20 h-20 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="h-10 w-10 text-forest" />
               </div>
-              <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-2">
+              <h2 className="text-2xl font-bold text-darkwood dark:text-white mb-2">
                 {t('meetDesigner.bookingConfirmed') || 'Booking Confirmed!'}
               </h2>
               <p className="text-darkwood/60 dark:text-white text-sm mb-6">
                 {t('meetDesigner.bookingMsg') || 'Your consultation has been scheduled. You will receive a confirmation email shortly.'}
               </p>
               <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 mb-6 text-sm text-left space-y-1">
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Designer</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedDesigner?.name}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Date</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Time</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedTime}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Designer</span><span className="text-darkwood dark:text-white font-medium">{selectedDesigner?.name}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Date</span><span className="text-darkwood dark:text-white font-medium">{selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Time</span><span className="text-darkwood dark:text-white font-medium">{selectedTime}</span></div>
                 <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Package</span><span className="text-clay font-medium">{selectedPackage?.title}</span></div>
               </div>
               <div className="flex gap-3">
-                <button onClick={resetBooking} className="flex-1 py-3 border border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-200 font-medium rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
+                <button onClick={resetBooking} className="flex-1 py-3 border border-warm-200 dark:border-dark-border text-darkwood dark:text-white font-medium rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
                   Book Another
                 </button>
                 <Link to="/shop" className="flex-1 py-3 bg-gradient-to-r from-clay to-clay-dark text-white font-semibold rounded-xl text-center transition-all hover:shadow-md">
@@ -460,7 +460,7 @@ export default function MeetDesigner() {
       <section className="py-20 bg-white dark:bg-dark-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">Choose Your Consultation</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-white mb-4 font-display">Choose Your Consultation</h2>
             <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               From quick advice to comprehensive design packages
             </p>
@@ -483,9 +483,9 @@ export default function MeetDesigner() {
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${c.gradient} flex items-center justify-center mb-5`}>
                   <c.icon className="h-7 w-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2">{c.title}</h3>
+                <h3 className="text-xl font-bold text-darkwood dark:text-white mb-2">{c.title}</h3>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl font-black text-darkwood dark:text-warm-100">
+                  <span className="text-2xl font-black text-darkwood dark:text-white">
                     {c.priceUSD === 0 ? 'Free' : formatPrice(c.priceUSD)}
                   </span>
                   {c.originalUSD && (
@@ -518,7 +518,7 @@ export default function MeetDesigner() {
       <section id="designers" className="py-20 bg-warm-50 dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">Meet Our Expert Designers</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-white mb-4 font-display">Meet Our Expert Designers</h2>
             <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               Certified professionals with years of experience
             </p>
@@ -538,23 +538,23 @@ export default function MeetDesigner() {
                   </div>
                   <div className="absolute top-3 right-3 bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm rounded-full px-2.5 py-1 flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
-                    <span className="text-xs font-bold text-darkwood dark:text-warm-100">{designer.rating}</span>
+                    <span className="text-xs font-bold text-darkwood dark:text-white">{designer.rating}</span>
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-1">{designer.name}</h3>
+                  <h3 className="text-xl font-bold text-darkwood dark:text-white mb-1">{designer.name}</h3>
                   <p className="text-clay font-semibold text-sm mb-1">{designer.title}</p>
                   <p className="text-darkwood/50 dark:text-white text-xs mb-4">{designer.specialty}</p>
 
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <div className="text-center bg-warm-50 dark:bg-dark-surface rounded-xl py-2">
-                      <div className="text-lg font-bold text-darkwood dark:text-warm-100">{designer.experience}</div>
-                      <div className="text-[10px] text-darkwood/40 dark:text-warm-600">Experience</div>
+                      <div className="text-lg font-bold text-darkwood dark:text-white">{designer.experience}</div>
+                      <div className="text-[10px] text-darkwood/40 dark:text-white">Experience</div>
                     </div>
                     <div className="text-center bg-warm-50 dark:bg-dark-surface rounded-xl py-2">
-                      <div className="text-lg font-bold text-darkwood dark:text-warm-100">{designer.projects}</div>
-                      <div className="text-[10px] text-darkwood/40 dark:text-warm-600">Projects</div>
+                      <div className="text-lg font-bold text-darkwood dark:text-white">{designer.projects}</div>
+                      <div className="text-[10px] text-darkwood/40 dark:text-white">Projects</div>
                     </div>
                   </div>
 
@@ -583,7 +583,7 @@ export default function MeetDesigner() {
               <ExternalLink className="h-4 w-4 text-forest mr-2" />
               <span className="text-sm font-semibold text-forest dark:text-forest-light">Quick Online Booking</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">
+            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-white mb-4 font-display">
               Schedule via Cal.com
             </h2>
             <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
@@ -613,7 +613,7 @@ export default function MeetDesigner() {
                     <Calendar className="h-5 w-5 text-forest" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-darkwood dark:text-warm-100">Powered by Cal.com</p>
+                    <p className="text-sm font-semibold text-darkwood dark:text-white">Powered by Cal.com</p>
                     <p className="text-xs text-darkwood/50 dark:text-white">Free open-source scheduling</p>
                   </div>
                 </div>
@@ -636,7 +636,7 @@ export default function MeetDesigner() {
       <section className="py-20 bg-white dark:bg-dark-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
-            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">How It Works</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-white mb-4 font-display">How It Works</h2>
             <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               Simple 4-step process to transform your space
             </p>
@@ -656,7 +656,7 @@ export default function MeetDesigner() {
                     <s.icon className="h-7 w-7 text-white" />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-2">{s.title}</h3>
+                <h3 className="text-lg font-bold text-darkwood dark:text-white mb-2">{s.title}</h3>
                 <p className="text-sm text-darkwood/60 dark:text-white">{s.desc}</p>
               </motion.div>
             ))}

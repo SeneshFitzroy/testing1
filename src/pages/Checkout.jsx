@@ -49,7 +49,7 @@ export default function Checkout() {
           <div className="w-24 h-24 bg-clay/10 rounded-full flex items-center justify-center mx-auto mb-6">
             <ShoppingBag className="h-12 w-12 text-clay" />
           </div>
-          <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">{t('cart.empty')}</h2>
+          <h2 className="text-2xl font-bold text-darkwood dark:text-white mb-3 font-display">{t('cart.empty')}</h2>
           <p className="text-darkwood/50 dark:text-white mb-6">{t('cart.empty.desc')}</p>
           <Link to="/shop" className="inline-flex items-center gap-2 bg-clay text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-clay-dark transition-all">
             <ShoppingBag className="h-5 w-5" /> {t('cart.continueShopping')}
@@ -68,7 +68,7 @@ export default function Checkout() {
             initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.3, type: 'spring' }}>
             <Check className="h-10 w-10 text-white" />
           </motion.div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">{t('checkout.orderPlaced')}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-darkwood dark:text-white mb-3 font-display">{t('checkout.orderPlaced')}</h2>
           <p className="text-darkwood/60 dark:text-white mb-2">{t('checkout.thankYou')}</p>
           {orderId && <p className="text-sm text-clay font-semibold mb-6">{t('checkout.orderId')}: #{orderId.slice(0, 8).toUpperCase()}</p>}
           <p className="text-sm text-darkwood/50 dark:text-white mb-8">{t('checkout.confirmationEmail')}</p>
@@ -76,7 +76,7 @@ export default function Checkout() {
             <Link to="/shop" className="inline-flex items-center justify-center gap-2 bg-clay text-white font-semibold px-6 py-3 rounded-xl hover:bg-clay-dark transition-all">
               {t('cart.continueShopping')} <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/shop" className="inline-flex items-center justify-center gap-2 border-2 border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-200 font-semibold px-6 py-3 rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-all">
+            <Link to="/shop" className="inline-flex items-center justify-center gap-2 border-2 border-warm-200 dark:border-dark-border text-darkwood dark:text-white font-semibold px-6 py-3 rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-all">
               {t('checkout.backToShop')}
             </Link>
           </div>
@@ -141,13 +141,13 @@ export default function Checkout() {
 
   const CountrySelect = ({ label, value, onChange }) => (
     <div>
-      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{label}</label>
+      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{label}</label>
       <div className="relative">
         <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400 pointer-events-none" />
         <select
           value={value}
           onChange={e => onChange(e.target.value)}
-          className="w-full pl-10 pr-4 py-3 rounded-xl border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all text-sm border-warm-200 dark:border-dark-border appearance-none cursor-pointer"
+          className="w-full pl-10 pr-4 py-3 rounded-xl border bg-white dark:bg-dark-surface text-darkwood dark:text-white focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all text-sm border-warm-200 dark:border-dark-border appearance-none cursor-pointer"
         >
           {COUNTRIES.map(c => (
             <option key={c} value={c}>{c}</option>
@@ -160,11 +160,11 @@ export default function Checkout() {
 
   const Inp = ({ label, name, value, onChange, type = 'text', placeholder, error, icon: Ic, disabled }) => (
     <div>
-      <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{label}</label>
+      <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{label}</label>
       <div className="relative">
         {Ic && <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Ic className="h-4 w-4 text-warm-400" /></div>}
         <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} disabled={disabled}
-          className={`w-full px-4 py-3 ${Ic ? 'pl-10' : ''} rounded-xl border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-warm-400 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all text-sm ${error ? 'border-red-300 dark:border-red-500' : 'border-warm-200 dark:border-dark-border'}`} />
+          className={`w-full px-4 py-3 ${Ic ? 'pl-10' : ''} rounded-xl border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-warm-400 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all text-sm ${error ? 'border-red-300 dark:border-red-500' : 'border-warm-200 dark:border-dark-border'}`} />
       </div>
       {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
     </div>
@@ -180,7 +180,7 @@ export default function Checkout() {
               <CreditCard className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">{t('checkout.title')}</h1>
+              <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-white font-display">{t('checkout.title')}</h1>
               <p className="text-darkwood/50 dark:text-white text-sm">{t('checkout.secureCheckout')}</p>
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function Checkout() {
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${step > s.id ? 'bg-forest text-white' : step === s.id ? 'bg-clay text-white shadow-lg shadow-clay/25' : 'bg-warm-100 dark:bg-dark-surface text-warm-400'}`}>
                     {step > s.id ? <Check className="h-5 w-5" /> : <s.icon className="h-5 w-5" />}
                   </div>
-                  <span className={`text-[10px] sm:text-xs mt-1.5 font-medium ${step >= s.id ? 'text-darkwood dark:text-warm-100' : 'text-warm-400'}`}>{s.label}</span>
+                  <span className={`text-[10px] sm:text-xs mt-1.5 font-medium ${step >= s.id ? 'text-darkwood dark:text-white' : 'text-warm-400'}`}>{s.label}</span>
                 </div>
                 {i < stepsArr.length - 1 && <div className={`w-10 sm:w-24 h-0.5 mx-1 sm:mx-2 rounded-full transition-all ${step > s.id ? 'bg-forest' : 'bg-warm-200 dark:bg-dark-border'}`} />}
               </div>
@@ -207,7 +207,7 @@ export default function Checkout() {
               {step === 1 && (
                 <motion.div key="ship" className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-5 sm:p-8"
                   initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}>
-                  <h2 className="text-lg sm:text-xl font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2">
                     <Truck className="h-5 w-5 text-clay" /> {t('checkout.shippingInfo')}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -229,7 +229,7 @@ export default function Checkout() {
               {step === 2 && (
                 <motion.div key="pay" className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-5 sm:p-8"
                   initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}>
-                  <h2 className="text-lg sm:text-xl font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center gap-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-darkwood dark:text-white mb-6 flex items-center gap-2">
                     <CreditCard className="h-5 w-5 text-clay" /> {t('checkout.paymentMethod')}
                   </h2>
                   <div className="flex flex-wrap gap-3 mb-6">
@@ -282,19 +282,19 @@ export default function Checkout() {
               {step === 3 && (
                 <motion.div key="review" className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-5 sm:p-8 space-y-6"
                   initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}>
-                  <h2 className="text-lg sm:text-xl font-bold text-darkwood dark:text-warm-100 flex items-center gap-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-darkwood dark:text-white flex items-center gap-2">
                     <Package className="h-5 w-5 text-clay" /> {t('checkout.reviewOrder')}
                   </h2>
                   <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-sm font-semibold text-darkwood dark:text-warm-100 flex items-center gap-2"><Truck className="h-4 w-4 text-clay" />{t('checkout.shippingTo')}</h3>
+                      <h3 className="text-sm font-semibold text-darkwood dark:text-white flex items-center gap-2"><Truck className="h-4 w-4 text-clay" />{t('checkout.shippingTo')}</h3>
                       <button onClick={() => setStep(1)} className="text-xs text-clay hover:text-clay-dark font-medium">{t('checkout.edit')}</button>
                     </div>
                     <p className="text-sm text-darkwood/70 dark:text-gray-100">{shipping.fullName}<br />{shipping.address}<br />{shipping.city}, {shipping.state} {shipping.zip}<br />{shipping.country}</p>
                   </div>
                   <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-sm font-semibold text-darkwood dark:text-warm-100 flex items-center gap-2"><CreditCard className="h-4 w-4 text-clay" />{t('checkout.paymentMethod')}</h3>
+                      <h3 className="text-sm font-semibold text-darkwood dark:text-white flex items-center gap-2"><CreditCard className="h-4 w-4 text-clay" />{t('checkout.paymentMethod')}</h3>
                       <button onClick={() => setStep(2)} className="text-xs text-clay hover:text-clay-dark font-medium">{t('checkout.edit')}</button>
                     </div>
                     <p className="text-sm text-darkwood/70 dark:text-gray-100">
@@ -302,7 +302,7 @@ export default function Checkout() {
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-darkwood dark:text-warm-100 mb-3">{t('checkout.items')} ({cart.length})</h3>
+                    <h3 className="text-sm font-semibold text-darkwood dark:text-white mb-3">{t('checkout.items')} ({cart.length})</h3>
                     <div className="space-y-3">
                       {cart.map(item => (
                         <div key={item.id} className="flex items-center gap-3 sm:gap-4 bg-warm-50 dark:bg-dark-surface rounded-xl p-3">
@@ -310,7 +310,7 @@ export default function Checkout() {
                             <Mini3DPreview productId={item.id} color={item.selectedColor || '#8B6F47'} />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-darkwood dark:text-warm-100 truncate">{item.name}</p>
+                            <p className="text-sm font-semibold text-darkwood dark:text-white truncate">{item.name}</p>
                             <p className="text-xs text-darkwood/50 dark:text-white">{t('checkout.qty')}: {item.quantity || 1}</p>
                           </div>
                           <span className="text-sm font-bold text-clay">{formatPrice(item.price * (item.quantity || 1))}</span>
@@ -324,11 +324,11 @@ export default function Checkout() {
 
             <div className="flex justify-between mt-6">
               {step > 1 ? (
-                <button onClick={() => setStep(step - 1)} className="flex items-center gap-2 px-5 sm:px-6 py-3 border-2 border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-200 font-semibold rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-all text-sm">
+                <button onClick={() => setStep(step - 1)} className="flex items-center gap-2 px-5 sm:px-6 py-3 border-2 border-warm-200 dark:border-dark-border text-darkwood dark:text-white font-semibold rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-all text-sm">
                   <ChevronLeft className="h-4 w-4" /> {t('checkout.back')}
                 </button>
               ) : (
-                <Link to="/cart" className="flex items-center gap-2 px-5 sm:px-6 py-3 border-2 border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-200 font-semibold rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-all text-sm">
+                <Link to="/cart" className="flex items-center gap-2 px-5 sm:px-6 py-3 border-2 border-warm-200 dark:border-dark-border text-darkwood dark:text-white font-semibold rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-all text-sm">
                   <ChevronLeft className="h-4 w-4" /> {t('checkout.backToCart')}
                 </Link>
               )}
@@ -347,7 +347,7 @@ export default function Checkout() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <motion.div className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-5 sm:p-6 sticky top-24 space-y-5" {...fadeInUp}>
-              <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-darkwood dark:text-white flex items-center gap-2">
                 <ShoppingBag className="h-5 w-5 text-clay" /> {t('cart.orderSummary')}
               </h3>
               <div className="space-y-3 max-h-48 overflow-y-auto">
@@ -357,20 +357,20 @@ export default function Checkout() {
                       <Mini3DPreview productId={item.id} color={item.selectedColor || '#8B6F47'} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium text-darkwood dark:text-warm-100 truncate">{item.name}</p>
+                      <p className="text-xs font-medium text-darkwood dark:text-white truncate">{item.name}</p>
                       <p className="text-[10px] text-warm-400">x{item.quantity || 1}</p>
                     </div>
-                    <span className="text-xs font-bold text-darkwood dark:text-warm-100">{formatPrice(item.price * (item.quantity || 1))}</span>
+                    <span className="text-xs font-bold text-darkwood dark:text-white">{formatPrice(item.price * (item.quantity || 1))}</span>
                   </div>
                 ))}
               </div>
               <hr className="border-warm-100 dark:border-dark-border" />
               <div className="space-y-2.5 text-sm">
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('cart.subtotal')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('cart.shipping')}</span><span className={`font-semibold ${shippingCost === 0 ? 'text-forest' : 'text-darkwood dark:text-warm-100'}`}>{shippingCost === 0 ? t('cart.free') : formatPrice(shippingCost)}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('checkout.tax')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(tax)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('cart.subtotal')}</span><span className="font-semibold text-darkwood dark:text-white">{formatPrice(subtotal)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('cart.shipping')}</span><span className={`font-semibold ${shippingCost === 0 ? 'text-forest' : 'text-darkwood dark:text-white'}`}>{shippingCost === 0 ? t('cart.free') : formatPrice(shippingCost)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('checkout.tax')}</span><span className="font-semibold text-darkwood dark:text-white">{formatPrice(tax)}</span></div>
                 <hr className="border-warm-100 dark:border-dark-border" />
-                <div className="flex justify-between"><span className="text-base font-bold text-darkwood dark:text-warm-100">{t('cart.total')}</span><span className="text-xl font-bold text-clay">{formatPrice(total)}</span></div>
+                <div className="flex justify-between"><span className="text-base font-bold text-darkwood dark:text-white">{t('cart.total')}</span><span className="text-xl font-bold text-clay">{formatPrice(total)}</span></div>
               </div>
               <div className="space-y-2.5 pt-2">
                 {[{ icon: Lock, text: t('checkout.ssl'), color: 'text-forest' }, { icon: Shield, text: t('cart.secureCheckout'), color: 'text-clay' }, { icon: Gift, text: t('cart.giftWrapping'), color: 'text-amber-600 dark:text-amber-400' }].map((b, i) => (

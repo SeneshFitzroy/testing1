@@ -63,12 +63,12 @@ export default function AdminProducts() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Link to="/admin" className="p-2 rounded-xl bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-warm-300 hover:bg-warm-200 dark:hover:bg-dark-border transition-colors">
+              <Link to="/admin" className="p-2 rounded-xl bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white hover:bg-warm-200 dark:hover:bg-dark-border transition-colors">
                 <ArrowLeft className="h-5 w-5" />
               </Link>
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">{t('admin.productMgmt')}</h1>
-                <p className="text-darkwood/50 dark:text-warm-400 text-sm mt-0.5">{products.length} products &middot; Total value ${getTotalValue().toLocaleString()}</p>
+                <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-white font-display">{t('admin.productMgmt')}</h1>
+                <p className="text-darkwood/50 dark:text-white text-sm mt-0.5">{products.length} products &middot; Total value ${getTotalValue().toLocaleString()}</p>
               </div>
             </div>
             <button className="inline-flex items-center gap-2 bg-clay text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-clay-dark hover:shadow-lg hover:shadow-clay/25 transition-all text-sm">
@@ -103,8 +103,8 @@ export default function AdminProducts() {
                 <stat.icon className="h-5 w-5 text-white" />
               </div>
               <div>
-                <div className="text-lg font-bold text-darkwood dark:text-warm-100">{stat.value}</div>
-                <div className="text-xs text-darkwood/50 dark:text-warm-400">{stat.label}</div>
+                <div className="text-lg font-bold text-darkwood dark:text-white">{stat.value}</div>
+                <div className="text-xs text-darkwood/50 dark:text-white">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -119,16 +119,16 @@ export default function AdminProducts() {
             </div>
             <div className="flex items-center gap-2 flex-wrap">
               {categories.map(cat => (
-                <button key={cat.id} onClick={() => setSelectedCategory(cat.id)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${selectedCategory === cat.id ? 'bg-clay text-white' : 'bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-warm-400 hover:bg-warm-200 dark:hover:bg-dark-border'}`}>
+                <button key={cat.id} onClick={() => setSelectedCategory(cat.id)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${selectedCategory === cat.id ? 'bg-clay text-white' : 'bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-white hover:bg-warm-200 dark:hover:bg-dark-border'}`}>
                   {cat.name} ({getCategoryCount(cat.id)})
                 </button>
               ))}
             </div>
             <div className="flex bg-warm-100 dark:bg-dark-surface rounded-lg p-1">
-              <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded ${viewMode === 'grid' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-warm-400'}`}>
+              <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded ${viewMode === 'grid' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-white'}`}>
                 <Grid3X3 className="h-4 w-4" />
               </button>
-              <button onClick={() => setViewMode('list')} className={`p-1.5 rounded ${viewMode === 'list' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-warm-400'}`}>
+              <button onClick={() => setViewMode('list')} className={`p-1.5 rounded ${viewMode === 'list' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-white'}`}>
                 <List className="h-4 w-4" />
               </button>
             </div>
@@ -139,8 +139,8 @@ export default function AdminProducts() {
         {filteredProducts.length === 0 ? (
           <div className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-16 text-center">
             <Package className="h-16 w-16 text-warm-300 dark:text-dark-border mx-auto mb-4" />
-            <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-2">{t('admin.products.noProducts')}</h3>
-            <p className="text-darkwood/50 dark:text-warm-400 text-sm">{t('admin.products.adjustFilter')}</p>
+            <h3 className="text-lg font-bold text-darkwood dark:text-white mb-2">{t('admin.products.noProducts')}</h3>
+            <p className="text-darkwood/50 dark:text-white text-sm">{t('admin.products.adjustFilter')}</p>
           </div>
         ) : viewMode === 'grid' ? (
           <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -157,15 +157,15 @@ export default function AdminProducts() {
                     </button>
                   </div>
                   <div className="absolute top-2 left-2">
-                    <span className="bg-white/90 dark:bg-dark-card/90 text-darkwood dark:text-warm-100 text-[10px] font-semibold px-2 py-0.5 rounded-full">{product.category}</span>
+                    <span className="bg-white/90 dark:bg-dark-card/90 text-darkwood dark:text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">{product.category}</span>
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-darkwood dark:text-warm-100 text-sm mb-1 truncate">{product.name}</h3>
-                  <p className="text-xs text-darkwood/50 dark:text-warm-400 mb-3 line-clamp-2">{product.description}</p>
+                  <h3 className="font-semibold text-darkwood dark:text-white text-sm mb-1 truncate">{product.name}</h3>
+                  <p className="text-xs text-darkwood/50 dark:text-white mb-3 line-clamp-2">{product.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-clay font-bold text-lg">${product.price}</span>
-                    <span className="text-[10px] text-darkwood/40 dark:text-warm-500">{product.width}m x {product.depth}m x {product.height}m</span>
+                    <span className="text-[10px] text-darkwood/40 dark:text-white">{product.width}m x {product.depth}m x {product.height}m</span>
                   </div>
                 </div>
               </motion.div>
@@ -177,12 +177,12 @@ export default function AdminProducts() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-warm-100 dark:border-dark-border bg-warm-50 dark:bg-dark-surface">
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider">{t('admin.products.product')}</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider">{t('product.category')}</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider">{t('admin.products.price')}</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider">{t('product.dimensions')}</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider">{t('product.color')}</th>
-                    <th className="text-right px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-warm-400 uppercase tracking-wider">{t('admin.products.actions')}</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-white uppercase tracking-wider">{t('admin.products.product')}</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-white uppercase tracking-wider">{t('product.category')}</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-white uppercase tracking-wider">{t('admin.products.price')}</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-white uppercase tracking-wider">{t('product.dimensions')}</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-white uppercase tracking-wider">{t('product.color')}</th>
+                    <th className="text-right px-4 py-3 text-xs font-semibold text-darkwood/60 dark:text-white uppercase tracking-wider">{t('admin.products.actions')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-warm-100 dark:divide-dark-border">
@@ -192,20 +192,20 @@ export default function AdminProducts() {
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-lg flex-shrink-0" style={{ backgroundColor: product.color }} />
                           <div>
-                            <div className="text-sm font-semibold text-darkwood dark:text-warm-100">{product.name}</div>
-                            <div className="text-xs text-darkwood/40 dark:text-warm-500 truncate max-w-[200px]">{product.description}</div>
+                            <div className="text-sm font-semibold text-darkwood dark:text-white">{product.name}</div>
+                            <div className="text-xs text-darkwood/40 dark:text-white truncate max-w-[200px]">{product.description}</div>
                           </div>
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-warm-300 text-xs font-medium px-2 py-1 rounded-full capitalize">{product.category}</span>
+                        <span className="bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-white text-xs font-medium px-2 py-1 rounded-full capitalize">{product.category}</span>
                       </td>
                       <td className="px-4 py-3"><span className="text-sm font-bold text-clay">${product.price}</span></td>
-                      <td className="px-4 py-3"><span className="text-xs text-darkwood/50 dark:text-warm-400">{product.width} x {product.depth} x {product.height}m</span></td>
+                      <td className="px-4 py-3"><span className="text-xs text-darkwood/50 dark:text-white">{product.width} x {product.depth} x {product.height}m</span></td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2">
                           <div className="w-5 h-5 rounded-full border border-warm-200 dark:border-dark-border" style={{ backgroundColor: product.color }} />
-                          <span className="text-xs text-darkwood/50 dark:text-warm-400">{product.color}</span>
+                          <span className="text-xs text-darkwood/50 dark:text-white">{product.color}</span>
                         </div>
                       </td>
                       <td className="px-4 py-3 text-right">
@@ -229,25 +229,25 @@ export default function AdminProducts() {
           <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setEditingProduct(null)}>
             <motion.div className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} onClick={(e) => e.stopPropagation()}>
               <div className="p-6 border-b border-warm-100 dark:border-dark-border flex items-center justify-between">
-                <h2 className="text-lg font-bold text-darkwood dark:text-warm-100 font-display">{t('admin.products.editProduct')}</h2>
+                <h2 className="text-lg font-bold text-darkwood dark:text-white font-display">{t('admin.products.editProduct')}</h2>
                 <button onClick={() => setEditingProduct(null)} className="p-2 rounded-lg text-darkwood/50 hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"><X className="h-5 w-5" /></button>
               </div>
               <div className="p-6 space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('admin.products.productName')}</label>
+                  <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('admin.products.productName')}</label>
                   <input type="text" value={editingProduct.name} onChange={(e) => setEditingProduct(prev => ({ ...prev, name: e.target.value }))} className="input-field text-sm" />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('product.description')}</label>
+                  <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('product.description')}</label>
                   <textarea value={editingProduct.description || ''} onChange={(e) => setEditingProduct(prev => ({ ...prev, description: e.target.value }))} className="input-field text-sm resize-none" rows={3} />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('admin.products.price')} ($)</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('admin.products.price')} ($)</label>
                     <input type="number" value={editingProduct.price} onChange={(e) => setEditingProduct(prev => ({ ...prev, price: Number(e.target.value) }))} className="input-field text-sm" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('product.category')}</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('product.category')}</label>
                     <select value={editingProduct.category} onChange={(e) => setEditingProduct(prev => ({ ...prev, category: e.target.value }))} className="input-field text-sm">
                       {categories.filter(c => c.id !== 'all').map(cat => (
                         <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -257,20 +257,20 @@ export default function AdminProducts() {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">Width (m)</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">Width (m)</label>
                     <input type="number" step="0.1" value={editingProduct.width} onChange={(e) => setEditingProduct(prev => ({ ...prev, width: Number(e.target.value) }))} className="input-field text-sm" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">Depth (m)</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">Depth (m)</label>
                     <input type="number" step="0.1" value={editingProduct.depth} onChange={(e) => setEditingProduct(prev => ({ ...prev, depth: Number(e.target.value) }))} className="input-field text-sm" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">Height (m)</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">Height (m)</label>
                     <input type="number" step="0.1" value={editingProduct.height} onChange={(e) => setEditingProduct(prev => ({ ...prev, height: Number(e.target.value) }))} className="input-field text-sm" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('product.color')}</label>
+                  <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('product.color')}</label>
                   <div className="flex items-center gap-3">
                     <input type="color" value={editingProduct.color} onChange={(e) => setEditingProduct(prev => ({ ...prev, color: e.target.value }))} className="w-10 h-10 rounded-lg cursor-pointer border border-warm-200 dark:border-dark-border" />
                     <input type="text" value={editingProduct.color} onChange={(e) => setEditingProduct(prev => ({ ...prev, color: e.target.value }))} className="input-field text-sm flex-1" />
@@ -278,7 +278,7 @@ export default function AdminProducts() {
                 </div>
               </div>
               <div className="p-6 border-t border-warm-100 dark:border-dark-border flex gap-3">
-                <button onClick={() => setEditingProduct(null)} className="flex-1 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-300 rounded-xl font-medium hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors text-sm">{t('common.cancel')}</button>
+                <button onClick={() => setEditingProduct(null)} className="flex-1 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-white rounded-xl font-medium hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors text-sm">{t('common.cancel')}</button>
                 <button onClick={() => handleSaveEdit(editingProduct)} className="flex-1 bg-clay text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-clay-dark transition-colors text-sm flex items-center justify-center gap-2"><Save className="h-4 w-4" />{t('admin.products.saveChanges')}</button>
               </div>
             </motion.div>
@@ -294,10 +294,10 @@ export default function AdminProducts() {
               <div className="w-14 h-14 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <AlertTriangle className="h-7 w-7 text-red-500" />
               </div>
-              <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-2">{t('admin.products.deleteProduct')}</h3>
-              <p className="text-darkwood/50 dark:text-warm-400 text-sm mb-6">{t('admin.products.deleteWarning')}</p>
+              <h3 className="text-lg font-bold text-darkwood dark:text-white mb-2">{t('admin.products.deleteProduct')}</h3>
+              <p className="text-darkwood/50 dark:text-white text-sm mb-6">{t('admin.products.deleteWarning')}</p>
               <div className="flex gap-3">
-                <button onClick={() => setShowDeleteConfirm(null)} className="flex-1 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-300 rounded-xl font-medium hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors text-sm">{t('common.cancel')}</button>
+                <button onClick={() => setShowDeleteConfirm(null)} className="flex-1 px-4 py-2.5 border border-warm-200 dark:border-dark-border text-darkwood dark:text-white rounded-xl font-medium hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors text-sm">{t('common.cancel')}</button>
                 <button onClick={() => handleDelete(showDeleteConfirm)} className="flex-1 bg-red-500 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-red-600 transition-colors text-sm">{t('common.delete')}</button>
               </div>
             </motion.div>

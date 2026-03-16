@@ -101,7 +101,7 @@ export default function MyDesigns() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-clay mx-auto mb-4"></div>
-          <div className="text-darkwood dark:text-warm-100">{t('myDesigns.loading')}</div>
+          <div className="text-darkwood dark:text-white">{t('myDesigns.loading')}</div>
         </div>
       </div>
     )
@@ -120,7 +120,7 @@ export default function MyDesigns() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-3xl sm:text-4xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-2 font-display">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#5C3A2A] dark:text-white mb-2 font-display">
             {t('myDesigns.title')}
           </h1>
           <p className="text-darkwood/60 dark:text-white text-base">
@@ -144,7 +144,7 @@ export default function MyDesigns() {
                 placeholder={t('myDesigns.searchDesigns')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-[#5C3A2A]/20 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 placeholder:text-darkwood/40 focus:outline-none focus:ring-2 focus:ring-[#5C3A2A]/30 focus:border-[#5C3A2A] transition-all"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-[#5C3A2A]/20 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white placeholder:text-darkwood/40 focus:outline-none focus:ring-2 focus:ring-[#5C3A2A]/30 focus:border-[#5C3A2A] transition-all"
               />
             </div>
 
@@ -153,7 +153,7 @@ export default function MyDesigns() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 rounded-xl border border-[#5C3A2A]/20 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-warm-100 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#5C3A2A]/30 cursor-pointer min-w-[140px]"
+                className="px-4 py-3 rounded-xl border border-[#5C3A2A]/20 dark:border-dark-border bg-white dark:bg-dark-surface text-darkwood dark:text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#5C3A2A]/30 cursor-pointer min-w-[140px]"
               >
                 <option value="updatedAt">{t('myDesigns.lastModified')}</option>
                 <option value="createdAt">{t('myDesigns.dateCreated')}</option>
@@ -209,7 +209,7 @@ export default function MyDesigns() {
             <div className="inline-flex items-center justify-center w-28 h-28 rounded-2xl bg-[#5C3A2A]/5 dark:bg-dark-surface mb-8">
               <Folder className="h-14 w-14 text-[#5C3A2A]/50 dark:text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-3">
+            <h3 className="text-2xl font-bold text-[#5C3A2A] dark:text-white mb-3">
               {searchTerm ? t('myDesigns.noDesignsFound') : t('myDesigns.noDesignsYet')}
             </h3>
             <p className="text-darkwood/60 dark:text-white mb-8 max-w-sm mx-auto">
@@ -258,7 +258,7 @@ export default function MyDesigns() {
                     <FileImage className="h-12 w-12 text-warm-300 dark:text-dark-border" />
                   </div>
                   <div className="absolute top-2 right-2">
-                    <span className="text-xs bg-white dark:bg-dark-bg px-2 py-1 rounded-full text-darkwood dark:text-warm-100">
+                    <span className="text-xs bg-white dark:bg-dark-bg px-2 py-1 rounded-full text-darkwood dark:text-white">
                       {design.furniture?.length || 0} {t('cart.items')}
                     </span>
                   </div>
@@ -276,7 +276,7 @@ export default function MyDesigns() {
 
                 {/* Design Info */}
                 <div className={viewMode === 'grid' ? 'p-6' : 'flex-1'}>
-                  <h3 className="font-semibold text-darkwood dark:text-warm-100 mb-2 line-clamp-2">
+                  <h3 className="font-semibold text-darkwood dark:text-white mb-2 line-clamp-2">
                     {design.name}
                   </h3>
                   {design.description && (
@@ -309,7 +309,7 @@ export default function MyDesigns() {
                     </button>
                     
                     <button
-                      className="p-2 bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-warm-100 rounded-lg hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
+                      className="p-2 bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white rounded-lg hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
                       title={t('myDesigns.export')}
                     >
                       <Download className="h-4 w-4" />
@@ -336,13 +336,13 @@ export default function MyDesigns() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h3 className="text-lg font-semibold text-[#5C3A2A] dark:text-warm-100 mb-6">
+          <h3 className="text-lg font-semibold text-[#5C3A2A] dark:text-white mb-6">
             {t('myDesigns.designStats')}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
               <Folder className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
-              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
+              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-white mb-1">
                 {userDesigns?.length || 0}
               </div>
               <div className="text-sm text-darkwood/60 dark:text-white">
@@ -351,7 +351,7 @@ export default function MyDesigns() {
             </div>
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
               <Package className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
-              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
+              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-white mb-1">
                 {totalItems}
               </div>
               <div className="text-sm text-darkwood/60 dark:text-white">
@@ -360,7 +360,7 @@ export default function MyDesigns() {
             </div>
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
               <Calendar className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
-              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
+              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-white mb-1">
                 {thisWeekCount}
               </div>
               <div className="text-sm text-darkwood/60 dark:text-white">
@@ -369,7 +369,7 @@ export default function MyDesigns() {
             </div>
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
               <BarChart2 className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
-              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
+              <div className="text-3xl font-bold text-[#5C3A2A] dark:text-white mb-1">
                 {avgItems}
               </div>
               <div className="text-sm text-darkwood/60 dark:text-white">

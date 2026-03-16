@@ -77,7 +77,7 @@ export default function ConfirmDialog({
               className="absolute top-4 right-4 p-1 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
               aria-label="Close dialog"
             >
-              <X className="h-4 w-4 text-darkwood/40 dark:text-warm-500" />
+              <X className="h-4 w-4 text-darkwood/40 dark:text-white" />
             </button>
 
             <div className="flex items-start gap-4">
@@ -85,10 +85,10 @@ export default function ConfirmDialog({
                 <AlertTriangle className="h-5 w-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 id="confirm-dialog-title" className="text-lg font-semibold text-darkwood dark:text-warm-100 mb-1">
+                <h3 id="confirm-dialog-title" className="text-lg font-semibold text-darkwood dark:text-white mb-1">
                   {title}
                 </h3>
-                <p id="confirm-dialog-desc" className="text-sm text-darkwood/60 dark:text-warm-400 leading-relaxed">
+                <p id="confirm-dialog-desc" className="text-sm text-darkwood/60 dark:text-white leading-relaxed">
                   {message}
                 </p>
               </div>
@@ -97,7 +97,7 @@ export default function ConfirmDialog({
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={onCancel}
-                className="px-5 py-2.5 text-sm font-semibold text-darkwood dark:text-warm-200 bg-warm-100 dark:bg-dark-surface hover:bg-warm-200 dark:hover:bg-dark-border rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-warm-400 focus:ring-offset-2"
+                className="px-5 py-2.5 text-sm font-semibold text-darkwood dark:text-white bg-warm-100 dark:bg-dark-surface hover:bg-warm-200 dark:hover:bg-dark-border rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-warm-400 focus:ring-offset-2"
               >
                 {cancelLabel}
               </button>

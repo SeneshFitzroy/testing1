@@ -183,7 +183,7 @@ export default function AdminDashboard() {
       'shipped': 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
       'cancelled': 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
     }
-    return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400'
+    return colors[status] || 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-white'
   }
 
   const fadeInUp = {
@@ -212,8 +212,8 @@ export default function AdminDashboard() {
           <div className="w-16 h-16 bg-clay rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
             <Shield className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2">{t('admin.loading')}</h2>
-          <p className="text-darkwood/60 dark:text-warm-400">{t('admin.preparingDashboard')}</p>
+          <h2 className="text-xl font-bold text-darkwood dark:text-white mb-2">{t('admin.loading')}</h2>
+          <p className="text-darkwood/60 dark:text-white">{t('admin.preparingDashboard')}</p>
         </motion.div>
       </div>
     )
@@ -235,10 +235,10 @@ export default function AdminDashboard() {
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-black text-darkwood dark:text-warm-100 font-display">
+                <h1 className="text-3xl font-black text-darkwood dark:text-white font-display">
                   {t('admin.dashboard')}
                 </h1>
-                <p className="text-darkwood/60 dark:text-warm-400">
+                <p className="text-darkwood/60 dark:text-white">
                   {t('admin.welcomeBack', { name: userProfile?.name || t('admin.administrator') })}
                 </p>
               </div>
@@ -313,10 +313,10 @@ export default function AdminDashboard() {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-darkwood/60 dark:text-warm-400 text-sm font-medium mb-1">
+                  <p className="text-darkwood/60 dark:text-white text-sm font-medium mb-1">
                     {stat.title}
                   </p>
-                  <p className="text-2xl font-black text-darkwood dark:text-warm-100">
+                  <p className="text-2xl font-black text-darkwood dark:text-white">
                     {stat.value}
                   </p>
                   <p className="text-green-600 dark:text-green-400 text-sm font-semibold mt-1">
@@ -356,24 +356,24 @@ export default function AdminDashboard() {
                     <div className="flex space-x-1">
                       {Object.entries(section.stats).map(([key, value], statIndex) => (
                         <div key={statIndex} className="text-center">
-                          <div className="text-sm font-bold text-darkwood dark:text-warm-100">{value}</div>
-                          <div className="text-xs text-darkwood/50 dark:text-warm-400 capitalize">{key}</div>
+                          <div className="text-sm font-bold text-darkwood dark:text-white">{value}</div>
+                          <div className="text-xs text-darkwood/50 dark:text-white capitalize">{key}</div>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
                 
-                <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-2 group-hover:text-clay transition-colors">
+                <h3 className="text-lg font-bold text-darkwood dark:text-white mb-2 group-hover:text-clay transition-colors">
                   {section.title}
                 </h3>
-                <p className="text-darkwood/60 dark:text-warm-400 text-sm mb-4">
+                <p className="text-darkwood/60 dark:text-white text-sm mb-4">
                   {section.description}
                 </p>
                 
                 <div className="space-y-1 mb-4">
                   {section.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center text-xs text-darkwood/50 dark:text-warm-400">
+                    <div key={featureIndex} className="flex items-center text-xs text-darkwood/50 dark:text-white">
                       <CheckCircle className="h-3 w-3 text-green-500 mr-2" />
                       {feature}
                     </div>
@@ -406,7 +406,7 @@ export default function AdminDashboard() {
                   <div className="w-8 h-8 bg-clay rounded-lg flex items-center justify-center">
                     <ShoppingCart className="h-4 w-4 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-darkwood dark:text-warm-100">{ t('admin.recentOrders')}</h3>
+                  <h3 className="text-lg font-bold text-darkwood dark:text-white">{ t('admin.recentOrders')}</h3>
                 </div>
                 <Link
                   to="/admin/orders"
@@ -425,23 +425,23 @@ export default function AdminDashboard() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-3">
                           <div className="w-8 h-8 bg-warm-100 dark:bg-dark-surface rounded-full flex items-center justify-center">
-                            <Users className="h-4 w-4 text-darkwood/60 dark:text-warm-400" />
+                            <Users className="h-4 w-4 text-darkwood/60 dark:text-white" />
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-darkwood dark:text-warm-100">{order.customer}</p>
-                            <p className="text-xs text-darkwood/50 dark:text-warm-400">{order.id}</p>
+                            <p className="text-sm font-semibold text-darkwood dark:text-white">{order.customer}</p>
+                            <p className="text-xs text-darkwood/50 dark:text-white">{order.id}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm font-bold text-darkwood dark:text-warm-100">{order.amount}</p>
-                          <p className="text-xs text-darkwood/50 dark:text-warm-400">{order.items} items</p>
+                          <p className="text-sm font-bold text-darkwood dark:text-white">{order.amount}</p>
+                          <p className="text-xs text-darkwood/50 dark:text-white">{order.items} items</p>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
                           {order.status}
                         </span>
-                        <span className="text-xs text-darkwood/50 dark:text-warm-400">{order.date}</span>
+                        <span className="text-xs text-darkwood/50 dark:text-white">{order.date}</span>
                       </div>
                     </div>
                   </div>
@@ -463,11 +463,11 @@ export default function AdminDashboard() {
                   <div className="w-8 h-8 bg-darkwood rounded-lg flex items-center justify-center">
                     <Award className="h-4 w-4 text-white" />
                   </div>
-                  <h3 className="text-lg font-bold text-darkwood dark:text-warm-100">{t('admin.topProducts')}</h3>
+                  <h3 className="text-lg font-bold text-darkwood dark:text-white">{t('admin.topProducts')}</h3>
                 </div>
                 <Link
                   to="/admin/products"
-                  className="text-darkwood hover:text-darkwood-light dark:text-warm-300 font-medium text-sm"
+                  className="text-darkwood hover:text-darkwood-light dark:text-white font-medium text-sm"
                 >
                   {t('admin.viewAll')}
                 </Link>
@@ -484,10 +484,10 @@ export default function AdminDashboard() {
                       className="w-12 h-12 rounded-lg object-cover"
                     />
                     <div className="flex-1">
-                      <p className="text-sm font-semibold text-darkwood dark:text-warm-100 mb-1">{product.name}</p>
+                      <p className="text-sm font-semibold text-darkwood dark:text-white mb-1">{product.name}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
-                          <span className="text-xs text-darkwood/50 dark:text-warm-400">{product.sales} sales</span>
+                          <span className="text-xs text-darkwood/50 dark:text-white">{product.sales} sales</span>
                           <span className="text-xs font-bold text-green-600 dark:text-green-400">{product.revenue}</span>
                         </div>
                         <div className="flex items-center space-x-1">
@@ -514,7 +514,7 @@ export default function AdminDashboard() {
           initial="initial"
           animate="animate"
         >
-          <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-6 flex items-center">
+          <h3 className="text-lg font-bold text-darkwood dark:text-white mb-6 flex items-center">
             <Zap className="h-5 w-5 text-yellow-500 mr-2" />
             {t('admin.quickActions')}
           </h3>
@@ -539,7 +539,7 @@ export default function AdminDashboard() {
                 <div className={`w-10 h-10 bg-gradient-to-r ${action.color} rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform`}>
                   <action.icon className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xs font-medium text-darkwood/70 dark:text-warm-300 text-center">
+                <span className="text-xs font-medium text-darkwood/70 dark:text-white text-center">
                   {action.label}
                 </span>
               </motion.button>

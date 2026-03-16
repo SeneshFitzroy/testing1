@@ -66,10 +66,10 @@ export default function JustInTimePopup() {
 
           <div className="p-8 pt-10">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 font-display">
+              <h2 className="text-2xl font-bold text-darkwood dark:text-white font-display">
                 Just in Time
               </h2>
-              <p className="text-darkwood/70 dark:text-warm-300 mt-2 text-sm">
+              <p className="text-darkwood/70 dark:text-white mt-2 text-sm">
                 Sale is on. Be first to know about sales, new arrivals, and exclusive offers.
               </p>
             </div>
@@ -85,7 +85,7 @@ export default function JustInTimePopup() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
-                  className="w-full px-4 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-warm-100 text-sm focus:outline-none focus:ring-2 focus:ring-clay/30 focus:border-clay"
+                  className="w-full px-4 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-clay/30 focus:border-clay"
                   required
                 />
                 <button
@@ -97,7 +97,7 @@ export default function JustInTimePopup() {
               </form>
             )}
 
-            <p className="text-[10px] text-darkwood/50 dark:text-warm-500 mt-4 text-center">
+            <p className="text-[10px] text-darkwood/50 dark:text-white mt-4 text-center">
               By joining, you agree to receive promotional messages. No purchase necessary. Reply HELP for help, STOP to unsubscribe. <Link to="/settings" className="underline hover:text-clay">View Terms & Privacy</Link>
             </p>
           </div>

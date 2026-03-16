@@ -282,7 +282,7 @@ export default function OptimizedRoomViewer3D() {
         <div className="text-gray-900 dark:text-gray-100 font-medium">
           3D Room View
         </div>
-        <div className="text-gray-500 dark:text-gray-400 text-xs mt-1">
+        <div className="text-gray-500 dark:text-white text-xs mt-1">
           Items: {furnitureItems.length} • Quality: {quality}
         </div>
         <button
@@ -320,7 +320,7 @@ export default function OptimizedRoomViewer3D() {
       </div>
 
       {/* Instructions */}
-      <div className="absolute bottom-4 left-4 z-20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg p-3 text-xs text-gray-500 dark:text-gray-400">
+      <div className="absolute bottom-4 left-4 z-20 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg p-3 text-xs text-gray-500 dark:text-white">
         <div>Mouse: Orbit • Wheel: Zoom • Click: Select • Mobile: Touch to rotate</div>
       </div>
 
