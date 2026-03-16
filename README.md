@@ -139,6 +139,14 @@ src/
 - Repository: [testing1](https://github.com/SeneshFitzroy/testing1)  
 - Email: 10952757@students.plymouth.ac.uk  
 
+## Author
+
+**SeneshFitzroy**  
+- GitHub: [SeneshFitzroy](https://github.com/SeneshFitzroy)  
+- Repo: [testing1](https://github.com/SeneshFitzroy/testing1)  
+- Email: 10952757@students.plymouth.ac.uk  
+- University of Plymouth — PUSL3122 HCI Coursework
+
 ## Credits
 
 - **Unsplash** — Product and interior photography
