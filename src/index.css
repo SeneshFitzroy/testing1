@@ -15,10 +15,11 @@
     color: #1C1C1C;
   }
   html.dark body, html.dark #root {
-    color: #E8DFD5;
+    color: #FFFFFF;
   }
   html.dark body {
-    @apply bg-dark-bg text-warm-200;
+    @apply bg-dark-bg;
+    color: #FFFFFF;
   }
   /* Luxury spacing - increase base padding/margin rhythm */
   h1, h2, h3, h4 {
@@ -72,17 +73,17 @@
   .input-field {
     @apply w-full px-4 py-3 rounded-xl border border-warm-200
            bg-white dark:bg-dark-surface dark:border-dark-border
-           text-darkwood dark:text-warm-100 placeholder:text-warm-400
+           text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white
            focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay
            transition-all duration-200;
   }
   .label {
-    @apply block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5;
+    @apply block text-sm font-semibold text-darkwood dark:text-white mb-1.5;
   }
 
   /* ── Typography ── */
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-darkwood dark:text-warm-100;
+    @apply text-3xl md:text-4xl font-bold text-darkwood dark:text-white;
   }
   .section-subtitle {
     @apply text-warm-500 dark:text-white text-lg mt-2;
