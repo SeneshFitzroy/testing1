@@ -76,10 +76,10 @@ export default function CookieConsent() {
                 <Cookie className="h-5 w-5 text-clay" />
               </div>
               <div>
-                <h3 className="font-bold text-darkwood dark:text-warm-100 text-sm sm:text-base mb-1">
+                <h3 className="font-bold text-darkwood dark:text-white text-sm sm:text-base mb-1">
                   Cookie & Location
                 </h3>
-                <p className="text-xs sm:text-sm text-darkwood/70 dark:text-warm-400">
+                <p className="text-xs sm:text-sm text-darkwood/70 dark:text-white/95">
                   We use cookies for preferences and personalization. Accept to allow optional location detection so
                   we can suggest your region, currency, and language automatically.
                 </p>
@@ -88,7 +88,7 @@ export default function CookieConsent() {
             <div className="flex items-center gap-2 flex-shrink-0">
               <button
                 onClick={handleDecline}
-                className="px-4 py-2.5 rounded-xl text-sm font-medium border border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-300 hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
+                className="px-4 py-2.5 rounded-xl text-sm font-medium border border-warm-200 dark:border-dark-border text-darkwood dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface transition-colors"
               >
                 Decline
               </button>
@@ -111,7 +111,7 @@ export default function CookieConsent() {
               </button>
             </div>
           </div>
-          <p className="mt-3 text-[10px] text-darkwood/50 dark:text-warm-500 flex items-center gap-1.5">
+          <p className="mt-3 text-[10px] text-darkwood/50 dark:text-white/90 flex items-center gap-1.5">
             <Shield className="h-3.5 w-3.5 flex-shrink-0" />
             Your data stays local. No tracking without consent. Location is optional and used only to customize your experience.
           </p>

@@ -123,7 +123,7 @@ export default function MyDesigns() {
           <h1 className="text-3xl sm:text-4xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-2 font-display">
             {t('myDesigns.title')}
           </h1>
-          <p className="text-darkwood/60 dark:text-warm-400 text-base">
+          <p className="text-darkwood/60 dark:text-white text-base">
             {t('myDesigns.subtitle')}
           </p>
         </motion.div>
@@ -167,7 +167,7 @@ export default function MyDesigns() {
                   className={`p-2.5 rounded-lg transition-all ${
                     viewMode === 'grid'
                       ? 'bg-[#5C3A2A] text-white shadow-sm'
-                      : 'text-darkwood/50 dark:text-warm-400 hover:text-[#5C3A2A] dark:hover:text-warm-100'
+                      : 'text-darkwood/50 dark:text-white hover:text-[#5C3A2A] dark:hover:text-warm-100'
                   }`}
                   aria-label="Grid view"
                 >
@@ -178,7 +178,7 @@ export default function MyDesigns() {
                   className={`p-2.5 rounded-lg transition-all ${
                     viewMode === 'list'
                       ? 'bg-[#5C3A2A] text-white shadow-sm'
-                      : 'text-darkwood/50 dark:text-warm-400 hover:text-[#5C3A2A] dark:hover:text-warm-100'
+                      : 'text-darkwood/50 dark:text-white hover:text-[#5C3A2A] dark:hover:text-warm-100'
                   }`}
                   aria-label="List view"
                 >
@@ -207,12 +207,12 @@ export default function MyDesigns() {
             transition={{ delay: 0.2 }}
           >
             <div className="inline-flex items-center justify-center w-28 h-28 rounded-2xl bg-[#5C3A2A]/5 dark:bg-dark-surface mb-8">
-              <Folder className="h-14 w-14 text-[#5C3A2A]/50 dark:text-warm-500" />
+              <Folder className="h-14 w-14 text-[#5C3A2A]/50 dark:text-white" />
             </div>
             <h3 className="text-2xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-3">
               {searchTerm ? t('myDesigns.noDesignsFound') : t('myDesigns.noDesignsYet')}
             </h3>
-            <p className="text-darkwood/60 dark:text-warm-400 mb-8 max-w-sm mx-auto">
+            <p className="text-darkwood/60 dark:text-white mb-8 max-w-sm mx-auto">
               {searchTerm
                 ? t('myDesigns.adjustSearch')
                 : t('myDesigns.createFirstDesc')}
@@ -280,12 +280,12 @@ export default function MyDesigns() {
                     {design.name}
                   </h3>
                   {design.description && (
-                    <p className="text-sm text-darkwood/50 dark:text-warm-400 mb-3 line-clamp-2">
+                    <p className="text-sm text-darkwood/50 dark:text-white mb-3 line-clamp-2">
                       {design.description}
                     </p>
                   )}
                   
-                  <div className="flex items-center text-xs text-warm-400 dark:text-warm-500 mb-4">
+                  <div className="flex items-center text-xs text-warm-400 dark:text-white mb-4">
                     <Calendar className="h-3 w-3 mr-1" />
                     {new Date(design.updatedAt).toLocaleDateString()}
                   </div>
@@ -341,38 +341,38 @@ export default function MyDesigns() {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
-              <Folder className="h-8 w-8 text-[#5C3A2A]/60 dark:text-warm-500 mx-auto mb-2" />
+              <Folder className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
               <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
                 {userDesigns?.length || 0}
               </div>
-              <div className="text-sm text-darkwood/60 dark:text-warm-400">
+              <div className="text-sm text-darkwood/60 dark:text-white">
                 {t('myDesigns.totalDesigns')}
               </div>
             </div>
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
-              <Package className="h-8 w-8 text-[#5C3A2A]/60 dark:text-warm-500 mx-auto mb-2" />
+              <Package className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
               <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
                 {totalItems}
               </div>
-              <div className="text-sm text-darkwood/60 dark:text-warm-400">
+              <div className="text-sm text-darkwood/60 dark:text-white">
                 {t('myDesigns.totalItems')}
               </div>
             </div>
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
-              <Calendar className="h-8 w-8 text-[#5C3A2A]/60 dark:text-warm-500 mx-auto mb-2" />
+              <Calendar className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
               <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
                 {thisWeekCount}
               </div>
-              <div className="text-sm text-darkwood/60 dark:text-warm-400">
+              <div className="text-sm text-darkwood/60 dark:text-white">
                 {t('myDesigns.thisWeek')}
               </div>
             </div>
             <div className="text-center p-5 rounded-xl bg-[#F8F6F3] dark:bg-dark-surface border border-[#5C3A2A]/5">
-              <BarChart2 className="h-8 w-8 text-[#5C3A2A]/60 dark:text-warm-500 mx-auto mb-2" />
+              <BarChart2 className="h-8 w-8 text-[#5C3A2A]/60 dark:text-white mx-auto mb-2" />
               <div className="text-3xl font-bold text-[#5C3A2A] dark:text-warm-100 mb-1">
                 {avgItems}
               </div>
-              <div className="text-sm text-darkwood/60 dark:text-warm-400">
+              <div className="text-sm text-darkwood/60 dark:text-white">
                 {t('myDesigns.avgItemsPerDesign')}
               </div>
             </div>

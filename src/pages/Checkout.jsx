@@ -50,7 +50,7 @@ export default function Checkout() {
             <ShoppingBag className="h-12 w-12 text-clay" />
           </div>
           <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">{t('cart.empty')}</h2>
-          <p className="text-darkwood/50 dark:text-gray-200 mb-6">{t('cart.empty.desc')}</p>
+          <p className="text-darkwood/50 dark:text-white mb-6">{t('cart.empty.desc')}</p>
           <Link to="/shop" className="inline-flex items-center gap-2 bg-clay text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-clay-dark transition-all">
             <ShoppingBag className="h-5 w-5" /> {t('cart.continueShopping')}
           </Link>
@@ -69,9 +69,9 @@ export default function Checkout() {
             <Check className="h-10 w-10 text-white" />
           </motion.div>
           <h2 className="text-2xl sm:text-3xl font-bold text-darkwood dark:text-warm-100 mb-3 font-display">{t('checkout.orderPlaced')}</h2>
-          <p className="text-darkwood/60 dark:text-gray-200 mb-2">{t('checkout.thankYou')}</p>
+          <p className="text-darkwood/60 dark:text-white mb-2">{t('checkout.thankYou')}</p>
           {orderId && <p className="text-sm text-clay font-semibold mb-6">{t('checkout.orderId')}: #{orderId.slice(0, 8).toUpperCase()}</p>}
-          <p className="text-sm text-darkwood/50 dark:text-gray-200 mb-8">{t('checkout.confirmationEmail')}</p>
+          <p className="text-sm text-darkwood/50 dark:text-white mb-8">{t('checkout.confirmationEmail')}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link to="/shop" className="inline-flex items-center justify-center gap-2 bg-clay text-white font-semibold px-6 py-3 rounded-xl hover:bg-clay-dark transition-all">
               {t('cart.continueShopping')} <ArrowRight className="h-4 w-4" />
@@ -181,7 +181,7 @@ export default function Checkout() {
             </div>
             <div>
               <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">{t('checkout.title')}</h1>
-              <p className="text-darkwood/50 dark:text-gray-200 text-sm">{t('checkout.secureCheckout')}</p>
+              <p className="text-darkwood/50 dark:text-white text-sm">{t('checkout.secureCheckout')}</p>
             </div>
           </div>
           <div className="flex items-center justify-between max-w-md mx-auto">
@@ -240,7 +240,7 @@ export default function Checkout() {
                       { id: 'cod', label: t('checkout.cod'), icon: Package }
                     ].map(m => (
                       <button key={m.id} onClick={() => setPayment({...payment, method: m.id})}
-                        className={`flex-1 flex items-center justify-center gap-2 p-3 sm:p-4 rounded-xl border-2 text-sm font-semibold transition-all ${payment.method === m.id ? 'border-clay bg-clay/5 text-clay' : 'border-warm-200 dark:border-dark-border text-darkwood/50 dark:text-gray-200 hover:border-warm-300'}`}>
+                        className={`flex-1 flex items-center justify-center gap-2 p-3 sm:p-4 rounded-xl border-2 text-sm font-semibold transition-all ${payment.method === m.id ? 'border-clay bg-clay/5 text-clay' : 'border-warm-200 dark:border-dark-border text-darkwood/50 dark:text-white hover:border-warm-300'}`}>
                         <m.icon className="h-5 w-5" /> <span className="hidden sm:inline">{m.label}</span>
                       </button>
                     ))}
@@ -311,7 +311,7 @@ export default function Checkout() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-semibold text-darkwood dark:text-warm-100 truncate">{item.name}</p>
-                            <p className="text-xs text-darkwood/50 dark:text-gray-200">{t('checkout.qty')}: {item.quantity || 1}</p>
+                            <p className="text-xs text-darkwood/50 dark:text-white">{t('checkout.qty')}: {item.quantity || 1}</p>
                           </div>
                           <span className="text-sm font-bold text-clay">{formatPrice(item.price * (item.quantity || 1))}</span>
                         </div>
@@ -366,15 +366,15 @@ export default function Checkout() {
               </div>
               <hr className="border-warm-100 dark:border-dark-border" />
               <div className="space-y-2.5 text-sm">
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-gray-200">{t('cart.subtotal')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-gray-200">{t('cart.shipping')}</span><span className={`font-semibold ${shippingCost === 0 ? 'text-forest' : 'text-darkwood dark:text-warm-100'}`}>{shippingCost === 0 ? t('cart.free') : formatPrice(shippingCost)}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-gray-200">{t('checkout.tax')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(tax)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('cart.subtotal')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('cart.shipping')}</span><span className={`font-semibold ${shippingCost === 0 ? 'text-forest' : 'text-darkwood dark:text-warm-100'}`}>{shippingCost === 0 ? t('cart.free') : formatPrice(shippingCost)}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">{t('checkout.tax')}</span><span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(tax)}</span></div>
                 <hr className="border-warm-100 dark:border-dark-border" />
                 <div className="flex justify-between"><span className="text-base font-bold text-darkwood dark:text-warm-100">{t('cart.total')}</span><span className="text-xl font-bold text-clay">{formatPrice(total)}</span></div>
               </div>
               <div className="space-y-2.5 pt-2">
                 {[{ icon: Lock, text: t('checkout.ssl'), color: 'text-forest' }, { icon: Shield, text: t('cart.secureCheckout'), color: 'text-clay' }, { icon: Gift, text: t('cart.giftWrapping'), color: 'text-amber-600 dark:text-amber-400' }].map((b, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs"><b.icon className={`h-3.5 w-3.5 ${b.color} flex-shrink-0`} /><span className="text-darkwood/60 dark:text-gray-200">{b.text}</span></div>
+                  <div key={i} className="flex items-center gap-2.5 text-xs"><b.icon className={`h-3.5 w-3.5 ${b.color} flex-shrink-0`} /><span className="text-darkwood/60 dark:text-white">{b.text}</span></div>
                 ))}
               </div>
             </motion.div>

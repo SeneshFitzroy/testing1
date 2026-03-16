@@ -127,7 +127,7 @@ export default function Settings() {
             </div>
             <div>
               <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">{t('settings.title')}</h1>
-              <p className="text-darkwood/50 dark:text-warm-400 text-sm">{t('settings.subtitle')}</p>
+              <p className="text-darkwood/50 dark:text-white text-sm">{t('settings.subtitle')}</p>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function Settings() {
             <div className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-2 flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible">
               {tabs.map(tab => (
                 <button key={tab.id} onClick={() => setActive(tab.id)}
-                  className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${active === tab.id ? 'bg-clay text-white shadow-md shadow-clay/20' : 'text-darkwood/60 dark:text-warm-400 hover:bg-warm-50 dark:hover:bg-dark-surface'}`}>
+                  className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${active === tab.id ? 'bg-clay text-white shadow-md shadow-clay/20' : 'text-darkwood/60 dark:text-white hover:bg-warm-50 dark:hover:bg-dark-surface'}`}>
                   <tab.icon className="h-4 w-4 flex-shrink-0" />
                   <span className="hidden sm:inline">{t(`settings.${tab.id}`)}</span>
                 </button>
@@ -165,7 +165,7 @@ export default function Settings() {
                     </div>
                     <div>
                       <p className="font-bold text-darkwood dark:text-warm-100">{profile.displayName || t('settings.noName')}</p>
-                      <p className="text-sm text-darkwood/50 dark:text-warm-400">{user?.email}</p>
+                      <p className="text-sm text-darkwood/50 dark:text-white">{user?.email}</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -180,7 +180,7 @@ export default function Settings() {
                       <label className="block text-sm font-semibold text-darkwood dark:text-warm-200 mb-1.5">{t('auth.email')}</label>
                       <div className="relative"><Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400" />
                         <input value={user?.email || ''} disabled
-                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood/50 dark:text-warm-400 text-sm cursor-not-allowed" />
+                          className="w-full pl-10 py-3 rounded-xl border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface text-darkwood/50 dark:text-white text-sm cursor-not-allowed" />
                       </div>
                     </div>
                     <div>
@@ -230,7 +230,7 @@ export default function Settings() {
                             </div>
                             <div className="text-center">
                               <p className={`text-sm font-semibold ${darkMode === opt.mode ? 'text-clay' : 'text-darkwood dark:text-warm-200'}`}>{opt.label}</p>
-                              <p className="text-[10px] text-darkwood/50 dark:text-warm-400 mt-0.5">{opt.desc}</p>
+                              <p className="text-[10px] text-darkwood/50 dark:text-white mt-0.5">{opt.desc}</p>
                             </div>
                             {darkMode === opt.mode && <Check className="h-4 w-4 text-clay" />}
                           </button>
@@ -243,7 +243,7 @@ export default function Settings() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                         {Object.values(currencies).map(cur => (
                           <button key={cur.code} onClick={() => setCurrency(cur.code)}
-                            className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-sm font-medium transition-all ${currency === cur.code ? 'border-clay bg-clay/5 text-clay' : 'border-warm-200 dark:border-dark-border text-darkwood/60 dark:text-warm-400 hover:border-warm-300'}`}>
+                            className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-sm font-medium transition-all ${currency === cur.code ? 'border-clay bg-clay/5 text-clay' : 'border-warm-200 dark:border-dark-border text-darkwood/60 dark:text-white hover:border-warm-300'}`}>
                             <span className="font-bold">{cur.symbol}</span> {cur.code}
                           </button>
                         ))}
@@ -264,7 +264,7 @@ export default function Settings() {
                           <span className="text-xl">{lang.flag}</span>
                           <div className="text-left">
                             <p className={`text-sm font-semibold ${language === lang.code ? 'text-clay' : 'text-darkwood dark:text-warm-100'}`}>{lang.name}</p>
-                            <p className="text-[10px] text-darkwood/50 dark:text-warm-400 uppercase">{lang.code}</p>
+                            <p className="text-[10px] text-darkwood/50 dark:text-white uppercase">{lang.code}</p>
                           </div>
                         </div>
                         {language === lang.code && <div className="w-6 h-6 bg-clay rounded-full flex items-center justify-center"><Check className="h-3.5 w-3.5 text-white" /></div>}
@@ -292,7 +292,7 @@ export default function Settings() {
                           </div>
                           <div className="min-w-0">
                             <p className="text-sm font-semibold text-darkwood dark:text-warm-100">{n.label}</p>
-                            <p className="text-[10px] text-darkwood/50 dark:text-warm-400 truncate">{n.desc}</p>
+                            <p className="text-[10px] text-darkwood/50 dark:text-white truncate">{n.desc}</p>
                           </div>
                         </div>
                         <button onClick={() => setNotifs({...notifs, [n.key]: !notifs[n.key]})}
@@ -323,7 +323,7 @@ export default function Settings() {
                   </Card>
                   <Card className="border-red-200 dark:border-red-500/30">
                     <h2 className="text-lg font-bold text-red-600 dark:text-red-400 mb-2 flex items-center gap-2"><Trash2 className="h-5 w-5" />{t('settings.dangerZone')}</h2>
-                    <p className="text-sm text-darkwood/50 dark:text-warm-400 mb-4">{t('settings.deleteWarning')}</p>
+                    <p className="text-sm text-darkwood/50 dark:text-white mb-4">{t('settings.deleteWarning')}</p>
                     <button onClick={handleDeleteAccount}
                       className="flex items-center gap-2 bg-red-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-red-600 transition-all text-sm">
                       <Trash2 className="h-4 w-4" /> {t('settings.deleteAccount')}

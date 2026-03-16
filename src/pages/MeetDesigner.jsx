@@ -167,7 +167,7 @@ export default function MeetDesigner() {
                   <img src={selectedDesigner.image} alt="" className="w-10 h-10 rounded-full object-cover" />
                   <div>
                     <h3 className="font-bold text-darkwood dark:text-warm-100 text-sm">{selectedDesigner.name}</h3>
-                    <p className="text-xs text-darkwood/50 dark:text-warm-500">
+                    <p className="text-xs text-darkwood/50 dark:text-white">
                       {bookingStep === 1 && (t('meetDesigner.selectDate') || 'Select a Date')}
                       {bookingStep === 2 && (t('meetDesigner.selectTime') || 'Select a Time')}
                       {bookingStep === 3 && 'Confirm Details'}
@@ -175,7 +175,7 @@ export default function MeetDesigner() {
                   </div>
                 </div>
                 <button onClick={resetBooking} className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg">
-                  <X className="h-5 w-5 text-darkwood/50 dark:text-warm-400" />
+                  <X className="h-5 w-5 text-darkwood/50 dark:text-white" />
                 </button>
               </div>
 
@@ -241,7 +241,7 @@ export default function MeetDesigner() {
                 {/* Step 2: Time + Package */}
                 {bookingStep === 2 && (
                   <div>
-                    <p className="text-sm text-darkwood/50 dark:text-warm-400 mb-4 flex items-center gap-2">
+                    <p className="text-sm text-darkwood/50 dark:text-white mb-4 flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
                       {selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}
                       <button onClick={() => setBookingStep(1)} className="text-clay text-xs underline ml-auto">Change</button>
@@ -278,7 +278,7 @@ export default function MeetDesigner() {
                         >
                           <div>
                             <span className="text-sm font-semibold text-darkwood dark:text-warm-100">{pkg.title}</span>
-                            <span className="text-xs text-darkwood/50 dark:text-warm-500 ml-2">{pkg.duration}</span>
+                            <span className="text-xs text-darkwood/50 dark:text-white ml-2">{pkg.duration}</span>
                           </div>
                           <span className="text-sm font-bold text-clay">
                             {pkg.priceUSD === 0 ? 'Free' : formatPrice(pkg.priceUSD)}
@@ -302,25 +302,25 @@ export default function MeetDesigner() {
                   <div>
                     <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 mb-6 space-y-1 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-darkwood/60 dark:text-warm-400">Designer</span>
+                        <span className="text-darkwood/60 dark:text-white">Designer</span>
                         <span className="font-medium text-darkwood dark:text-warm-100">{selectedDesigner.name}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-darkwood/60 dark:text-warm-400">Date</span>
+                        <span className="text-darkwood/60 dark:text-white">Date</span>
                         <span className="font-medium text-darkwood dark:text-warm-100">
                           {selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-darkwood/60 dark:text-warm-400">Time</span>
+                        <span className="text-darkwood/60 dark:text-white">Time</span>
                         <span className="font-medium text-darkwood dark:text-warm-100">{selectedTime}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-darkwood/60 dark:text-warm-400">Package</span>
+                        <span className="text-darkwood/60 dark:text-white">Package</span>
                         <span className="font-medium text-clay">{selectedPackage?.title}</span>
                       </div>
                       <div className="flex justify-between pt-2 border-t border-warm-200 dark:border-dark-border">
-                        <span className="text-darkwood/60 dark:text-warm-400 font-semibold">Total</span>
+                        <span className="text-darkwood/60 dark:text-white font-semibold">Total</span>
                         <span className="font-bold text-clay">
                           {selectedPackage?.priceUSD === 0 ? 'Free' : formatPrice(selectedPackage?.priceUSD || 0)}
                         </span>
@@ -390,14 +390,14 @@ export default function MeetDesigner() {
               <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-2">
                 {t('meetDesigner.bookingConfirmed') || 'Booking Confirmed!'}
               </h2>
-              <p className="text-darkwood/60 dark:text-warm-400 text-sm mb-6">
+              <p className="text-darkwood/60 dark:text-white text-sm mb-6">
                 {t('meetDesigner.bookingMsg') || 'Your consultation has been scheduled. You will receive a confirmation email shortly.'}
               </p>
               <div className="bg-warm-50 dark:bg-dark-surface rounded-xl p-4 mb-6 text-sm text-left space-y-1">
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-500">Designer</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedDesigner?.name}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-500">Date</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-500">Time</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedTime}</span></div>
-                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-warm-500">Package</span><span className="text-clay font-medium">{selectedPackage?.title}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Designer</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedDesigner?.name}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Date</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedDate && `${MONTH_NAMES[selectedDate.month]} ${selectedDate.day}, ${selectedDate.year}`}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Time</span><span className="text-darkwood dark:text-warm-100 font-medium">{selectedTime}</span></div>
+                <div className="flex justify-between"><span className="text-darkwood/50 dark:text-white">Package</span><span className="text-clay font-medium">{selectedPackage?.title}</span></div>
               </div>
               <div className="flex gap-3">
                 <button onClick={resetBooking} className="flex-1 py-3 border border-warm-200 dark:border-dark-border text-darkwood dark:text-warm-200 font-medium rounded-xl hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors">
@@ -461,7 +461,7 @@ export default function MeetDesigner() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
             <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">Choose Your Consultation</h2>
-            <p className="text-lg text-darkwood/60 dark:text-warm-400 max-w-2xl mx-auto">
+            <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               From quick advice to comprehensive design packages
             </p>
           </motion.div>
@@ -492,13 +492,13 @@ export default function MeetDesigner() {
                     <span className="text-sm text-warm-400 line-through">{formatPrice(c.originalUSD)}</span>
                   )}
                 </div>
-                <div className="flex items-center text-darkwood/50 dark:text-warm-500 text-sm mb-4">
+                <div className="flex items-center text-darkwood/50 dark:text-white text-sm mb-4">
                   <Clock className="h-4 w-4 mr-1.5" />{c.duration}
                 </div>
-                <p className="text-sm text-darkwood/60 dark:text-warm-400 mb-5">{c.description}</p>
+                <p className="text-sm text-darkwood/60 dark:text-white mb-5">{c.description}</p>
                 <ul className="space-y-2 mb-6">
                   {c.features.map((f, fi) => (
-                    <li key={fi} className="flex items-center text-sm text-darkwood/70 dark:text-warm-300">
+                    <li key={fi} className="flex items-center text-sm text-darkwood/70 dark:text-white">
                       <CheckCircle className="h-4 w-4 text-forest mr-2 flex-shrink-0" />{f}
                     </li>
                   ))}
@@ -519,7 +519,7 @@ export default function MeetDesigner() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
             <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">Meet Our Expert Designers</h2>
-            <p className="text-lg text-darkwood/60 dark:text-warm-400 max-w-2xl mx-auto">
+            <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               Certified professionals with years of experience
             </p>
           </motion.div>
@@ -545,7 +545,7 @@ export default function MeetDesigner() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-1">{designer.name}</h3>
                   <p className="text-clay font-semibold text-sm mb-1">{designer.title}</p>
-                  <p className="text-darkwood/50 dark:text-warm-500 text-xs mb-4">{designer.specialty}</p>
+                  <p className="text-darkwood/50 dark:text-white text-xs mb-4">{designer.specialty}</p>
 
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     <div className="text-center bg-warm-50 dark:bg-dark-surface rounded-xl py-2">
@@ -558,7 +558,7 @@ export default function MeetDesigner() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-darkwood/60 dark:text-warm-400 mb-5 leading-relaxed">{designer.bio}</p>
+                  <p className="text-sm text-darkwood/60 dark:text-white mb-5 leading-relaxed">{designer.bio}</p>
 
                   <button
                     onClick={() => handleBook(designer)}
@@ -586,7 +586,7 @@ export default function MeetDesigner() {
             <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">
               Schedule via Cal.com
             </h2>
-            <p className="text-lg text-darkwood/60 dark:text-warm-400 max-w-2xl mx-auto">
+            <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               Prefer a direct scheduling link? Use our Cal.com integration for instant booking with real-time availability.
             </p>
           </motion.div>
@@ -614,7 +614,7 @@ export default function MeetDesigner() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-darkwood dark:text-warm-100">Powered by Cal.com</p>
-                    <p className="text-xs text-darkwood/50 dark:text-warm-500">Free open-source scheduling</p>
+                    <p className="text-xs text-darkwood/50 dark:text-white">Free open-source scheduling</p>
                   </div>
                 </div>
                 <a
@@ -637,7 +637,7 @@ export default function MeetDesigner() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeInUp}>
             <h2 className="text-3xl sm:text-4xl font-black text-darkwood dark:text-warm-100 mb-4 font-display">How It Works</h2>
-            <p className="text-lg text-darkwood/60 dark:text-warm-400 max-w-2xl mx-auto">
+            <p className="text-lg text-darkwood/60 dark:text-white max-w-2xl mx-auto">
               Simple 4-step process to transform your space
             </p>
           </motion.div>
@@ -657,7 +657,7 @@ export default function MeetDesigner() {
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-darkwood dark:text-warm-100 mb-2">{s.title}</h3>
-                <p className="text-sm text-darkwood/60 dark:text-warm-400">{s.desc}</p>
+                <p className="text-sm text-darkwood/60 dark:text-white">{s.desc}</p>
               </motion.div>
             ))}
           </motion.div>

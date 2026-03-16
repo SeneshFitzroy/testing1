@@ -124,7 +124,7 @@ export default function ProductDetail() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <motion.nav
-          className="flex items-center space-x-2 text-sm text-darkwood/50 dark:text-gray-200 mb-6"
+          className="flex items-center space-x-2 text-sm text-darkwood/50 dark:text-white mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -164,7 +164,7 @@ export default function ProductDetail() {
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all ${
                   viewMode === '3d'
                     ? 'bg-clay text-white shadow-md shadow-clay/25'
-                    : 'text-darkwood/60 dark:text-gray-200 hover:text-darkwood dark:hover:text-warm-200'
+                    : 'text-darkwood/60 dark:text-white hover:text-darkwood dark:hover:text-warm-200'
                 }`}
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -179,7 +179,7 @@ export default function ProductDetail() {
                 className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-semibold transition-all ${
                   viewMode === 'photos'
                     ? 'bg-clay text-white shadow-md shadow-clay/25'
-                    : 'text-darkwood/60 dark:text-gray-200 hover:text-darkwood dark:hover:text-warm-200'
+                    : 'text-darkwood/60 dark:text-white hover:text-darkwood dark:hover:text-warm-200'
                 }`}
               >
                 <Package className="w-4 h-4" />
@@ -324,11 +324,11 @@ export default function ProductDetail() {
                 <span className="text-darkwood dark:text-warm-100 font-medium">
                   {product.rating || 4.5}
                 </span>
-                <span className="text-darkwood/50 dark:text-gray-200">
+                <span className="text-darkwood/50 dark:text-white">
                   ({product.reviews || 0} {t('product.reviews').toLowerCase()})
                 </span>
               </div>
-              <div className="text-sm text-darkwood/50 dark:text-gray-200">
+              <div className="text-sm text-darkwood/50 dark:text-white">
                 {t('product.category')}: <span className="text-clay font-medium">{product.category}</span>
               </div>
             </div>
@@ -477,17 +477,17 @@ export default function ProductDetail() {
               <div className="text-center">
                 <Truck className="h-8 w-8 text-clay mx-auto mb-2" />
                 <div className="text-sm font-medium text-darkwood dark:text-warm-100">{t('product.freeShipping')}</div>
-                <div className="text-xs text-darkwood/50 dark:text-gray-200">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
+                <div className="text-xs text-darkwood/50 dark:text-white">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
               </div>
               <div className="text-center">
                 <Shield className="h-8 w-8 text-forest mx-auto mb-2" />
                 <div className="text-sm font-medium text-darkwood dark:text-warm-100">{t('product.warranty')}</div>
-                <div className="text-xs text-darkwood/50 dark:text-gray-200">{t('product.fullCoverage')}</div>
+                <div className="text-xs text-darkwood/50 dark:text-white">{t('product.fullCoverage')}</div>
               </div>
               <div className="text-center">
-                <RotateCcw className="h-8 w-8 text-darkwood dark:text-gray-200 mx-auto mb-2" />
+                <RotateCcw className="h-8 w-8 text-darkwood dark:text-white mx-auto mb-2" />
                 <div className="text-sm font-medium text-darkwood dark:text-warm-100">{t('product.easyReturns')}</div>
-                <div className="text-xs text-darkwood/50 dark:text-gray-200">{t('product.thirtyDays')}</div>
+                <div className="text-xs text-darkwood/50 dark:text-white">{t('product.thirtyDays')}</div>
               </div>
             </div>
           </motion.div>
@@ -509,7 +509,7 @@ export default function ProductDetail() {
                   className={`flex items-center space-x-2 py-4 border-b-2 transition-colors whitespace-nowrap ${
                     activeTab === tab.id
                       ? 'border-clay text-clay'
-                      : 'border-transparent text-darkwood/50 dark:text-gray-200 hover:text-darkwood dark:hover:text-warm-100'
+                      : 'border-transparent text-darkwood/50 dark:text-white hover:text-darkwood dark:hover:text-warm-100'
                   }`}
                 >
                   <tab.icon className="h-5 w-5" />
@@ -577,7 +577,7 @@ export default function ProductDetail() {
                         ['SKU', (product.sku || product.id).toUpperCase()]
                       ].map(([label, value]) => (
                         <div key={label} className="flex justify-between">
-                          <span className="text-darkwood/50 dark:text-gray-200">{label}:</span>
+                          <span className="text-darkwood/50 dark:text-white">{label}:</span>
                           <span className="font-medium text-darkwood dark:text-warm-100">{value}</span>
                         </div>
                       ))}
@@ -646,15 +646,15 @@ export default function ProductDetail() {
                     <div className="space-y-4">
                       <div>
                         <div className="font-medium text-darkwood dark:text-warm-100">{t('product.standardDelivery')}</div>
-                        <div className="text-sm text-darkwood/50 dark:text-gray-200">{t('product.standardDays')} - {formatPrice(9.99)}</div>
+                        <div className="text-sm text-darkwood/50 dark:text-white">{t('product.standardDays')} - {formatPrice(9.99)}</div>
                       </div>
                       <div>
                         <div className="font-medium text-darkwood dark:text-warm-100">{t('product.expressDelivery')}</div>
-                        <div className="text-sm text-darkwood/50 dark:text-gray-200">{t('product.expressDays')} - {formatPrice(19.99)}</div>
+                        <div className="text-sm text-darkwood/50 dark:text-white">{t('product.expressDays')} - {formatPrice(19.99)}</div>
                       </div>
                       <div>
                         <div className="font-medium text-forest dark:text-forest-light">{t('product.freeDelivery')}</div>
-                        <div className="text-sm text-darkwood/50 dark:text-gray-200">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
+                        <div className="text-sm text-darkwood/50 dark:text-white">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
                       </div>
                     </div>
                   </div>

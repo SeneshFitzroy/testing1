@@ -206,7 +206,7 @@ export default function Register() {
             <h2 className="text-3xl font-bold text-darkwood dark:text-warm-100 font-display">
               {t('auth.createAccount')}
             </h2>
-            <p className="mt-2 text-darkwood/50 dark:text-gray-200 text-sm">
+            <p className="mt-2 text-darkwood/50 dark:text-white text-sm">
               {t('auth.register.subtitle')}
             </p>
           </div>
@@ -367,7 +367,7 @@ export default function Register() {
                     </span>
                   </div>
                   {passwordStrength.feedback.length > 0 && (
-                    <p className="text-xs text-darkwood/50 dark:text-gray-200">
+                    <p className="text-xs text-darkwood/50 dark:text-white">
                       {t('auth.missing')}: {passwordStrength.feedback.join(', ')}
                     </p>
                   )}
@@ -472,7 +472,7 @@ export default function Register() {
                     )}
                   </div>
                 </div>
-                <span className="text-xs text-darkwood/60 dark:text-gray-200 leading-relaxed">
+                <span className="text-xs text-darkwood/60 dark:text-white leading-relaxed">
                   I agree to the{' '}
                   <button type="button" className="text-clay hover:text-clay-dark font-medium underline underline-offset-2">Terms of Service</button>
                   {' '}and{' '}
@@ -505,7 +505,7 @@ export default function Register() {
                 <div className="w-full border-t border-warm-200 dark:border-dark-border" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-3 bg-warm-50 dark:bg-dark-bg text-darkwood/50 dark:text-gray-200">
+                <span className="px-3 bg-warm-50 dark:bg-dark-bg text-darkwood/50 dark:text-white">
                   {t('auth.or')}
                 </span>
               </div>
@@ -530,7 +530,7 @@ export default function Register() {
 
           {/* Sign In Link */}
           <div className="text-center">
-            <p className="text-darkwood/50 dark:text-gray-200 text-sm">
+            <p className="text-darkwood/50 dark:text-white text-sm">
               {t('auth.haveAccount')}{' '}
               <Link
                 to="/login"
@@ -542,7 +542,7 @@ export default function Register() {
           </div>
 
           {/* Security Note */}
-          <div className="flex items-center justify-center gap-2 text-xs text-darkwood/30 dark:text-gray-300">
+          <div className="flex items-center justify-center gap-2 text-xs text-darkwood/30 dark:text-white">
             <Shield className="h-3.5 w-3.5" />
             <span>Your data is encrypted and secure.</span>
           </div>

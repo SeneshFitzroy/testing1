@@ -48,7 +48,7 @@ function PageLoader() {
           <div className="absolute inset-0 rounded-full border-2 border-warm-200 dark:border-dark-border" />
           <div className="absolute inset-0 rounded-full border-2 border-clay border-t-transparent animate-spin" />
         </div>
-        <p className="text-sm text-darkwood/40 dark:text-gray-300 font-medium">Loading...</p>
+        <p className="text-sm text-darkwood/40 dark:text-white font-medium">Loading...</p>
       </div>
     </div>
   )

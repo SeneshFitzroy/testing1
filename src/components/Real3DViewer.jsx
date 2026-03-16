@@ -136,7 +136,7 @@ function LoadingOverlay() {
           </svg>
         </div>
       </div>
-      <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Loading 3D Model...</p>
+      <p className="text-sm font-medium text-gray-600 dark:text-white">Loading 3D Model...</p>
     </div>
   )
 }
@@ -246,7 +246,7 @@ export default function Real3DViewer({
           className={`p-2.5 rounded-full backdrop-blur-sm shadow-md transition-colors ${
             autoRotate
               ? 'bg-[#5C3A2A] text-white'
-              : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800'
+              : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-white hover:bg-white dark:hover:bg-gray-800'
           }`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

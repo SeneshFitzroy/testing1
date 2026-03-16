@@ -44,7 +44,7 @@ export default function FurniturePanel() {
             placeholder={t('common.search')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-warm-50 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-lg text-darkwood dark:text-warm-100 placeholder:text-warm-400 dark:placeholder:text-warm-500 focus:outline-none focus:ring-2 focus:ring-clay/50 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 bg-warm-50 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-lg text-darkwood dark:text-warm-100 placeholder:text-warm-400 dark:placeholder:text-white focus:outline-none focus:ring-2 focus:ring-clay/50 focus:border-transparent"
           />
         </div>
 

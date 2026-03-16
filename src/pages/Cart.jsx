@@ -56,7 +56,7 @@ export default function Cart() {
               <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-warm-100 font-display">
                 {t('cart.title')}
               </h1>
-              <p className="text-darkwood/50 dark:text-gray-200 text-sm">
+              <p className="text-darkwood/50 dark:text-white text-sm">
                 {cart.length} {cart.length === 1 ? t('cart.item') : t('cart.items')} {t('cart.inYourCart')}
               </p>
             </div>
@@ -77,7 +77,7 @@ export default function Cart() {
             <h2 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-3">
               {t('cart.empty')}
             </h2>
-            <p className="text-darkwood/50 dark:text-gray-200 mb-8 max-w-md mx-auto">
+            <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">
               {t('cart.empty.desc')}
             </p>
             <Link
@@ -134,7 +134,7 @@ export default function Cart() {
                           {item.name}
                         </h3>
                       </Link>
-                      <p className="text-sm text-darkwood/50 dark:text-gray-200 mt-0.5 capitalize">{item.category}</p>
+                      <p className="text-sm text-darkwood/50 dark:text-white mt-0.5 capitalize">{item.category}</p>
 
                       <div className="flex items-center gap-3 mt-3">
                         <div className="flex items-center bg-warm-100 dark:bg-dark-surface rounded-xl overflow-hidden">
@@ -142,7 +142,7 @@ export default function Cart() {
                             onClick={() => handleQuantityChange(item, (item.quantity || 1) - 1)}
                             className="p-2 hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
                           >
-                            <Minus className="h-3.5 w-3.5 text-darkwood/60 dark:text-gray-200" />
+                            <Minus className="h-3.5 w-3.5 text-darkwood/60 dark:text-white" />
                           </button>
                           <span className="px-4 py-1.5 text-sm font-bold text-darkwood dark:text-warm-100 min-w-[40px] text-center">
                             {item.quantity || 1}
@@ -151,7 +151,7 @@ export default function Cart() {
                             onClick={() => handleQuantityChange(item, (item.quantity || 1) + 1)}
                             className="p-2 hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
                           >
-                            <Plus className="h-3.5 w-3.5 text-darkwood/60 dark:text-gray-200" />
+                            <Plus className="h-3.5 w-3.5 text-darkwood/60 dark:text-white" />
                           </button>
                         </div>
                         <span className="text-xs text-warm-400">x {formatPrice(item.price)}</span>
@@ -165,7 +165,7 @@ export default function Cart() {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => { addToWishlist(item); removeFromCart(item.id) }}
-                          className="p-2 text-warm-400 dark:text-gray-300 hover:text-clay dark:hover:text-clay rounded-lg transition-all"
+                          className="p-2 text-warm-400 dark:text-white hover:text-clay dark:hover:text-clay rounded-lg transition-all"
                           title={t('cart.saveForLater')}
                         >
                           <Heart className="h-4 w-4" />
@@ -215,18 +215,18 @@ export default function Cart() {
                       className="w-full pl-10 pr-4 py-2.5 bg-warm-50 dark:bg-dark-bg border border-warm-200 dark:border-dark-border rounded-xl text-sm text-darkwood dark:text-warm-100 placeholder-warm-400 focus:outline-none focus:ring-2 focus:ring-clay/40 focus:border-clay transition-all"
                     />
                   </div>
-                  <button className="px-4 py-2.5 bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-gray-200 rounded-xl text-sm font-semibold hover:bg-warm-200 dark:hover:bg-dark-border transition-colors">
+                  <button className="px-4 py-2.5 bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-white rounded-xl text-sm font-semibold hover:bg-warm-200 dark:hover:bg-dark-border transition-colors">
                     {t('cart.apply')}
                   </button>
                 </div>
 
                 <div className="space-y-3 pt-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-darkwood/50 dark:text-gray-200">{t('cart.subtotal')} ({cart.length} {t('cart.items')})</span>
+                    <span className="text-darkwood/50 dark:text-white">{t('cart.subtotal')} ({cart.length} {t('cart.items')})</span>
                     <span className="font-semibold text-darkwood dark:text-warm-100">{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-darkwood/50 dark:text-gray-200">{t('cart.shipping')}</span>
+                    <span className="text-darkwood/50 dark:text-white">{t('cart.shipping')}</span>
                     <span className={`font-semibold ${shipping === 0 ? 'text-forest dark:text-forest-light' : 'text-darkwood dark:text-warm-100'}`}>
                       {shipping === 0 ? t('cart.free') : formatPrice(shipping)}
                     </span>
@@ -263,21 +263,21 @@ export default function Cart() {
                   {[
                     { icon: Shield, text: t('cart.secureCheckout'), color: 'text-forest' },
                     { icon: Truck, text: `${t('shop.freeDelivery')} ${t('shop.ordersOver')} ${formatPrice(FREE_SHIPPING_THRESHOLD)}`, color: 'text-clay' },
-                    { icon: RotateCcw, text: t('cart.easyReturns'), color: 'text-darkwood dark:text-gray-200' },
+                    { icon: RotateCcw, text: t('cart.easyReturns'), color: 'text-darkwood dark:text-white' },
                     { icon: Gift, text: t('cart.giftWrapping'), color: 'text-amber-600 dark:text-amber-400' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 text-sm">
                       <item.icon className={`h-4 w-4 ${item.color} flex-shrink-0`} />
-                      <span className="text-darkwood/60 dark:text-gray-200">{item.text}</span>
+                      <span className="text-darkwood/60 dark:text-white">{item.text}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="pt-3 border-t border-warm-100 dark:border-dark-border">
-                  <p className="text-xs text-warm-400 dark:text-gray-300 mb-2 text-center">{t('cart.weAccept')}</p>
+                  <p className="text-xs text-warm-400 dark:text-white mb-2 text-center">{t('cart.weAccept')}</p>
                   <div className="flex items-center justify-center gap-3">
                     {['Visa', 'MC', 'PayPal', 'Apple'].map((method) => (
-                      <div key={method} className="bg-warm-50 dark:bg-dark-surface rounded-lg px-3 py-1.5 text-xs font-bold text-darkwood/50 dark:text-gray-200">
+                      <div key={method} className="bg-warm-50 dark:bg-dark-surface rounded-lg px-3 py-1.5 text-xs font-bold text-darkwood/50 dark:text-white">
                         {method}
                       </div>
                     ))}

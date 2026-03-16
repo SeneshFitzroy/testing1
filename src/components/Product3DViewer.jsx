@@ -317,7 +317,7 @@ export default function Product3DViewer({
           className={`p-2 rounded-full backdrop-blur-sm shadow-md transition-colors ${
             isAutoRotating
               ? 'bg-blue-600 text-white'
-              : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800'
+              : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-white hover:bg-white dark:hover:bg-gray-800'
           }`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -335,7 +335,7 @@ export default function Product3DViewer({
             e.stopPropagation()
             setIsFullscreen((p) => !p)
           }}
-          className="p-2 bg-white/90 dark:bg-gray-800/90 rounded-full backdrop-blur-sm shadow-md text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800"
+          className="p-2 bg-white/90 dark:bg-gray-800/90 rounded-full backdrop-blur-sm shadow-md text-gray-700 dark:text-white hover:bg-white dark:hover:bg-gray-800"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           title="Fullscreen"

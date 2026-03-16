@@ -12,7 +12,7 @@ export default function ProtectedRoute({ children, requireAdmin = false }) {
       <div className="min-h-screen flex items-center justify-center bg-warm-50 dark:bg-dark-bg">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-clay" />
-          <p className="text-darkwood dark:text-gray-200">Loading...</p>
+          <p className="text-darkwood dark:text-white">Loading...</p>
         </div>
       </div>
     )

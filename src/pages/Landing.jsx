@@ -293,7 +293,7 @@ export default function Landing() {
       {/* ═══════════ TRUST BAR — Professional, consistent across app ═══════════ */}
       <section className="bg-white dark:bg-dark-card border-b border-stone-200/60 dark:border-dark-border shadow-sm">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:gap-x-16 text-sm md:text-base text-charcoal/90 dark:text-gray-200 font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:gap-x-16 text-sm md:text-base text-charcoal/90 dark:text-white font-medium">
             {[
               { icon: Truck, text: `${t('landing.trust.freeShippingOver')} ${formatPrice(FREE_SHIPPING_THRESHOLD)}` },
               { icon: Shield, text: t('landing.trust.warranty2yr') },
@@ -313,11 +313,11 @@ export default function Landing() {
       <section className="py-28 sm:py-32 bg-stone-50 dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <AnimatedSection className="text-center mb-20">
-            <span className="text-charcoal/90 dark:text-gray-200 font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.shopByCategory')}</span>
+            <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.shopByCategory')}</span>
             <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:text-stone-100 mb-6">
               {t('landing.categories.title')}
             </h2>
-            <p className="text-charcoal/80 dark:text-gray-200 max-w-2xl mx-auto text-lg">
+            <p className="text-charcoal/80 dark:text-white max-w-2xl mx-auto text-lg">
               {t('landing.categories.subtitle')}
             </p>
           </AnimatedSection>
@@ -334,7 +334,7 @@ export default function Landing() {
                     <img src={cat.img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                   </div>
                   <h3 className="font-display font-medium text-xl text-charcoal dark:text-stone-100 group-hover:text-oak transition-colors">{t(cat.titleKey)}</h3>
-                  <p className="text-charcoal/80 dark:text-gray-200 mt-1">{t(cat.descKey)}</p>
+                  <p className="text-charcoal/80 dark:text-white mt-1">{t(cat.descKey)}</p>
                 </Link>
               </AnimatedSection>
             ))}
@@ -347,7 +347,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <AnimatedSection className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
             <div>
-              <span className="text-charcoal/90 dark:text-gray-200 font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.newArrivals')}</span>
+              <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.newArrivals')}</span>
               <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:text-stone-100">
                 {t('landing.latestCollections') || 'Latest Collection'}
               </h2>
@@ -398,7 +398,7 @@ export default function Landing() {
       <section className="py-28 sm:py-32 bg-stone-50 dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <AnimatedSection className="text-center mb-16">
-            <span className="text-charcoal/90 dark:text-gray-200 font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.bestSellers')}</span>
+            <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.bestSellers')}</span>
             <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:text-stone-100">
               {t('landing.bestSelling') || 'Customer Favorites'}
             </h2>
@@ -476,11 +476,11 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <AnimatedSection>
-              <span className="text-charcoal/90 dark:text-gray-200 font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.ourStory')}</span>
+              <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.ourStory')}</span>
               <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:text-stone-100 mb-8">
                 {String.fromCharCode(0x0DBD, 0x0DD3)} {String.fromCharCode(0x0DBB, 0x0DD6)} <span className="text-oak">(Lee Roo)</span>
               </h2>
-              <div className="space-y-6 text-charcoal/85 dark:text-gray-200 leading-relaxed text-lg">
+              <div className="space-y-6 text-charcoal/85 dark:text-white leading-relaxed text-lg">
                 <p>{t('landing.about.para1')}</p>
                 <p>{t('landing.about.para2')}</p>
                 <p>{t('landing.about.para3')}</p>

@@ -185,12 +185,12 @@ export default function Dashboard() {
                 <div className={`w-11 h-11 ${stat.iconBg} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
                   <stat.icon className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xs font-medium text-darkwood/50 dark:text-gray-200 bg-white/50 dark:bg-dark-surface/50 px-2 py-1 rounded-full">{stat.change}</span>
+                <span className="text-xs font-medium text-darkwood/50 dark:text-white bg-white/50 dark:bg-dark-surface/50 px-2 py-1 rounded-full">{stat.change}</span>
               </div>
               <div className="text-3xl font-bold text-darkwood dark:text-warm-100 mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm text-darkwood/60 dark:text-gray-200 font-medium">
+              <div className="text-sm text-darkwood/60 dark:text-white font-medium">
                 {stat.label}
               </div>
             </motion.div>
@@ -289,7 +289,7 @@ export default function Dashboard() {
                           <Edit2 className="h-4 w-4 text-clay" />
                         </Link>
                         <button className="p-2 bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm rounded-lg shadow-lg hover:scale-110 transition-transform">
-                          <Copy className="h-4 w-4 text-darkwood dark:text-warm-300" />
+                          <Copy className="h-4 w-4 text-darkwood dark:text-white" />
                         </button>
                       </div>
                     </div>
@@ -299,7 +299,7 @@ export default function Dashboard() {
                     <h3 className="font-bold text-darkwood dark:text-warm-100 mb-2 truncate">
                       {design.name}
                     </h3>
-                    <div className="flex items-center justify-between text-sm text-darkwood/50 dark:text-gray-200 mb-4">
+                    <div className="flex items-center justify-between text-sm text-darkwood/50 dark:text-white mb-4">
                       <div className="flex items-center gap-1.5">
                         <Clock className="h-3.5 w-3.5" />
                         <span>{formatDate(design.updatedAt)}</span>
@@ -332,7 +332,7 @@ export default function Dashboard() {
               <h3 className="text-xl font-bold text-darkwood dark:text-warm-100 mb-2">
                 {t('dashboard.noDesigns')}
               </h3>
-              <p className="text-darkwood/50 dark:text-gray-200 mb-8 max-w-md mx-auto">
+              <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">
                 {t('dashboard.noDesigns.desc')}
               </p>
               <Link
@@ -376,7 +376,7 @@ export default function Dashboard() {
                   <div className={`w-2 h-2 ${tip.color} rounded-full mt-2 flex-shrink-0`} />
                   <div>
                     <p className="font-semibold text-darkwood dark:text-warm-100 text-sm">{tip.title}</p>
-                    <p className="text-sm text-darkwood/50 dark:text-gray-200">{tip.desc}</p>
+                    <p className="text-sm text-darkwood/50 dark:text-white">{tip.desc}</p>
                   </div>
                 </div>
               ))}
@@ -408,7 +408,7 @@ export default function Dashboard() {
                   </div>
                   <div>
                     <p className="font-semibold text-darkwood dark:text-warm-100 text-sm">{step.title}</p>
-                    <p className="text-sm text-darkwood/50 dark:text-gray-200">{step.desc}</p>
+                    <p className="text-sm text-darkwood/50 dark:text-white">{step.desc}</p>
                   </div>
                   <ArrowRight className="h-4 w-4 text-warm-400 ml-auto" />
                 </div>

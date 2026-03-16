@@ -92,7 +92,7 @@ export default function Login() {
       {/* Back to Home — visible on mobile and desktop */}
       <Link
         to="/"
-        className="absolute top-4 left-4 z-20 flex items-center gap-2 text-darkwood/70 dark:text-warm-400 hover:text-clay dark:hover:text-clay transition-colors text-sm font-medium"
+        className="absolute top-4 left-4 z-20 flex items-center gap-2 text-darkwood/70 dark:text-white hover:text-clay dark:hover:text-clay transition-colors text-sm font-medium"
         aria-label="Back to homepage"
       >
         <LogoIcon size={24} />
@@ -190,7 +190,7 @@ export default function Login() {
             <h2 className="text-3xl font-bold text-darkwood dark:text-warm-100 font-display">
               {t('auth.signIn')}
             </h2>
-            <p className="mt-2 text-darkwood/50 dark:text-warm-400">
+            <p className="mt-2 text-darkwood/50 dark:text-white">
               {t('auth.signIn.subtitle')}
             </p>
           </div>
@@ -331,7 +331,7 @@ export default function Login() {
                 <div className="w-full border-t border-warm-200 dark:border-dark-border" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-3 bg-warm-50 dark:bg-dark-bg text-darkwood/50 dark:text-warm-400">
+                <span className="px-3 bg-warm-50 dark:bg-dark-bg text-darkwood/50 dark:text-white">
                   {t('auth.or')}
                 </span>
               </div>
@@ -356,7 +356,7 @@ export default function Login() {
 
           {/* Sign Up Link */}
           <div className="text-center">
-            <p className="text-darkwood/50 dark:text-warm-400">
+            <p className="text-darkwood/50 dark:text-white">
               {t('auth.noAccount')}{' '}
               <Link
                 to="/register"
@@ -368,7 +368,7 @@ export default function Login() {
           </div>
 
           {/* Security Note */}
-          <p className="text-center text-xs text-darkwood/30 dark:text-warm-500">
+          <p className="text-center text-xs text-darkwood/30 dark:text-white">
             Your data is encrypted and secure.
           </p>
         </motion.div>

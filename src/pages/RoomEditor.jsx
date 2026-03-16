@@ -371,7 +371,7 @@ export default function RoomEditor() {
                   className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                     activePanel === key
                       ? 'bg-gradient-to-r from-clay to-clay-dark text-white shadow-sm'
-                      : 'text-darkwood/70 dark:text-gray-200 hover:bg-warm-200/50 dark:hover:bg-dark-border/50'
+                      : 'text-darkwood/70 dark:text-white hover:bg-warm-200/50 dark:hover:bg-dark-border/50'
                   }${disabled ? ' opacity-40 cursor-not-allowed' : ''}`}
                 >
                   <Icon className="h-4 w-4 mx-auto mb-1" />
@@ -393,7 +393,7 @@ export default function RoomEditor() {
             className="hidden lg:flex absolute right-0 top-0 bottom-0 w-2 -mr-1 cursor-col-resize hover:bg-clay/20 active:bg-clay/30 transition-colors items-center justify-center group"
             aria-label="Resize panel"
           >
-            <GripVertical className="h-5 w-5 text-darkwood/30 dark:text-gray-300 group-hover:text-clay" />
+            <GripVertical className="h-5 w-5 text-darkwood/30 dark:text-white group-hover:text-clay" />
           </div>
         </div>
 
@@ -407,7 +407,7 @@ export default function RoomEditor() {
                 className={`group relative flex items-center gap-1.5 px-3 py-2 rounded-t-lg text-sm font-medium cursor-pointer transition-all shrink-0 ${
                   idx === activeRoomIndex
                     ? 'bg-warm-50 dark:bg-dark-bg text-darkwood dark:text-warm-100 border border-b-0 border-warm-200 dark:border-dark-border'
-                    : 'text-darkwood/50 dark:text-gray-300 hover:bg-warm-100/50 dark:hover:bg-dark-surface/50'
+                    : 'text-darkwood/50 dark:text-white hover:bg-warm-100/50 dark:hover:bg-dark-surface/50'
                 }`}
                 onClick={() => switchRoom(idx)}
               >
@@ -456,7 +456,7 @@ export default function RoomEditor() {
                     className={`px-4 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
                       viewMode === '2d'
                         ? 'bg-[#3F5E45] text-white shadow-md border-2 border-forest'
-                        : 'text-darkwood/70 dark:text-gray-200 hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
+                        : 'text-darkwood/70 dark:text-white hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
                     }`}
                     aria-label="2D floor plan — flat top-down view"
                     title="2D Floor Plan — drag to reposition items"
@@ -469,7 +469,7 @@ export default function RoomEditor() {
                     className={`px-4 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${
                       viewMode === '3d'
                         ? 'bg-clay text-white shadow-md border-2 border-clay-dark'
-                        : 'text-darkwood/70 dark:text-gray-200 hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
+                        : 'text-darkwood/70 dark:text-white hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
                     }`}
                     aria-label="3D perspective — orbit to explore"
                     title="3D View — drag to rotate camera"
@@ -502,7 +502,7 @@ export default function RoomEditor() {
                 <div className="relative">
                   <button
                     onClick={() => setShowMoreMenu(!showMoreMenu)}
-                    className="px-3 py-2 text-sm font-medium text-darkwood/70 dark:text-gray-200 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors flex items-center gap-1"
+                    className="px-3 py-2 text-sm font-medium text-darkwood/70 dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors flex items-center gap-1"
                     aria-label="More options"
                   >
                     <MoreHorizontal className="h-5 w-5" />
@@ -550,14 +550,14 @@ export default function RoomEditor() {
                   title="Copy share link"
                   aria-label="Copy share link"
                 >
-                  <Share2 className="h-5 w-5 text-darkwood/50 dark:text-gray-200" />
+                  <Share2 className="h-5 w-5 text-darkwood/50 dark:text-white" />
                 </button>
 
                 {/* Export dropdown */}
                 <div className="relative">
                   <button
                     onClick={() => setShowExportMenu(!showExportMenu)}
-                    className="px-3 py-2 text-sm font-medium text-darkwood/70 dark:text-gray-200 hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors flex items-center gap-1"
+                    className="px-3 py-2 text-sm font-medium text-darkwood/70 dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface rounded-lg transition-colors flex items-center gap-1"
                   >
                     <Download className="h-4 w-4" />
                     <span className="hidden sm:inline">{t('editor.export')}</span>
@@ -596,7 +596,7 @@ export default function RoomEditor() {
             </div>
 
             {/* Status bar */}
-            <div className="flex flex-wrap items-center justify-between gap-2 mt-2.5 text-xs text-darkwood/50 dark:text-gray-300">
+            <div className="flex flex-wrap items-center justify-between gap-2 mt-2.5 text-xs text-darkwood/50 dark:text-white">
               <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                 <span>Room: {roomWidth}m x {roomDepth}m x {roomHeight}m</span>
                 <span>Items: {furnitureItems.length}</span>
@@ -724,7 +724,7 @@ export default function RoomEditor() {
                   <h3 className="text-lg font-semibold text-darkwood dark:text-warm-200 mb-2">
                     Start Designing
                   </h3>
-                  <p className="text-darkwood/50 dark:text-gray-300 mb-4">
+                  <p className="text-darkwood/50 dark:text-white mb-4">
                     {t('editor.dragHint')}
                   </p>
                   <div className="text-sm text-darkwood/40 dark:text-warm-600">

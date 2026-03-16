@@ -90,7 +90,7 @@ export default function Wishlist() {
                 <Heart className="h-8 w-8 text-red-500 fill-current" />
                 {t('wishlist.title')}
               </h1>
-              <p className="text-darkwood/50 dark:text-warm-400">
+              <p className="text-darkwood/50 dark:text-white">
                 {wishlist.length} {wishlist.length === 1 ? t('cart.item') : t('cart.items')} {t('wishlist.savedForLater')}
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function Wishlist() {
             <h3 className="text-2xl font-semibold text-darkwood dark:text-warm-100 mb-4">
               {t('wishlist.empty')}
             </h3>
-            <p className="text-darkwood/50 dark:text-warm-400 mb-8 max-w-md mx-auto">
+            <p className="text-darkwood/50 dark:text-white mb-8 max-w-md mx-auto">
               {t('wishlist.empty.desc')}
             </p>
             <Link to="/shop" className="btn-primary inline-flex items-center gap-2">
@@ -182,7 +182,7 @@ export default function Wishlist() {
                   <button
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded transition-colors ${
-                      viewMode === 'grid' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-warm-400'
+                      viewMode === 'grid' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-white'
                     }`}
                   >
                     <Grid3X3 className="h-4 w-4" />
@@ -190,7 +190,7 @@ export default function Wishlist() {
                   <button
                     onClick={() => setViewMode('list')}
                     className={`p-2 rounded transition-colors ${
-                      viewMode === 'list' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-warm-400'
+                      viewMode === 'list' ? 'bg-clay text-white' : 'text-darkwood/50 dark:text-white'
                     }`}
                   >
                     <List className="h-4 w-4" />
@@ -199,7 +199,7 @@ export default function Wishlist() {
               </div>
 
               {filteredWishlist.length !== wishlist.length && (
-                <div className="mt-3 text-sm text-darkwood/50 dark:text-warm-400">
+                <div className="mt-3 text-sm text-darkwood/50 dark:text-white">
                   {t('shop.showing')} {filteredWishlist.length} {t('shop.of')} {wishlist.length} {t('cart.items')}
                 </div>
               )}
@@ -218,7 +218,7 @@ export default function Wishlist() {
                   <h3 className="text-xl font-semibold text-darkwood dark:text-warm-100 mb-2">
                     {t('wishlist.noMatch')}
                   </h3>
-                  <p className="text-darkwood/50 dark:text-warm-400">
+                  <p className="text-darkwood/50 dark:text-white">
                     {t('wishlist.adjustSearch')}
                   </p>
                 </motion.div>
@@ -277,7 +277,7 @@ export default function Wishlist() {
                             <h3 className="font-semibold text-darkwood dark:text-warm-100 mb-1 group-hover/link:text-clay transition-colors">
                               {item.name}
                             </h3>
-                            <p className="text-sm text-darkwood/50 dark:text-warm-400 mb-2 line-clamp-2">
+                            <p className="text-sm text-darkwood/50 dark:text-white mb-2 line-clamp-2">
                               {item.description}
                             </p>
                             <div className="flex items-center space-x-2 mb-3">

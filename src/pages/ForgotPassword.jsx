@@ -60,7 +60,7 @@ export default function ForgotPassword() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Link to="/" className="inline-flex items-center gap-2 mb-8 text-darkwood/60 dark:text-warm-400 hover:text-clay dark:hover:text-clay transition-colors">
+        <Link to="/" className="inline-flex items-center gap-2 mb-8 text-darkwood/60 dark:text-white hover:text-clay dark:hover:text-clay transition-colors">
           <LogoIcon size={32} />
           <span className="font-display font-bold text-darkwood dark:text-warm-100">Lee Roo</span>
         </Link>
@@ -74,10 +74,10 @@ export default function ForgotPassword() {
               <h1 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-2 font-display">
                 {t('auth.forgotPasswordCheckInbox')}
               </h1>
-              <p className="text-darkwood/60 dark:text-warm-400 mb-6">
+              <p className="text-darkwood/60 dark:text-white mb-6">
                 {t('auth.forgotPasswordCheckEmail')}
               </p>
-              <p className="text-sm text-darkwood/50 dark:text-warm-500 mb-6">
+              <p className="text-sm text-darkwood/50 dark:text-white mb-6">
                 {t('auth.forgotPasswordSpamNote')}
               </p>
               <Link
@@ -93,7 +93,7 @@ export default function ForgotPassword() {
               <h1 className="text-2xl font-bold text-darkwood dark:text-warm-100 mb-2 font-display">
                 {t('auth.forgotPasswordTitle')}
               </h1>
-              <p className="text-darkwood/60 dark:text-warm-400 mb-8">
+              <p className="text-darkwood/60 dark:text-white mb-8">
                 {t('auth.forgotPasswordDesc')}
               </p>
 
@@ -135,7 +135,7 @@ export default function ForgotPassword() {
 
               <Link
                 to="/login"
-                className="mt-6 flex items-center justify-center gap-2 text-darkwood/60 dark:text-warm-400 hover:text-clay dark:hover:text-clay transition-colors text-sm"
+                className="mt-6 flex items-center justify-center gap-2 text-darkwood/60 dark:text-white hover:text-clay dark:hover:text-clay transition-colors text-sm"
               >
                 <ArrowLeft className="h-4 w-4" />
                 {t('auth.backToLogin')}

@@ -415,7 +415,7 @@ export default function DesignerPanel() {
                   aria-label="Search designs"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-300 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
+                  className="w-full pl-10 pr-4 py-2.5 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none"
                 />
               </div>
               <select
@@ -661,7 +661,7 @@ export default function DesignerPanel() {
                     onChange={(e) => setDesignerNotes(e.target.value)}
                     placeholder="e.g. Client prefers natural wood finish. Follow up next week."
                     rows={3}
-                    className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-300 focus:ring-2 focus:ring-clay/30 outline-none resize-none"
+                    className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-white dark:bg-dark-card rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white focus:ring-2 focus:ring-clay/30 outline-none resize-none"
                   />
                   <button
                     onClick={handleSaveDesignerNotes}
@@ -720,7 +720,7 @@ export default function DesignerPanel() {
                       onChange={(e) => setComment(e.target.value)}
                       placeholder="Share your feedback on this design..."
                       rows={3}
-                      className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-gray-300 focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none resize-none mb-4"
+                      className="w-full px-4 py-3 border border-warm-200 dark:border-dark-border bg-warm-50 dark:bg-dark-surface rounded-xl text-sm text-darkwood dark:text-white placeholder:text-warm-400 dark:placeholder:text-white focus:ring-2 focus:ring-clay/30 focus:border-clay outline-none resize-none mb-4"
                     />
                     <button
                       onClick={() => handleAddComment(selectedDesign.id)}
