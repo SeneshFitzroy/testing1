@@ -469,7 +469,7 @@ export default function Navbar() {
             {/* Mobile menu toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden p-2 rounded-xl transition-colors ml-1 ${
+              className={`lg:hidden p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl transition-colors ml-1 ${
                 isLandingPage && !isScrolled
                   ? 'text-white/70 hover:text-white hover:bg-white/10'
                   : 'text-darkwood/50 dark:text-warm-400 hover:bg-warm-100 dark:hover:bg-dark-surface'
@@ -498,7 +498,7 @@ export default function Navbar() {
                 <Link
                   key={to}
                   to={to}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-3 px-4 py-3 min-h-[44px] rounded-xl text-sm font-medium transition-colors ${
                     isActive(to)
                       ? 'bg-gradient-to-r from-clay to-clay-dark text-white shadow-sm'
                       : 'text-darkwood dark:text-warm-200 hover:bg-warm-100 dark:hover:bg-dark-surface'

@@ -132,9 +132,14 @@
   @apply bg-warm-400 dark:bg-warm-600;
 }
 
-/* Smooth scroll */
+/* Smooth scroll + prevent horizontal overflow on mobile */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+  min-width: 0;
 }
 
 /* ── Reduced Motion (Accessibility — WCAG 2.1) ── */
@@ -165,6 +170,15 @@ html {
 /* Konva stage */
 .konva-container {
   @apply rounded-xl overflow-hidden;
+}
+
+/* Hide scrollbar but keep scroll (mobile-friendly) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Range slider styling */

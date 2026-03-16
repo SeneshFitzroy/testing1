@@ -4,6 +4,7 @@ import { X, MapPin, DollarSign, Globe } from 'lucide-react'
 import useThemeStore from '@/store/useThemeStore'
 import { useTranslation } from 'react-i18next'
 import { LANGUAGE_OPTIONS } from '@/i18n'
+import { hasCookieConsentResponse } from './CookieConsent'
 
 export default function RegionModal() {
   const { t, i18n } = useTranslation()
@@ -33,7 +34,7 @@ export default function RegionModal() {
     setIsOpen(false)
   }
 
-  if (!isOpen) return null
+  if (!hasCookieConsentResponse() || !isOpen) return null
 
   return (
     <AnimatePresence>

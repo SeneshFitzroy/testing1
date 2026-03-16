@@ -14,6 +14,7 @@ import AudioManager from './components/AudioManager'
 import AccessibilityToggle from './components/AccessibilityToggle'
 import RegionModal from './components/RegionModal'
 import JustInTimePopup from './components/JustInTimePopup'
+import CookieConsent from './components/CookieConsent'
 
 const Landing = lazy(() => import('./pages/Landing'))
 const Login = lazy(() => import('./pages/Login'))
@@ -106,9 +107,11 @@ function App() {
         }}
       />
 
+      {/* Cookie consent first (required before personalization) */}
+      {!showSplash && <CookieConsent />}
       {/* Region Modal (permission-style: language & currency) */}
       {!showSplash && <RegionModal />}
-      {/* Just in Time — sale/newsletter popup */}
+      {/* Just in Time — sale/newsletter popup (shows after cookie response) */}
       {!showSplash && <JustInTimePopup />}
 
       {/* Audio starts during splash so it auto-plays 100% */}

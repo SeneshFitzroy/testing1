@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-warm-50 dark:bg-dark-bg flex flex-col">
+    <div className="min-h-screen bg-warm-50 dark:bg-dark-bg flex flex-col overflow-x-hidden">
       {/* Skip to main content — accessibility */}
       <a
         href="#main-content"
@@ -14,7 +14,7 @@ export default function Layout() {
         Skip to main content
       </a>
       <Navbar />
-      <main id="main-content" className="flex-1" role="main" aria-label="Main content">
+      <main id="main-content" className="flex-1 min-w-0 overflow-x-hidden" role="main" aria-label="Main content">
         <Outlet />
       </main>
       <Footer />
