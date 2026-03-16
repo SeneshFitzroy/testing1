@@ -89,9 +89,34 @@ function App() {
     }
   }, [showSplash])
 
+  // Prefetch Landing + hero video during splash — video plays ASAP when Landing shows
+  useEffect(() => {
+    import('./pages/Landing')
+  }, [])
+
+  // Prefetch Landing + hero video chunk during splash so video plays instantly after
+  useEffect(() => {
+    import('./pages/Landing')
+  }, [])
+
   useEffect(() => {
     initAuth()
   }, [initAuth])
+
+  // Prefetch Landing + hero video during splash so video plays instantly
+  useEffect(() => {
+    import('./pages/Landing')
+  }, [])
+
+  // Prefetch Landing + hero video during splash so they're ready instantly after
+  useEffect(() => {
+    import('./pages/Landing')
+  }, [])
+
+  // Prefetch Landing + hero video during splash so they're ready instantly after
+  useEffect(() => {
+    import('./pages/Landing')
+  }, [])
 
   useEffect(() => {
     if (user?.uid) {

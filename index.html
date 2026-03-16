@@ -8,6 +8,8 @@
     <style>body{color:#1C1C1C;background-color:#F9F9F8;font-family:DM Sans,Inter,system-ui,sans-serif}html.dark body{color:#E8DFD5;background-color:#1A1210}nav a,nav button{color:inherit}.text-charcoal,.text-darkwood{color:#1C1C1C !important}html.dark .text-charcoal{color:#E8DFD5 !important}</style>
     <meta name="description" content="Design your dream space with Lee Roo's 2D/3D room visualizer. Premium handcrafted furniture rooted in Sri Lankan craftsmanship, delivered to your door." />
     <meta name="keywords" content="furniture, room designer, 3D visualization, interior design, Sri Lanka, Lee Roo, wood designs" />
+    <link rel="preload" href="/hero-poster.png" as="image" />
+    <link rel="preload" href="/hero-bg.mp4" as="fetch" type="video/mp4" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" media="all" />
@@ -15,6 +17,7 @@
   <body class="antialiased">
     <!-- Skip to main content link for accessibility (focuses main content, prevents hash in URL when no target) -->
     <a href="#main-content" class="skip-link" id="skip-to-main">Skip to main content</a>
+    <video id="hero-preload" src="/hero-bg.mp4" preload="auto" muted playsinline style="position:absolute;width:0;height:0;opacity:0;pointer-events:none" aria-hidden="true"></video>
     <div id="root"></div>
     <!-- SVG filters for color blindness accessibility -->
     <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">

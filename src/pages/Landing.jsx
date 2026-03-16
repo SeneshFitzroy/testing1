@@ -44,72 +44,72 @@ function useInView(ref, threshold = 0.15) {
   return visible
 }
 
-const HERO_POSTER = 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=80'
-/** Dark placeholder so video appears first — no distracting image before video plays */
-const HERO_PLACEHOLDER = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"%3E%3Crect fill="%231a120b" width="1" height="1"/%3E%3C/svg%3E'
+/** Local poster — video screenshot, instant load, preloaded in index.html */
+const HERO_POSTER = '/hero-poster.png'
+const HERO_POSTER_FALLBACK = 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=80'
 
-/** Hero video: fallback to poster if video fails or stalls (black frame). */
+/** Hero: poster shows INSTANTLY. Video loads in background and auto-plays when ready. */
 function LandingHeroMedia() {
+  const [videoReady, setVideoReady] = useState(false)
   const [videoError, setVideoError] = useState(false)
-  const [videoStalled, setVideoStalled] = useState(false)
+  const [useFallbackPoster, setUseFallbackPoster] = useState(false)
   const videoRef = useRef(null)
-  const stallTimerRef = useRef(null)
 
-  // Fallback to poster if video doesn't play within 4s (black screen fix)
+  const posterSrc = useFallbackPoster ? HERO_POSTER_FALLBACK : HERO_POSTER
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const v = videoRef.current
-      if (v && (v.readyState < 2 || v.paused)) {
-        setVideoStalled(true)
-      }
-    }, 4000)
-    stallTimerRef.current = timer
-    return () => {
-      clearTimeout(timer)
-      stallTimerRef.current = null
-    }
+    const img = new Image()
+    img.onerror = () => setUseFallbackPoster(true)
+    img.src = HERO_POSTER
   }, [])
 
-  const showFallback = videoError || videoStalled
-
-  if (showFallback) {
-    return (
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${HERO_POSTER})` }}
-        aria-hidden="true"
-      />
-    )
+  const handleReady = () => {
+    setVideoReady(true)
+    const v = videoRef.current
+    if (v) v.play().catch(() => {})
   }
 
+  // Start play as soon as we have enough data (loadedmetadata = earliest)
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    if (v.readyState >= 2) handleReady()
+    else v.addEventListener('canplay', handleReady)
+    return () => v.removeEventListener('canplay', handleReady)
+  }, [])
+
   return (
-    <video
-      ref={videoRef}
-      className="absolute inset-0 w-full h-full object-cover"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster={HERO_POSTER}
-      aria-label="Background video of furniture and living spaces"
-      onError={() => setVideoError(true)}
-      onStalled={() => setVideoStalled(true)}
-      onCanPlay={() => {
-        if (stallTimerRef.current) {
-          clearTimeout(stallTimerRef.current)
-          stallTimerRef.current = null
-        }
-      }}
-      onLoadedData={() => {
-        if (stallTimerRef.current) {
-          clearTimeout(stallTimerRef.current)
-          stallTimerRef.current = null
-        }
-      }}
-    >
-      <source src="/hero-bg.mp4" type="video/mp4" />
-    </video>
+    <div className="absolute inset-0 w-full h-full">
+      {/* Poster layer — always visible first, instant load */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-500"
+        style={{
+          backgroundImage: `url(${posterSrc})`,
+          opacity: videoReady ? 0 : 1,
+        }}
+        aria-hidden="true"
+      />
+      {/* Video layer — loads in background, fades in when ready */}
+      {!videoError && (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+          style={{ opacity: videoReady ? 1 : 0 }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-label="Background video of furniture and living spaces"
+          onError={() => setVideoError(true)}
+          onCanPlay={handleReady}
+          onLoadedData={handleReady}
+          onLoadedMetadata={handleReady}
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+      )}
+    </div>
   )
 }
 
