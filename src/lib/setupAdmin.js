@@ -1,101 +1,62 @@
 /**
- * Auto-provision default admin & demo user accounts in Firebase.
- * Called once on app boot; skips silently if the accounts already exist.
- */
-import { auth, db } from './firebase'
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-  signOut,
-} from 'firebase/auth'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
-
-const DEFAULT_ACCOUNTS = [
-  {
-    email: 'admin@leeroo.com',
-    password: 'Admin@123',
-    displayName: 'Lee Roo Admin',
-    role: 'admin',
-  },
-  {
-    email: 'designer@leeroo.com',
-    password: 'Designer@123',
-    displayName: 'Lee Roo Designer',
-    role: 'designer',
-  },
-  {
-    email: 'user@leeroo.com',
-    password: 'User@123',
-    displayName: 'Demo User',
-    role: 'user',
-  },
-]
-
-const DEMO_EMAILS = ['admin@leeroo.com', 'designer@leeroo.com', 'user@leeroo.com']
-
-/**
- * Ensure both default accounts exist in Firebase Auth + Firestore.
- * - If the account doesn't exist → register it + write user doc.
- * - If the account exists but the Firestore doc is missing / wrong role → fix it.
- * - Skips entirely when a real user (non-demo) is logged in to avoid signing them out.
+ * Demo account provisioning.
+ *
+ * SECURITY: Never commit passwords or credentials to git.
+ * Demo accounts (admin, designer, user) must be created manually in:
+ *   Firebase Console → Authentication → Users → Add user
+ * Then add a Firestore document: users/{uid} with { role: 'admin' | 'designer' | 'user' }
+ *
+ * For automatic provisioning during local dev, use .env.local (gitignored) with:
+ *   VITE_DEMO_PROVISION=1
+ *   VITE_DEMO_ADMIN_EMAIL=admin@leeroo.com
+ *   VITE_DEMO_ADMIN_PASSWORD=your-secret-password
+ *   (and optional VITE_DEMO_DESIGNER_*, VITE_DEMO_USER_*)
  */
 export async function ensureDefaultAccounts() {
-  const currentUser = auth.currentUser
-  if (currentUser && !DEMO_EMAILS.includes(currentUser.email)) {
-    return // Don't run when a real user is logged in
+  const env = typeof import.meta !== 'undefined' ? import.meta.env : {}
+  if (env.VITE_DEMO_PROVISION !== '1' || !env.VITE_DEMO_ADMIN_PASSWORD) {
+    return
   }
+  const { auth, db } = await import('./firebase')
+  const { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } = await import('firebase/auth')
+  const { doc, getDoc, setDoc } = await import('firebase/firestore')
 
-  for (const acct of DEFAULT_ACCOUNTS) {
-    let signedInAsTemp = false
+  const accounts = [
+    { email: env.VITE_DEMO_ADMIN_EMAIL || 'admin@leeroo.com', password: env.VITE_DEMO_ADMIN_PASSWORD, displayName: 'Admin', role: 'admin' },
+    { email: env.VITE_DEMO_DESIGNER_EMAIL || 'designer@leeroo.com', password: env.VITE_DEMO_DESIGNER_PASSWORD || env.VITE_DEMO_ADMIN_PASSWORD, displayName: 'Designer', role: 'designer' },
+    { email: env.VITE_DEMO_USER_EMAIL || 'user@leeroo.com', password: env.VITE_DEMO_USER_PASSWORD || env.VITE_DEMO_ADMIN_PASSWORD, displayName: 'Demo User', role: 'user' },
+  ]
+
+  for (const acct of accounts) {
+    if (!acct.password) continue
     try {
-      // Try creating the account (will throw if already exists)
       let credential
       try {
         credential = await createUserWithEmailAndPassword(auth, acct.email, acct.password)
         await updateProfile(credential.user, { displayName: acct.displayName })
-        console.log(`[Setup] Created account: ${acct.email} (${acct.role})`)
-        signedInAsTemp = true
       } catch (e) {
-        if (e.code === 'auth/email-already-in-use') {
+        if (e?.code === 'auth/email-already-in-use') {
           credential = await signInWithEmailAndPassword(auth, acct.email, acct.password)
-          signedInAsTemp = true
-        } else {
-          throw e
-        }
+        } else throw e
       }
-
-      const uid = credential.user.uid
-
-      // --- Ensure Firestore user document has the correct role ---
-      const userDocRef = doc(db, 'users', uid)
-      const snap = await getDoc(userDocRef)
-
+      const userRef = doc(db, 'users', credential.user.uid)
+      const snap = await getDoc(userRef)
       if (!snap.exists() || snap.data()?.role !== acct.role) {
-        await setDoc(
-          userDocRef,
-          {
-            uid,
-            email: acct.email,
-            displayName: acct.displayName,
-            name: acct.displayName,
-            role: acct.role,
-            createdAt: snap.exists() ? snap.data().createdAt : new Date().toISOString(),
-            designs: [],
-            wishlist: [],
-          },
-          { merge: true }
-        )
-        console.log(`[Setup] Wrote Firestore profile for ${acct.email} → role: ${acct.role}`)
+        await setDoc(userRef, {
+          uid: credential.user.uid,
+          email: acct.email,
+          displayName: acct.displayName,
+          name: acct.displayName,
+          role: acct.role,
+          createdAt: snap.exists() ? snap.data().createdAt : new Date().toISOString(),
+          designs: [],
+          wishlist: [],
+        }, { merge: true })
       }
-
       await signOut(auth)
     } catch (err) {
-      console.warn(`[Setup] Could not provision ${acct.email}:`, err.message || err)
-      // Only sign out if we signed in as temp account; don't sign out a restored user
-      if (signedInAsTemp) {
-        try { await signOut(auth) } catch (_) { /* ignore */ }
-      }
+      console.warn('[Setup]', acct.email, err?.message || err)
+      try { await signOut(auth) } catch (_) {}
     }
   }
 }
