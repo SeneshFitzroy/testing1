@@ -325,6 +325,14 @@ html.dark .dark\:bg-dark-surface {
   color: #FFFFFF;
 }
 
+/* VIEW ALL PRODUCTS button in dark mode: force white text & icon */
+html.dark .landing-view-all-products {
+  color: #FFFFFF !important;
+}
+html.dark .landing-view-all-products svg {
+  color: inherit !important;
+}
+
 /* Elements on bg-white/bg-stone in dark mode should keep dark text */
 html.dark .bg-white .text-charcoal,
 html.dark .bg-stone-50 .text-charcoal,
