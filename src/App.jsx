@@ -147,9 +147,15 @@ function App() {
 
       <Toaster
         position="top-right"
+        theme={darkMode ? 'dark' : 'light'}
         richColors
         toastOptions={{
-          style: { fontFamily: 'DM Sans, system-ui, sans-serif' },
+          style: {
+            fontFamily: 'DM Sans, system-ui, sans-serif',
+            background: darkMode ? '#1f2937' : undefined,
+            color: darkMode ? '#f9fafb' : undefined,
+            border: darkMode ? '1px solid rgba(255,255,255,0.1)' : undefined,
+          },
         }}
       />
 

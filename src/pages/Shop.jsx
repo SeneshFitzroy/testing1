@@ -27,7 +27,7 @@ import {
   Frame,
   Award
 } from 'lucide-react'
-import { SHOP_PRODUCTS as shopProducts } from '@/lib/constants'
+import { SHOP_PRODUCTS as shopProducts, FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
 import useCartStore from '@/store/useCartStore'
 import useThemeStore from '@/store/useThemeStore'
 import Mini3DPreview from '@/components/Mini3DPreview'
@@ -66,6 +66,7 @@ export default function Shop() {
   const [sortBy, setSortBy] = useState('featured')
   const [viewMode, setViewMode] = useState('grid')
   const [showFilters, setShowFilters] = useState(false)
+  const [quickFilters, setQuickFilters] = useState({ featured: false, onSale: false, freeShipping: false, inStock: false })
 
   const categoryLabel = (key) => {
     const map = {
@@ -99,7 +100,12 @@ export default function Shop() {
         product.description?.toLowerCase().includes(searchTerm.toLowerCase())
       const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory
       const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
-      return matchesSearch && matchesCategory && matchesPrice
+      // Quick filters (AND when multiple selected)
+      const matchesFeatured = !quickFilters.featured || product.featured
+      const matchesOnSale = !quickFilters.onSale || product.onSale || !!product.discountPercent
+      const matchesFreeShipping = !quickFilters.freeShipping || product.price >= FREE_SHIPPING_THRESHOLD
+      const matchesInStock = !quickFilters.inStock || product.inStock
+      return matchesSearch && matchesCategory && matchesPrice && matchesFeatured && matchesOnSale && matchesFreeShipping && matchesInStock
     })
     .sort((a, b) => {
       switch (sortBy) {
@@ -238,19 +244,30 @@ export default function Shop() {
                   <div>
                     <label className="block text-sm font-semibold text-darkwood dark:text-white mb-2">{t('shop.quickFilters')}</label>
                     <div className="flex flex-wrap gap-2">
-                      {[t('shop.featured'), t('shop.onSale'), t('shop.freeShipping'), t('shop.inStock')].map((filter) => (
+                      {[
+                        { key: 'featured', label: t('shop.featured') },
+                        { key: 'onSale', label: t('shop.onSale') },
+                        { key: 'freeShipping', label: t('shop.freeShipping') },
+                        { key: 'inStock', label: t('shop.inStock') },
+                      ].map(({ key, label }) => (
                         <button
-                          key={filter}
-                          className="px-3 py-1.5 text-xs font-medium bg-warm-50 dark:bg-dark-surface text-darkwood/60 dark:text-white hover:bg-clay/10 hover:text-clay rounded-full transition-all duration-200 border border-warm-200 dark:border-dark-border hover:border-clay/40"
+                          key={key}
+                          type="button"
+                          onClick={() => setQuickFilters((prev) => ({ ...prev, [key]: !prev[key] }))}
+                          className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 border ${
+                            quickFilters[key]
+                              ? 'bg-clay text-white border-clay'
+                              : 'bg-warm-50 dark:bg-dark-surface text-darkwood dark:text-warm-200 border-warm-200 dark:border-dark-border hover:border-clay/40 hover:text-clay'
+                          }`}
                         >
-                          {filter}
+                          {label}
                         </button>
                       ))}
                     </div>
                   </div>
 
                   <button 
-                    onClick={() => { setSearchTerm(''); setSelectedCategory('all'); setPriceRange([0, 2000]); setSearchParams({}); }}
+                    onClick={() => { setSearchTerm(''); setSelectedCategory('all'); setPriceRange([0, 2000]); setQuickFilters({ featured: false, onSale: false, freeShipping: false, inStock: false }); setSearchParams({}); }}
                     className="w-full py-2.5 text-sm font-medium text-darkwood/50 dark:text-white hover:text-red-500 border border-warm-200 dark:border-dark-border hover:border-red-300 rounded-xl transition-all"
                   >
                     {t('shop.clearAllFilters')}
@@ -523,7 +540,7 @@ export default function Shop() {
                   {t('shop.noProducts.desc')}
                 </p>
                 <button
-                  onClick={() => { setSearchTerm(''); setSelectedCategory('all'); setPriceRange([0, 2000]); setSearchParams({}) }}
+                  onClick={() => { setSearchTerm(''); setSelectedCategory('all'); setPriceRange([0, 2000]); setQuickFilters({ featured: false, onSale: false, freeShipping: false, inStock: false }); setSearchParams({}) }}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-clay hover:bg-clay-dark text-white rounded-xl font-medium transition-all"
                 >
                   <RotateCcw className="h-4 w-4" />

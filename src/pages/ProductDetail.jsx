@@ -223,8 +223,8 @@ export default function ProductDetail() {
               </>
             )}
 
-            {/* IMAGE tab: product main image + thumbnail strip */}
-            {viewMode === 'photos' && hasProductImages && (
+            {/* IMAGE tab: when product has colors, show 3D in selected color so display updates; otherwise show static image */}
+            {viewMode === 'photos' && hasProductImages && !(product.colors?.length > 1) && (
               <div className="space-y-3">
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-white dark:bg-dark-card border border-[#5C3A2A]/20">
                   <img
@@ -234,7 +234,7 @@ export default function ProductDetail() {
                   />
                   {/* Lee Roo watermark */}
                   <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none opacity-50">
-                    <span className="text-[10px] font-semibold text-[#5C3A2A] tracking-widest bg-white/80 px-2 py-1 rounded">LEE ROO · WOOD DESIGNS</span>
+                    <span className="text-[10px] font-semibold text-[#5C3A2A] dark:text-clay tracking-widest bg-white/80 dark:bg-black/40 px-2 py-1 rounded">LEE ROO · WOOD DESIGNS</span>
                   </div>
                 </div>
                 {product.images && product.images.length > 1 && (
@@ -254,6 +254,35 @@ export default function ProductDetail() {
                     ))}
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Photos + multiple colors: show 3D in selected color so it updates when user picks a swatch */}
+            {viewMode === 'photos' && hasProductImages && product.colors?.length > 1 && (
+              <div className="space-y-3">
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-white dark:bg-dark-card border border-[#5C3A2A]/20">
+                  <Mini3DPreview
+                    productId={product.id}
+                    color={selectedColor || product.colors?.[0] || '#8B6F47'}
+                    angle={previewAngles[selectedImage] || 'front'}
+                  />
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none opacity-70">
+                    <span className="text-[10px] font-semibold text-[#5C3A2A] dark:text-clay tracking-widest bg-white/90 dark:bg-black/50 px-2 py-1 rounded">Color: {product.colorNames?.[product.colors?.indexOf(selectedColor)] ?? selectedColor}</span>
+                  </div>
+                </div>
+                <div className="flex gap-2 overflow-x-auto pb-1">
+                  {previewAngles.map((angle, index) => (
+                    <button
+                      key={angle}
+                      onClick={() => setSelectedImage(index)}
+                      className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                        selectedImage === index ? 'border-[#5C3A2A] dark:border-clay ring-2 ring-clay/20' : 'border-[#5C3A2A]/20 dark:border-dark-border hover:border-clay/40'
+                      }`}
+                    >
+                      <Mini3DPreview productId={product.id} color={selectedColor || product.colors?.[0]} angle={angle} />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 

@@ -313,11 +313,11 @@ export default function Landing() {
       <section className="py-28 sm:py-32 bg-stone-50 dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <AnimatedSection className="text-center mb-20">
-            <span className="text-charcoal/90 dark:!text-white font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.shopByCategory')}</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:!text-white mb-6">
+            <span className="text-[#1C1C1C] dark:text-white font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.shopByCategory')}</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-light text-[#1C1C1C] dark:text-white mb-6">
               {t('landing.categories.title')}
             </h2>
-            <p className="text-charcoal/80 dark:!text-white max-w-2xl mx-auto text-lg">
+            <p className="text-[#333333] dark:text-[#E8E8E8] max-w-2xl mx-auto text-lg">
               {t('landing.categories.subtitle')}
             </p>
           </AnimatedSection>
@@ -333,8 +333,8 @@ export default function Landing() {
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100 dark:bg-dark-surface mb-6">
                     <img src={cat.img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                   </div>
-                  <h3 className="font-display font-medium text-xl text-charcoal dark:!text-white group-hover:text-oak transition-colors">{t(cat.titleKey)}</h3>
-                  <p className="text-charcoal/80 dark:!text-white mt-1">{t(cat.descKey)}</p>
+                  <h3 className="font-display font-medium text-xl text-[#1C1C1C] dark:text-white group-hover:text-oak transition-colors">{t(cat.titleKey)}</h3>
+                  <p className="text-[#333333] dark:text-[#E8E8E8] mt-1">{t(cat.descKey)}</p>
                 </Link>
               </AnimatedSection>
             ))}
@@ -347,12 +347,12 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <AnimatedSection className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
             <div>
-              <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.newArrivals')}</span>
-              <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:text-stone-100">
+              <span className="text-[#1C1C1C] dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.newArrivals')}</span>
+              <h2 className="text-3xl sm:text-4xl font-display font-light text-[#1C1C1C] dark:text-white">
                 {t('landing.latestCollections') || 'Latest Collection'}
               </h2>
             </div>
-            <Link to="/shop" className="inline-flex items-center gap-2 text-charcoal dark:text-stone-300 font-medium hover:text-oak transition-colors text-sm">
+            <Link to="/shop" className="inline-flex items-center gap-2 text-[#1C1C1C] dark:text-[#E8E8E8] font-medium hover:text-oak transition-colors text-sm">
               {t('landing.viewAll')} <ArrowRight className="h-4 w-4" />
             </Link>
           </AnimatedSection>
@@ -382,7 +382,7 @@ export default function Landing() {
                       <button onClick={() => addToCart(product)} className="flex-1 py-3.5 bg-charcoal hover:bg-charcoal/90 text-stone-50 text-sm font-medium rounded-xl transition-all flex items-center justify-center gap-2">
                         <ShoppingCart className="h-4 w-4" /> {t('shop.addToCart')}
                       </button>
-                      <Link to={`/shop/${product.id}`} className="p-3.5 border border-stone-300 dark:border-dark-border rounded-xl text-charcoal/80 hover:border-oak hover:text-oak transition-colors flex items-center justify-center" aria-label={`View ${product.name}`}>
+                      <Link to={`/shop/${product.id}`} className="p-3.5 border border-stone-300 dark:border-dark-border rounded-xl text-[#1C1C1C]/80 dark:text-white/80 hover:border-oak hover:text-oak transition-colors flex items-center justify-center" aria-label={`View ${product.name}`}>
                         <Eye className="h-4 w-4" />
                       </Link>
                     </div>
@@ -399,7 +399,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
           <AnimatedSection className="text-center mb-16">
             <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.bestSellers')}</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-light text-charcoal dark:text-stone-100">
+            <h2 className="text-3xl sm:text-4xl font-display font-light text-[#1C1C1C] dark:text-white">
               {t('landing.bestSelling') || 'Customer Favorites'}
             </h2>
           </AnimatedSection>
@@ -418,9 +418,9 @@ export default function Landing() {
                     </button>
                   </div>
                   <div className="p-8">
-                    <h4 className="font-display font-medium text-lg text-charcoal dark:text-stone-100 group-hover:text-oak transition-colors">{product.name}</h4>
+                    <h4 className="font-display font-medium text-lg text-[#1C1C1C] dark:text-white group-hover:text-oak transition-colors">{product.name}</h4>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-xl font-medium text-charcoal dark:text-stone-100">{formatPrice(product.price)}</span>
+                      <span className="text-xl font-medium text-[#1C1C1C] dark:text-white">{formatPrice(product.price)}</span>
                       <div className="flex items-center gap-1" aria-label={`Rating: ${product.rating} out of 5`}>
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className={`h-4 w-4 ${i < Math.round(product.rating || 0) ? 'text-amber-500 fill-amber-500' : 'text-stone-200 dark:text-dark-border'}`} />
@@ -431,7 +431,7 @@ export default function Landing() {
                       <button onClick={() => addToCart(product)} className="flex-1 py-3.5 bg-charcoal hover:bg-charcoal/90 text-stone-50 text-sm font-medium rounded-xl transition-all flex items-center justify-center gap-2">
                         <ShoppingCart className="h-4 w-4" /> {t('shop.addToCart')}
                       </button>
-                      <Link to={`/shop/${product.id}`} className="p-3.5 border border-stone-300 dark:border-dark-border rounded-xl text-charcoal/80 hover:border-oak hover:text-oak transition-colors flex items-center justify-center" aria-label={`View ${product.name}`}>
+                      <Link to={`/shop/${product.id}`} className="p-3.5 border border-stone-300 dark:border-dark-border rounded-xl text-[#1C1C1C]/80 dark:text-white/80 hover:border-oak hover:text-oak transition-colors flex items-center justify-center" aria-label={`View ${product.name}`}>
                         <Eye className="h-4 w-4" />
                       </Link>
                     </div>
