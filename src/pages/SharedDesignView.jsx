@@ -86,19 +86,18 @@ export default function SharedDesignView() {
     <div className="min-h-screen flex flex-col bg-warm-50 dark:bg-dark-bg">
       {/* Header — minimal, brand + design name + view toggle */}
       <header className="flex-shrink-0 border-b border-warm-200 dark:border-dark-border bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-2 text-darkwood dark:text-white font-display font-bold text-xl hover:opacity-80">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <Link to="/" className="flex items-center gap-2 text-darkwood dark:text-white font-display font-bold text-lg sm:text-xl hover:opacity-80 shrink-0">
             Lee Roo Wood Designs
           </Link>
-          <div className="flex items-center gap-3">
-            <h2 className="text-lg font-semibold text-darkwood dark:text-white truncate max-w-[200px] sm:max-w-none">
+          <div className="flex flex-wrap items-center justify-between sm:justify-end gap-2 sm:gap-3">
+            <h2 className="text-base sm:text-lg font-semibold text-darkwood dark:text-white truncate max-w-[180px] sm:max-w-none">
               {designName || 'Shared Design'}
             </h2>
-            <span className="text-xs text-darkwood/50 dark:text-white px-2 py-1 rounded-lg bg-warm-100 dark:bg-dark-surface">
+            <span className="text-xs text-darkwood/50 dark:text-white px-2 py-1 rounded-lg bg-warm-100 dark:bg-dark-surface shrink-0">
               View only
             </span>
-          </div>
-          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => setViewMode('2d')}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
@@ -121,6 +120,7 @@ export default function SharedDesignView() {
               <Layers className="h-4 w-4" />
               3D View
             </button>
+            </div>
           </div>
         </div>
       </header>

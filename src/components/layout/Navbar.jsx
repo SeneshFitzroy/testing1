@@ -447,7 +447,7 @@ export default function Navbar() {
               <div className="flex items-center rounded-2xl overflow-hidden border border-white/20 dark:border-dark-border/50 ml-1 shadow-lg">
                 <Link
                   to="/login"
-                  className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 min-h-[44px] text-sm font-medium transition-colors ${
                     isLandingPage && !isScrolled
                       ? 'text-white/90 hover:text-white hover:bg-white/10'
                       : 'text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
@@ -459,7 +459,7 @@ export default function Navbar() {
                 <div className="w-px bg-white/20 dark:bg-dark-border/50" />
                 <Link
                   to="/register"
-                  className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-all ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 min-h-[44px] text-sm font-semibold transition-all ${
                     isLandingPage && !isScrolled
                       ? 'bg-white/95 hover:bg-white text-gray-900'
                       : 'bg-gradient-to-r from-clay to-clay-dark hover:from-clay-dark hover:to-clay text-white'

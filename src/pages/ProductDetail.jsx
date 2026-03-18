@@ -152,7 +152,7 @@ export default function ProductDetail() {
           <span>{t('product.back')}</span>
         </motion.button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {/* Product Images — 3D Viewer */}
           <motion.div
             className="space-y-4"
@@ -204,7 +204,7 @@ export default function ProductDetail() {
                   presetAngle={presetAngle}
                 />
                 {/* Angle preset buttons BELOW 3D viewer */}
-                <div className="flex gap-2 mt-3">
+                <div className="flex flex-wrap gap-2 mt-3">
                   {(['front', 'side', 'top', 'back']).map((angle) => (
                     <button
                       key={angle}
@@ -428,7 +428,7 @@ export default function ProductDetail() {
                 <div className="flex items-center border border-warm-200 dark:border-dark-border rounded-lg">
                   <motion.button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
+                    className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
                     whileTap={{ scale: 0.95 }}
                   >
                     <Minus className="h-4 w-4" />
@@ -438,7 +438,7 @@ export default function ProductDetail() {
                   </span>
                   <motion.button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="p-2 hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
+                    className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors"
                     whileTap={{ scale: 0.95 }}
                   >
                     <Plus className="h-4 w-4" />
@@ -507,19 +507,19 @@ export default function ProductDetail() {
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-3 gap-4 py-6 border-t border-warm-200 dark:border-dark-border">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 py-4 sm:py-6 border-t border-warm-200 dark:border-dark-border">
               <div className="text-center">
-                <Truck className="h-8 w-8 text-clay mx-auto mb-2" />
-                <div className="text-sm font-medium text-darkwood dark:text-white">{t('product.freeShipping')}</div>
+                <Truck className="h-6 w-6 sm:h-8 sm:w-8 text-clay mx-auto mb-1.5 sm:mb-2" />
+                <div className="text-xs sm:text-sm font-medium text-darkwood dark:text-white">{t('product.freeShipping')}</div>
                 <div className="text-xs text-darkwood/50 dark:text-white">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
               </div>
               <div className="text-center">
-                <Shield className="h-8 w-8 text-forest mx-auto mb-2" />
+                <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-forest mx-auto mb-1.5 sm:mb-2" />
                 <div className="text-sm font-medium text-darkwood dark:text-white">{t('product.warranty')}</div>
                 <div className="text-xs text-darkwood/50 dark:text-white">{t('product.fullCoverage')}</div>
               </div>
               <div className="text-center">
-                <RotateCcw className="h-8 w-8 text-darkwood dark:text-white mx-auto mb-2" />
+                <RotateCcw className="h-6 w-6 sm:h-8 sm:w-8 text-darkwood dark:text-white mx-auto mb-1.5 sm:mb-2" />
                 <div className="text-sm font-medium text-darkwood dark:text-white">{t('product.easyReturns')}</div>
                 <div className="text-xs text-darkwood/50 dark:text-white">{t('product.thirtyDays')}</div>
               </div>

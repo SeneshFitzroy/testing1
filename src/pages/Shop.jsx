@@ -206,14 +206,15 @@ export default function Shop() {
           <AnimatePresence>
             {(showFilters || typeof window !== 'undefined') && (
               <motion.div
-                className={`lg:w-72 ${showFilters ? 'block' : 'hidden lg:block'}`}
+                className={`${showFilters ? 'fixed inset-0 z-50 flex justify-end lg:justify-start' : 'hidden lg:block'} lg:relative lg:inset-auto lg:z-auto lg:w-72`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-warm-100 dark:border-dark-border p-6 space-y-6 sticky top-24">
-                  <div className="flex items-center justify-between lg:hidden">
+                {showFilters && <div className="fixed inset-0 bg-black/50 lg:hidden" onClick={() => setShowFilters(false)} aria-hidden />}
+                <div className="relative lg:static bg-white dark:bg-dark-card rounded-l-2xl lg:rounded-2xl shadow-xl lg:shadow-sm border-0 lg:border border-warm-100 dark:border-dark-border p-6 space-y-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] h-full lg:h-auto max-h-full lg:max-h-[calc(100vh-7rem)] overflow-y-auto w-full max-w-sm lg:max-w-none">
+                  <div className="flex items-center justify-between lg:hidden sticky top-0 bg-white dark:bg-dark-card -mt-6 -mx-6 px-6 py-4 border-b border-warm-100 dark:border-dark-border">
                     <h3 className="font-bold text-neutral-900 dark:text-white">{t('shop.filters')}</h3>
                     <button onClick={() => setShowFilters(false)} className="p-1.5 hover:bg-neutral-100 dark:hover:bg-dark-surface rounded-lg">
                       <X className="h-5 w-5 text-neutral-500" />

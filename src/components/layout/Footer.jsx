@@ -249,7 +249,7 @@ export default function Footer() {
       {/* Trust Badges — consistent with app-wide policies */}
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm text-white font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-white font-medium">
             <span className="flex items-center gap-2">
               <Truck className="h-4 w-4 text-clay" />
               {t('footer.freeShippingOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}

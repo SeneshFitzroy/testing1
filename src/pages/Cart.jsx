@@ -115,7 +115,7 @@ export default function Cart() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0, transition: { delay: index * 0.05 } }}
                     exit={{ opacity: 0, x: -200, transition: { duration: 0.3 } }}
-                    className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-5 flex items-center gap-5 group hover:shadow-lg hover:shadow-clay/5 hover:border-clay/30 dark:hover:border-clay/20 transition-all duration-300"
+                    className="bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border p-4 sm:p-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 group hover:shadow-lg hover:shadow-clay/5 hover:border-clay/30 dark:hover:border-clay/20 transition-all duration-300"
                   >
                     <div className="w-24 h-24 bg-gradient-to-br from-warm-100 to-warm-50 dark:from-dark-surface dark:to-dark-card rounded-xl flex-shrink-0 overflow-hidden">
                       {item.image && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
@@ -140,7 +140,7 @@ export default function Cart() {
                         <div className="flex items-center bg-warm-100 dark:bg-dark-surface rounded-xl overflow-hidden">
                           <button
                             onClick={() => handleQuantityChange(item, (item.quantity || 1) - 1)}
-                            className="p-2 hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
+                            className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
                           >
                             <Minus className="h-3.5 w-3.5 text-darkwood/60 dark:text-white" />
                           </button>
@@ -149,7 +149,7 @@ export default function Cart() {
                           </span>
                           <button
                             onClick={() => handleQuantityChange(item, (item.quantity || 1) + 1)}
-                            className="p-2 hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
+                            className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
                           >
                             <Plus className="h-3.5 w-3.5 text-darkwood/60 dark:text-white" />
                           </button>
@@ -158,7 +158,7 @@ export default function Cart() {
                       </div>
                     </div>
 
-                    <div className="text-right flex flex-col items-end gap-2">
+                    <div className="text-right flex flex-row sm:flex-col items-center justify-between sm:items-end gap-2">
                       <span className="text-lg font-bold text-clay">
                         {formatPrice(item.price * (item.quantity || 1))}
                       </span>

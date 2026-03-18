@@ -81,7 +81,8 @@ export default function AudioManager() {
   return (
     <motion.button
       onClick={() => setAudioMuted(!audioMuted)}
-      className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-white/90 dark:bg-dark-card/90 backdrop-blur-xl border border-warm-200/60 dark:border-dark-border/60 shadow-lg flex items-center justify-center text-darkwood/60 dark:text-white hover:text-clay dark:hover:text-clay transition-all hover:scale-110"
+      className="fixed z-40 w-12 h-12 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-dark-card/90 backdrop-blur-xl border border-warm-200/60 dark:border-dark-border/60 shadow-lg flex items-center justify-center text-darkwood/60 dark:text-white hover:text-clay dark:hover:text-clay transition-all hover:scale-110"
+      style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom, 1.5rem))', right: 'max(1.5rem, env(safe-area-inset-right, 1.5rem))' }}
       aria-label={audioMuted ? 'Unmute background music' : 'Mute background music'}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}

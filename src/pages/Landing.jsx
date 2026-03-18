@@ -150,7 +150,7 @@ export default function Landing() {
       {/* ═══════════ CINEMATIC VIDEO HERO (Floyd / Arhaus Inspired) ═══════════ */}
       <section
         ref={heroRef}
-        className="relative h-[100vh] min-h-[600px] flex items-center justify-center overflow-hidden -mt-16 pt-16"
+        className="relative h-[100vh] min-h-[400px] sm:min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden -mt-16 pt-16"
         aria-label="Hero section"
       >
         {/* Full-bleed video or static poster fallback (video files optional in public/) */}
@@ -215,8 +215,8 @@ export default function Landing() {
 
       {/* ═══════════ TRUST BAR — Professional, consistent across app ═══════════ */}
       <section className="bg-white dark:bg-dark-card border-b border-stone-200/60 dark:border-dark-border shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 md:gap-x-16 text-sm md:text-base text-charcoal/90 dark:text-white font-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-12 md:gap-x-16 text-xs sm:text-sm md:text-base text-charcoal/90 dark:text-white font-medium">
             {[
               { icon: Truck, text: `${t('landing.trust.freeShippingOver')} ${formatPrice(FREE_SHIPPING_THRESHOLD)}` },
               { icon: Shield, text: t('landing.trust.warranty2yr') },
@@ -233,9 +233,9 @@ export default function Landing() {
       </section>
 
       {/* ═══════════ SHOP CATEGORIES ═══════════ */}
-      <section className="py-28 sm:py-32 bg-stone-50 dark:bg-dark-bg">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
-          <AnimatedSection className="text-center mb-20">
+      <section className="py-16 sm:py-24 md:py-28 lg:py-32 bg-stone-50 dark:bg-dark-bg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          <AnimatedSection className="text-center mb-12 sm:mb-20">
             <span className="text-[#1C1C1C] dark:text-white font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.shopByCategory')}</span>
             <h2 className="text-3xl sm:text-4xl font-display font-light text-[#1C1C1C] dark:text-white mb-6">
               {t('landing.categories.title')}
@@ -266,8 +266,8 @@ export default function Landing() {
       </section>
 
       {/* ═══════════ NEW ARRIVALS ═══════════ */}
-      <section className="py-28 sm:py-32 bg-stone-100/60 dark:bg-dark-card">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
+      <section className="py-16 sm:py-24 md:py-28 lg:py-32 bg-stone-100/60 dark:bg-dark-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <AnimatedSection className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
             <div>
               <span className="text-[#1C1C1C] dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.newArrivals')}</span>
@@ -286,7 +286,7 @@ export default function Landing() {
                 <div className="group bg-stone-50 dark:bg-dark-bg rounded-2xl overflow-hidden border border-stone-200/60 dark:border-dark-border hover:shadow-xl hover:shadow-stone-300/10 transition-all duration-300">
                   <div className="relative aspect-[4/3] bg-stone-100 dark:bg-dark-surface overflow-hidden">
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
-                    <button onClick={() => addToWishlist(product)} className="absolute top-4 right-4 p-2.5 rounded-xl bg-stone-50/90 dark:bg-dark-card/90 backdrop-blur-sm text-charcoal/40 dark:text-white/60 hover:text-red-500 transition-colors" aria-label={`Add ${product.name} to wishlist`}>
+                    <button onClick={() => addToWishlist(product)} className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2.5 min-w-[44px] min-h-[44px] rounded-xl bg-stone-50/90 dark:bg-dark-card/90 backdrop-blur-sm text-charcoal/40 dark:text-white/60 hover:text-red-500 transition-colors flex items-center justify-center" aria-label={`Add ${product.name} to wishlist`}>
                     <Heart className="h-4 w-4" />
                   </button>
                 </div>
@@ -318,9 +318,9 @@ export default function Landing() {
       </section>
 
       {/* ═══════════ BEST SELLERS ═══════════ */}
-      <section className="py-28 sm:py-32 bg-stone-50 dark:bg-dark-bg">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
-          <AnimatedSection className="text-center mb-16">
+      <section className="py-16 sm:py-24 md:py-28 lg:py-32 bg-stone-50 dark:bg-dark-bg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-3 block">{t('landing.bestSellers')}</span>
             <h2 className="text-3xl sm:text-4xl font-display font-light text-[#1C1C1C] dark:text-white">
               {t('landing.bestSelling') || 'Customer Favorites'}
@@ -373,8 +373,8 @@ export default function Landing() {
       </section>
 
       {/* ═══════════ CTA BANNER ═══════════ */}
-      <section className="py-28 sm:py-32 bg-[#1C1C1C] text-white" aria-label="Call to action">
-        <div className="max-w-4xl mx-auto px-6 sm:px-10 text-center">
+      <section className="py-16 sm:py-24 md:py-28 lg:py-32 bg-[#1C1C1C] text-white" aria-label="Call to action">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 text-center">
           <AnimatedSection>
             <h3 className="text-3xl sm:text-4xl font-display font-light mb-6 text-white">
               {t('landing.cta.title')}
@@ -395,8 +395,8 @@ export default function Landing() {
       </section>
 
       {/* ═══════════ ABOUT ═══════════ */}
-      <section className="py-28 sm:py-32 bg-stone-50 dark:bg-dark-bg" id="about">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
+      <section className="py-16 sm:py-24 md:py-28 lg:py-32 bg-stone-50 dark:bg-dark-bg" id="about">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <AnimatedSection>
               <span className="text-charcoal/90 dark:text-white font-semibold text-sm uppercase tracking-widest mb-4 block">{t('landing.ourStory')}</span>
