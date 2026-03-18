@@ -2,6 +2,23 @@ import { create } from 'zustand'
 import { generateId } from '@/lib/utils'
 import { fetchDesignsByUser } from '@/lib/designService'
 
+const SAVED_DESIGNS_KEY = 'Lee Roo-savedDesigns'
+function loadSavedDesignsFromStorage() {
+  try {
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(SAVED_DESIGNS_KEY) : null
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch { return [] }
+}
+function persistSavedDesigns(designs) {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(SAVED_DESIGNS_KEY, JSON.stringify(designs))
+    }
+  } catch (_) {}
+}
+
 /* ── Helper: create a blank room ── */
 const createRoom = (name = 'Room 1', overrides = {}) => ({
   id: generateId(),
@@ -52,7 +69,7 @@ const useDesignStore = create((set, get) => ({
   viewMode: '2d',
   history: [],
   historyIndex: -1,
-  savedDesigns: [],
+  savedDesigns: loadSavedDesignsFromStorage(),
   readOnlyMode: false,
 
   setReadOnlyMode: (v) => set({ readOnlyMode: !!v }),
@@ -312,12 +329,12 @@ const useDesignStore = create((set, get) => ({
       activeRoomIndex: s.activeRoomIndex,
       updatedAt: new Date().toISOString(),
       createdAt: s.currentDesign?.createdAt || new Date().toISOString(),
-      roomWidth: s.rooms[0]?.roomWidth,
-      roomDepth: s.rooms[0]?.roomDepth,
-      roomHeight: s.rooms[0]?.roomHeight,
-      wallColor: s.rooms[0]?.wallColor,
-      floorColor: s.rooms[0]?.floorColor,
-      furnitureItems: s.rooms[0]?.furnitureItems,
+      roomWidth: s.rooms[s.activeRoomIndex]?.roomWidth ?? s.rooms[0]?.roomWidth,
+      roomDepth: s.rooms[s.activeRoomIndex]?.roomDepth ?? s.rooms[0]?.roomDepth,
+      roomHeight: s.rooms[s.activeRoomIndex]?.roomHeight ?? s.rooms[0]?.roomHeight,
+      wallColor: s.rooms[s.activeRoomIndex]?.wallColor ?? s.rooms[0]?.wallColor,
+      floorColor: s.rooms[s.activeRoomIndex]?.floorColor ?? s.rooms[0]?.floorColor,
+      furnitureItems: s.rooms[s.activeRoomIndex]?.furnitureItems ?? s.rooms[0]?.furnitureItems ?? [],
     }
     set((state) => {
       const existing = state.savedDesigns.findIndex(d => d.id === design.id)
@@ -325,6 +342,7 @@ const useDesignStore = create((set, get) => ({
         existing >= 0
           ? state.savedDesigns.map((d, i) => (i === existing ? design : d))
           : [...state.savedDesigns, design]
+      persistSavedDesigns(savedDesigns)
       return { currentDesign: design, savedDesigns }
     })
     return design
@@ -390,19 +408,32 @@ const useDesignStore = create((set, get) => ({
   },
 
   deleteDesign: (id) =>
-    set((s) => ({
-      savedDesigns: s.savedDesigns.filter(d => d.id !== id),
-      currentDesign: s.currentDesign?.id === id ? null : s.currentDesign,
-    })),
+    set((s) => {
+      const savedDesigns = s.savedDesigns.filter(d => d.id !== id)
+      persistSavedDesigns(savedDesigns)
+      return {
+        savedDesigns,
+        currentDesign: s.currentDesign?.id === id ? null : s.currentDesign,
+      }
+    }),
 
   loadUserDesigns: async (userId) => {
-    if (!userId) return get().savedDesigns
+    if (!userId) {
+      const local = get().savedDesigns
+      if (local.length > 0) return local
+      const fromStorage = loadSavedDesignsFromStorage()
+      if (fromStorage.length > 0) set({ savedDesigns: fromStorage })
+      return fromStorage
+    }
     try {
       const designs = await fetchDesignsByUser(userId)
       set({ savedDesigns: designs })
+      persistSavedDesigns(designs)
       return designs
     } catch (err) {
       console.warn('Failed to load designs from Firestore:', err)
+      const local = loadSavedDesignsFromStorage()
+      if (local.length > 0) set({ savedDesigns: local })
       return get().savedDesigns
     }
   },
@@ -418,7 +449,9 @@ const useDesignStore = create((set, get) => ({
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     }
-    set({ savedDesigns: [...s.savedDesigns, dup] })
+    const savedDesigns = [...s.savedDesigns, dup]
+    set({ savedDesigns })
+    persistSavedDesigns(savedDesigns)
     return dup
   },
 }))
