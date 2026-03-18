@@ -21,7 +21,6 @@ export const FURNITURE_ITEMS = [
   { id: 'cabinet-1', name: 'Storage Cabinet', category: 'storage', width: 1.0, depth: 0.4, height: 1.8, color: '#4A2F21', price: 449, icon: 'Archive', description: 'Tall storage cabinet with adjustable shelves.' },
   { id: 'bookshelf-1', name: 'Bookshelf', category: 'storage', width: 0.8, depth: 0.35, height: 1.9, color: '#5C3A2A', price: 349, icon: 'BookOpen', description: 'Open bookshelf with 5 tiers.' },
   { id: 'tvstand-1', name: 'TV Stand', category: 'entertainment', width: 1.5, depth: 0.4, height: 0.5, color: '#2E1C12', price: 399, icon: 'Monitor', description: 'Media console with cable management.' },
-  { id: 'lamp-floor', name: 'Floor Lamp', category: 'lighting', width: 0.3, depth: 0.3, height: 1.6, color: '#B66E41', price: 179, icon: 'Lightbulb', description: 'Arc floor lamp with linen shade.' },
   { id: 'desk-1', name: 'Office Desk', category: 'tables', width: 1.4, depth: 0.7, height: 0.75, color: '#8B6F47', price: 499, icon: 'MonitorSmartphone', description: 'Spacious office desk with drawer unit.' },
 ]
 
@@ -33,9 +32,7 @@ export const FURNITURE_CATEGORIES = [
   { id: 'Bedroom', name: 'Bedroom', icon: 'Bed' },
   { id: 'Storage', name: 'Storage', icon: 'Archive' },
   { id: 'Entertainment', name: 'Entertainment', icon: 'Monitor' },
-  { id: 'Lighting', name: 'Lighting', icon: 'Lightbulb' },
   { id: 'Office', name: 'Office', icon: 'Briefcase' },
-  { id: 'Decor', name: 'Decor', icon: 'Image' },
 ]
 
 // Parse dimensions "220 x 95 x 82 cm" -> { width: 2.2, depth: 0.95, height: 0.82 }
@@ -51,7 +48,7 @@ function parseDimensions(str) {
 
 // Map shop category to editor category for 3D geometry
 function shopCategoryToEditor(shopCat) {
-  const map = { 'Living Room': 'seating', 'Dining Room': 'seating', 'Bedroom': 'beds', 'Storage': 'storage', 'Entertainment': 'tables', 'Lighting': 'lighting', 'Office': 'tables', 'Decor': 'decor' }
+  const map = { 'Living Room': 'seating', 'Dining Room': 'seating', 'Bedroom': 'beds', 'Storage': 'storage', 'Entertainment': 'tables', 'Office': 'tables' }
   return map[shopCat] || 'tables'
 }
 
@@ -224,22 +221,6 @@ export const SHOP_PRODUCTS = [
     ],
   },
   {
-    id: 'sp-11', name: 'Globe Pendant Light', category: 'Lighting', discountPercent: 24, price: 151, originalPrice: 199, rating: 4.5, reviews: 67, inStock: true, featured: true, onSale: true,
-    colors: ['#B66E41', '#2E1C12', '#FFFFFF'], colorNames: ['Antique Brass', 'Matte Black', 'Chrome'], material: 'Mouth-Blown Glass & Brass', dimensions: 'Ø 35 x H 40 cm', weight: '2.5 kg',
-    woodType: null,
-    specs: { dimensionsFull: 'Ø14" x H16"', productWeight: '5.5 lbs', packagingDimensions: '1 box' },
-    description: 'Artisan globe pendant in mouth-blown smoke glass with an antique brass canopy and woven cord. Creates warm ambient light through its translucent shade.',
-    features: ['Mouth-blown glass globe', 'Adjustable drop length', 'Dimmable compatible', 'LED bulb included'],
-    sku: 'SP-11',
-    image: '/images/products/sp-11.jpg',
-    images: ['/images/products/sp-11.jpg'],
-    reviewsList: [
-      { name: 'Anton Weber', rating: 5, text: 'Mouth-blown glass has a slight thickness variance—you can see it when lit. Cord is braided, adjustable. Brass patina is even.' },
-      { name: 'Layla Hassan', rating: 4, text: 'Warm light, not harsh. Canopy is smaller than expected but mounts flush. Works with a standard junction box.' },
-      { name: 'Henrik Sørensen', rating: 5, text: 'Replaced a builder-grade boob light. This has weight. LED bulb included—3000K, dimmable. Install was 20 min.' },
-    ],
-  },
-  {
     id: 'sp-12', name: 'Leather Chesterfield Sofa', category: 'Living Room', discountPercent: 25, price: 1424, originalPrice: 1899, rating: 4.9, reviews: 105, inStock: true, onSale: true,
     colors: ['#6B3A2A', '#2E1C12', '#D9C7B8'], colorNames: ['Cognac', 'Espresso', 'Parchment'], material: 'Full-Grain Leather', dimensions: '230 x 98 x 78 cm', weight: '58 kg',
     woodType: { name: 'Oak', slug: 'oak' },
@@ -253,22 +234,6 @@ export const SHOP_PRODUCTS = [
       { name: 'Aldo Rossi', rating: 5, text: 'Leather is full-grain—you can feel the pores. Diamond tufting is hand-tied. Bun feet are solid, not plastic caps.' },
       { name: 'Yara Nassar', rating: 5, text: 'Distressed Cognac shows variation. Cushions have eight-way springs. Arrived in two crates, white-glove.' },
       { name: 'Marcus Webb', rating: 4, text: '3-week lead time as stated. One arm is slightly firmer than the other—breaking in. Worth it.' },
-    ],
-  },
-  {
-    id: 'sp-13', name: 'Round Wall Mirror', category: 'Decor', discountPercent: 26, price: 184, originalPrice: 249, rating: 4.8, reviews: 76, inStock: true, onSale: true,
-    colors: ['#B66E41', '#2E1C12', '#D9C7B8'], colorNames: ['Brass', 'Iron Black', 'Champagne Gold'], material: 'Solid Brass Frame', dimensions: 'Ø 80 x D 3 cm', weight: '4 kg',
-    woodType: null,
-    specs: { dimensionsFull: 'Ø31" x D1"', productWeight: '9 lbs', packagingDimensions: '1 box' },
-    description: 'Over-sized round mirror with a forged solid brass frame and bevelled edge. Wall-mount hardware included for a flush, floating appearance.',
-    features: ['Bevelled mirror edge', 'Flush wall mount', 'Solid brass frame', 'Shatter-resistant backing'],
-    sku: 'SP-13',
-    image: '/images/products/sp-13.jpg',
-    images: ['/images/products/sp-13.jpg'],
-    reviewsList: [
-      { name: 'Greta Zimmermann', rating: 5, text: 'Bevelled edge throws light at an angle—catches the morning sun. Frame is forged, not cast. Mounting hardware included.' },
-      { name: 'Raj Mehta', rating: 5, text: '31" diameter. Above a 48" console. Proportion is right. Brass has a warm cast, not yellow.' },
-      { name: 'Chiara Romano', rating: 4, text: 'Entryway feels doubled. Backing is shatter-resistant. One corner of the frame had a tiny casting mark—barely visible.' },
     ],
   },
   {

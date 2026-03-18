@@ -336,30 +336,7 @@ function NightstandModel({ color }) {
 }
 
 /* ═══════════════════════════════════
-   11. GLOBE PENDANT LIGHT — sp-11
-   ═══════════════════════════════════ */
-function PendantLightModel({ color }) {
-  return (
-    <group>
-      {/* canopy (ceiling plate) */}
-      <Cy a={[0.08, 0.08, 0.02, 16]} p={[0, 1.5, 0]} color={color} metalness={0.6} roughness={0.25} />
-      {/* cord */}
-      <Cy a={[0.005, 0.005, 0.7, 6]} p={[0, 1.15, 0]} color={'#3a3a3a'} roughness={0.8} />
-      {/* globe (translucent glass) */}
-      <Sp a={[0.22, 24, 24]} p={[0, 0.78, 0]} color="#DDD5C8" roughness={0.05} metalness={0.1} transparent opacity={0.55} />
-      {/* inner bulb */}
-      <Sp a={[0.06, 12, 12]} p={[0, 0.78, 0]} color="#FFF8E1" roughness={0.15} />
-      {/* brass ring around globe equator */}
-      <mesh position={[0, 0.78, 0]} castShadow>
-        <torusGeometry args={[0.22, 0.008, 8, 32]} />
-        <meshStandardMaterial color={color} metalness={0.7} roughness={0.2} />
-      </mesh>
-    </group>
-  )
-}
-
-/* ═══════════════════════════════════
-   12. CHESTERFIELD SOFA — sp-12
+   11. CHESTERFIELD SOFA — sp-12
    ═══════════════════════════════════ */
 function ChesterfieldModel({ color }) {
   return (
@@ -397,34 +374,7 @@ function ChesterfieldModel({ color }) {
 }
 
 /* ═══════════════════════════════════
-   13. ROUND WALL MIRROR — sp-13
-   ═══════════════════════════════════ */
-function MirrorModel({ color }) {
-  return (
-    <group rotation={[0.15, 0, 0]}>
-      {/* frame ring */}
-      <mesh position={[0, 0.8, 0]} castShadow>
-        <torusGeometry args={[0.42, 0.025, 16, 48]} />
-        <meshStandardMaterial color={color} metalness={0.7} roughness={0.2} />
-      </mesh>
-      {/* mirror surface */}
-      <mesh position={[0, 0.8, 0]}>
-        <circleGeometry args={[0.4, 48]} />
-        <meshStandardMaterial color="#C8D8E8" metalness={0.95} roughness={0.05} />
-      </mesh>
-      {/* back plate */}
-      <mesh position={[0, 0.8, -0.015]}>
-        <circleGeometry args={[0.41, 48]} />
-        <meshStandardMaterial color="#555" roughness={0.8} />
-      </mesh>
-      {/* wall mount bracket (subtle) */}
-      <Bx s={[0.06, 0.06, 0.03]} p={[0, 1.18, -0.01]} color={color} metalness={0.6} roughness={0.3} />
-    </group>
-  )
-}
-
-/* ═══════════════════════════════════
-   14. WARDROBE — sp-14
+   12. WARDROBE — sp-14
    ═══════════════════════════════════ */
 function WardrobeModel({ color }) {
   return (
@@ -611,9 +561,7 @@ export const MODEL_TYPE_MAP = {
   'sp-8':  'accent-chair',
   'sp-9':  'dining-table',
   'sp-10': 'nightstand',
-  'sp-11': 'pendant-light',
   'sp-12': 'chesterfield',
-  'sp-13': 'mirror',
   'sp-14': 'wardrobe',
   'sp-15': 'office-chair',
   'sp-16': 'console-table',
@@ -632,9 +580,7 @@ const MODEL_COMPONENTS = {
   'accent-chair':   AccentChairModel,
   'dining-table':   DiningTableModel,
   'nightstand':     NightstandModel,
-  'pendant-light':  PendantLightModel,
   'chesterfield':   ChesterfieldModel,
-  'mirror':         MirrorModel,
   'wardrobe':       WardrobeModel,
   'office-chair':   OfficeChairModel,
   'console-table':  ConsoleTableModel,
@@ -656,7 +602,6 @@ const MODEL_SCALES = {
   'nightstand':    1.8,
   'pendant-light': 1.2,
   'chesterfield':  0.8,
-  'mirror':        1.3,
   'wardrobe':      0.75,
   'office-chair':  1.3,
   'console-table': 1.1,

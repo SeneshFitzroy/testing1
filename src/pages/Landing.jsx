@@ -23,8 +23,6 @@ const CATEGORY_LABEL_KEYS = {
   'Dining Room': 'shop.category.diningRoom',
   Bedroom: 'shop.category.bedroom',
   Storage: 'shop.category.storage',
-  Lighting: 'shop.category.lighting',
-  Decor: 'shop.category.decor',
   Entertainment: 'shop.category.entertainment',
   Office: 'shop.category.office',
 }

@@ -23,8 +23,6 @@ import {
   Table2,
   Archive,
   BedDouble,
-  Lamp,
-  Frame,
   Award
 } from 'lucide-react'
 import { toast } from 'sonner'
@@ -76,8 +74,6 @@ export default function Shop() {
       'Dining Room': 'shop.category.diningRoom',
       Bedroom: 'shop.category.bedroom',
       Storage: 'shop.category.storage',
-      Lighting: 'shop.category.lighting',
-      Decor: 'shop.category.decor',
       Entertainment: 'shop.category.entertainment',
       Office: 'shop.category.office',
     }
@@ -89,8 +85,6 @@ export default function Shop() {
     { key: 'Dining Room', labelKey: 'shop.category.diningRoom', icon: Table2, count: shopProducts.filter(p => p.category === 'Dining Room').length },
     { key: 'Bedroom', labelKey: 'shop.category.bedroom', icon: BedDouble, count: shopProducts.filter(p => p.category === 'Bedroom').length },
     { key: 'Storage', labelKey: 'shop.category.storage', icon: Archive, count: shopProducts.filter(p => p.category === 'Storage').length },
-    { key: 'Lighting', labelKey: 'shop.category.lighting', icon: Lamp, count: shopProducts.filter(p => p.category === 'Lighting').length },
-    { key: 'Decor', labelKey: 'shop.category.decor', icon: Frame, count: shopProducts.filter(p => p.category === 'Decor').length },
     { key: 'Entertainment', labelKey: 'shop.category.entertainment', icon: Package, count: shopProducts.filter(p => p.category === 'Entertainment').length },
     { key: 'Office', labelKey: 'shop.category.office', icon: Armchair, count: shopProducts.filter(p => p.category === 'Office').length },
   ]
