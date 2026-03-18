@@ -42,9 +42,20 @@ const TrackDelivery = lazy(() => import('./pages/TrackDelivery'))
 const SharedDesignView = lazy(() => import('./pages/SharedDesignView'))
 const WoodInfo = lazy(() => import('./pages/WoodInfo'))
 
-// Preload critical pages so navigation is instant
-const preloadPages = () => { import('./pages/Shop'); import('./pages/ProductDetail'); import('./pages/Cart') }
-setTimeout(preloadPages, 1000)
+// Preload critical pages so navigation is instant — reduces "refresh to work" issues
+const preloadPages = () => {
+  import('./pages/Shop')
+  import('./pages/ProductDetail')
+  import('./pages/Cart')
+  import('./pages/Landing')
+  import('./pages/RoomEditor')
+  import('./pages/AdminDashboard')
+  import('./pages/AdminProducts')
+}
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'complete') preloadPages()
+  else window.addEventListener('load', preloadPages)
+}
 
 /** Redirect /dashboard: designers → designer-panel, others → shop */
 function DashboardRedirect() {

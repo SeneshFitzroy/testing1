@@ -357,7 +357,7 @@ const RoomCanvas2D = forwardRef(function RoomCanvas2D(_, ref) {
         </div>
       </div>
 
-      {/* Zoom Controls — bottom-right; drag empty canvas to pan */}
+      {/* Zoom Controls — drag on empty canvas to pan */}
       <div className="absolute bottom-4 right-4 z-[25]">
         <div className="bg-white/95 dark:bg-dark-card/95 backdrop-blur-sm rounded-xl p-2 border border-warm-200/50 dark:border-dark-border/50 shadow-lg flex flex-col gap-1.5">
           <span className="text-[10px] font-semibold text-darkwood/70 dark:text-white/70 px-1">Zoom</span>
@@ -389,7 +389,7 @@ const RoomCanvas2D = forwardRef(function RoomCanvas2D(_, ref) {
 
       {/* Instructions */}
       <div className="absolute bottom-4 left-4 z-10 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm rounded-xl px-3 py-2 text-xs text-darkwood/50 dark:text-white border border-warm-200/30 dark:border-dark-border/30">
-        {readOnlyMode ? 'View only — shared by designer' : 'Drag empty area to pan · Drag furniture to move · Scroll or +/- to zoom · Click to select'}
+        {readOnlyMode ? 'View only — shared by designer' : 'Drag canvas to pan · Drag furniture to move · Scroll or +/- to zoom · Click to select'}
       </div>
 
       {/* Konva Stage */}
