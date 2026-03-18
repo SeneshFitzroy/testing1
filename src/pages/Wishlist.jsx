@@ -304,19 +304,19 @@ export default function Wishlist() {
                               )}
                             </div>
                           </Link>
-                          <div className="flex space-x-2">
+                          <div className="flex items-stretch gap-2">
                             <motion.button
                               onClick={() => handleAddToCart(item)}
-                              className="flex-1 btn-primary text-sm py-2"
+                              className="flex-1 btn-primary text-sm inline-flex items-center justify-center gap-2 min-h-[44px]"
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                             >
-                              <ShoppingCart className="h-4 w-4 mr-2" />
+                              <ShoppingCart className="h-4 w-4 shrink-0" />
                               {t('shop.addToCart')}
                             </motion.button>
                             <motion.button
                               onClick={() => handleRemoveFromWishlist(item)}
-                              className="p-2 btn-outline text-red-600 border-red-200 hover:bg-red-50 dark:hover:bg-red-900/20"
+                              className="btn-outline text-red-600 border-red-200 hover:bg-red-50 dark:hover:bg-red-900/20 inline-flex items-center justify-center min-h-[44px] min-w-[44px] shrink-0"
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
                             >
@@ -341,20 +341,23 @@ export default function Wishlist() {
                 <h3 className="font-semibold text-darkwood dark:text-white mb-4">
                   {t('wishlist.quickActions')}
                 </h3>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
                   <motion.button
                     onClick={() => {
                       filteredWishlist.forEach(item => addToCart(item))
                       toast.success(`${filteredWishlist.length} items added to cart!`)
                     }}
-                    className="btn-primary flex-1"
+                    className="btn-primary flex-1 inline-flex items-center justify-center gap-2 min-h-[48px]"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <ShoppingCart className="h-4 w-4 mr-2" />
+                    <ShoppingCart className="h-4 w-4 shrink-0" />
                     {t('wishlist.addAllToCart')} ({filteredWishlist.length})
                   </motion.button>
-                  <Link to="/shop" className="btn-outline flex-1 text-center">
+                  <Link
+                    to="/shop"
+                    className="btn-outline flex-1 inline-flex items-center justify-center min-h-[48px]"
+                  >
                     {t('cart.continueShopping')}
                   </Link>
                 </div>
