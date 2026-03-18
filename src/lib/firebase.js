@@ -3,16 +3,17 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
-// Firebase config — MUST use key from Firebase Console (project 562570699070).
-// Do NOT use a key from another GCP project — Identity Toolkit must be enabled.
+// Firebase config from env vars — prevents secret leaks in repo.
+// Set in .env (local) and Vercel/hosting env vars (deployment).
+// CRITICAL: Rotate exposed keys in Firebase Console after fixing leak.
 const firebaseConfig = {
-  apiKey: "AIzaSyC5j3JXEmO5kKevTsN9t88NPrNq-S-tqaM",
-  authDomain: "pusl3122-group-01.firebaseapp.com",
-  projectId: "pusl3122-group-01",
-  storageBucket: "pusl3122-group-01.firebasestorage.app",
-  messagingSenderId: "562570699070",
-  appId: "1:562570699070:web:325630c0083f1279eccc6f",
-  measurementId: "G-WCDP418QMK"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY ?? '',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ?? '',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID ?? '',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ?? '',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ?? '',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID ?? '',
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID ?? '',
 }
 
 const app = initializeApp(firebaseConfig)
