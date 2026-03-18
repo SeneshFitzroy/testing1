@@ -8,9 +8,27 @@
 
 import { db } from './firebase'
 import { collection, doc, setDoc, getDocs, deleteDoc, serverTimestamp } from 'firebase/firestore'
-import { SHOP_PRODUCTS } from './constants'
+import { SHOP_PRODUCTS, PRODUCTS_TO_EXCLUDE } from './constants'
 
 const PRODUCTS_COLLECTION = 'products'
+
+/** Remove excluded products from Firestore (Arc Floor Lamp, Round Wall Mirror, Globe Pendant Light) */
+async function removeExcludedProductsFromFirestore() {
+  try {
+    const snapshot = await getDocs(collection(db, PRODUCTS_COLLECTION))
+    let removed = 0
+    for (const d of snapshot.docs) {
+      const name = d.data()?.name || ''
+      if (PRODUCTS_TO_EXCLUDE.includes(name)) {
+        await deleteDoc(doc(db, PRODUCTS_COLLECTION, d.id))
+        removed++
+      }
+    }
+    if (removed > 0) console.log(`[Seed] Removed ${removed} excluded product(s) from Firestore`)
+  } catch (err) {
+    console.warn('[Seed] Cleanup excluded products failed:', err)
+  }
+}
 
 /** Save a single product to Firestore (add or update) */
 export async function saveProductToFirestore(product) {
@@ -52,6 +70,7 @@ export async function seedProductsToFirestore() {
   let count = 0
 
   try {
+    await removeExcludedProductsFromFirestore()
     const productsRef = collection(db, PRODUCTS_COLLECTION)
 
     for (const product of SHOP_PRODUCTS) {

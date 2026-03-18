@@ -72,6 +72,9 @@ export const FLOOR_COLOR_PRESETS = [
   '#E8DFD5', '#F4EFEA', '#CDAA7D', '#8B7355', '#654321',
 ]
 
+// Products excluded from shop, editor, admin, and client everywhere (synced across all surfaces)
+export const PRODUCTS_TO_EXCLUDE = ['Arc Floor Lamp', 'Round Wall Mirror', 'Globe Pendant Light']
+
 // Shop products with extended info
 // Each product has a UNIQUE primary image. Gallery images are different crops/views of the SAME piece.
 // Zero image duplication across products. All images are high-quality studio product photography.
@@ -320,10 +323,13 @@ export const SHOP_PRODUCTS = [
 ]
 
 // Editor furniture: only e-commerce shop products (same names & images as shop)
-export const EDITOR_FURNITURE = SHOP_PRODUCTS.map((p) => {
-  const dims = parseDimensions(p.dimensions)
-  return {
-    id: p.id,
+// Filters out PRODUCTS_TO_EXCLUDE so they never appear in Room Editor
+export const EDITOR_FURNITURE = SHOP_PRODUCTS
+  .filter((p) => !PRODUCTS_TO_EXCLUDE.includes(p.name))
+  .map((p) => {
+    const dims = parseDimensions(p.dimensions)
+    return {
+      id: p.id,
     name: p.name,
     category: shopCategoryToEditor(p.category),
     shopCategory: p.category,

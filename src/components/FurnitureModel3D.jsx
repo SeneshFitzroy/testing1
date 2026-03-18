@@ -548,6 +548,27 @@ function LoungeChairModel({ color }) {
   )
 }
 
+/* Category → model type fallback for products not in MODEL_TYPE_MAP (e.g. admin-created) */
+const CATEGORY_TO_MODEL = {
+  'Living Room': 'sofa',
+  'Dining Room': 'dining-table',
+  'Bedroom': 'bed',
+  'Storage': 'bookshelf',
+  'Entertainment': 'tv-console',
+  'Office': 'office-chair',
+  seating: 'dining-chair',
+  tables: 'coffee-table',
+  bedroom: 'bed',
+  storage: 'bookshelf',
+  entertainment: 'tv-console',
+  office: 'office-chair',
+}
+export function getModelTypeFromCategory(category) {
+  if (!category) return 'sofa'
+  const c = String(category).trim()
+  return CATEGORY_TO_MODEL[c] || CATEGORY_TO_MODEL[c.toLowerCase()] || 'sofa'
+}
+
 /* ═══════════════════════════════════════════════════════
    MODEL TYPE MAP  →  product ID  ⟶  model component
    ═══════════════════════════════════════════════════════ */

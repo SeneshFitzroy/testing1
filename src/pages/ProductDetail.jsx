@@ -24,7 +24,7 @@ import useCartStore from '@/store/useCartStore'
 import useThemeStore from '@/store/useThemeStore'
 import { toast } from 'sonner'
 import Real3DViewer from '@/components/Real3DViewer'
-import { MODEL_TYPE_MAP } from '@/components/FurnitureModel3D'
+import { MODEL_TYPE_MAP, getModelTypeFromCategory } from '@/components/FurnitureModel3D'
 import Mini3DPreview from '@/components/Mini3DPreview'
 import ARFurnitureViewer from '@/components/ARFurnitureViewer'
 import ARLogoIcon from '@/components/ARLogoIcon'
@@ -524,9 +524,11 @@ export default function ProductDetail() {
                 {showARModal && (
                   <ARFurnitureViewer
                     productId={product.id}
-                    modelType={MODEL_TYPE_MAP[product.id] || 'sofa'}
+                    modelType={MODEL_TYPE_MAP[product.id] || getModelTypeFromCategory(product.category)}
                     color={selectedColor || product.colors?.[0] || '#8B6F47'}
                     productName={product.name}
+                    dimensions={product.specs?.dimensionsFull || product.dimensions}
+                    category={product.category}
                     onClose={() => setShowARModal(false)}
                   />
                 )}

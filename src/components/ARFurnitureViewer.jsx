@@ -11,8 +11,20 @@ import FurnitureModel3D from './FurnitureModel3D'
 import { X } from 'lucide-react'
 import ARLogoIcon from './ARLogoIcon'
 
-function exportSimpleFurniturePlaceholder(color, onGlbReady) {
-  const geo = new THREE.BoxGeometry(1, 0.5, 0.6)
+/** Parse "220 x 95 x 82 cm" -> { w, d, h } in meters */
+function parseDimensions(str) {
+  if (!str || typeof str !== 'string') return { w: 1, d: 0.8, h: 0.8 }
+  const nums = str.match(/\d+(?:\.\d+)?/g)
+  if (!nums || nums.length < 3) return { w: 1, d: 0.8, h: 0.8 }
+  const w = Math.min(8, Math.max(0.3, parseFloat(nums[0]) / 100))
+  const d = Math.min(8, Math.max(0.2, parseFloat(nums[1]) / 100))
+  const h = Math.min(3, Math.max(0.2, parseFloat(nums[2]) / 100))
+  return { w, d, h }
+}
+
+function exportSimpleFurniturePlaceholder(color, onGlbReady, dimensionsStr = '') {
+  const { w, d, h } = parseDimensions(dimensionsStr)
+  const geo = new THREE.BoxGeometry(w, h, d)
   const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.6, metalness: 0 })
   const mesh = new THREE.Mesh(geo, mat)
   const scene = new THREE.Scene()
@@ -26,16 +38,17 @@ function exportSimpleFurniturePlaceholder(color, onGlbReady) {
   mat.dispose()
 }
 
-function ExportScene({ modelType, productId, color, onGlbReady }) {
+function ExportScene({ modelType, productId, color, onGlbReady, dimensions }) {
   const groupRef = useRef(null)
   const doneRef = useRef(false)
 
   useEffect(() => {
     if (doneRef.current) return
     let cancelled = false
+    const dimensionsStr = dimensions || ''
     const doPlaceholder = () => {
       if (cancelled) return
-      exportSimpleFurniturePlaceholder(color, (url) => onGlbReady(url, true))
+      exportSimpleFurniturePlaceholder(color, (url) => onGlbReady(url, true), dimensionsStr)
     }
     const runExport = () => {
       if (cancelled) return
@@ -70,9 +83,9 @@ function ExportScene({ modelType, productId, color, onGlbReady }) {
         doPlaceholder()
       }
     }
-    const t = setTimeout(runExport, 500)
+    const t = setTimeout(runExport, 800)
     return () => { cancelled = true; clearTimeout(t) }
-  }, [modelType, productId, color, onGlbReady])
+  }, [modelType, productId, color, onGlbReady, dimensions])
 
   return (
     <group ref={groupRef}>
@@ -81,7 +94,7 @@ function ExportScene({ modelType, productId, color, onGlbReady }) {
   )
 }
 
-export default function ARFurnitureViewer({ productId, modelType, color, productName, onClose }) {
+export default function ARFurnitureViewer({ productId, modelType, color, productName, dimensions, onClose }) {
   const [glbUrl, setGlbUrl] = useState(null)
   const [error, setError] = useState(null)
   const [usingPlaceholder, setUsingPlaceholder] = useState(false)
@@ -157,6 +170,7 @@ export default function ARFurnitureViewer({ productId, modelType, color, product
               productId={productId}
               color={color}
               onGlbReady={handleGlbReady}
+              dimensions={dimensions}
             />
           </Canvas>
         </div>
