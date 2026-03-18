@@ -54,6 +54,17 @@ describe('useCartStore', () => {
     expect(getCartCount()).toBe(0)
   })
 
+  it('removes only matching product+color when multiple variants in cart', () => {
+    const { addToCart, removeFromCart, getCartCount } = useCartStore.getState()
+    addToCart({ ...mockProduct, colors: ['#111', '#222'] }, 1, '#111')
+    addToCart({ ...mockProduct, colors: ['#111', '#222'] }, 2, '#222')
+    expect(getCartCount()).toBe(3)
+    removeFromCart('p1', '#111')
+    expect(getCartCount()).toBe(2)
+    expect(useCartStore.getState().items).toHaveLength(1)
+    expect(useCartStore.getState().items[0].selectedColor).toBe('#222')
+  })
+
   it('getCartTotal returns correct sum', () => {
     const { addToCart, getCartTotal } = useCartStore.getState()
     addToCart(mockProduct, 2)

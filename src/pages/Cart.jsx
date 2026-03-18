@@ -33,9 +33,12 @@ export default function Cart() {
   const total = subtotal + shipping
 
   const handleQuantityChange = (item, newQty) => {
-    if (newQty < 1) return
+    if (newQty < 1) {
+      removeFromCart(item.id, item.selectedColor)
+      return
+    }
     if (updateQuantity) {
-      updateQuantity(item.id, newQty)
+      updateQuantity(item.id, item.selectedColor, newQty)
     }
   }
 
@@ -110,7 +113,7 @@ export default function Cart() {
               <AnimatePresence>
                 {cart.map((item, index) => (
                   <motion.div
-                    key={item.id}
+                    key={`${item.id}-${item.selectedColor || 'default'}-${item.addedAt || index}`}
                     layout
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0, transition: { delay: index * 0.05 } }}
@@ -164,14 +167,14 @@ export default function Cart() {
                       </span>
                       <div className="flex items-center gap-1">
                         <button
-                          onClick={() => { addToWishlist(item); removeFromCart(item.id) }}
+                          onClick={() => { addToWishlist(item); removeFromCart(item.id, item.selectedColor) }}
                           className="p-2 text-warm-400 dark:text-white hover:text-clay dark:hover:text-clay rounded-lg transition-all"
                           title={t('cart.saveForLater')}
                         >
                           <Heart className="h-4 w-4" />
                         </button>
                         <button
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item.id, item.selectedColor)}
                           className="p-2 text-warm-300 dark:text-dark-border hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
                         >
                           <X className="h-4 w-4" />
