@@ -13,7 +13,12 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
+    "test:unit": "vitest run tests/lib tests/store tests/hooks",
+    "test:integration": "vitest run tests/integration",
+    "test:a11y": "vitest run tests/a11y",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:all": "npm run test:run && npm run test:e2e",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -40,7 +45,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "@playwright/test": "^1.49.0",
     "@vitest/coverage-v8": "^2.1.6",
+    "vitest-axe": "^0.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@types/react": "^18.2.0",

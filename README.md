@@ -53,6 +53,7 @@ Core capabilities include **dynamic scaling**, **colour and shading** applicatio
 | Document | Description |
 |----------|-------------|
 | [Product Images Guide](docs/PRODUCT_IMAGES_GUIDE.md) | Asset management, image naming, and product gallery configuration |
+| [User Testing Guide](docs/USER_TESTING_GUIDE.md) | Formative and summative user study procedures |
 | [Repository](https://github.com/SeneshFitzroy/testing1) | Source code and version history |
 
 ---
@@ -112,7 +113,7 @@ Core capabilities include **dynamic scaling**, **colour and shading** applicatio
 | 2D Canvas | Konva, react-konva |
 | Animations | Framer Motion 11 |
 | Internationalization | i18next, react-i18next |
-| Testing | Vitest, React Testing Library, jsdom |
+| Testing | Vitest, React Testing Library, Playwright, vitest-axe |
 | Linting | ESLint |
 
 ---
@@ -151,16 +152,32 @@ npm run preview
 
 ## Testing
 
-| Command | Description |
-|---------|-------------|
-| `npm run test` | Interactive test watch mode |
-| `npm run test:run` | Single-pass test execution |
-| `npm run test:coverage` | Test execution with coverage report |
+### Test Pyramid
+
+| Type | Scope | Command | Description |
+|------|-------|---------|-------------|
+| **Unit** | Lib, store, hooks | `npm run test:unit` | Isolated function and logic tests |
+| **Component** | UI components | `npm run test:run` | React component rendering and interaction |
+| **Integration** | Routing, flows | `npm run test:integration` | Cross-component and route behaviour |
+| **Accessibility** | WCAG compliance | `npm run test:a11y` | axe-core a11y audits |
+| **E2E / System** | Full application | `npm run test:e2e` | Playwright browser-based system tests |
+
+### Commands
 
 ```bash
-npm run test:run
-npm run test:coverage
+npm run test          # Watch mode
+npm run test:run      # All Vitest tests (unit + component + integration + a11y)
+npm run test:unit     # Unit tests (lib, store, hooks)
+npm run test:integration  # Integration tests
+npm run test:a11y     # Accessibility tests
+npm run test:coverage # With coverage report
+npm run test:e2e      # End-to-end system tests (Playwright)
+npm run test:all      # Vitest + E2E
 ```
+
+### User Testing
+
+For formative and summative user studies, see [docs/USER_TESTING_GUIDE.md](docs/USER_TESTING_GUIDE.md).
 
 ---
 
@@ -170,7 +187,7 @@ Continuous integration and deployment are implemented via GitHub Actions.
 
 | Workflow | Trigger | Actions |
 |----------|---------|---------|
-| **CI** | Push, pull request to `main` / `master` | Lint, test, coverage, build |
+| **CI** | Push, pull request to `main` / `master` | Lint, unit + integration + a11y tests, coverage, build, E2E system tests |
 | **CD** | Push to `main` / `master` | Deploy to Vercel (when secrets configured) |
 
 Pipeline definitions: `.github/workflows/`
@@ -197,9 +214,14 @@ Pipeline definitions: `.github/workflows/`
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
-├── tests/                   # Test suites
-│   ├── components/
-│   ├── lib/
+├── e2e/                     # Playwright E2E (system) tests
+├── tests/
+│   ├── a11y/                # Accessibility (axe-core)
+│   ├── components/         # Component tests
+│   ├── hooks/              # Hook tests
+│   ├── integration/        # Integration tests
+│   ├── lib/                # Unit tests (lib)
+│   ├── store/              # Unit tests (store)
 │   └── setup.js
 ├── jsconfig.json
 ├── vite.config.js

@@ -7,8 +7,11 @@ dist/
 # Test coverage
 coverage/
 
-# Test coverage
-coverage/
+# Playwright E2E
+test-results/
+playwright-report/
+blob-report/
+.playwright/
 
 # Old/compressed project versions (coursework: do not commit)
 *.zip
