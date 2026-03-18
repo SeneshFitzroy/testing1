@@ -24,12 +24,13 @@ jobs:
 
       - name: Lint
         run: npm run lint
+        env:
+          CI: "true"
 
-      - name: Test
-        run: npm run test:run
-
-      - name: Coverage
+      - name: Test & Coverage
         run: npm run test:coverage
+        env:
+          CI: "true"
 
       - name: Build
         run: npm run build
