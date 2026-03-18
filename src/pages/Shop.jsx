@@ -367,9 +367,9 @@ export default function Shop() {
               {filteredProducts.map((product) => (
                 <motion.div
                   key={product.id}
-                  className={`bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border overflow-hidden group hover:shadow-xl hover:shadow-warm-300/20 dark:hover:shadow-black/30 hover:border-warm-200 dark:hover:border-dark-border transition-all duration-300 ${
-                    viewMode === 'list' ? 'flex items-center' : ''
-                  }`}
+                  className={`bg-white dark:bg-dark-card rounded-2xl border border-warm-100 dark:border-dark-border overflow-hidden group hover:shadow-xl hover:shadow-warm-300/20 dark:hover:shadow-black/30 hover:border-warm-200 dark:hover:border-dark-border transition-all duration-300 flex flex-col ${
+                    viewMode === 'grid' ? 'h-full' : ''
+                  } ${viewMode === 'list' ? 'flex-row items-stretch' : ''}`}
                   variants={fadeInUp}
                   whileHover={{ y: viewMode === 'grid' ? -4 : 0 }}
                 >
@@ -434,8 +434,8 @@ export default function Shop() {
                   </div>
 
                   {/* Product Info */}
-                  <div className={viewMode === 'grid' ? 'p-5' : 'flex-1 p-5'}>
-                    <Link to={`/shop/${product.id}`} className="block">
+                  <div className={`flex flex-col ${viewMode === 'grid' ? 'flex-1 min-h-0 p-5' : 'flex-1 p-5'}`}>
+                    <Link to={`/shop/${product.id}`} className={`block ${viewMode === 'grid' ? 'flex-1 min-h-0 flex flex-col' : ''}`}>
                       <div className="flex flex-wrap items-center gap-2 mb-1.5">
                         <span className="text-xs font-medium text-[#5C3A2A] dark:text-clay uppercase tracking-wider">
                           {categoryLabel(product.category)}
@@ -488,7 +488,7 @@ export default function Shop() {
 
                       {/* Available colors */}
                       {product.colors && product.colors.length > 0 && (
-                        <div className="mb-4">
+                        <div className="mb-4 flex-shrink-0">
                           <p className="text-xs font-medium text-neutral-500 dark:text-white mb-2">{t('shop.availableColors')}</p>
                           <div className="flex flex-wrap gap-1.5">
                             {product.colors.map((c, i) => (
@@ -504,8 +504,8 @@ export default function Shop() {
                       )}
                     </Link>
 
-                    {/* Action: View Details (3D available on product page) */}
-                    <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-dark-border">
+                    {/* Action: View Details — pinned to bottom for consistent alignment across cards */}
+                    <div className={`pt-4 border-t border-neutral-100 dark:border-dark-border flex-shrink-0 ${viewMode === 'grid' ? 'mt-auto' : 'mt-4'}`}>
                       <Link
                         to={`/shop/${product.id}`}
                         className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg text-sm font-medium bg-[#5C3A2A] dark:bg-clay text-white hover:bg-[#4A2F21] dark:hover:bg-clay-dark transition-all shadow-sm"
