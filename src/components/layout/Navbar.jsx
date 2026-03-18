@@ -4,8 +4,6 @@ import {
   Home,
   ShoppingCart,
   Heart,
-  Search,
-  Truck,
   Moon,
   Sun,
   LogOut,
@@ -301,38 +299,6 @@ export default function Navbar() {
               </AnimatePresence>
             </button>
 
-            {/* Search — links to shop (has search bar) */}
-            {!designerOnly && (
-              <Link
-                to="/shop"
-                className={`relative p-2 rounded-xl transition-colors ${
-                  isLandingPage && !isScrolled
-                    ? 'text-white/70 hover:text-white hover:bg-white/10'
-                    : 'text-darkwood/50 dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
-                }`}
-                aria-label="Search products"
-                title={t('nav.search') || 'Search'}
-              >
-                <Search className="h-5 w-5" />
-              </Link>
-            )}
-
-            {/* Delivery track — from user pathway diagram */}
-            {!designerOnly && (
-              <Link
-                to="/track-delivery"
-                className={`relative p-2 rounded-xl transition-colors ${
-                  isLandingPage && !isScrolled
-                    ? 'text-white/70 hover:text-white hover:bg-white/10'
-                    : 'text-darkwood/50 dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
-                }`}
-                aria-label="Track delivery"
-                title={t('nav.trackDelivery') || 'Track delivery'}
-              >
-                <Truck className="h-5 w-5" />
-              </Link>
-            )}
-
             {/* Cart — hidden for designer-only users */}
             {!designerOnly && (
               <Link
@@ -478,21 +444,26 @@ export default function Navbar() {
             )}
 
             {!user && (
-              <div className="flex items-center gap-4 ml-1">
+              <div className="flex items-center rounded-2xl overflow-hidden border border-white/20 dark:border-dark-border/50 ml-1 shadow-lg">
                 <Link
                   to="/login"
-                  className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors rounded-xl ${
+                  className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors ${
                     isLandingPage && !isScrolled
-                      ? 'text-white/80 hover:text-white hover:bg-white/10'
-                      : 'text-darkwood dark:text-white hover:text-clay hover:bg-warm-100 dark:hover:bg-dark-surface'
+                      ? 'text-white/90 hover:text-white hover:bg-white/10'
+                      : 'text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
                   }`}
                 >
                   <User className="h-4 w-4" />
                   {t('nav.login')}
                 </Link>
+                <div className="w-px bg-white/20 dark:bg-dark-border/50" />
                 <Link
                   to="/register"
-                  className="flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-gradient-to-r from-clay to-clay-dark hover:from-clay-dark hover:to-clay text-white rounded-full transition-all shadow-md shadow-clay/25 hover:shadow-lg hover:shadow-clay/30 hover:scale-105"
+                  className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-all ${
+                    isLandingPage && !isScrolled
+                      ? 'bg-white/95 hover:bg-white text-gray-900'
+                      : 'bg-gradient-to-r from-clay to-clay-dark hover:from-clay-dark hover:to-clay text-white'
+                  }`}
                 >
                   <UserPlus className="h-4 w-4" />
                   {t('auth.register.title') || 'Get Started'}

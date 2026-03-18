@@ -90,3 +90,21 @@ export async function fetchDesignsByUser(userId) {
   list.sort((a, b) => (new Date(b.updatedAt || 0) - new Date(a.updatedAt || 0)))
   return list
 }
+
+/* ── Seed demo designs to Firestore so shared links work ── */
+const DEMO_DESIGNS = [
+  { id: 'demo-1', name: 'Modern Living Room', userName: 'John Doe', userEmail: 'john@example.com', status: 'completed', rooms: [{ name: 'Living Room', roomWidth: 6, roomDepth: 5, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', furnitureItems: [{ name: 'Sofa', width: 2, depth: 1, height: 0.8, category: 'seating', color: '#8B6F47', instanceId: 'd1-s1', x: 1, y: 1 }, { name: 'Table', width: 1.2, depth: 0.6, height: 0.75, category: 'tables', color: '#8B6F47', instanceId: 'd1-t1', x: 2.5, y: 2 }, { name: 'Lamp', width: 0.3, depth: 0.3, height: 0.5, category: 'lighting', color: '#F4EFEA', instanceId: 'd1-l1', x: 1, y: 2 }] }], roomWidth: 6, roomDepth: 5, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), createdBy: 'demo' },
+  { id: 'demo-2', name: 'Cozy Bedroom Setup', userName: 'Jane Smith', userEmail: 'jane@example.com', status: 'approved', rooms: [{ name: 'Bedroom', roomWidth: 5, roomDepth: 4, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', furnitureItems: [{ name: 'Bed', width: 2, depth: 1.5, height: 0.6, category: 'beds', color: '#8B6F47', instanceId: 'd2-b1', x: 1, y: 1 }, { name: 'Nightstand', width: 0.5, depth: 0.4, height: 0.5, category: 'storage', color: '#8B6F47', instanceId: 'd2-n1', x: 3.2, y: 1 }, { name: 'Wardrobe', width: 1.2, depth: 0.6, height: 2, category: 'storage', color: '#8B6F47', instanceId: 'd2-w1', x: 0.5, y: 2.5 }, { name: 'Desk', width: 1, depth: 0.5, height: 0.75, category: 'tables', color: '#8B6F47', instanceId: 'd2-d1', x: 3.5, y: 2.5 }] }], roomWidth: 5, roomDepth: 4, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', createdAt: new Date(Date.now() - 86400000).toISOString(), updatedAt: new Date().toISOString(), createdBy: 'demo' },
+  { id: 'demo-3', name: 'Office Space Design', userName: 'Mike Johnson', userEmail: 'mike@example.com', status: 'revision', rooms: [{ name: 'Office', roomWidth: 4, roomDepth: 3, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', furnitureItems: [{ name: 'Desk', width: 1.2, depth: 0.7, height: 0.75, category: 'tables', color: '#8B6F47', instanceId: 'd3-d1', x: 1, y: 1 }, { name: 'Chair', width: 0.5, depth: 0.5, height: 0.9, category: 'seating', color: '#8B6F47', instanceId: 'd3-c1', x: 1.5, y: 1.8 }] }], roomWidth: 4, roomDepth: 3, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', createdAt: new Date(Date.now() - 172800000).toISOString(), updatedAt: new Date().toISOString(), createdBy: 'demo' },
+  { id: 'demo-4', name: 'Dining Room Redesign', userName: 'Emma Wilson', userEmail: 'emma@example.com', status: 'completed', rooms: [{ name: 'Dining Room', roomWidth: 5, roomDepth: 4, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', furnitureItems: [{ name: 'Dining Table', width: 2, depth: 1, height: 0.75, category: 'tables', color: '#8B6F47', instanceId: 'd4-t1', x: 1.5, y: 1.5 }, { name: 'Chairs', width: 0.5, depth: 0.5, height: 0.9, category: 'seating', color: '#8B6F47', instanceId: 'd4-c1', x: 1, y: 0.8 }, { name: 'Sideboard', width: 1.5, depth: 0.5, height: 0.9, category: 'storage', color: '#8B6F47', instanceId: 'd4-s1', x: 0.5, y: 2.5 }, { name: 'Pendant Light', width: 0.4, depth: 0.4, height: 0.5, category: 'lighting', color: '#F4EFEA', instanceId: 'd4-l1', x: 2.3, y: 0.5 }] }], roomWidth: 5, roomDepth: 4, roomHeight: 3, wallColor: '#F4EFEA', floorColor: '#D9C7B8', createdAt: new Date(Date.now() - 259200000).toISOString(), updatedAt: new Date().toISOString(), createdBy: 'demo' },
+]
+
+export async function seedDemoDesignsToFirestore() {
+  for (const design of DEMO_DESIGNS) {
+    const ref = doc(db, 'designs', design.id)
+    const existing = await getDoc(ref)
+    if (!existing.exists()) {
+      await setDoc(ref, { ...design, createdBy: design.createdBy || 'demo' })
+    }
+  }
+}

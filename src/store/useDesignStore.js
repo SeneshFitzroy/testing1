@@ -331,17 +331,34 @@ const useDesignStore = create((set, get) => ({
   },
 
   loadDesign: (design) => {
+    const normalizeItem = (f, i) => {
+      if (f.instanceId && typeof f.x === 'number' && typeof f.y === 'number') return f
+      return {
+        ...f,
+        instanceId: f.instanceId || generateId(),
+        x: typeof f.x === 'number' ? f.x : 1 + (i % 3) * 0.5,
+        y: typeof f.y === 'number' ? f.y : 1 + Math.floor(i / 3) * 0.5,
+        rotation: f.rotation ?? 0,
+        scaleX: f.scaleX ?? 1,
+        scaleY: f.scaleY ?? 1,
+      }
+    }
+    const normalizeRoom = (r) => ({
+      ...createRoom(),
+      ...r,
+      furnitureItems: (r.furnitureItems || []).map(normalizeItem),
+    })
     const rooms = design.rooms && design.rooms.length
-      ? design.rooms.map(r => ({ ...createRoom(), ...r }))
+      ? design.rooms.map(normalizeRoom)
       : [createRoom('Room 1', {
           roomWidth: design.roomWidth,
           roomDepth: design.roomDepth,
           roomHeight: design.roomHeight,
           wallColor: design.wallColor,
           floorColor: design.floorColor,
-          furnitureItems: design.furnitureItems || [],
+          furnitureItems: (design.furnitureItems || []).map(normalizeItem),
         })]
-    const idx = design.activeRoomIndex || 0
+    const idx = Math.min(design.activeRoomIndex ?? 0, rooms.length - 1)
     set({
       currentDesign: design,
       rooms,

@@ -20,6 +20,26 @@ export default function AudioManager() {
   const ambientRef = useRef(null)
   const triedFallbackRef = useRef(false)
 
+  // Unlock audio on first user interaction anywhere (ensures 100% reliability)
+  useEffect(() => {
+    const unlock = () => {
+      if (useThemeStore.getState().audioUnlocked) return
+      useThemeStore.getState().setAudioUnlocked()
+      unlockAndPlayAmbient()
+      document.removeEventListener('click', unlock)
+      document.removeEventListener('keydown', unlock)
+      document.removeEventListener('touchstart', unlock)
+    }
+    document.addEventListener('click', unlock, { once: true })
+    document.addEventListener('keydown', unlock, { once: true })
+    document.addEventListener('touchstart', unlock, { once: true })
+    return () => {
+      document.removeEventListener('click', unlock)
+      document.removeEventListener('keydown', unlock)
+      document.removeEventListener('touchstart', unlock)
+    }
+  }, [])
+
   useEffect(() => {
     const muted = useThemeStore.getState().audioMuted
     const audio = new Audio('/audio/ambient.mp3')
@@ -40,7 +60,6 @@ export default function AudioManager() {
     }
 
     audio.addEventListener('error', tryFallback)
-    // Only play when unlocked (splash tap) - browsers block autoplay otherwise
     if (!muted && useThemeStore.getState().audioUnlocked) audio.play().catch(tryFallback)
 
     return () => {

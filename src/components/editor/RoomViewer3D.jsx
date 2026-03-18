@@ -490,19 +490,19 @@ export default function RoomViewer3D() {
 
   return (
     <div className="w-full h-full relative">
-      {/* 3D Scene Info + Controls — merged top-left to avoid overlap with RoomEditor selected-item panel */}
-      <div className="absolute top-4 left-4 z-10 flex flex-col gap-2 pointer-events-auto">
-        <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 text-sm border border-warm-200/50 dark:border-dark-border/50 shadow-sm">
-          <div className="text-gray-900 dark:text-gray-100 font-medium">3D Room View</div>
+      {/* 3D Scene Info + Controls — top-left, always visible with high contrast */}
+      <div className="absolute top-4 left-4 z-[60] flex flex-col gap-2 pointer-events-auto">
+        <div className="bg-white dark:bg-gray-900 backdrop-blur-md rounded-xl p-3 text-sm border-2 border-warm-200 dark:border-dark-border shadow-xl">
+          <div className="text-gray-900 dark:text-gray-100 font-semibold">3D Room View</div>
           <div className="text-gray-500 dark:text-white text-xs mt-1">Items: {furnitureItems.length} · Selected: {selectedItemId ? 'Yes' : 'None'}</div>
         </div>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setShowWireframe(!showWireframe)}
-            className={`px-3 py-2 text-xs font-medium rounded-lg shadow-md transition-colors whitespace-nowrap ${
+            className={`px-4 py-2.5 text-sm font-semibold rounded-xl shadow-lg transition-all whitespace-nowrap border-2 ${
               showWireframe
-                ? 'bg-blue-600 text-white'
-                : 'bg-white/95 dark:bg-dark-card/95 text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface border border-warm-200 dark:border-dark-border'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white dark:bg-dark-card text-darkwood dark:text-white border-darkwood/30 dark:border-dark-border hover:border-clay'
             }`}
             title="Toggle wireframe mode"
           >
@@ -510,7 +510,7 @@ export default function RoomViewer3D() {
           </button>
           <button
             onClick={() => useDesignStore.getState().requestReset3DView?.()}
-            className="px-3 py-2 text-xs font-medium bg-clay text-white rounded-lg shadow-md hover:bg-clay-dark transition-colors whitespace-nowrap"
+            className="px-4 py-2.5 text-sm font-semibold bg-clay text-white rounded-xl shadow-lg hover:bg-clay-dark transition-all whitespace-nowrap border-2 border-clay-dark"
             title="Reset camera to default angle"
           >
             Reset View
@@ -519,7 +519,7 @@ export default function RoomViewer3D() {
       </div>
 
       {/* Rotation indicator — visible overlay so users know they can rotate */}
-      <div className="absolute bottom-4 right-4 z-10 bg-clay/90 dark:bg-clay/80 backdrop-blur-sm rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border-2 border-white/20">
+      <div className="absolute bottom-4 right-4 z-[60] bg-clay/95 dark:bg-clay/90 backdrop-blur-md rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl border-2 border-white/30">
         <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
           <svg className="w-6 h-6 text-white animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -532,7 +532,7 @@ export default function RoomViewer3D() {
       </div>
 
       {/* Instructions */}
-      <div className="absolute bottom-4 left-4 z-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-xl p-3 text-xs text-gray-500 dark:text-white border border-warm-200/30 dark:border-dark-border/30">
+      <div className="absolute bottom-4 left-4 z-[60] bg-white dark:bg-gray-900 backdrop-blur-md rounded-xl p-3 text-xs text-gray-600 dark:text-white border-2 border-warm-200 dark:border-dark-border shadow-lg">
         <div>Orbit: drag · Zoom: wheel · Select: click · <span className="font-medium text-clay">Move: select item, then drag</span></div>
       </div>
 

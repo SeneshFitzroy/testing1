@@ -15,7 +15,6 @@ import {
   Check,
   Plus,
   Minus,
-  ScanLine,
   X
 } from 'lucide-react'
 import { SHOP_PRODUCTS as shopProducts, FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
@@ -487,8 +486,9 @@ export default function ProductDetail() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   title={t('product.viewInSpace') || 'View in your space'}
+                  aria-label="View in your space (AR)"
                 >
-                  <ScanLine className="h-5 w-5" />
+                  <img src="/images/ar-icon.png" alt="AR" className="h-5 w-5 object-contain" />
                 </motion.button>
               </div>
 

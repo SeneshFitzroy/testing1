@@ -10,8 +10,9 @@ import {
 } from 'lucide-react'
 import { jsPDF } from 'jspdf'
 import { toast } from 'sonner'
-import { collection, getDocs, doc, updateDoc, arrayUnion, serverTimestamp, query, orderBy } from 'firebase/firestore'
+import { collection, getDocs, doc, updateDoc, arrayUnion, serverTimestamp } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
+import { seedDemoDesignsToFirestore } from '@/lib/designService'
 import useAuthStore from '@/store/useAuthStore'
 
 const STATUS_CONFIG = {
@@ -40,8 +41,12 @@ export default function DesignerPanel() {
     setLoading(true)
     try {
       const snap = await getDocs(collection(db, 'designs'))
-      const data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-      // Use demo designs when Firestore is empty so designers always have sample data
+      let data = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      if (data.length === 0) {
+        await seedDemoDesignsToFirestore()
+        const snap2 = await getDocs(collection(db, 'designs'))
+        data = snap2.docs.map(d => ({ id: d.id, ...d.data() }))
+      }
       setDesigns(data.length > 0 ? data : getDemoDesigns())
     } catch (err) {
       console.error('Failed to load designs:', err)
