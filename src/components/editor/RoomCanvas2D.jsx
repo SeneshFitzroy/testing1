@@ -7,12 +7,14 @@ function FurnitureItem({ item, isSelected, onSelect, onDragMove, onDragEnd, onTr
   const [isDragging, setIsDragging] = useState(false)
   const [livePos, setLivePos] = useState({ x: item.x, y: item.y })
 
-  const handleDragStart = () => {
+  const handleDragStart = (e) => {
+    e.cancelBubble = true
     setIsDragging(true)
     onSelect(item.instanceId)
   }
 
   const handleDragMove = (e) => {
+    e.cancelBubble = true
     const x = e.target.x() / 50
     const y = e.target.y() / 50
     setLivePos({ x, y })
@@ -20,6 +22,7 @@ function FurnitureItem({ item, isSelected, onSelect, onDragMove, onDragEnd, onTr
   }
 
   const handleDragEnd = (e) => {
+    e.cancelBubble = true
     setIsDragging(false)
     let x = e.target.x()
     let y = e.target.y()
@@ -405,8 +408,14 @@ const RoomCanvas2D = forwardRef(function RoomCanvas2D(_, ref) {
         onClick={handleStageClick}
         onTap={handleStageClick}
         draggable
-        onDragMove={(e) => setStagePos({ x: e.target.x(), y: e.target.y() })}
-        onDragEnd={(e) => setStagePos({ x: e.target.x(), y: e.target.y() })}
+        onDragMove={(e) => {
+          if (e.target !== e.target.getStage()) return
+          setStagePos({ x: e.target.x(), y: e.target.y() })
+        }}
+        onDragEnd={(e) => {
+          if (e.target !== e.target.getStage()) return
+          setStagePos({ x: e.target.x(), y: e.target.y() })
+        }}
       >
         <Layer>
           {/* Room Floor */}
