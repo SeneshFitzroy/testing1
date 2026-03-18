@@ -1,18 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Package,
-  ShoppingCart,
-  Users,
-  DollarSign,
-  Plus,
-  Download,
-  Shield,
-  Zap,
-  UserPlus,
-  Settings,
-  Award,
-} from 'lucide-react'
+import { Package, ShoppingCart, Plus, Download, Shield, UserPlus, Award } from 'lucide-react'
 import useAuthStore from '@/store/useAuthStore'
 import useProductsStore from '@/store/useProductsStore'
 import { Link, useNavigate } from 'react-router-dom'
@@ -86,8 +74,8 @@ export default function AdminDashboard() {
     return (
       <div className="min-h-screen bg-warm-50 dark:bg-dark-bg flex items-center justify-center">
         <div className="text-center">
-          <div className="w-14 h-14 bg-clay rounded-xl flex items-center justify-center mx-auto mb-4 animate-pulse">
-            <Shield className="h-7 w-7 text-white" />
+          <div className="w-12 h-12 bg-clay rounded-xl flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <Shield className="h-6 w-6 text-white" />
           </div>
           <p className="text-darkwood/60 dark:text-white text-sm">{t('admin.preparingDashboard')}</p>
         </div>
@@ -97,19 +85,19 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-warm-50 dark:bg-dark-bg">
-      {/* Header */}
+      {/* Header — minimal */}
       <div className="bg-white dark:bg-dark-card border-b border-warm-100 dark:border-dark-border">
-        <div className="max-w-4xl mx-auto px-4 py-6">
+        <div className="max-w-3xl mx-auto px-4 py-5">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="w-11 h-11 bg-clay rounded-xl flex items-center justify-center">
-                <Shield className="h-6 w-6 text-white" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-clay rounded-xl flex items-center justify-center">
+                <Shield className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-darkwood dark:text-white font-display">
+                <h1 className="text-lg font-bold text-darkwood dark:text-white font-display">
                   {t('admin.dashboard')}
                 </h1>
-                <p className="text-darkwood/50 dark:text-white text-sm">
+                <p className="text-darkwood/50 dark:text-white text-xs">
                   {t('admin.welcomeBack', { name: userProfile?.name || t('admin.administrator') })}
                 </p>
               </div>
@@ -117,14 +105,14 @@ export default function AdminDashboard() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleExportData}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-warm-100 dark:bg-dark-surface hover:bg-warm-200 dark:hover:bg-dark-border text-darkwood dark:text-white font-medium rounded-xl transition-colors text-sm"
+                className="text-xs text-darkwood/60 dark:text-white hover:text-clay dark:hover:text-clay px-2 py-1.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface transition-colors inline-flex items-center gap-1.5"
               >
-                <Download className="h-4 w-4" />
+                <Download className="h-3.5 w-3.5" />
                 {t('admin.exportData')}
               </button>
               <button
                 onClick={handleQuickAdd}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-clay hover:bg-clay-dark text-white font-semibold rounded-xl transition-colors text-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-clay hover:bg-clay-dark text-white font-medium rounded-xl transition-colors text-sm"
               >
                 <Plus className="h-4 w-4" />
                 {t('admin.quickAdd')}
@@ -134,126 +122,96 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        {/* Stats */}
+      <div className="max-w-3xl mx-auto px-4 py-6">
+        {/* Stats — 2 cards */}
         <motion.div
-          className="grid grid-cols-2 gap-4 mb-8"
-          initial={{ opacity: 0, y: 12 }}
+          className="grid grid-cols-2 gap-3 mb-6"
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.25 }}
         >
           <Link
             to="/admin/products"
-            className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-5 hover:border-clay/30 dark:hover:border-clay/30 transition-colors group"
+            className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-4 hover:border-clay/30 transition-colors"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-darkwood/50 dark:text-white text-xs font-medium uppercase tracking-wide">
-                  {t('admin.products')}
-                </p>
-                <p className="text-2xl font-bold text-darkwood dark:text-white mt-0.5">
-                  {stats.products}
-                </p>
+                <p className="text-darkwood/50 dark:text-white text-xs font-medium">{t('admin.products')}</p>
+                <p className="text-xl font-bold text-darkwood dark:text-white mt-0.5">{stats.products}</p>
               </div>
-              <div className="w-10 h-10 bg-clay/10 dark:bg-clay/20 rounded-lg flex items-center justify-center group-hover:bg-clay/20 transition-colors">
-                <Package className="h-5 w-5 text-clay" />
-              </div>
+              <Package className="h-8 w-8 text-clay/40" />
             </div>
           </Link>
           <Link
             to="/admin/orders"
-            className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-5 hover:border-clay/30 dark:hover:border-clay/30 transition-colors group"
+            className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-4 hover:border-clay/30 transition-colors"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-darkwood/50 dark:text-white text-xs font-medium uppercase tracking-wide">
-                  {t('admin.recentOrders')}
-                </p>
-                <p className="text-2xl font-bold text-darkwood dark:text-white mt-0.5">
-                  {stats.orders}
-                </p>
+                <p className="text-darkwood/50 dark:text-white text-xs font-medium">{t('admin.recentOrders')}</p>
+                <p className="text-xl font-bold text-darkwood dark:text-white mt-0.5">{stats.orders}</p>
               </div>
-              <div className="w-10 h-10 bg-forest/10 dark:bg-forest/20 rounded-lg flex items-center justify-center group-hover:bg-forest/20 transition-colors">
-                <ShoppingCart className="h-5 w-5 text-forest" />
-              </div>
+              <ShoppingCart className="h-8 w-8 text-forest/40" />
             </div>
           </Link>
         </motion.div>
 
-        {/* Quick Actions — clean, working links only */}
+        {/* Quick Actions — 3 only */}
         <motion.div
-          className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-6"
-          initial={{ opacity: 0, y: 12 }}
+          className="grid grid-cols-3 gap-3 mb-6"
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.05 }}
+          transition={{ duration: 0.25, delay: 0.05 }}
         >
-          <h3 className="text-base font-bold text-darkwood dark:text-white mb-4 flex items-center gap-2">
-            <Zap className="h-5 w-5 text-clay" />
-            {t('admin.quickActions')}
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { label: t('admin.addProduct'), icon: Plus, to: '/admin/products', color: 'clay' },
-              { label: t('admin.addDesigner') || 'Add Designer', icon: UserPlus, to: '/admin/team', color: 'forest' },
-              { label: t('admin.viewOrders'), icon: ShoppingCart, to: '/admin/orders', color: 'darkwood' },
-              { label: t('admin.settings'), icon: Settings, to: '/settings', color: 'warm' },
-            ].map((action) => (
-              <Link key={action.to} to={action.to}>
-                <div
-                  className={`flex flex-col items-center p-4 rounded-xl border transition-all hover:shadow-md ${
-                    action.color === 'clay'
-                      ? 'bg-clay/5 border-clay/20 hover:border-clay/40'
-                      : action.color === 'forest'
-                        ? 'bg-forest/5 border-forest/20 hover:border-forest/40'
-                        : action.color === 'darkwood'
-                          ? 'bg-darkwood/5 border-darkwood/20 dark:border-dark-border hover:border-darkwood/40'
-                          : 'bg-warm-50 dark:bg-dark-surface border-warm-100 dark:border-dark-border hover:border-warm-200'
-                  }`}
-                >
-                  <action.icon
-                    className={`h-6 w-6 mb-2 ${
-                      action.color === 'clay' ? 'text-clay' : action.color === 'forest' ? 'text-forest' : 'text-darkwood dark:text-white'
-                    }`}
-                  />
-                  <span className="text-xs font-medium text-darkwood dark:text-white text-center">
-                    {action.label}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <Link
+            to="/admin/products"
+            className="flex flex-col items-center justify-center p-5 rounded-xl bg-white dark:bg-dark-card border border-warm-100 dark:border-dark-border hover:border-clay/30 transition-colors"
+          >
+            <Package className="h-6 w-6 text-clay mb-2" />
+            <span className="text-sm font-medium text-darkwood dark:text-white">{t('admin.addProduct')}</span>
+          </Link>
+          <Link
+            to="/admin/team"
+            className="flex flex-col items-center justify-center p-5 rounded-xl bg-white dark:bg-dark-card border border-warm-100 dark:border-dark-border hover:border-forest/30 transition-colors"
+          >
+            <UserPlus className="h-6 w-6 text-forest mb-2" />
+            <span className="text-sm font-medium text-darkwood dark:text-white">{t('admin.addDesigner') || 'Add Designer'}</span>
+          </Link>
+          <Link
+            to="/admin/orders"
+            className="flex flex-col items-center justify-center p-5 rounded-xl bg-white dark:bg-dark-card border border-warm-100 dark:border-dark-border hover:border-clay/30 transition-colors"
+          >
+            <ShoppingCart className="h-6 w-6 text-darkwood dark:text-white mb-2" />
+            <span className="text-sm font-medium text-darkwood dark:text-white">{t('admin.viewOrders')}</span>
+          </Link>
         </motion.div>
 
-        {/* Recent Orders + Top Products — compact */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+        {/* Recent Orders + Top Products */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <motion.div
             className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border overflow-hidden"
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ duration: 0.25, delay: 0.1 }}
           >
-            <div className="p-4 border-b border-warm-100 dark:border-dark-border flex items-center justify-between">
-              <h3 className="font-bold text-darkwood dark:text-white text-sm">{t('admin.recentOrders')}</h3>
-              <Link to="/admin/orders" className="text-clay hover:text-clay-dark text-xs font-medium">
-                {t('admin.viewAll')}
-              </Link>
+            <div className="p-3 border-b border-warm-100 dark:border-dark-border flex justify-between items-center">
+              <h3 className="font-semibold text-darkwood dark:text-white text-sm">{t('admin.recentOrders')}</h3>
+              <Link to="/admin/orders" className="text-xs text-clay hover:text-clay-dark font-medium">{t('admin.viewAll')}</Link>
             </div>
-            <div className="divide-y divide-warm-100 dark:divide-dark-border max-h-64 overflow-y-auto">
+            <div className="divide-y divide-warm-100 dark:divide-dark-border max-h-52 overflow-y-auto">
               {recentOrders.length === 0 ? (
-                <div className="p-6 text-center text-darkwood/50 dark:text-white text-sm">
-                  {t('admin.noOrders') || 'No orders yet'}
-                </div>
+                <div className="p-5 text-center text-darkwood/50 dark:text-white text-sm">{t('admin.noOrders') || 'No orders yet'}</div>
               ) : (
                 recentOrders.map((order) => (
-                  <div key={order.id} className="p-4 hover:bg-warm-50 dark:hover:bg-dark-surface/50">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <span className="text-sm font-medium text-darkwood dark:text-white block">{order.customer}</span>
-                        <span className="text-xs text-darkwood/50 dark:text-white">{order.id?.slice(0, 12)} · {order.date}</span>
+                  <div key={order.id} className="p-3 hover:bg-warm-50 dark:hover:bg-dark-surface/50">
+                    <div className="flex justify-between items-center gap-2">
+                      <div className="min-w-0">
+                        <span className="text-sm font-medium text-darkwood dark:text-white block truncate">{order.customer}</span>
+                        <span className="text-xs text-darkwood/50 dark:text-white">{order.id?.slice(0, 10)} · {order.date}</span>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right flex-shrink-0">
                         <span className="text-sm font-bold text-darkwood dark:text-white block">{order.amount}</span>
-                        <span className={`inline-flex px-2 py-0.5 rounded-full text-xs ${order.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : order.status === 'pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'}`}>{order.status}</span>
+                        <span className={`inline-flex px-1.5 py-0.5 rounded text-[10px] font-medium ${order.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : order.status === 'pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'}`}>{order.status}</span>
                       </div>
                     </div>
                   </div>
@@ -264,38 +222,29 @@ export default function AdminDashboard() {
 
           <motion.div
             className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border overflow-hidden"
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.15 }}
+            transition={{ duration: 0.25, delay: 0.12 }}
           >
-            <div className="p-4 border-b border-warm-100 dark:border-dark-border flex items-center justify-between">
-              <h3 className="font-bold text-darkwood dark:text-white text-sm">{t('admin.topProducts')}</h3>
-              <Link to="/admin/products" className="text-clay hover:text-clay-dark text-xs font-medium">
-                {t('admin.viewAll')}
-              </Link>
+            <div className="p-3 border-b border-warm-100 dark:border-dark-border flex justify-between items-center">
+              <h3 className="font-semibold text-darkwood dark:text-white text-sm">{t('admin.topProducts')}</h3>
+              <Link to="/admin/products" className="text-xs text-clay hover:text-clay-dark font-medium">{t('admin.viewAll')}</Link>
             </div>
-            <div className="divide-y divide-warm-100 dark:divide-dark-border max-h-64 overflow-y-auto">
+            <div className="divide-y divide-warm-100 dark:divide-dark-border max-h-52 overflow-y-auto">
               {products?.slice(0, 5).map((p) => (
-                <div key={p.id} className="p-4 hover:bg-warm-50 dark:hover:bg-dark-surface/50 flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-lg flex-shrink-0 overflow-hidden bg-warm-100 dark:bg-dark-surface"
-                    style={{ backgroundColor: p.color || p.colors?.[0] || '#8B6F47' }}
-                  >
-                    {p.image && (
-                      <img src={p.image} alt="" className="w-full h-full object-cover" />
-                    )}
+                <div key={p.id} className="p-3 hover:bg-warm-50 dark:hover:bg-dark-surface/50 flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg flex-shrink-0 overflow-hidden bg-warm-100 dark:bg-dark-surface" style={{ backgroundColor: !p.image && (p.color || p.colors?.[0] || '#8B6F47') }}>
+                    {p.image ? <img src={p.image} alt="" className="w-full h-full object-cover" /> : null}
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-darkwood dark:text-white truncate">{p.name}</p>
                     <p className="text-xs text-darkwood/50 dark:text-white">${p.price}</p>
                   </div>
-                  <Award className="h-4 w-4 text-clay/60 flex-shrink-0" />
+                  <Award className="h-4 w-4 text-clay/50 flex-shrink-0" />
                 </div>
               ))}
               {(!products || products.length === 0) && (
-                <div className="p-6 text-center text-darkwood/50 dark:text-white text-sm">
-                  {t('admin.noProducts') || 'No products yet'}
-                </div>
+                <div className="p-5 text-center text-darkwood/50 dark:text-white text-sm">{t('admin.noProducts') || 'No products yet'}</div>
               )}
             </div>
           </motion.div>
