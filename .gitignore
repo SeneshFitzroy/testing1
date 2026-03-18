@@ -7,6 +7,9 @@ dist/
 # Test coverage
 coverage/
 
+# Test coverage
+coverage/
+
 # Old/compressed project versions (coursework: do not commit)
 *.zip
 *.rar
