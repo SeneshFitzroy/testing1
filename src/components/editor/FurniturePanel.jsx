@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { Search, Grid3x3, List, Plus, Info } from 'lucide-react'
+import { Search, Grid3x3, List, Plus, Info, ChevronDown } from 'lucide-react'
 import { EDITOR_FURNITURE, FURNITURE_CATEGORIES } from '@/lib/constants'
 import { IconByName } from '@/lib/iconMap'
 import useDesignStore from '@/store/useDesignStore'
@@ -15,6 +15,15 @@ export default function FurniturePanel() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState('grid')
+  const [categoryOpen, setCategoryOpen] = useState(false)
+  const categoryRef = useRef(null)
+  useEffect(() => {
+    const handler = (e) => {
+      if (categoryRef.current && !categoryRef.current.contains(e.target)) setCategoryOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
 
   // EDITOR_FURNITURE = e-commerce shop products only (all have images)
   const filteredFurniture = EDITOR_FURNITURE.filter(item => {
@@ -33,11 +42,13 @@ export default function FurniturePanel() {
     e.dataTransfer.setData('furniture', JSON.stringify(furnitureItem))
   }
 
+  const currentCategory = FURNITURE_CATEGORIES.find(c => c.id === selectedCategory) || FURNITURE_CATEGORIES[0]
+
   return (
     <div className="h-full flex flex-col min-h-0">
       {/* Search */}
-      <div className="p-4 border-b border-warm-200 dark:border-dark-border">
-        <div className="relative mb-4">
+      <div className="px-4 pt-3 pb-2 border-b border-warm-200 dark:border-dark-border">
+        <div className="relative mb-3">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-darkwood/40 dark:text-white" />
           <input
             type="text"
@@ -78,31 +89,45 @@ export default function FurniturePanel() {
         </div>
       </div>
 
-      {/* Categories */}
-      <div className="px-4 py-3 border-b border-warm-200 dark:border-dark-border">
-        <div className="flex flex-wrap gap-2">
-          {FURNITURE_CATEGORIES.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2 ${
-                selectedCategory === category.id
-                  ? 'bg-clay text-white'
-                  : 'bg-warm-100 dark:bg-dark-surface text-darkwood dark:text-white hover:bg-warm-200 dark:hover:bg-dark-border'
-              }`}
-            >
-              <span><IconByName name={category.icon} className="h-4 w-4" /></span>
-              <span>{category.name}</span>
-            </button>
-          ))}
+      {/* Category Dropdown */}
+      <div className="px-4 py-2 border-b border-warm-200 dark:border-dark-border" ref={categoryRef}>
+        <div className="relative">
+          <button
+            onClick={() => setCategoryOpen(!categoryOpen)}
+            className="w-full flex items-center justify-between px-3 py-2 bg-warm-100 dark:bg-dark-surface border border-warm-200 dark:border-dark-border rounded-lg text-sm font-medium text-darkwood dark:text-white hover:bg-warm-200 dark:hover:bg-dark-border transition-colors"
+          >
+            <span className="flex items-center gap-2">
+              <IconByName name={currentCategory.icon} className="h-4 w-4 text-clay" />
+              {currentCategory.name}
+            </span>
+            <ChevronDown className={`h-4 w-4 transition-transform ${categoryOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {categoryOpen && (
+            <div className="absolute top-full left-0 right-0 mt-1 py-1 bg-white dark:bg-dark-card border border-warm-200 dark:border-dark-border rounded-lg shadow-lg z-50 max-h-56 overflow-y-auto">
+              {FURNITURE_CATEGORIES.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => { setSelectedCategory(category.id); setCategoryOpen(false) }}
+                  className={`w-full flex items-center gap-2 px-3 py-2 text-sm text-left transition-colors ${
+                    selectedCategory === category.id
+                      ? 'bg-clay text-white'
+                      : 'text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface'
+                  }`}
+                >
+                  <IconByName name={category.icon} className="h-4 w-4 flex-shrink-0" />
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Furniture Items — scrollable with visible scrollbar; pb-8 ensures bottom cards fully visible */}
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 pb-8 furniture-scroll overscroll-contain">
+      {/* Furniture Items — scrollable; reduced padding to lift items higher */}
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 pt-2 pb-6 furniture-scroll overscroll-contain">
         {filteredFurniture.length > 0 ? (
           viewMode === 'grid' ? (
-            <div className="grid grid-cols-2 gap-4 sm:gap-5">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {filteredFurniture.map((item) => (
                 <motion.div
                   key={item.id}
