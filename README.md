@@ -19,7 +19,6 @@ Lee Roo is a production-grade, web-based furniture visualization and interior de
 ## Table of Contents
 
 - [Overview](#overview)
-- [Documentation](#documentation)
 - [Functional Requirements](#functional-requirements)
 - [Non-Functional Requirements](#non-functional-requirements)
 - [Technical Architecture](#technical-architecture)
@@ -45,16 +44,6 @@ The application addresses the furniture retail use case where in-store designers
 - Export designs for client review and archival
 
 Core capabilities include **dynamic scaling**, **colour and shading** application, **multi-room** design support, and **export** to PNG, JPG, and PDF. The system is built for usability, performance, accessibility, and engagement in alignment with industry best practices.
-
----
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [Product Images Guide](docs/PRODUCT_IMAGES_GUIDE.md) | Asset management, image naming, and product gallery configuration |
-| [User Testing Guide](docs/USER_TESTING_GUIDE.md) | Formative and summative user study procedures |
-| [Repository](https://github.com/SeneshFitzroy/testing1) | Source code and version history |
 
 ---
 
@@ -175,10 +164,6 @@ npm run test:e2e      # End-to-end system tests (Playwright)
 npm run test:all      # Vitest + E2E
 ```
 
-### User Testing
-
-For formative and summative user studies, see [docs/USER_TESTING_GUIDE.md](docs/USER_TESTING_GUIDE.md).
-
 ---
 
 ## CI/CD Pipeline
@@ -187,7 +172,7 @@ Continuous integration and deployment are implemented via GitHub Actions.
 
 | Workflow | Trigger | Actions |
 |----------|---------|---------|
-| **CI** | Push, pull request to `main` / `master` | Lint, unit + integration + a11y tests, coverage, build, E2E system tests |
+| **CI** | Push, pull request to `main` / `master` | Lint, test, coverage, build (single job) |
 | **CD** | Push to `main` / `master` | Deploy to Vercel (when secrets configured) |
 
 Pipeline definitions: `.github/workflows/`
@@ -198,8 +183,7 @@ Pipeline definitions: `.github/workflows/`
 
 ```
 HCI/
-├── .github/workflows/       # CI (lint, test, build, E2E) | CD (Vercel deploy)
-├── docs/                    # Product images guide | User testing guide
+├── .github/workflows/       # CI (lint, test, build) | CD (Vercel)
 ├── e2e/                     # Playwright system tests
 ├── public/                  # Static assets (favicon, hero, images, audio)
 ├── src/
@@ -238,9 +222,7 @@ HCI/
 └── vitest.config.js
 ```
 
-**Path alias:** `@/` → `src/`. Build artifacts (`dist/`, `coverage/`, `test-results/`) are gitignored.
-
-**Path alias:** `@/` maps to `src/` (e.g. `import X from '@/components/X'`).
+**Path alias:** `@/` → `src/`. Build artifacts are gitignored.
 
 ---
 
