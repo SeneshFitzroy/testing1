@@ -436,10 +436,19 @@ export default function Shop() {
                   {/* Product Info */}
                   <div className={viewMode === 'grid' ? 'p-5' : 'flex-1 p-5'}>
                     <Link to={`/shop/${product.id}`} className="block">
-                      <div className="flex items-center gap-2 mb-1.5">
+                      <div className="flex flex-wrap items-center gap-2 mb-1.5">
                         <span className="text-xs font-medium text-[#5C3A2A] dark:text-clay uppercase tracking-wider">
                           {categoryLabel(product.category)}
                         </span>
+                        {product.woodType && (
+                          <Link
+                            to={`/wood/${product.woodType.slug}`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="text-xs font-medium text-clay hover:text-clay-dark dark:text-clay dark:hover:text-clay-light px-2 py-0.5 rounded-md bg-clay/10 dark:bg-clay/20 transition-colors"
+                          >
+                            {product.woodType.name}
+                          </Link>
+                        )}
                       </div>
                       <h3 className="font-bold text-darkwood dark:text-white mb-1.5 group-hover:text-clay transition-colors line-clamp-1">
                         {product.name}

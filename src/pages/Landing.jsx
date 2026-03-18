@@ -291,7 +291,12 @@ export default function Landing() {
                   </button>
                 </div>
                   <div className="p-8">
-                    <p className="text-xs font-medium text-oak dark:text-clay uppercase tracking-wider mb-2">{t(CATEGORY_LABEL_KEYS[product.category] || 'shop.category.livingRoom')}</p>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <p className="text-xs font-medium text-oak dark:text-clay uppercase tracking-wider">{t(CATEGORY_LABEL_KEYS[product.category] || 'shop.category.livingRoom')}</p>
+                      {product.woodType && (
+                        <Link to={`/wood/${product.woodType.slug}`} className="text-xs font-medium text-oak/80 dark:text-clay/80 hover:text-oak dark:hover:text-clay px-2 py-0.5 rounded-md bg-oak/10 dark:bg-clay/20 transition-colors">{product.woodType.name}</Link>
+                      )}
+                    </div>
                     <h3 className="font-display font-medium text-xl text-[#1C1C1C] dark:text-white group-hover:text-oak transition-colors">{product.name}</h3>
                     <div className="flex items-center justify-between mt-4">
                       <span className="text-xl font-medium text-[#1C1C1C] dark:text-white">{formatPrice(product.price)}</span>
@@ -341,6 +346,11 @@ export default function Landing() {
                   </button>
                 </div>
                   <div className="p-8">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      {product.woodType && (
+                        <Link to={`/wood/${product.woodType.slug}`} className="text-xs font-medium text-oak/80 dark:text-clay/80 hover:text-oak dark:hover:text-clay px-2 py-0.5 rounded-md bg-oak/10 dark:bg-clay/20 transition-colors">{product.woodType.name}</Link>
+                      )}
+                    </div>
                     <h4 className="font-display font-medium text-lg text-[#1C1C1C] dark:text-white group-hover:text-oak transition-colors">{product.name}</h4>
                     <div className="flex items-center justify-between mt-3">
                       <span className="text-xl font-medium text-[#1C1C1C] dark:text-white">{formatPrice(product.price)}</span>

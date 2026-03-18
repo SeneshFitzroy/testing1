@@ -36,6 +36,7 @@ const MeetDesigner = lazy(() => import('./pages/MeetDesigner'))
 const DesignerPanel = lazy(() => import('./pages/DesignerPanel'))
 const TrackDelivery = lazy(() => import('./pages/TrackDelivery'))
 const SharedDesignView = lazy(() => import('./pages/SharedDesignView'))
+const WoodInfo = lazy(() => import('./pages/WoodInfo'))
 
 // Preload critical pages so navigation is instant
 const preloadPages = () => { import('./pages/Shop'); import('./pages/ProductDetail'); import('./pages/Cart') }
@@ -199,6 +200,7 @@ function App() {
             <Route path="/shop/:productId" element={<RedirectIfDesigner><ProductDetail /></RedirectIfDesigner>} />
             <Route path="/cart" element={<RedirectIfDesigner><Cart /></RedirectIfDesigner>} />
             <Route path="/track-delivery" element={<RedirectIfDesigner><TrackDelivery /></RedirectIfDesigner>} />
+            <Route path="/wood/:woodSlug" element={<RedirectIfDesigner><WoodInfo /></RedirectIfDesigner>} />
           </Route>
 
           <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>

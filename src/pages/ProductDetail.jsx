@@ -18,6 +18,7 @@ import {
   X
 } from 'lucide-react'
 import { SHOP_PRODUCTS as shopProducts, FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
+import { getHueRotateFilter } from '@/lib/colorUtils'
 import useCartStore from '@/store/useCartStore'
 import useThemeStore from '@/store/useThemeStore'
 import { toast } from 'sonner'
@@ -228,20 +229,27 @@ export default function ProductDetail() {
               </>
             )}
 
-            {/* IMAGE tab: always show same JPEG; when product has colors, apply color overlay filter for visual feedback */}
+            {/* IMAGE tab: apply realistic color change via hue-rotate + color blend overlay */}
             {viewMode === 'photos' && hasProductImages && (
               <div className="space-y-3">
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-white dark:bg-dark-card border border-[#5C3A2A]/20">
                   <img
                     src={(product.images && product.images[selectedImage]) || product.image}
                     alt={product.name}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain transition-[filter] duration-300"
+                    style={product.colors?.length > 1 && selectedColor && product.colors[0] !== selectedColor
+                      ? { filter: getHueRotateFilter(selectedColor) }
+                      : undefined}
                   />
-                  {/* Color overlay: keeps same JPEG, adds tint when color selected */}
-                  {product.colors?.length > 1 && selectedColor && (
+                  {/* Color overlay: mix-blend-mode: color preserves shadows/highlights, replaces hue/saturation */}
+                  {product.colors?.length > 1 && selectedColor && product.colors[0] !== selectedColor && (
                     <div
-                      className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-[0.25]"
-                      style={{ backgroundColor: selectedColor }}
+                      className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                      style={{
+                        backgroundColor: selectedColor,
+                        mixBlendMode: 'color',
+                        opacity: 0.55,
+                      }}
                       aria-hidden
                     />
                   )}
@@ -345,8 +353,18 @@ export default function ProductDetail() {
                   ({product.reviews || 0} {t('product.reviews').toLowerCase()})
                 </span>
               </div>
-              <div className="text-sm text-darkwood/50 dark:text-white">
-                {t('product.category')}: <span className="text-clay font-medium">{product.category}</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm text-darkwood/50 dark:text-white">
+                  {t('product.category')}: <span className="text-clay font-medium">{product.category}</span>
+                </span>
+                {product.woodType && (
+                  <Link
+                    to={`/wood/${product.woodType.slug}`}
+                    className="text-xs font-medium text-clay hover:text-clay-dark dark:text-clay dark:hover:text-clay-light px-2.5 py-1 rounded-lg bg-clay/10 dark:bg-clay/20 transition-colors"
+                  >
+                    {product.woodType.name}
+                  </Link>
+                )}
               </div>
             </div>
 
@@ -385,8 +403,8 @@ export default function ProductDetail() {
                     </span>
                   </span>
                   {selectedColor !== product.colors[0] && (
-                    <span className="text-xs text-clay dark:text-clay bg-clay/10 dark:bg-clay/20 px-2 py-0.5 rounded-full animate-pulse">
-                      {viewMode === '3d' ? t('product.previewActive') : t('product.switchTo3dForColor') || 'Switch to 3D to preview color'}
+                    <span className="text-xs text-clay dark:text-clay bg-clay/10 dark:bg-clay/20 px-2 py-0.5 rounded-full">
+                      {t('product.previewActive')}
                     </span>
                   )}
                 </div>
@@ -602,23 +620,43 @@ export default function ProductDetail() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                  className="space-y-6"
                 >
+                  {product.woodType && (
+                    <div className="bg-clay/5 dark:bg-clay/10 rounded-xl p-6 border border-clay/20">
+                      <h3 className="text-lg font-semibold text-darkwood dark:text-white mb-2">
+                        {t('product.woodType') || 'Wood Type'}
+                      </h3>
+                      <Link
+                        to={`/wood/${product.woodType.slug}`}
+                        className="inline-flex items-center gap-2 text-clay font-semibold hover:text-clay-dark dark:hover:text-clay-light transition-colors"
+                      >
+                        {product.woodType.name}
+                        <span className="text-xs">→ {t('woodInfo.learnMore') || 'Learn more'}</span>
+                      </Link>
+                    </div>
+                  )}
                   <div className="bg-white dark:bg-dark-card rounded-xl p-6 border border-warm-100 dark:border-dark-border">
                     <h3 className="text-lg font-semibold text-darkwood dark:text-white mb-4">
                       {t('product.productDetails')}
                     </h3>
-                    <div className="space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                       {[
-                        [t('product.dimensions'), product.dimensions || 'N/A'],
-                        [t('product.weight'), product.weight || 'N/A'],
+                        [t('product.dimensions'), product.specs?.dimensionsFull || product.dimensions || 'N/A'],
+                        [t('product.weight'), product.specs?.productWeight || product.weight || 'N/A'],
                         [t('product.material'), product.material || 'N/A'],
                         [t('product.category'), product.category],
-                        ['SKU', (product.sku || product.id).toUpperCase()]
+                        ['SKU', (product.sku || product.id).toUpperCase()],
+                        ...(product.specs?.seatableWidth ? [[t('product.specs.seatableWidth') || 'Seatable width', product.specs.seatableWidth]] : []),
+                        ...(product.specs?.seatingDepth ? [[t('product.specs.seatingDepth') || 'Seating depth', product.specs.seatingDepth]] : []),
+                        ...(product.specs?.seatingHeight ? [[t('product.specs.seatingHeight') || 'Seating height', product.specs.seatingHeight]] : []),
+                        ...(product.specs?.backrestHeight ? [[t('product.specs.backrestHeight') || 'Backrest height', product.specs.backrestHeight]] : []),
+                        ...(product.specs?.maxBearingSupport ? [[t('product.specs.maxBearingSupport') || 'Max bearing support', product.specs.maxBearingSupport]] : []),
+                        ...(product.specs?.packagingDimensions ? [[t('product.specs.packagingDimensions') || 'Packaging', product.specs.packagingDimensions]] : []),
                       ].map(([label, value]) => (
-                        <div key={label} className="flex justify-between">
-                          <span className="text-darkwood/50 dark:text-white">{label}:</span>
-                          <span className="font-medium text-darkwood dark:text-white">{value}</span>
+                        <div key={label} className="flex justify-between gap-4">
+                          <span className="text-darkwood/50 dark:text-white text-sm">{label}:</span>
+                          <span className="font-medium text-darkwood dark:text-white text-sm text-right">{value}</span>
                         </div>
                       ))}
                     </div>
@@ -741,6 +779,15 @@ export default function ProductDetail() {
                       )}
                     </div>
                     <div className="p-4">
+                      {relatedProduct.woodType && (
+                        <Link
+                          to={`/wood/${relatedProduct.woodType.slug}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-xs font-medium text-clay hover:text-clay-dark dark:text-clay dark:hover:text-clay-light"
+                        >
+                          {relatedProduct.woodType.name}
+                        </Link>
+                      )}
                       <h3 className="font-semibold text-darkwood dark:text-white mb-2 hover:text-clay transition-colors">
                         {relatedProduct.name}
                       </h3>

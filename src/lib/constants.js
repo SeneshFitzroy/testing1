@@ -82,6 +82,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-1', name: 'Velvet Tufted Sofa', category: 'Living Room', discountPercent: 15, price: 1019, originalPrice: 1199, rating: 4.8, reviews: 124, inStock: true, featured: true, onSale: true,
     colors: ['#2F5233', '#4A2F21', '#D9C7B8', '#1B3A4B'], colorNames: ['Emerald', 'Walnut', 'Sand', 'Navy'], material: 'Premium Velvet', dimensions: '220 x 95 x 82 cm', weight: '52 kg',
+    woodType: { name: 'Mahogany', slug: 'mahogany' },
+    specs: { dimensionsFull: 'W86" x D37" x H32"', seatableWidth: '86"', seatingDepth: '39"', seatingHeight: '19"', backrestHeight: '12"', productWeight: '115 lbs', packagingDimensions: '2 boxes', maxBearingSupport: '3 x 330 lbs' },
     description: 'Hand-tufted emerald velvet sofa with solid brass legs and kiln-dried hardwood frame. Deep button tufting and high-density foam cushions deliver exceptional comfort and timeless style.',
     features: ['Hand-tufted button detailing', 'Solid brass tapered legs', 'Kiln-dried hardwood frame', 'Stain-resistant velvet'],
     sku: 'SP-1',
@@ -96,6 +98,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-2', name: 'Windsor Dining Chair Set', category: 'Dining Room', discountPercent: 16, price: 669, originalPrice: 796, rating: 4.6, reviews: 89, inStock: true, featured: true, onSale: true,
     colors: ['#4A2F21', '#8B6F47', '#FFFFFF'], colorNames: ['Dark Walnut', 'Honey Oak', 'White'], material: 'Solid Oak', dimensions: '50 x 54 x 92 cm each', weight: '6 kg each',
+    woodType: { name: 'Oak', slug: 'oak' },
+    specs: { dimensionsFull: 'W20" x D21" x H36"', seatableWidth: '18"', seatingDepth: '17"', seatingHeight: '18"', backrestHeight: '22"', productWeight: '13 lbs each', packagingDimensions: '4 boxes', maxBearingSupport: '1 x 300 lbs' },
     description: 'Set of 4 Windsor-style dining chairs in solid white oak with contoured spindle backs. Hand-sanded to a satin finish with cushioned drop-in seats.',
     features: ['Solid oak construction', 'Contoured spindle back', 'Cushioned drop-in seat', 'Mortise-and-tenon joints'],
     sku: 'SP-2',
@@ -110,6 +114,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-3', name: 'Oval Coffee Table', category: 'Living Room', discountPercent: 17, price: 331, originalPrice: 399, rating: 4.9, reviews: 201, inStock: true, featured: true, onSale: true,
     colors: ['#8B6F47', '#4A2F21', '#FFFFFF'], colorNames: ['Natural Walnut', 'Espresso', 'White Oak'], material: 'Walnut Veneer & Steel', dimensions: '120 x 60 x 45 cm', weight: '18 kg',
+    woodType: { name: 'Walnut', slug: 'walnut' },
+    specs: { dimensionsFull: 'W47" x D24" x H18"', productWeight: '40 lbs', packagingDimensions: '1 box' },
     description: 'Mid-century oval coffee table with walnut veneer top and powder-coated hairpin steel legs. Integrated lower shelf for magazines and remotes.',
     features: ['Lower storage shelf', 'Scratch-resistant veneer', 'Hairpin steel legs', 'Anti-scratch floor pads'],
     sku: 'SP-3',
@@ -124,6 +130,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-4', name: 'Upholstered Platform Bed', category: 'Bedroom', discountPercent: 18, price: 1311, originalPrice: 1599, rating: 4.7, reviews: 156, inStock: true, onSale: true,
     colors: ['#E8DFD5', '#D9C7B8', '#4A2F21'], colorNames: ['Ivory', 'Latte', 'Cocoa'], material: 'Belgian Linen', dimensions: '200 x 210 x 120 cm', weight: '68 kg',
+    woodType: { name: 'Birch', slug: 'birch' },
+    specs: { dimensionsFull: 'W79" x D83" x H47"', productWeight: '150 lbs', packagingDimensions: '3 boxes', headboardHeight: '47"' },
     description: 'King-size platform bed with channel-tufted headboard in Belgian linen. Engineered slat system eliminates the need for a box spring.',
     features: ['Channel-tufted headboard', 'Engineered slat base', 'No box spring needed', 'Under-bed clearance 15 cm'],
     sku: 'SP-4',
@@ -138,6 +146,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-5', name: 'Industrial Bookshelf', category: 'Storage', discountPercent: 19, price: 364, originalPrice: 449, rating: 4.5, reviews: 73, inStock: true, onSale: true,
     colors: ['#5C3A2A', '#4A2F21', '#FFFFFF'], colorNames: ['Rustic Brown', 'Dark Walnut', 'White Wash'], material: 'Reclaimed Pine & Iron', dimensions: '80 x 35 x 190 cm', weight: '32 kg',
+    woodType: { name: 'Pine', slug: 'pine' },
+    specs: { dimensionsFull: 'W31" x D14" x H75"', productWeight: '70 lbs', packagingDimensions: '1 box', shelfCount: 5 },
     description: 'Open 5-tier industrial bookshelf combining reclaimed pine shelves and a matte black iron frame. Each wood plank has unique grain character.',
     features: ['5 adjustable shelves', 'Anti-tip wall anchor', 'Matte black iron frame', 'Reclaimed pine planks'],
     sku: 'SP-5',
@@ -152,6 +162,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-7', name: 'Mango Wood TV Console', category: 'Entertainment', discountPercent: 20, price: 399, originalPrice: 499, rating: 4.6, reviews: 112, inStock: true, onSale: true,
     colors: ['#2E1C12', '#4A2F21', '#8B6F47'], colorNames: ['Ebony', 'Dark Walnut', 'Honey'], material: 'Solid Mango Wood', dimensions: '150 x 40 x 50 cm', weight: '28 kg',
+    woodType: { name: 'Mango', slug: 'mango' },
+    specs: { dimensionsFull: 'W59" x D16" x H20"', productWeight: '62 lbs', packagingDimensions: '2 boxes', tvSize: 'Up to 65"' },
     description: 'Low-profile TV console in solid mango wood with integrated cable management and soft-close cabinets. Fits TVs up to 65 inches.',
     features: ['Cable management cutouts', '2 soft-close cabinets', 'Open center shelf', 'Fits up to 65″ TV'],
     sku: 'SP-7',
@@ -166,6 +178,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-8', name: 'Accent Wingback Chair', category: 'Living Room', discountPercent: 21, price: 552, originalPrice: 699, rating: 4.8, reviews: 87, inStock: true, onSale: true,
     colors: ['#C59539', '#3F5E45', '#D9C7B8'], colorNames: ['Mustard', 'Forest Green', 'Cream'], material: 'Velvet & Walnut', dimensions: '78 x 82 x 98 cm', weight: '22 kg',
+    woodType: { name: 'Walnut', slug: 'walnut' },
+    specs: { dimensionsFull: 'W31" x D32" x H39"', seatableWidth: '22"', seatingDepth: '20"', seatingHeight: '19"', backrestHeight: '24"', productWeight: '48 lbs', packagingDimensions: '1 box', maxBearingSupport: '1 x 300 lbs' },
     description: 'Sculptural wingback accent chair in mustard velvet with solid walnut dowel legs. Generous seat depth and curved wings provide enveloping comfort.',
     features: ['Wingback silhouette', 'Solid walnut legs', 'High-resilience foam', 'Removable seat cushion'],
     sku: 'SP-8',
@@ -180,6 +194,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-9', name: 'Farmhouse Dining Table', category: 'Dining Room', discountPercent: 22, price: 780, originalPrice: 999, rating: 4.7, reviews: 143, inStock: true, featured: true, onSale: true,
     colors: ['#5C3A2A', '#8B6F47', '#2E1C12'], colorNames: ['Classic Walnut', 'Honey', 'Ebony'], material: 'Solid Walnut', dimensions: '180 x 90 x 76 cm', weight: '42 kg',
+    woodType: { name: 'Walnut', slug: 'walnut' },
+    specs: { dimensionsFull: 'W71" x D35" x H30"', productWeight: '92 lbs', packagingDimensions: '1 box', seats: '6-8' },
     description: 'Handcrafted solid walnut farmhouse table with breadboard ends and turned legs. Each table displays unique grain patterns sealed under a matte polyurethane finish.',
     features: ['Seats 6-8 people', 'Breadboard end construction', 'Turned legs', 'Natural grain satin finish'],
     sku: 'SP-9',
@@ -194,6 +210,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-10', name: 'Scandi Nightstand', category: 'Bedroom', discountPercent: 23, price: 199, originalPrice: 259, rating: 4.6, reviews: 98, inStock: true, featured: true, onSale: true,
     colors: ['#D9C7B8', '#4A2F21', '#FFFFFF'], colorNames: ['Bleached Birch', 'Walnut', 'Glacier White'], material: 'Solid Birch', dimensions: '45 x 40 x 55 cm', weight: '8 kg',
+    woodType: { name: 'Birch', slug: 'birch' },
+    specs: { dimensionsFull: 'W18" x D16" x H22"', productWeight: '18 lbs', packagingDimensions: '1 box' },
     description: 'Scandinavian-inspired nightstand in bleached birch with single soft-close drawer and open cubby. Tapered splayed legs give a light, airy profile.',
     features: ['Soft-close drawer', 'Open cubby shelf', 'Splayed tapered legs', 'Pre-assembled'],
     sku: 'SP-10',
@@ -208,6 +226,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-11', name: 'Globe Pendant Light', category: 'Lighting', discountPercent: 24, price: 151, originalPrice: 199, rating: 4.5, reviews: 67, inStock: true, featured: true, onSale: true,
     colors: ['#B66E41', '#2E1C12', '#FFFFFF'], colorNames: ['Antique Brass', 'Matte Black', 'Chrome'], material: 'Mouth-Blown Glass & Brass', dimensions: 'Ø 35 x H 40 cm', weight: '2.5 kg',
+    woodType: null,
+    specs: { dimensionsFull: 'Ø14" x H16"', productWeight: '5.5 lbs', packagingDimensions: '1 box' },
     description: 'Artisan globe pendant in mouth-blown smoke glass with an antique brass canopy and woven cord. Creates warm ambient light through its translucent shade.',
     features: ['Mouth-blown glass globe', 'Adjustable drop length', 'Dimmable compatible', 'LED bulb included'],
     sku: 'SP-11',
@@ -222,6 +242,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-12', name: 'Leather Chesterfield Sofa', category: 'Living Room', discountPercent: 25, price: 1424, originalPrice: 1899, rating: 4.9, reviews: 105, inStock: true, onSale: true,
     colors: ['#6B3A2A', '#2E1C12', '#D9C7B8'], colorNames: ['Cognac', 'Espresso', 'Parchment'], material: 'Full-Grain Leather', dimensions: '230 x 98 x 78 cm', weight: '58 kg',
+    woodType: { name: 'Oak', slug: 'oak' },
+    specs: { dimensionsFull: 'W91" x D39" x H31"', seatableWidth: '82"', seatingDepth: '22"', seatingHeight: '18"', backrestHeight: '28"', productWeight: '128 lbs', packagingDimensions: '2 boxes', maxBearingSupport: '3 x 350 lbs' },
     description: 'Classic Chesterfield silhouette in distressed full-grain leather with deep diamond tufting, rolled arms, and turned bun feet. Ages beautifully with a rich patina.',
     features: ['Full-grain leather', 'Diamond button tufting', 'Turned bun feet', 'Eight-way hand-tied springs'],
     sku: 'SP-12',
@@ -236,6 +258,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-13', name: 'Round Wall Mirror', category: 'Decor', discountPercent: 26, price: 184, originalPrice: 249, rating: 4.8, reviews: 76, inStock: true, onSale: true,
     colors: ['#B66E41', '#2E1C12', '#D9C7B8'], colorNames: ['Brass', 'Iron Black', 'Champagne Gold'], material: 'Solid Brass Frame', dimensions: 'Ø 80 x D 3 cm', weight: '4 kg',
+    woodType: null,
+    specs: { dimensionsFull: 'Ø31" x D1"', productWeight: '9 lbs', packagingDimensions: '1 box' },
     description: 'Over-sized round mirror with a forged solid brass frame and bevelled edge. Wall-mount hardware included for a flush, floating appearance.',
     features: ['Bevelled mirror edge', 'Flush wall mount', 'Solid brass frame', 'Shatter-resistant backing'],
     sku: 'SP-13',
@@ -250,6 +274,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-14', name: 'Shaker Wardrobe', category: 'Storage', discountPercent: 27, price: 948, originalPrice: 1299, rating: 4.6, reviews: 58, inStock: true, onSale: true,
     colors: ['#4A2F21', '#FFFFFF', '#2E1C12'], colorNames: ['Dark Oak', 'Pure White', 'Charcoal'], material: 'Solid Oak & MDF', dimensions: '120 x 60 x 200 cm', weight: '75 kg',
+    woodType: { name: 'Oak', slug: 'oak' },
+    specs: { dimensionsFull: 'W47" x D24" x H79"', productWeight: '165 lbs', packagingDimensions: '2 boxes', hangingRail: 'Full-width' },
     description: 'Full-height Shaker-style wardrobe with two panelled doors, internal adjustable shelves, and a full-width hanging rail. Soft-close hinges for quiet operation.',
     features: ['Soft-close hinges', 'Adjustable shelves', 'Full-width hanging rail', 'Anti-tip wall bracket'],
     sku: 'SP-14',
@@ -264,6 +290,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-15', name: 'Ergonomic Office Chair', category: 'Office', discountPercent: 28, price: 417, originalPrice: 579, rating: 4.7, reviews: 134, inStock: true, onSale: true,
     colors: ['#2E1C12', '#8B6F47', '#3F5E45'], colorNames: ['Midnight Black', 'Tan', 'Olive'], material: 'Top-Grain Leather & Chrome', dimensions: '65 x 65 x 115 cm', weight: '15 kg',
+    woodType: null,
+    specs: { dimensionsFull: 'W26" x D26" x H45"', seatableWidth: '20"', seatingDepth: '19"', seatingHeight: '19"', backrestHeight: '22"', productWeight: '33 lbs', packagingDimensions: '1 box', maxBearingSupport: '1 x 250 lbs' },
     description: 'High-back ergonomic chair with top-grain leather, synchro-tilt mechanism, adjustable lumbar support, and polished chrome five-star base.',
     features: ['Adjustable lumbar support', 'Synchro-tilt mechanism', '360° swivel', 'Polished chrome base'],
     sku: 'SP-15',
@@ -278,6 +306,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-16', name: 'Live-Edge Console Table', category: 'Living Room', discountPercent: 29, price: 305, originalPrice: 429, rating: 4.5, reviews: 91, inStock: true, onSale: true,
     colors: ['#8B6F47', '#2E1C12', '#D9C7B8'], colorNames: ['Natural Acacia', 'Ebony', 'Driftwood'], material: 'Live-Edge Acacia & Iron', dimensions: '120 x 35 x 80 cm', weight: '18 kg',
+    woodType: { name: 'Acacia', slug: 'acacia' },
+    specs: { dimensionsFull: 'W47" x D14" x H31"', productWeight: '40 lbs', packagingDimensions: '1 box' },
     description: 'Showpiece console table featuring a live-edge acacia wood slab on a geometric matte iron base. Every slab is one-of-a-kind with natural edge and grain.',
     features: ['Live-edge acacia slab', 'Geometric iron base', 'Clear lacquer seal', 'Every piece unique'],
     sku: 'SP-16',
@@ -292,6 +322,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-17', name: 'Linen Sectional Sofa', category: 'Living Room', discountPercent: 30, price: 1469, originalPrice: 2099, rating: 4.9, reviews: 215, inStock: true, onSale: true,
     colors: ['#E8DFD5', '#D9C7B8', '#B0B0B0'], colorNames: ['Ivory Linen', 'Oat', 'Slate Grey'], material: 'Stonewashed Linen', dimensions: '290 x 180 x 82 cm', weight: '72 kg',
+    woodType: { name: 'Maple', slug: 'maple' },
+    specs: { dimensionsFull: 'W114" x D71" x H32"', seatableWidth: '98"', seatingDepth: '28"', seatingHeight: '19"', backrestHeight: '26"', productWeight: '159 lbs', packagingDimensions: '4 boxes', maxBearingSupport: '5 x 330 lbs' },
     description: 'L-shaped modular sectional in pre-washed European linen with feather-and-down filled cushions. Loose slipcovers are fully removable and machine washable.',
     features: ['Modular L-shape design', 'Removable slipcovers', 'Feather-down cushions', 'Machine washable linen'],
     sku: 'SP-17',
@@ -306,6 +338,8 @@ export const SHOP_PRODUCTS = [
   {
     id: 'sp-18', name: 'Rattan Lounge Chair', category: 'Living Room', discountPercent: 31, price: 344, originalPrice: 499, rating: 4.7, reviews: 82, inStock: true, onSale: true,
     colors: ['#C4A88E', '#4A2F21', '#FFFFFF'], colorNames: ['Natural Rattan', 'Dark Teak', 'Whitewash'], material: 'Natural Rattan & Teak', dimensions: '72 x 78 x 88 cm', weight: '9 kg',
+    woodType: { name: 'Teak', slug: 'teak' },
+    specs: { dimensionsFull: 'W28" x D31" x H35"', seatableWidth: '22"', seatingDepth: '20"', seatingHeight: '17"', backrestHeight: '28"', productWeight: '20 lbs', packagingDimensions: '1 box', maxBearingSupport: '1 x 275 lbs' },
     description: 'Hand-woven natural rattan lounge chair on a solid teak frame. Open-weave barrel back lets air flow freely, perfect for sunrooms and covered patios.',
     features: ['Hand-woven rattan', 'Solid teak frame', 'Includes linen cushion', 'Indoor-outdoor use'],
     sku: 'SP-18',
