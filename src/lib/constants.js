@@ -59,8 +59,9 @@ export const WALL_COLOR_PRESETS = [
   '#D4E6D4', '#F5E6CC', '#FFE4E1', '#E6E6FA', '#F0F0F0',
 ]
 
-// Site-wide policy constants (USD base — formatPrice converts to selected currency)
-export const FREE_SHIPPING_THRESHOLD = 46
+// Site-wide policy constants (USD base for cart logic; display in LKR)
+export const FREE_SHIPPING_THRESHOLD = 14950 / 325 // ~46 USD = Rs 14,950
+export const FREE_SHIPPING_DISPLAY = 'Rs 14,950.00' // Consistent site-wide display
 export const STANDARD_SHIPPING_COST = 9.99
 export const WARRANTY_YEARS = 2
 export const RETURNS_DAYS = 30
@@ -74,7 +75,7 @@ export const FLOOR_COLOR_PRESETS = [
 // Shop products with extended info
 // Each product has a UNIQUE primary image. Gallery images are different crops/views of the SAME piece.
 // Zero image duplication across products. All images are high-quality studio product photography.
-// Each product has a UNIQUE discount percentage (15–31%). Synced across Shop, ProductDetail, Real3DViewer, Product3DViewer.
+// Each product has a UNIQUE discount percentage (15–31%). Synced across Shop, ProductDetail, Real3DViewer.
 export const SHOP_PRODUCTS = [
   {
     id: 'sp-1', name: 'Velvet Tufted Sofa', category: 'Living Room', discountPercent: 15, price: 1019, originalPrice: 1199, rating: 4.8, reviews: 124, inStock: true, featured: true, onSale: true,

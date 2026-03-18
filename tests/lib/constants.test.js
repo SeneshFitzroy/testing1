@@ -4,6 +4,7 @@ import {
   FURNITURE_ITEMS,
   FURNITURE_CATEGORIES,
   FREE_SHIPPING_THRESHOLD,
+  FREE_SHIPPING_DISPLAY,
   STANDARD_SHIPPING_COST,
   WARRANTY_YEARS,
   RETURNS_DAYS,
@@ -57,6 +58,10 @@ describe('FURNITURE_CATEGORIES', () => {
 describe('Policy constants', () => {
   it('FREE_SHIPPING_THRESHOLD is a number', () => {
     expect(typeof FREE_SHIPPING_THRESHOLD).toBe('number')
+  })
+
+  it('FREE_SHIPPING_DISPLAY is Rs 14,950.00', () => {
+    expect(FREE_SHIPPING_DISPLAY).toBe('Rs 14,950.00')
   })
 
   it('STANDARD_SHIPPING_COST is positive', () => {

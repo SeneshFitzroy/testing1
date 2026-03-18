@@ -12,11 +12,12 @@ import {
   CreditCard,
   Shield,
 } from 'lucide-react'
-import { SHOP_PRODUCTS, FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
+import { SHOP_PRODUCTS, FREE_SHIPPING_DISPLAY } from '@/lib/constants'
 import useAuthStore from '@/store/useAuthStore'
 import useCartStore from '@/store/useCartStore'
 import useThemeStore from '@/store/useThemeStore'
 import { useState, useEffect, useRef } from 'react'
+import useInView from '@/hooks/useInView'
 
 const CATEGORY_LABEL_KEYS = {
   'Living Room': 'shop.category.livingRoom',
@@ -25,21 +26,6 @@ const CATEGORY_LABEL_KEYS = {
   Storage: 'shop.category.storage',
   Entertainment: 'shop.category.entertainment',
   Office: 'shop.category.office',
-}
-
-function useInView(ref, threshold = 0.15) {
-  const [visible, setVisible] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
-      { threshold }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [ref, threshold])
-  return visible
 }
 
 const HERO_POSTER = 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=80'
@@ -216,7 +202,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-6">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-12 md:gap-x-16 text-xs sm:text-sm md:text-base text-charcoal/90 dark:text-white font-medium">
             {[
-              { icon: Truck, text: `${t('landing.trust.freeShippingOver')} ${formatPrice(FREE_SHIPPING_THRESHOLD)}` },
+              { icon: Truck, text: `${t('landing.trust.freeShippingOver')} ${FREE_SHIPPING_DISPLAY}` },
               { icon: Shield, text: t('landing.trust.warranty2yr') },
               { icon: RotateCcw, text: t('landing.trust.returns30d') },
               { icon: CreditCard, text: t('landing.trust.securePayment') },

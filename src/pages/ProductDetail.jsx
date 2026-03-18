@@ -17,7 +17,7 @@ import {
   Minus,
   X
 } from 'lucide-react'
-import { SHOP_PRODUCTS as shopProducts, FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
+import { SHOP_PRODUCTS as shopProducts, FREE_SHIPPING_DISPLAY } from '@/lib/constants'
 import { getHueRotateFilter } from '@/lib/colorUtils'
 import useCartStore from '@/store/useCartStore'
 import useThemeStore from '@/store/useThemeStore'
@@ -535,7 +535,7 @@ export default function ProductDetail() {
               <div className="text-center">
                 <Truck className="h-6 w-6 sm:h-8 sm:w-8 text-clay mx-auto mb-1.5 sm:mb-2" />
                 <div className="text-xs sm:text-sm font-medium text-darkwood dark:text-white">{t('product.freeShipping')}</div>
-                <div className="text-xs text-darkwood/50 dark:text-white">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
+                <div className="text-xs text-darkwood/50 dark:text-white">{t('product.ordersOver')} {FREE_SHIPPING_DISPLAY}</div>
               </div>
               <div className="text-center">
                 <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-forest mx-auto mb-1.5 sm:mb-2" />
@@ -732,7 +732,7 @@ export default function ProductDetail() {
                       </div>
                       <div>
                         <div className="font-medium text-forest dark:text-forest-light">{t('product.freeDelivery')}</div>
-                        <div className="text-sm text-darkwood/50 dark:text-white">{t('product.ordersOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}</div>
+                        <div className="text-sm text-darkwood/50 dark:text-white">{t('product.ordersOver')} {FREE_SHIPPING_DISPLAY}</div>
                       </div>
                     </div>
                   </div>
