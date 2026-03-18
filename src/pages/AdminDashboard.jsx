@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Package, ShoppingCart, Plus, Download, Shield, UserPlus, Award, FileText } from 'lucide-react'
 import useAuthStore from '@/store/useAuthStore'
 import useProductsStore from '@/store/useProductsStore'
+import useThemeStore from '@/store/useThemeStore'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { collection, getDocs } from 'firebase/firestore'
@@ -13,6 +14,7 @@ import { exportAdminReportPDF } from '@/lib/pdfExport'
 export default function AdminDashboard() {
   const { userProfile } = useAuthStore()
   const { t } = useTranslation()
+  const { formatPrice } = useThemeStore()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   const [stats, setStats] = useState({ products: 0, orders: 0 })
@@ -37,7 +39,7 @@ export default function AdminDashboard() {
             id: d.id,
             ...data,
             customer: data?.shipping?.fullName || data?.userEmail || 'Customer',
-            amount: data?.total != null ? `$${Number(data.total).toFixed(2)}` : '$0',
+            total: data?.total ?? 0,
             status: data?.status || 'pending',
             date: ts ? ts.toLocaleDateString() : '',
           }
@@ -240,7 +242,7 @@ export default function AdminDashboard() {
                         <span className="text-xs text-darkwood/50 dark:text-white">{order.id?.slice(0, 10)} · {order.date}</span>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <span className="text-sm font-bold text-darkwood dark:text-white block">{order.amount}</span>
+                        <span className="text-sm font-bold text-darkwood dark:text-white block">{formatPrice(order.total ?? 0)}</span>
                         <span className={`inline-flex px-1.5 py-0.5 rounded text-[10px] font-medium ${order.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : order.status === 'pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'}`}>{order.status}</span>
                       </div>
                     </div>
@@ -268,7 +270,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-darkwood dark:text-white truncate">{p.name}</p>
-                    <p className="text-xs text-darkwood/50 dark:text-white">${p.price}</p>
+                    <p className="text-xs text-darkwood/50 dark:text-white">{formatPrice(p.price ?? 0)}</p>
                   </div>
                   <Award className="h-4 w-4 text-clay/50 flex-shrink-0" />
                 </div>

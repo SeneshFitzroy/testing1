@@ -205,7 +205,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-6">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-12 md:gap-x-16 text-xs sm:text-sm md:text-base text-charcoal/90 dark:text-white font-medium">
             {[
-              { icon: Truck, text: `${t('landing.trust.freeShippingOver')} ${FREE_SHIPPING_DISPLAY}` },
+              { icon: Truck, text: `${t('landing.trust.freeShippingOver')} ${formatPrice(FREE_SHIPPING_THRESHOLD)}` },
               { icon: Shield, text: t('landing.trust.warranty2yr') },
               { icon: RotateCcw, text: t('landing.trust.returns30d') },
               { icon: CreditCard, text: t('landing.trust.securePayment') },

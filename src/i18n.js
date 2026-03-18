@@ -2007,4 +2007,14 @@ i18n.use(initReactI18next).init({
   },
 })
 
+// Sync document lang + dir for accessibility when language changes
+const applyLangToDocument = (lng) => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = lng === 'en' ? 'en' : lng === 'si' ? 'si' : lng === 'ta' ? 'ta' : lng === 'ja' ? 'ja' : lng === 'zh' ? 'zh-Hans' : lng
+    document.documentElement.dir = lng === 'si' || lng === 'ta' ? 'ltr' : 'ltr'
+  }
+}
+applyLangToDocument(i18n.language)
+i18n.on('languageChanged', applyLangToDocument)
+
 export default i18n

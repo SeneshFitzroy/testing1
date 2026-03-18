@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, ShoppingCart, Loader2 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import useThemeStore from '@/store/useThemeStore'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 
 export default function AdminOrders() {
   const { t } = useTranslation()
+  const { formatPrice } = useThemeStore()
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -22,7 +24,7 @@ export default function AdminOrders() {
             id: d.id,
             ...data,
             customer: data?.shipping?.fullName || data?.userEmail || 'Customer',
-            amount: data?.total != null ? `$${Number(data.total).toFixed(2)}` : '$0',
+            total: data?.total ?? 0,
             status: data?.status || 'pending',
             date: ts ? ts.toLocaleDateString() : '',
           }
@@ -82,7 +84,7 @@ export default function AdminOrders() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-darkwood dark:text-white">{order.amount}</p>
+                  <p className="font-bold text-darkwood dark:text-white">{formatPrice(order.total ?? 0)}</p>
                   <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
                     order.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
                     order.status === 'pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' :

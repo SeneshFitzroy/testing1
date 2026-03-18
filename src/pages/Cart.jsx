@@ -272,7 +272,7 @@ export default function Cart() {
                 <div className="space-y-3 pt-2">
                   {[
                     { icon: Shield, text: t('cart.secureCheckout'), color: 'text-forest' },
-                    { icon: Truck, text: `${t('shop.freeDelivery')} ${t('shop.ordersOver')} ${FREE_SHIPPING_DISPLAY}`, color: 'text-clay' },
+                    { icon: Truck, text: `${t('shop.freeDelivery')} ${t('shop.ordersOver')} ${formatPrice(FREE_SHIPPING_THRESHOLD)}`, color: 'text-clay' },
                     { icon: RotateCcw, text: t('cart.easyReturns'), color: 'text-darkwood dark:text-white' },
                     { icon: Gift, text: t('cart.giftWrapping'), color: 'text-amber-600 dark:text-amber-400' },
                   ].map((item, i) => (

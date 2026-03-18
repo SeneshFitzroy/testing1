@@ -19,12 +19,14 @@ import {
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import useProductsStore from '@/store/useProductsStore'
+import useThemeStore from '@/store/useThemeStore'
 import { exportAdminReportPDF } from '@/lib/pdfExport'
 
 const CHART_COLORS = ['#8B6F47', '#4A2F21', '#3F5E45', '#D9C7B8', '#C4A88E']
 
 export default function AdminAnalytics() {
   const { t } = useTranslation()
+  const { formatPrice } = useThemeStore()
   const products = useProductsStore((s) => s.products)
   const loaded = useProductsStore((s) => s.loaded)
   const [orders, setOrders] = useState([])
@@ -183,7 +185,7 @@ export default function AdminAnalytics() {
                 <TrendingUp className="h-5 w-5 text-forest" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-darkwood dark:text-white">${totalRevenue.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-darkwood dark:text-white">{formatPrice(totalRevenue)}</p>
                 <p className="text-xs text-darkwood/50 dark:text-white">Total Revenue</p>
               </div>
             </div>

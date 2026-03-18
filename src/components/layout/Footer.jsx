@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import { LogoIcon } from '@/components/Logo'
 import useThemeStore from '@/store/useThemeStore'
-import { FREE_SHIPPING_DISPLAY } from '@/lib/constants'
+import { FREE_SHIPPING_THRESHOLD } from '@/lib/constants'
 import useInView from '@/hooks/useInView'
 
 function AnimatedFooterSection({ children, className = '', delay = 0 }) {
@@ -238,7 +238,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-white font-medium">
             <span className="flex items-center gap-2">
               <Truck className="h-4 w-4 text-clay" />
-              {t('footer.freeShippingOver')} {FREE_SHIPPING_DISPLAY}
+              {t('footer.freeShippingOver')} {formatPrice(FREE_SHIPPING_THRESHOLD)}
             </span>
             <span className="flex items-center gap-2">
               <Shield className="h-4 w-4 text-forest-light" />

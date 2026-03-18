@@ -22,6 +22,7 @@ import {
 import { Link } from 'react-router-dom'
 import { FURNITURE_CATEGORIES } from '@/lib/constants'
 import useProductsStore from '@/store/useProductsStore'
+import useThemeStore from '@/store/useThemeStore'
 import { useTranslation } from 'react-i18next'
 import { uploadProductImage, productImagePath } from '@/lib/storageService'
 
@@ -37,6 +38,7 @@ export default function AdminProducts() {
   const [uploadingImages, setUploadingImages] = useState(false)
   const imageInputRef = useRef(null)
   const { t } = useTranslation()
+  const { formatPrice } = useThemeStore()
 
   const categories = FURNITURE_CATEGORIES
 
@@ -197,7 +199,7 @@ export default function AdminProducts() {
               </Link>
               <div>
                 <h1 className="text-2xl lg:text-3xl font-bold text-darkwood dark:text-white font-display">{t('admin.productMgmt')}</h1>
-                <p className="text-darkwood/50 dark:text-white text-sm mt-0.5">{products.length} products &middot; Total value ${getTotalValue().toLocaleString()}</p>
+                <p className="text-darkwood/50 dark:text-white text-sm mt-0.5">{products.length} products &middot; Total value {formatPrice(getTotalValue())}</p>
               </div>
             </div>
             <button
@@ -227,8 +229,8 @@ export default function AdminProducts() {
           {[
             { label: t('admin.products.totalProducts'), value: products.length, icon: Package, color: 'bg-clay' },
             { label: t('admin.categories'), value: categories.length - 1, icon: Tag, color: 'bg-forest' },
-            { label: t('admin.products.avgPrice'), value: `$${products.length ? Math.round(getTotalValue() / products.length) : 0}`, icon: DollarSign, color: 'bg-darkwood' },
-            { label: t('admin.products.totalValue'), value: `$${getTotalValue().toLocaleString()}`, icon: DollarSign, color: 'bg-clay-dark' },
+            { label: t('admin.products.avgPrice'), value: formatPrice(products.length ? getTotalValue() / products.length : 0), icon: DollarSign, color: 'bg-darkwood' },
+            { label: t('admin.products.totalValue'), value: formatPrice(getTotalValue()), icon: DollarSign, color: 'bg-clay-dark' },
           ].map((stat, i) => (
             <div key={i} className="bg-white dark:bg-dark-card rounded-xl border border-warm-100 dark:border-dark-border p-4 flex items-center gap-3">
               <div className={`w-10 h-10 ${stat.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -296,7 +298,7 @@ export default function AdminProducts() {
                   <h3 className="font-semibold text-darkwood dark:text-white text-sm mb-1 truncate">{product.name}</h3>
                   <p className="text-xs text-darkwood/50 dark:text-white mb-3 line-clamp-2">{product.description}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-clay font-bold text-lg">${product.price}</span>
+                    <span className="text-clay font-bold text-lg">{formatPrice(product.price)}</span>
                     <span className="text-[10px] text-darkwood/40 dark:text-white">{product.dimensions || (product.width != null ? `${product.width}m × ${product.depth}m × ${product.height}m` : '—')}</span>
                   </div>
                 </div>
@@ -332,7 +334,7 @@ export default function AdminProducts() {
                       <td className="px-4 py-3">
                         <span className="bg-warm-100 dark:bg-dark-surface text-darkwood/70 dark:text-white text-xs font-medium px-2 py-1 rounded-full capitalize">{product.category}</span>
                       </td>
-                      <td className="px-4 py-3"><span className="text-sm font-bold text-clay">${product.price}</span></td>
+                      <td className="px-4 py-3"><span className="text-sm font-bold text-clay">{formatPrice(product.price)}</span></td>
                       <td className="px-4 py-3"><span className="text-xs text-darkwood/50 dark:text-white">{product.width} x {product.depth} x {product.height}m</span></td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2">
@@ -375,7 +377,7 @@ export default function AdminProducts() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('admin.products.price')} ($)</label>
+                    <label className="block text-sm font-semibold text-darkwood dark:text-white mb-1.5">{t('admin.products.price')} (USD)</label>
                     <input type="number" value={editingProduct.price} onChange={(e) => setEditingProduct(prev => ({ ...prev, price: Number(e.target.value) }))} className="input-field text-sm" />
                   </div>
                   <div>
