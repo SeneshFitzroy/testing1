@@ -1,31 +1,22 @@
 /**
- * AR Logo — transparent background, scalable.
- * Cube wireframe with corner brackets and "AR" text.
+ * AR Logo — clean, professional Augmented Reality icon.
+ * Isometric cube + bold AR text. Industry-standard "View in your space" style.
  */
 export default function ARLogoIcon({ className = 'h-12 w-12', invert = false }) {
   return (
     <svg
-      viewBox="4 4 56 56"
+      viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid meet"
       className={`block ${className} ${invert ? 'brightness-0 invert' : ''}`}
       aria-hidden
     >
-      {/* Corner brackets (viewfinder) */}
-      <path d="M10 22V10h12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M54 22V10H42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M10 42v12h12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M54 42v12H42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Isometric cube wireframe */}
-      <path d="M24 48 L32 40 L40 48 L32 56 Z" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M32 40 L32 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M40 48 L40 32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M24 48 L24 32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M32 24 L40 32 L40 48" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M32 24 L24 32 L24 48" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      {/* AR text on front face */}
-      <text x="32" y="48" textAnchor="middle" dominantBaseline="middle" fill="currentColor" fontSize="12" fontWeight="bold" fontFamily="system-ui, sans-serif">AR</text>
+      {/* Isometric cube wireframe — 3 visible faces */}
+      <path d="M24 12l12 8v16L24 40 12 32V20l12-8z" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <path d="M24 12v28M12 20v12l12 8 12-8V20" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
+      {/* AR text — bold, centered */}
+      <text x="24" y="30" textAnchor="middle" dominantBaseline="middle" fill="currentColor" fontSize="11" fontWeight="800" fontFamily="system-ui, sans-serif">AR</text>
     </svg>
   )
 }
