@@ -370,10 +370,14 @@ export default function RoomEditor() {
       )}
 
       <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
-        {/* ── Left Sidebar (resizable; collapsible on mobile) ── */}
+        {/* ── Left Sidebar: overlay drawer on mobile, resizable on desktop ── */}
+        {/* Mobile: fixed overlay so it doesn't push/clip canvas; Desktop: inline */}
+        {sidebarOpenOnMobile && (
+          <div className="fixed inset-0 bg-black/40 z-40 lg:hidden" onClick={() => setSidebarOpenOnMobile(false)} aria-hidden="true" />
+        )}
         <div
-          className={`w-full lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30
-            ${sidebarOpenOnMobile ? 'flex' : 'hidden'} lg:flex`}
+          className={`lg:flex-none bg-white dark:bg-dark-card border-r border-warm-200 dark:border-dark-border flex flex-col relative shrink-0 z-30
+            ${sidebarOpenOnMobile ? 'fixed inset-y-0 left-0 w-[min(320px,85vw)] shadow-2xl lg:relative lg:shadow-none lg:flex' : 'hidden lg:flex'}`}
           style={sidebarStyle}
         >
           <div className="p-3 border-b border-warm-200 dark:border-dark-border shrink-0">
@@ -439,7 +443,7 @@ export default function RoomEditor() {
         </div>
 
         {/* ── Main Canvas Area ── */}
-        <div className="flex-1 flex flex-col min-w-[320px]">
+        <div className="flex-1 flex flex-col min-w-0 min-h-0">
           {/* Room Tabs */}
           <div className="bg-white dark:bg-dark-card border-b border-warm-200 dark:border-dark-border px-4 pt-2 flex items-center gap-1 overflow-x-auto scrollbar-hide">
             {rooms.map((room, idx) => (
@@ -485,16 +489,16 @@ export default function RoomEditor() {
             </button>
           </div>
 
-          {/* Top Toolbar — Professional layout */}
-          <div className="bg-white dark:bg-dark-card border-b border-warm-200 dark:border-dark-border p-3 sm:p-4">
-            <div className="flex items-center justify-between flex-wrap gap-3">
+          {/* Top Toolbar — Compact on mobile */}
+          <div className="bg-white dark:bg-dark-card border-b border-warm-200 dark:border-dark-border p-2 sm:p-4">
+            <div className="flex items-center justify-between flex-wrap gap-2">
               {/* Left: View + History */}
-              <div className="flex items-center gap-3 flex-wrap">
-                {/* View Mode Toggle — clear 2D vs 3D visual difference */}
-                <div className="flex bg-warm-100 dark:bg-dark-surface rounded-xl p-1.5 shadow-inner border border-warm-200/50 dark:border-dark-border/50">
+              <div className="flex items-center gap-2 flex-wrap">
+                {/* View Mode Toggle — compact on mobile */}
+                <div className="flex bg-warm-100 dark:bg-dark-surface rounded-lg sm:rounded-xl p-1 sm:p-1.5 shadow-inner border border-warm-200/50 dark:border-dark-border/50">
                   <button
                     onClick={() => handleViewSwitch('2d')}
-                    className={`px-3 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-2 py-1.5 sm:px-3 sm:py-2.5 rounded-md sm:rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
                       viewMode === '2d'
                         ? 'bg-[#3F5E45] text-white shadow-md border-2 border-forest'
                         : 'text-darkwood/70 dark:text-white hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
@@ -502,12 +506,12 @@ export default function RoomEditor() {
                     aria-label="2D floor plan — flat top-down view"
                     title="2D Floor Plan — drag to reposition items"
                   >
-                    <Layers className="h-5 w-5" />
+                    <Layers className="h-4 w-4 sm:h-5 sm:w-5" />
                     <span>2D</span>
                   </button>
                   <button
                     onClick={() => handleViewSwitch('split')}
-                    className={`px-3 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-2 py-1.5 sm:px-3 sm:py-2.5 rounded-md sm:rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
                       viewMode === 'split'
                         ? 'bg-forest text-white shadow-md border-2 border-forest'
                         : 'text-darkwood/70 dark:text-white hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
@@ -515,12 +519,12 @@ export default function RoomEditor() {
                     aria-label="Split view — 2D and 3D side by side"
                     title="Split View — 2D and 3D on same page"
                   >
-                    <span className="text-base">⊞</span>
-                    <span>Split</span>
+                    <span className="text-sm sm:text-base">⊞</span>
+                    <span className="hidden sm:inline">Split</span>
                   </button>
                   <button
                     onClick={() => handleViewSwitch('3d')}
-                    className={`px-3 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-2 py-1.5 sm:px-3 sm:py-2.5 rounded-md sm:rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center gap-1 ${
                       viewMode === '3d'
                         ? 'bg-clay text-white shadow-md border-2 border-clay-dark'
                         : 'text-darkwood/70 dark:text-white hover:bg-warm-200/50 dark:hover:bg-dark-border/50 border-2 border-transparent'
@@ -528,22 +532,22 @@ export default function RoomEditor() {
                     aria-label="3D perspective — orbit to explore"
                     title="3D View — drag to rotate camera"
                   >
-                    <Eye className="h-5 w-5" />
+                    <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
                     <span>3D</span>
                   </button>
                 </div>
-                <div className="hidden sm:block w-px h-8 bg-warm-200 dark:bg-dark-border" />
+                <div className="hidden sm:block w-px h-6 sm:h-8 bg-warm-200 dark:bg-dark-border" />
                 {/* Undo / Redo */}
                 <div className="flex items-center gap-0.5">
                   <button onClick={undo} disabled={!canUndo()}
-                    className="p-2.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors"
+                    className="p-2 sm:p-2.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                     title={t('editor.undo')}>
-                    <Undo2 className="h-5 w-5 text-darkwood dark:text-white" />
+                    <Undo2 className="h-4 w-4 sm:h-5 sm:w-5 text-darkwood dark:text-white" />
                   </button>
                   <button onClick={redo} disabled={!canRedo()}
-                    className="p-2.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors"
+                    className="p-2 sm:p-2.5 rounded-lg hover:bg-warm-100 dark:hover:bg-dark-surface disabled:opacity-30 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                     title={t('editor.redo')}>
-                    <Redo2 className="h-5 w-5 text-darkwood dark:text-white" />
+                    <Redo2 className="h-4 w-4 sm:h-5 sm:w-5 text-darkwood dark:text-white" />
                   </button>
                 </div>
               </div>
@@ -654,9 +658,9 @@ export default function RoomEditor() {
                 </div>
 
                 <button onClick={handleSave}
-                  className="px-4 py-2 bg-gradient-to-r from-clay to-clay-dark hover:from-clay-dark hover:to-clay text-white text-sm font-semibold rounded-xl shadow-sm flex items-center gap-2 transition-all hover:shadow-md">
-                  <Save className="h-4 w-4" />
-                  <span>{t('editor.save')}</span>
+                  className="px-3 py-2 sm:px-4 bg-gradient-to-r from-clay to-clay-dark hover:from-clay-dark hover:to-clay text-white text-xs sm:text-sm font-semibold rounded-lg sm:rounded-xl shadow-sm flex items-center gap-1.5 sm:gap-2 transition-all hover:shadow-md min-h-[44px]">
+                  <Save className="h-4 w-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t('editor.save')}</span>
                 </button>
               </div>
             </div>

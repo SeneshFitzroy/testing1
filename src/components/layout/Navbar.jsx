@@ -395,16 +395,6 @@ export default function Navbar() {
                             <Settings className="h-4 w-4" />
                             {t('nav.settings')}
                           </Link>
-                          {!isAdmin() && (
-                            <Link
-                              to="/my-designs"
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-darkwood dark:text-white hover:bg-warm-100 dark:hover:bg-dark-surface hover:text-clay dark:hover:text-clay transition-colors"
-                              role="menuitem"
-                            >
-                              <FolderOpen className="h-4 w-4" />
-                              {t('nav.myRoomDesigns') || 'Furniture Customization & Designs'}
-                            </Link>
-                          )}
                           {isAdmin() && (
                             <>
                               <Link

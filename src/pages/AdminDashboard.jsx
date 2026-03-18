@@ -522,6 +522,7 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
             {[
               { label: t('admin.addProduct'), icon: Plus, color: 'from-blue-500 to-cyan-500', to: '/admin/products' },
+              { label: t('admin.addDesigner') || 'Add Designer', icon: UserPlus, color: 'from-violet-500 to-purple-500', to: '/admin/team' },
               { label: t('admin.viewOrders'), icon: ShoppingCart, color: 'from-green-500 to-teal-500', to: '/admin/orders' },
               { label: t('admin.customers'), icon: Users, color: 'from-purple-500 to-pink-500', to: '/admin/customers' },
               { label: t('admin.analyticsLabel'), icon: BarChart3, color: 'from-orange-500 to-red-500', to: '/admin/analytics' },
